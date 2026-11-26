@@ -100,7 +100,7 @@ export const touchingACircle = defineLevel({
         { left: card("outside", "From a point outside"), right: card("two-equal", "two tangents, equally long") },
         { left: card("angles", "∠APB + ∠AOB"), right: card("straight", "180°") },
       ],
-      explanation: "OAPB has right angles at A and B, and its angles add to 360°, so the other two make 180°. Triangles OAP and OBP share OP and have equal radii, so PA = PB.",
+      explanation: "OAPB has right angles at A and B, and its angles add to 360°, so the other two make 180°. Triangles OAP and OBP are right-angled at A and B, share the side OP and have equal radii OA = OB, so they are congruent (RHS) and PA = PB.",
       hints: ["Inside a circle, every line through the point cuts it twice."],
     },
     {

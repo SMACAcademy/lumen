@@ -75,7 +75,7 @@ export const zeroesAndRemainders = defineLevel({
       goal: { type: "compare", quantity: "isFactor", op: "eq", value: 1 },
       success: "a = −2: (x + 2) divides it exactly, leaving x² + x + 3. And p(−2) = −8 + 12 − 10 + 6 = 0.",
       retry: "Not yet. Watch the boxed remainder.",
-      hints: ["A whole-number zero must divide the constant term, 6.", "Try the negative ones: −1, −2, −3."],
+      hints: ["An integer zero must divide the constant term, 6.", "Try the negative ones: −1, −2, −3."],
     },
     {
       id: "law",

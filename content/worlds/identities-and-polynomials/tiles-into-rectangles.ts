@@ -74,12 +74,12 @@ export const tilesIntoRectangles = defineLevel({
     {
       id: "does-it-split",
       kind: "sort",
-      prompt: "**Sort**: which of these split into (x + m)(x + n) with whole numbers?",
+      prompt: "**Sort**: which of these split into (x + m)(x + n) with integers m and n?",
       mode: "factorise",
       canvas: false,
       bins: [
         { id: "splits", label: "Splits", when: { type: "compare", quantity: "factorable", op: "eq", value: 1 } },
-        { id: "no-split", label: "No whole-number split", when: { type: "compare", quantity: "factorable", op: "eq", value: 0 } },
+        { id: "no-split", label: "No integer split", when: { type: "compare", quantity: "factorable", op: "eq", value: 0 } },
       ],
       cards: [
         expr("five-six", "x² + 5x + 6", 5, 6),
@@ -91,7 +91,7 @@ export const tilesIntoRectangles = defineLevel({
         expr("five-x", "x² + 5x", 5, 0),
         expr("three-one", "x² + 3x + 1", 3, 1),
       ],
-      explanation: "x² + 5x + 6 = (x + 2)(x + 3), x² − 9 = (x + 3)(x − 3), x² − 6x + 9 = (x − 3)² and x² + 5x = x(x + 5). For the others, no two whole numbers add to b and multiply to c.",
+      explanation: "x² + 5x + 6 = (x + 2)(x + 3), x² − 9 = (x + 3)(x − 3), x² − 6x + 9 = (x − 3)² and x² + 5x = x(x + 5). For the others, no two integers add to b and multiply to c.",
       hints: ["For each, look for two numbers that multiply to c and add to b."],
     },
     {

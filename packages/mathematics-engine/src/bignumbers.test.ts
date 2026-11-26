@@ -81,6 +81,11 @@ describe("the big units", () => {
     expect(bigNumbersIndianWords(100_005)).toBe("one lakh five");
     expect(bigNumbersInternationalWords(100_005)).toBe("one hundred thousand five");
     expect(bigNumbersIndianWords(0)).toBe("zero");
+    expect(bigNumbersIndianCommas(1_000_005)).toBe("10,00,005");
+    expect(bigNumbersIndianWords(1_000_005)).toBe("ten lakh five");
+    expect(bigNumbersInternationalWords(1_000_005)).toBe("one million five");
+    expect(bigNumbersIndianWords(999_999_999)).toBe("ninety-nine crore ninety-nine lakh ninety-nine thousand nine hundred ninety-nine");
+    expect(bigNumbersInternationalWords(999_999_999)).toBe("nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred ninety-nine");
     expect(bigNumbersIndianWords(1_000_000_000)).toBe("one hundred crore");
     expect(bigNumbersInternationalWords(1_000_000_000)).toBe("one billion");
   });
@@ -123,6 +128,8 @@ describe("rounding and estimating", () => {
     expect(derive({ p: 5290, q: 17_986, place: 3 })).toMatchObject({ pRounded: 5000, qRounded: 18_000, sumEstimate: 23_000, sumExact: 23_276, sumGap: 276 });
     // To hundreds: 5,300 + 18,000 = 23,300.
     expect(derive({ p: 5290, q: 17_986, place: 2 })).toMatchObject({ sumEstimate: 23_300 });
+    // The lab opens on the nearest thousand, so the Estimate picture shows the worked example, not 0 + 0.
+    expect(derive()).toMatchObject({ place: 3, sumEstimate: 23_000 });
   });
 
   it("estimates a product by rounding each factor to its greatest place", () => {

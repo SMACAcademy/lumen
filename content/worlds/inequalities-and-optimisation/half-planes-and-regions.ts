@@ -52,7 +52,7 @@ export const halfPlanesAndRegions = defineLevel({
         ineq("le0", "−2x + 5y ≤ 0", -2, 5, "le", 0),
         ineq("gt0", "x + y > 0", 1, 1, "gt", 0),
       ],
-      explanation: "At (0, 0) the left side is 0, so just compare 0 with the right side: 0 ≤ 4, 0 ≥ −6 and 0 ≤ 0 are true. Shade the side holding the origin for those, the other side for the rest. When the line passes through the origin, as in −2x + 5y ≤ 0, test another point to be sure of the side.",
+      explanation: "At (0, 0) the left side is 0, so just compare 0 with the right side: 0 ≤ 4, 0 ≥ −6 and 0 ≤ 0 are true. For 2x + y ≤ 4 and 3x + 2y ≥ −6 shade the side holding the origin; for x − y > 3 and x + 4y < −2 the other side. But −2x + 5y ≤ 0 and x + y > 0 have the right side 0, so their lines pass through the origin: it lies on the boundary and says nothing about the side. Test another point, such as (1, 0), instead.",
       hints: ["Put x = 0 and y = 0: the left side is 0."],
     },
     {

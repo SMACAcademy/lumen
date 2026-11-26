@@ -312,7 +312,9 @@ export const polySchoolModel: SimulationModel<PolySchoolState, PolySchoolParams,
     const pa = counted(state.pa, POLYSCHOOL_A_RANGE);
     const lead = coeffs.findIndex((c) => c !== 0);
     const isZeroPoly = lead < 0;
-    const degree = isZeroPoly ? 0 : 3 - lead;
+    // The zero polynomial has no degree, and every number is a zero of it: both are
+    // reported as −1, which the concept shows as "not defined" and "every number".
+    const degree = isZeroPoly ? -1 : 3 - lead;
     const pValue = polySchoolValue(coeffs, pa);
     const { quotient, remainder } = polySchoolDivide(coeffs, pa);
 
@@ -372,7 +374,7 @@ export const polySchoolModel: SimulationModel<PolySchoolState, PolySchoolParams,
       isZeroPoly: isZeroPoly ? 1 : 0,
       termCount: coeffs.filter((c) => c !== 0).length,
       leadCoeff: isZeroPoly ? 0 : coeffs[lead]!,
-      zeroCount: polySchoolZeroCount(coeffs),
+      zeroCount: isZeroPoly ? -1 : polySchoolZeroCount(coeffs),
       pa,
       pValue,
       isZeroAt: pValue === 0 ? 1 : 0,

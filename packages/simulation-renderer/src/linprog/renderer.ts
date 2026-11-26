@@ -316,7 +316,12 @@ function drawHalfPlane(ctx: CanvasRenderingContext2D, layout: LinprogLayout, res
     const lhs = num(results.lhs);
     caption(`(${fmt(u)}, ${fmt(v)}): ${lpLinearText(p, q)} = ${fmt(lhs)}, ${num(results.holds) ? "a solution" : "not a solution"}`, 0);
     const origin = num(results.originHolds);
-    caption(`(0, 0) gives 0 ${LP_SYMBOL[rel]} ${fmt(r)}: ${origin ? "true, shade its side" : "false, shade the other side"}`, 1);
+    caption(
+      r === 0
+        ? "(0, 0) is on the line: test another point to choose the side"
+        : `(0, 0) gives 0 ${LP_SYMBOL[rel]} ${fmt(r)}: ${origin ? "true, shade its side" : "false, shade the other side"}`,
+      1,
+    );
   }
 }
 

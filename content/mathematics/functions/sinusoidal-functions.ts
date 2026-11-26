@@ -139,7 +139,7 @@ export const sinusoidalFunctions = defineConcept({
       id: "phaseShift",
       symbol: "shift",
       name: "Phase shift",
-      meaning: "How far the wave has slid compared with sin x (negative = left).",
+      meaning: "How far the wave has slid compared with sin ωx (negative = left): −φ/ω.",
       result: "phaseShift",
       format: { kind: "angle" },
       unit: "rad",

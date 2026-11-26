@@ -22,7 +22,7 @@ export const sectionAndHeron = defineLevel({
       quantity: "pointX",
       range: { min: -10, max: 10, step: 0.5 },
       tolerance: 0.25,
-      explanation: "x = (2 × 4 + 3 × (−1)) ÷ 5 = 5 ÷ 5 = 1, and y = (2 × (−3) + 3 × 7) ÷ 5 = 15 ÷ 5 = 3. So P is (1, 3), as in NCERT's example.",
+      explanation: "x = (2 × 4 + 3 × (−1)) ÷ 5 = 5 ÷ 5 = 1, and y = (2 × (−3) + 3 × 7) ÷ 5 = 15 ÷ 5 = 3. So P is (1, 3), as in NCERT's exercise.",
       hints: ["m goes with B's coordinate, n with A's."],
     },
     {

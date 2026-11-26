@@ -14,6 +14,7 @@ import {
   lpLinearText,
   lpOneSideText,
   lpProblemRegion,
+  lpRegion,
   lpSolveOne,
   lpValue,
   lpVisibleRegion,
@@ -167,6 +168,21 @@ describe("linear programming (NCERT class 12, chapter 12)", () => {
   it("fifth worked example: x + y ≥ 8 and 3x + 5y ≤ 15 leave nothing", () => {
     expect(derive({ problem: "empty" })).toMatchObject({ feasible: 0, regionKind: 0, cornerCount: 0, hasBest: 0, corner: 0, isoMeets: 0 });
     expect(lpVisibleRegion(LP_PROBLEMS.empty.constraints, 10, 10)).toEqual([]);
+  });
+
+  it("handles a single-point region, a ray, and an unbounded region whose Z stays bounded", () => {
+    const pt = lpRegion([{ a: 1, b: 1, rel: "le", c: 0 }], 1, 1);
+    expect(pt).toMatchObject({ feasible: true, bounded: true, supInfinite: false, infInfinite: false });
+    expect(pt.corners.map((k) => [lpValue(k.x), lpValue(k.y)])).toEqual([[0, 0]]);
+    // x = y, x ≥ 2: a ray from (2, 2) along (1, 1).
+    const ray = lpRegion([{ a: 1, b: -1, rel: "le", c: 0 }, { a: 1, b: -1, rel: "ge", c: 0 }, { a: 1, b: 0, rel: "ge", c: 2 }], 1, -1);
+    expect(ray).toMatchObject({ feasible: true, bounded: false, supInfinite: false, infInfinite: false });
+    expect(ray.corners.map((k) => [lpValue(k.x), lpValue(k.y)])).toEqual([[2, 2]]);
+    // On the unbounded diet region Z = −x − y still has a maximum, −6 at (2, 4).
+    const diet = lpRegion(LP_PROBLEMS.diet.constraints, -1, -1);
+    expect(diet).toMatchObject({ bounded: false, supInfinite: false, infInfinite: true });
+    // The diet region has no maximum cost: Z > 560 still meets it.
+    expect(lpProblemRegion("diet").supInfinite).toBe(true);
   });
 
   it("steps through the corners and spots the best one", () => {

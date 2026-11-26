@@ -127,6 +127,12 @@ describe("the half-plane", () => {
     expect(shown.rec.of("fill").length).toBeGreaterThan(unshaded.of("fill").length);
     expect(render(r, ["plane", "shade"]).joined()).not.toContain("a solution");
   });
+
+  it("does not use the origin to choose the side when the line passes through it", () => {
+    const shown = render(results({ rel: "gt" }, { p: 1, q: 1, r: 0, u: 1, v: 0 }), ["plane", "shade", "labels"]).joined();
+    expect(shown).toContain("(0, 0) is on the line");
+    expect(shown).not.toContain("shade the other side");
+  });
 });
 
 describe("the feasible region", () => {

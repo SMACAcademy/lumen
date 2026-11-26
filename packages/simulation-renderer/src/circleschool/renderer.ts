@@ -397,7 +397,8 @@ const drawSector: Draw = (ctx, layout, res, words, theme) => {
   return [
     title,
     `arc ${fixed(num(res.arc))} cm · sector ${fixed(num(res.sectorArea))} cm²`,
-    `segment = sector − △OAB = ${fixed(num(res.segment))} cm²`,
+    // Past 180° the triangle lies inside the segment, so it is added.
+    `segment = sector ${theta > 180 ? "+" : "−"} △OAB = ${fixed(num(res.segment))} cm²`,
   ];
 };
 

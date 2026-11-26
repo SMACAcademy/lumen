@@ -156,7 +156,7 @@ describe("solids", () => {
     expect(derive({ solid: "pyramid" }, { baseSides: 4 })).toMatchObject({ faces: 5, edges: 8, vertices: 5 });
   });
 
-  it("counts the round solids as NCERT does, without Euler's formula", () => {
+  it("counts the round solids' flat faces and curved surface apart, without Euler's formula", () => {
     expect(derive({ solid: "cylinder" })).toMatchObject({ faces: 2, curved: 1, edges: 2, vertices: 0, isPolyhedron: 0, eulerSum: 0 });
     expect(derive({ solid: "cone" })).toMatchObject({ faces: 1, curved: 1, edges: 1, vertices: 1, isPolyhedron: 0 });
     expect(derive({ solid: "sphere" })).toMatchObject({ faces: 0, curved: 1, edges: 0, vertices: 0, isPolyhedron: 0 });

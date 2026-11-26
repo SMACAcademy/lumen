@@ -135,7 +135,8 @@ describe("polynomials: degree, value and zeroes", () => {
     expect(derive({ c3: 0, c2: 1, c1: 0, c0: -4 })).toMatchObject({ degree: 2, polyType: 2, termCount: 2, leadCoeff: 1 });
     expect(derive({ c3: 0, c2: 0, c1: 2, c0: 1 })).toMatchObject({ degree: 1, polyType: 1, termCount: 2, leadCoeff: 2 });
     expect(derive({ c3: 0, c2: 0, c1: 0, c0: 5 })).toMatchObject({ degree: 0, polyType: 0, termCount: 1, zeroCount: 0 });
-    expect(derive({ c3: 0, c2: 0, c1: 0, c0: 0 })).toMatchObject({ polyType: 4, isZeroPoly: 1, termCount: 0, leadCoeff: 0 });
+    // The zero polynomial: no degree, and every number is a zero (both reported as −1).
+    expect(derive({ c3: 0, c2: 0, c1: 0, c0: 0 })).toMatchObject({ polyType: 4, isZeroPoly: 1, termCount: 0, leadCoeff: 0, degree: -1, zeroCount: -1 });
   });
 
   it("finds p(a) term by term: x³ − 6x² + 11x − 6 at 0, 1, 2, 3, 4", () => {

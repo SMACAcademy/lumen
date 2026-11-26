@@ -35,10 +35,12 @@ import type { SimulationModel } from "@ise/science-engine";
  * sides), cylinder, cone or sphere. The flat solids are built as corner
  * lists and faces, and the model counts faces, edges and corners from them.
  * For every polyhedron F + V − E = 2 (Euler). A cylinder, cone or sphere has
- * a curved surface, so it is not a polyhedron; it is counted as in NCERT
- * class 6 (a cylinder: 2 flat faces, 1 curved surface, 2 curved edges and no
- * vertex; a cone: 1 flat face, 1 curved surface, 1 curved edge and 1 vertex;
- * a sphere: just a curved surface), and Euler's formula is not used for it.
+ * a curved surface, so it is not a polyhedron; its flat faces and curved
+ * surface are counted separately (a cylinder: 2 flat faces, 1 curved
+ * surface, 2 curved edges and no vertex; a cone: 1 flat face, 1 curved
+ * surface, 1 curved edge and 1 vertex; a sphere: just a curved surface —
+ * some books count the curved surface as a face too), and Euler's formula is
+ * not used for it.
  * The top, front and side views are the shapes seen from above, from the
  * front and from the right, with the solid standing on its base.
  *
@@ -46,7 +48,7 @@ import type { SimulationModel } from "@ise/science-engine";
  * edge it shares with the square before it, all by the same angle,
  * `fold` × 90°. At a full fold the model sees where each square has gone:
  * a net of a cube puts the six squares on six different faces; any other
- * net puts two squares on the same face and leaves a face open.
+ * net puts two or more squares on the same face and leaves a face open.
  */
 
 // ── Flat shapes ──────────────────────────────────────────────────────────────
@@ -354,7 +356,7 @@ export function symSolidMesh(solid: SymSolidId, baseSides: number): SymSolidMesh
   }
 }
 
-/** Flat faces, curved surfaces, edges and vertices of the round solids, as counted in NCERT class 6. */
+/** Flat faces, curved surfaces, edges and vertices of the round solids (the curved surface counted on its own, not as a face). */
 const ROUND_COUNTS: Record<"cylinder" | "cone" | "sphere", { faces: number; curved: number; edges: number; vertices: number }> = {
   cylinder: { faces: 2, curved: 1, edges: 2, vertices: 0 },
   cone: { faces: 1, curved: 1, edges: 1, vertices: 1 },

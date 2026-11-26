@@ -95,7 +95,7 @@ export const foldAndTurn = defineLevel({
       ],
       cards: [shape("N", "Letter N"), shape("H", "Letter H"), shape("Z", "Letter Z"), shape("A", "Letter A"), shape("E", "Letter E"), shape("rectangle", "Rectangle"), shape("parallelogram", "Parallelogram"), shape("kite", "Kite"), shape("triangle", "Equilateral triangle"), shape("octagon", "Regular octagon")],
       explanation: "N, H, Z, the rectangle and the parallelogram fit after a half turn: order 2. The equilateral triangle has order 3 and the regular octagon order 8. A, E and the kite only fit after a full turn: order 1, no rotational symmetry.",
-      hints: ["Would it look the same upside down? Then it has at least order 2."],
+      hints: ["Turn it upside down — a half turn, like turning your book round, not flipping it over. Does it look the same? Then it has at least order 2."],
     },
     {
       id: "law",

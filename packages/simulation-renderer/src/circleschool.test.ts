@@ -87,6 +87,8 @@ describe("the sector", () => {
     expect(sixty).toContain("θ = 60°");
     const big = text(results({ radius: 21, theta: 120 }, { pi: "22/7" }), ["sector", "labels"]);
     expect(big).toContain("segment = sector − △OAB = 271.04 cm²");
+    // Past 180° the triangle is added: 462 + 98 for r = 14 cm, θ = 270°.
+    expect(text(results({ radius: 14, theta: 270 }, { pi: "22/7" }), ["sector", "labels"])).toContain("segment = sector + △OAB = 560.00 cm²");
     expect(text(results({ radius: 4, theta: 30 }, { pi: "3.14" }), ["sector", "labels"])).toContain("(π = 3.14)");
   });
 

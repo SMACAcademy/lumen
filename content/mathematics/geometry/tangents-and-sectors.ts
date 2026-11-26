@@ -241,7 +241,7 @@ export const tangentsAndSectors = defineConcept({
       highlight: "sweep",
       headline: true,
     },
-    { id: "chordLength", symbol: "chord", name: "Chord cut off", meaning: "The length of circle the secant cuts across: 2√(r² − d²). 0 when the line does not cut.", result: "chord", format: { kind: "number", digits: 2 }, unit: "cm", color: "secant", highlight: "sweep" },
+    { id: "chordLength", symbol: "chord", name: "Chord cut off", meaning: "How much of the secant lies inside the circle: 2√(r² − d²). 0 when the line does not cut.", result: "chord", format: { kind: "number", digits: 2 }, unit: "cm", color: "secant", highlight: "sweep" },
     { id: "spokeAngle", symbol: "∠OPT", name: "Angle to the radius", meaning: "Between the line through P and the radius OP.", result: "tilt", format: { kind: "number", digits: 0 }, unit: "deg", color: "angle", highlight: "spoke", headline: true },
     {
       id: "spokeMeets",

@@ -215,7 +215,7 @@ export const bigNumbersAndProportion = defineConcept({
     { id: "digits", symbol: "digits", name: "Number of digits", meaning: "More digits means a bigger number.", result: "digits", format: { kind: "integer" }, color: "tangent", highlight: "place", headline: true },
     { id: "millionsPeriod", symbol: "millions", name: "Millions period", meaning: "The digits in the millions period of the international chart.", result: "millionsPeriod", format: { kind: "integer" }, color: "cosine", highlight: "place" },
     { id: "inLakhs", symbol: "lakh", name: "In lakhs", meaning: "The number ÷ 1,00,000.", result: "inLakhs", format: { kind: "number", digits: 5 }, color: "sine", highlight: "place" },
-    { id: "inMillions", symbol: "million", name: "In millions", meaning: "The number ÷ 1,000,000. Always the lakhs ÷ 10.", result: "inMillions", format: { kind: "number", digits: 6 }, color: "cosine", highlight: "place" },
+    { id: "inMillions", symbol: "million", name: "In millions", meaning: "The number ÷ 1,000,000. Always the number in lakhs ÷ 10.", result: "inMillions", format: { kind: "number", digits: 6 }, color: "cosine", highlight: "place" },
     { id: "rounded", symbol: "rounded", name: "Rounded number", meaning: "The nearest multiple of the place chosen.", result: "rounded", format: { kind: "integer" }, color: "angle", highlight: "round", headline: true },
     { id: "roundedUp", symbol: "way", name: "Rounded up or down", meaning: "Up when the next digit is 5 or more.", result: "roundedUp", format: { kind: "label", labels: { "0": "down", "1": "up" } }, color: "angle", highlight: "round" },
     { id: "roundGap", symbol: "off by", name: "How far rounding moved it", meaning: "The difference between the number and its rounded value.", result: "roundGap", format: { kind: "integer" }, color: "secant", highlight: "round" },
@@ -407,7 +407,7 @@ export const bigNumbersAndProportion = defineConcept({
 
   simulation: {
     model: "bignumbers",
-    params: { crores: 4, lakhs: 56, thousands: 78, ones: 912, place: 5, p: 5290, q: 17986, rThousands: 1, rHundreds: 9, rTens: 9, rOnes: 4, penPrice: 12, work: 60 },
+    params: { crores: 4, lakhs: 56, thousands: 78, ones: 912, place: 3, p: 5290, q: 17986, rThousands: 1, rHundreds: 9, rTens: 9, rOnes: 4, penPrice: 12, work: 60 },
     playLabel: "Add one more",
   },
 
