@@ -20,12 +20,12 @@ Every chapter carries the class it is taught in, and the class decides its stage
 
 | Stage | Classes | Maths | Physics | Chemistry | All | Playable |
 |---|---|---|---|---|---|---|
-| Foundation | 6–8 | 44 | 30 | 18 | 92 | 92 |
-| Bridge | 9–10 | 29 | 32 | 21 | 82 | 82 |
-| Advanced | 11–12 | 122 | 259 | 107 | 488 | 488 |
-| **All** | | **195** | **321** | **146** | **662** | **662** |
+| Foundation | 6–8 | 58 | 42 | 26 | 126 | 126 |
+| Bridge | 9–10 | 37 | 32 | 27 | 96 | 96 |
+| Advanced | 11–12 | 128 | 259 | 107 | 494 | 494 |
+| **All** | | **223** | **333** | **160** | **716** | **716** |
 
-124 labs, 345 levels and 125 worlds are playable.
+137 labs, 388 levels and 139 worlds are playable.
 
 Concepts name the earlier concepts they grow from (`buildsOn`), so each class 11–12 idea points back
 to its school roots — speed → velocity, the right triangle → the unit circle, Bohr's shells → the
@@ -38,10 +38,10 @@ Class 11–12 in detail:
 |---|---|---|---|---|
 | Branches | 7 | 9 | 3 | 19 |
 | Chapters | 25 | 30 | 21 | 76 |
-| Concepts | 122 | 259 | 107 | 488 |
+| Concepts | 128 | 259 | 107 | 494 |
 | NEET | 11 | 226 | 107 | 344 |
 | JEE Main / Advanced | 106 / 120 | 247 / 256 | 107 / 107 | 460 / 483 |
-| Playable today | 122 | 259 | 107 | 488 |
+| Playable today | 128 | 259 | 107 | 494 |
 
 Some maths concepts are "playable" because an existing lab already teaches them (radian measure
 and the unit circle, the derivative as a slope and secant → tangent). NEET has no maths paper,
@@ -246,3 +246,20 @@ Each lab was built to one brief (model with hand-worked tests, phone-width rende
 of levels, a self-check against the validators) and then read by an independent reviewer against
 NCERT, who fixed what was wrong: wrong numbers, explanations that taught a misconception, values
 shown as 0 where none exists, and constants that differed from NCERT's tables.
+
+### Filling the gaps, November 2026
+
+A check of the catalogue against the NCERT books found topics it had never listed. They are now
+catalogued and built, physics first, then maths, then chemistry:
+
+- **Physics (school):** air pressure, winds and storms; chemical effects of electric current;
+  charges and lightning; reflections and images (diffuse reflection, mirrors at an angle, the
+  periscope).
+- **Maths:** linear inequalities and linear programming (class 11–12); for school, symmetry,
+  polygons and solid shapes; identities, factorisation and polynomials; large numbers, Roman
+  numerals and direct and inverse proportion; tangents, sectors, the section formula and Heron's
+  formula. Seven older concepts (radians, the sine and cosine graphs, the dials of a sinusoid,
+  graph transformations, slope as a rate) gained levels of their own.
+- **Chemistry (school):** combustion, fuels and flames; synthetic fibres and plastics; pure
+  substances, solutions and colloids; ionic compounds, extracting metals and alloys.
+

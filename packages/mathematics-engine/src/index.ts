@@ -34,6 +34,11 @@ import { setsFnModel } from "./setsfn";
 import { geoSchoolModel } from "./geoschool";
 import { chanceModel } from "./chance";
 import { patternsModel } from "./patterns";
+import { polySchoolModel } from "./polyschool";
+import { circleSchoolModel } from "./circleschool";
+import { bigNumbersModel } from "./bignumbers";
+import { linprogModel } from "./linprog";
+import { symSolidModel } from "./symsolid";
 
 export * from "./unit-circle";
 export * from "./sinusoid";
@@ -72,6 +77,11 @@ export * from "./ratiopower";
 export * from "./geoschool";
 export * from "./chance";
 export * from "./patterns";
+export * from "./polyschool";
+export * from "./circleschool";
+export * from "./bignumbers";
+export * from "./linprog";
+export * from "./symsolid";
 
 /** Every model this engine provides, for registries and content validation. */
-export const mathematicsModels: readonly AnySimulationModel[] = [unitCircleModel, sinusoidModel, vectorModel, secantModel, numberLineModel, balanceModel, shapesModel, triangleModel, lineModel, limitModel, slopeGraphModel, rulesModel, optimiseModel, accumulateModel, riemannModel, slopeFieldModel, integrationModel, seriesModel, complexModel, countingModel, probabilityModel, statsModel, matrixModel, space3dModel, solveTriModel, conicModel, trigPlusModel, circleLineModel, solidsModel, integersModel, ratioPowerModel, setsFnModel, geoSchoolModel, chanceModel, patternsModel];
+export const mathematicsModels: readonly AnySimulationModel[] = [unitCircleModel, sinusoidModel, vectorModel, secantModel, numberLineModel, balanceModel, shapesModel, triangleModel, lineModel, limitModel, slopeGraphModel, rulesModel, optimiseModel, accumulateModel, riemannModel, slopeFieldModel, integrationModel, seriesModel, complexModel, countingModel, probabilityModel, statsModel, matrixModel, space3dModel, solveTriModel, conicModel, trigPlusModel, circleLineModel, solidsModel, integersModel, ratioPowerModel, setsFnModel, geoSchoolModel, chanceModel, patternsModel, polySchoolModel, circleSchoolModel, bigNumbersModel, linprogModel, symSolidModel];

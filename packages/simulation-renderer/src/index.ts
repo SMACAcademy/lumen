@@ -126,3 +126,16 @@ export { aminebioRenderer, computeAminebioLayout, type AminebioLayout } from "./
 export { hydrocarbonRenderer, computeHydrocarbonLayout, type HydrocarbonLayout } from "./hydrocarbon/renderer";
 export { oxycompoundRenderer, computeOxyLayout, type OxyLayout } from "./oxycompound/renderer";
 export { haloRenderer, computeHaloLayout, type HaloLayout } from "./haloalkanes/renderer";
+export { staticSchoolRenderer, computeStaticSchoolLayout, type StaticSchoolLayout } from "./staticschool/renderer";
+export { currentChemRenderer, computeCurrentChemLayout, type CurrentChemLayout } from "./currentchem/renderer";
+export { mirrorAngleRenderer, computeMirrorAngleLayout, mirrorImageMaps, kaleidoscopeTiles, beadSpots, type MirrorAngleLayout } from "./mirrorangle/renderer";
+export { circleSchoolRenderer, computeCircleSchoolLayout, type CircleSchoolLayout } from "./circleschool/renderer";
+export { bigNumbersRenderer, computeBigNumbersLayout, type BigNumbersLayout } from "./bignumbers/renderer";
+export { polySchoolRenderer, computePolySchoolLayout, type PolySchoolLayout } from "./polyschool/renderer";
+export { linprogRenderer, computeLinprogLayout, type LinprogLayout } from "./linprog/renderer";
+export { symSolidRenderer, computeSymSolidLayout, type SymSolidLayout } from "./symsolid/renderer";
+export { airWindRenderer, computeAirWindLayout, type AirWindLayout } from "./airwind/renderer";
+export { polymerSchoolRenderer, computePolymerSchoolLayout, type PolymerSchoolLayout } from "./polymerschool/renderer";
+export { mixtureRenderer, computeMixtureLayout, type MixtureLayout } from "./puremixed/renderer";
+export { combustionRenderer, computeCombustionLayout, type CombustionLayout } from "./combustion/renderer";
+export { metallurgyRenderer, computeMetallurgyLayout, type MetallurgyLayout } from "./metallurgy/renderer";

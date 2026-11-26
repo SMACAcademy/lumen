@@ -86,6 +86,76 @@ import { shapesWorld } from "./worlds/shapes/world";
 import { acrossAndDown } from "./worlds/periodic-table/across-and-down";
 import { theExceptions } from "./worlds/periodic-table/the-exceptions";
 import { periodicTableWorld } from "./worlds/periodic-table/world";
+import { ionsAndOres } from "./chemistry/basics/ions-and-ores";
+import { givingElectrons } from "./worlds/ions-and-ores/giving-electrons";
+import { outOfTheOre } from "./worlds/ions-and-ores/out-of-the-ore";
+import { mixingMetals } from "./worlds/ions-and-ores/mixing-metals";
+import { ionsAndOresWorld } from "./worlds/ions-and-ores/world";
+import { combustionAndFuels } from "./chemistry/basics/combustion-and-fuels";
+import { whatBurningNeeds } from "./worlds/combustion-and-fuels/what-burning-needs";
+import { flamesAndFires } from "./worlds/combustion-and-fuels/flames-and-fires";
+import { fuelsCoalAndPetroleum } from "./worlds/combustion-and-fuels/fuels-coal-and-petroleum";
+import { combustionAndFuelsWorld } from "./worlds/combustion-and-fuels/world";
+import { pureAndMixed } from "./chemistry/basics/pure-and-mixed";
+import { oneKindOrMany } from "./worlds/pure-and-mixed/one-kind-or-many";
+import { makingSolutions } from "./worlds/pure-and-mixed/making-solutions";
+import { lightThroughLiquids } from "./worlds/pure-and-mixed/light-through-liquids";
+import { pureAndMixedWorld } from "./worlds/pure-and-mixed/world";
+import { fibresAndPlastics } from "./chemistry/organic/fibres-and-plastics";
+import { chainsAndThreads } from "./worlds/fibres-and-plastics/chains-and-threads";
+import { softenOrSet } from "./worlds/fibres-and-plastics/soften-or-set";
+import { rotOrRemain } from "./worlds/fibres-and-plastics/rot-or-remain";
+import { fibresAndPlasticsWorld } from "./worlds/fibres-and-plastics/world";
+import { airAndWindLab } from "./physics/matter/air-and-wind";
+import { airPressesAllRound } from "./worlds/air-and-wind/air-presses-all-round";
+import { fastAirLowPressure } from "./worlds/air-and-wind/fast-air-low-pressure";
+import { windsAndCyclones } from "./worlds/air-and-wind/winds-and-cyclones";
+import { airAndWindWorld } from "./worlds/air-and-wind/world";
+import { symmetryAndSolids } from "./mathematics/geometry/symmetry-and-solids";
+import { foldAndTurn } from "./worlds/symmetry-and-solids/fold-and-turn";
+import { polygonCorners } from "./worlds/symmetry-and-solids/polygon-corners";
+import { facesNetsAndViews } from "./worlds/symmetry-and-solids/faces-nets-and-views";
+import { symmetryAndSolidsWorld } from "./worlds/symmetry-and-solids/world";
+import { inequalitiesAndOptimisation } from "./mathematics/algebra/inequalities-and-optimisation";
+import { signsAndNumberLines } from "./worlds/inequalities-and-optimisation/signs-and-number-lines";
+import { halfPlanesAndRegions } from "./worlds/inequalities-and-optimisation/half-planes-and-regions";
+import { theBestCorner } from "./worlds/inequalities-and-optimisation/the-best-corner";
+import { inequalitiesAndOptimisationWorld } from "./worlds/inequalities-and-optimisation/world";
+import { identitiesAndPolynomials } from "./mathematics/algebra/identities-and-polynomials";
+import { squaresOfTiles } from "./worlds/identities-and-polynomials/squares-of-tiles";
+import { tilesIntoRectangles } from "./worlds/identities-and-polynomials/tiles-into-rectangles";
+import { zeroesAndRemainders } from "./worlds/identities-and-polynomials/zeroes-and-remainders";
+import { identitiesAndPolynomialsWorld } from "./worlds/identities-and-polynomials/world";
+import { bigNumbersAndProportion } from "./mathematics/numbers/big-numbers-and-proportion";
+import { lakhsAndMillions } from "./worlds/big-numbers-and-proportion/lakhs-and-millions";
+import { roundAndRoman } from "./worlds/big-numbers-and-proportion/round-and-roman";
+import { doubleOrHalve } from "./worlds/big-numbers-and-proportion/double-or-halve";
+import { bigNumbersAndProportionWorld } from "./worlds/big-numbers-and-proportion/world";
+import { tangentsAndSectors } from "./mathematics/geometry/tangents-and-sectors";
+import { touchingACircle } from "./worlds/tangents-and-sectors/touching-a-circle";
+import { slicesOfACircle } from "./worlds/tangents-and-sectors/slices-of-a-circle";
+import { sectionAndHeron } from "./worlds/tangents-and-sectors/section-and-heron";
+import { tangentsAndSectorsWorld } from "./worlds/tangents-and-sectors/world";
+import { mirrorsAndImagesLab } from "./physics/light/mirrors-and-images";
+import { smoothAndRough } from "./worlds/mirrors-and-images/smooth-and-rough";
+import { mirrorsAtAnAngle } from "./worlds/mirrors-and-images/mirrors-at-an-angle";
+import { upPeriscope } from "./worlds/mirrors-and-images/up-periscope";
+import { mirrorsAndImagesWorld } from "./worlds/mirrors-and-images/world";
+import { currentAndChemistry } from "./physics/electricity/current-and-chemistry";
+import { liquidsThatConduct } from "./worlds/current-and-chemistry/liquids-that-conduct";
+import { bubblesAndDeposits } from "./worlds/current-and-chemistry/bubbles-and-deposits";
+import { aCopperCoat } from "./worlds/current-and-chemistry/a-copper-coat";
+import { currentAndChemistryWorld } from "./worlds/current-and-chemistry/world";
+import { chargesAndLightning } from "./physics/electrostatics/charges-and-lightning";
+import { rubAndAttract } from "./worlds/charges-and-lightning/rub-and-attract";
+import { foilElectroscope } from "./worlds/charges-and-lightning/foil-electroscope";
+import { thunderAndLightning } from "./worlds/charges-and-lightning/thunder-and-lightning";
+import { chargesAndLightningWorld } from "./worlds/charges-and-lightning/world";
+import { radiansAndWaves } from "./worlds/circles-and-waves/radians-and-waves";
+import { dialsOfAWave } from "./worlds/waves-on-a-graph/dials-of-a-wave";
+import { shiftAndStretch } from "./worlds/waves-on-a-graph/shift-and-stretch";
+import { riseOverRun } from "./worlds/the-derivative/rise-over-run";
+import { wavesOnAGraph } from "./worlds/waves-on-a-graph/world";
 import { formsOfALine } from "./worlds/lines-and-circles/forms-of-a-line";
 import { isotopesAndIsobars } from "./worlds/inside-the-atom/isotopes-and-isobars";
 import { haloalkanes } from "./chemistry/organic/haloalkanes";
@@ -721,6 +791,19 @@ export const concepts: readonly Concept[] = [
   hydrocarbons,
   oxygenCompounds,
   haloalkanes,
+  chargesAndLightning,
+  currentAndChemistry,
+  mirrorsAndImagesLab,
+  tangentsAndSectors,
+  bigNumbersAndProportion,
+  identitiesAndPolynomials,
+  inequalitiesAndOptimisation,
+  symmetryAndSolids,
+  airAndWindLab,
+  fibresAndPlastics,
+  pureAndMixed,
+  combustionAndFuels,
+  ionsAndOres,
 ];
 
 export function getConcept(id: string): Concept | undefined {
@@ -1074,10 +1157,53 @@ export const levels: readonly Level[] = [
   whenSubstitutionLoses,
   isotopesAndIsobars,
   formsOfALine,
+  radiansAndWaves,
+  dialsOfAWave,
+  shiftAndStretch,
+  riseOverRun,
+  rubAndAttract,
+  foilElectroscope,
+  thunderAndLightning,
+  liquidsThatConduct,
+  bubblesAndDeposits,
+  aCopperCoat,
+  smoothAndRough,
+  mirrorsAtAnAngle,
+  upPeriscope,
+  touchingACircle,
+  slicesOfACircle,
+  sectionAndHeron,
+  lakhsAndMillions,
+  roundAndRoman,
+  doubleOrHalve,
+  squaresOfTiles,
+  tilesIntoRectangles,
+  zeroesAndRemainders,
+  signsAndNumberLines,
+  halfPlanesAndRegions,
+  theBestCorner,
+  foldAndTurn,
+  polygonCorners,
+  facesNetsAndViews,
+  airPressesAllRound,
+  fastAirLowPressure,
+  windsAndCyclones,
+  chainsAndThreads,
+  softenOrSet,
+  rotOrRemain,
+  oneKindOrMany,
+  makingSolutions,
+  lightThroughLiquids,
+  whatBurningNeeds,
+  flamesAndFires,
+  fuelsCoalAndPetroleum,
+  givingElectrons,
+  outOfTheOre,
+  mixingMetals,
 ];
 
 /** Worlds in map order. */
-export const worlds: readonly World[] = [circlesAndWaves, measureWorld, motionWorld, forcesWorld, spinWorld, skyWorld, matterWorld, heatWorld, atomsAndLightWorld, ratesWorld, balanceWorld, acidsWorld, batteriesWorld, solutionsWorld, molesWorld, willItGoWorld, shapesWorld, periodicTableWorld, lightTheBulbWorld, fractionsOnALineWorld, sourBitterOrNeitherWorld, fastAndSlowWorld, floatOrSinkWorld, changesAroundUsWorld, shadowsAndMirrorsWorld, balanceTheScaleWorld, magnetsWorld, areaAndVolumeWorld, motionGraphsWorld, forceAndMomentumWorld, workAndEnergyWorld, bendingLightWorld, currentAndResistanceWorld, insideTheAtomWorld, soundWorld, balancingEquationsWorld, rightTrianglesWorld, linesAndGraphsWorld, orbitalsWorld, electrolysisWorld, redoxWorld, batteriesAndRustWorld, dBlockWorld, complexesWorld, pBlockWorld, namingAndIsomersWorld, moTheoryWorld, lewisWorld, enthalpyWorld, mixturesWorld, rateLawsWorld, formulaeWorld, sparinglySolubleWorld, quantumAtomWorld, halogensAndNobleGasesWorld, fBlockWorld, valenceBondWorld, limitsWorld, theDerivativeWorld, rulesOfDifferentiationWorld, usingDerivativesWorld, areaSoFarWorld, kineticTheoryWorld, areaByStripsWorld, methodsOfIntegrationWorld, thermodynamicsWorld, electricFieldsWorld, differentialEquationsWorld, potentialAndCapacitanceWorld, wavesWorld, oscillationsWorld, magnetismAndMatterWorld, electromagneticInductionWorld, currentElectricityWorld, movingChargesWorld, alternatingCurrentWorld, photoelectricEffectWorld, nucleiWorld, waveOpticsWorld, fluidsInMotionWorld, rayOpticsWorld, unitsAndMeasurementWorld, semiconductorsWorld, heatTransferWorld, connectedBodiesWorld, relativeAndCircularMotionWorld, mirrorsEyeColoursWorld, elasticModuliWorld, fieldAndOrbitsWorld, rollingAndEquilibriumWorld, centreOfMassWorld, forcesPressureGravityWorld, measuringAndMovingWorld, sequencesAndSeriesWorld, complexNumbersWorld, countingAndBinomialWorld, probabilityWorld, hotAndColdWorld, currentsAtWorkWorld, vectorsInSpaceWorld, statisticsWorld, matricesAndDeterminantsWorld, solvingTrianglesWorld, workAndPowerWorld, anglesAndInversesWorld, conicSectionsWorld, linesAndCirclesWorld, roundSolidsAndSimilarityWorld, integersAndRationalsWorld, ratiosAndPowersWorld, setsRelationsFunctionsWorld, anglesAndShapesWorld, dataAndChanceWorld, materialsAndParticlesWorld, numbersAndPatternsWorld, metalsAcidsSaltsWorld, atomsAndTheTableWorld, practicalChemistryWorld, organicBasicsWorld, vectorComponentsWorld, carbonCompoundsWorld, aminesAndBiomoleculesWorld, hydrocarbonsWorld, oxygenCompoundsWorld, haloalkanesWorld];
+export const worlds: readonly World[] = [circlesAndWaves, measureWorld, motionWorld, forcesWorld, spinWorld, skyWorld, matterWorld, heatWorld, atomsAndLightWorld, ratesWorld, balanceWorld, acidsWorld, batteriesWorld, solutionsWorld, molesWorld, willItGoWorld, shapesWorld, periodicTableWorld, lightTheBulbWorld, fractionsOnALineWorld, sourBitterOrNeitherWorld, fastAndSlowWorld, floatOrSinkWorld, changesAroundUsWorld, shadowsAndMirrorsWorld, balanceTheScaleWorld, magnetsWorld, areaAndVolumeWorld, motionGraphsWorld, forceAndMomentumWorld, workAndEnergyWorld, bendingLightWorld, currentAndResistanceWorld, insideTheAtomWorld, soundWorld, balancingEquationsWorld, rightTrianglesWorld, linesAndGraphsWorld, orbitalsWorld, electrolysisWorld, redoxWorld, batteriesAndRustWorld, dBlockWorld, complexesWorld, pBlockWorld, namingAndIsomersWorld, moTheoryWorld, lewisWorld, enthalpyWorld, mixturesWorld, rateLawsWorld, formulaeWorld, sparinglySolubleWorld, quantumAtomWorld, halogensAndNobleGasesWorld, fBlockWorld, valenceBondWorld, limitsWorld, theDerivativeWorld, rulesOfDifferentiationWorld, usingDerivativesWorld, areaSoFarWorld, kineticTheoryWorld, areaByStripsWorld, methodsOfIntegrationWorld, thermodynamicsWorld, electricFieldsWorld, differentialEquationsWorld, potentialAndCapacitanceWorld, wavesWorld, oscillationsWorld, magnetismAndMatterWorld, electromagneticInductionWorld, currentElectricityWorld, movingChargesWorld, alternatingCurrentWorld, photoelectricEffectWorld, nucleiWorld, waveOpticsWorld, fluidsInMotionWorld, rayOpticsWorld, unitsAndMeasurementWorld, semiconductorsWorld, heatTransferWorld, connectedBodiesWorld, relativeAndCircularMotionWorld, mirrorsEyeColoursWorld, elasticModuliWorld, fieldAndOrbitsWorld, rollingAndEquilibriumWorld, centreOfMassWorld, forcesPressureGravityWorld, measuringAndMovingWorld, sequencesAndSeriesWorld, complexNumbersWorld, countingAndBinomialWorld, probabilityWorld, hotAndColdWorld, currentsAtWorkWorld, vectorsInSpaceWorld, statisticsWorld, matricesAndDeterminantsWorld, solvingTrianglesWorld, workAndPowerWorld, anglesAndInversesWorld, conicSectionsWorld, linesAndCirclesWorld, roundSolidsAndSimilarityWorld, integersAndRationalsWorld, ratiosAndPowersWorld, setsRelationsFunctionsWorld, anglesAndShapesWorld, dataAndChanceWorld, materialsAndParticlesWorld, numbersAndPatternsWorld, metalsAcidsSaltsWorld, atomsAndTheTableWorld, practicalChemistryWorld, organicBasicsWorld, vectorComponentsWorld, carbonCompoundsWorld, aminesAndBiomoleculesWorld, hydrocarbonsWorld, oxygenCompoundsWorld, haloalkanesWorld, wavesOnAGraph, chargesAndLightningWorld, currentAndChemistryWorld, mirrorsAndImagesWorld, tangentsAndSectorsWorld, bigNumbersAndProportionWorld, identitiesAndPolynomialsWorld, inequalitiesAndOptimisationWorld, symmetryAndSolidsWorld, airAndWindWorld, fibresAndPlasticsWorld, pureAndMixedWorld, combustionAndFuelsWorld, ionsAndOresWorld];
 
 export * from "./curriculum";
 
@@ -1090,7 +1216,7 @@ export function worldOf(levelId: string): World | undefined {
   return worlds.find((w) => w.levels.includes(levelId));
 }
 
-export { haloalkanes, oxygenCompounds, hydrocarbons, aminesAndBiomolecules, carbonCompounds, organicBasics, practicalChemistry, atomsAndTheTable, metalsAcidsSalts, numbersAndPatterns, materialsAndParticles, dataAndChance, anglesAndShapes, setsRelationsFunctions, ratiosAndPowers, integersAndRationals, roundSolidsAndSimilarity, linesAndCircles, conicSections, anglesAndInverses, workAndPower, solvingTriangles, matricesAndDeterminants, statisticsLab, vectorsInSpace, currentsAtWork, hotAndColdLab, probabilityLab, countingAndBinomial, complexNumbers, sequencesAndSeries, measuringAndMoving, forcesPressureGravity, centreOfMass, rollingAndEquilibrium, fieldAndOrbits, elasticModuli, mirrorsEyeColoursLab, relativeAndCircularMotion, connectedBodies, heatTransfer, semiconductors, unitsAndMeasurement, rayOpticsLab, fluidsInMotion, waveOptics, nucleiLab, photoelectricEffect, alternatingCurrent, movingChargesAndMagnetism, currentElectricity, electromagneticInduction, magnetismAndMatter, oscillations, wavesAndSound, potentialAndCapacitance, differentialEquations, electricChargesAndFields, thermodynamicsLab, methodsOfIntegration, areaByStrips, kineticTheory, fundamentalTheorem, optimisationAndRates, rulesOfDifferentiation, slopeGraph, limitsAndContinuity, valenceBondTheory, lanthanoidsAndActinoids, halogensAndNobleGases, nucleusAndMatterWaves, solubilityProduct, formulaeAndConcentration, rateLaws, liquidMixtures, enthalpyAndHess, lewisStructures, molecularOrbitals, complexIsomers, pBlock, coordinationCompounds, transitionMetals, batteriesAndCorrosion, redoxReactions, electrolysisAndConductance, atomicOrbitals, linesAndGraphs, rightTriangles, chemicalEquations, soundAndEchoes, structureOfTheAtom, currentAndResistance, bendingLight, areaAndVolume, funWithMagnets, balanceTheScale, lightAndShadows, fractionsOnALine, simpleCircuits, molecularShapes, periodicTrends, molesAndReactions, gibbsEnergy, galvanicCells, colligativeProperties, chemicalEquilibrium, acidsAndBases, hydrogenSpectrum, reactionRates, gravitation, propertiesOfSolids, propertiesOfFluids, thermalProperties, lawsOfMotion, workEnergy, momentumCollisions, rotationalMotion, motionInAStraightLine, projectileMotion, vernierCalliper, secantToTangent, sinusoidalFunctions, unitCircleSineCosine, vectorComponents };
+export { ionsAndOres, combustionAndFuels, pureAndMixed, fibresAndPlastics, airAndWindLab, symmetryAndSolids, inequalitiesAndOptimisation, identitiesAndPolynomials, bigNumbersAndProportion, tangentsAndSectors, mirrorsAndImagesLab, currentAndChemistry, chargesAndLightning, haloalkanes, oxygenCompounds, hydrocarbons, aminesAndBiomolecules, carbonCompounds, organicBasics, practicalChemistry, atomsAndTheTable, metalsAcidsSalts, numbersAndPatterns, materialsAndParticles, dataAndChance, anglesAndShapes, setsRelationsFunctions, ratiosAndPowers, integersAndRationals, roundSolidsAndSimilarity, linesAndCircles, conicSections, anglesAndInverses, workAndPower, solvingTriangles, matricesAndDeterminants, statisticsLab, vectorsInSpace, currentsAtWork, hotAndColdLab, probabilityLab, countingAndBinomial, complexNumbers, sequencesAndSeries, measuringAndMoving, forcesPressureGravity, centreOfMass, rollingAndEquilibrium, fieldAndOrbits, elasticModuli, mirrorsEyeColoursLab, relativeAndCircularMotion, connectedBodies, heatTransfer, semiconductors, unitsAndMeasurement, rayOpticsLab, fluidsInMotion, waveOptics, nucleiLab, photoelectricEffect, alternatingCurrent, movingChargesAndMagnetism, currentElectricity, electromagneticInduction, magnetismAndMatter, oscillations, wavesAndSound, potentialAndCapacitance, differentialEquations, electricChargesAndFields, thermodynamicsLab, methodsOfIntegration, areaByStrips, kineticTheory, fundamentalTheorem, optimisationAndRates, rulesOfDifferentiation, slopeGraph, limitsAndContinuity, valenceBondTheory, lanthanoidsAndActinoids, halogensAndNobleGases, nucleusAndMatterWaves, solubilityProduct, formulaeAndConcentration, rateLaws, liquidMixtures, enthalpyAndHess, lewisStructures, molecularOrbitals, complexIsomers, pBlock, coordinationCompounds, transitionMetals, batteriesAndCorrosion, redoxReactions, electrolysisAndConductance, atomicOrbitals, linesAndGraphs, rightTriangles, chemicalEquations, soundAndEchoes, structureOfTheAtom, currentAndResistance, bendingLight, areaAndVolume, funWithMagnets, balanceTheScale, lightAndShadows, fractionsOnALine, simpleCircuits, molecularShapes, periodicTrends, molesAndReactions, gibbsEnergy, galvanicCells, colligativeProperties, chemicalEquilibrium, acidsAndBases, hydrogenSpectrum, reactionRates, gravitation, propertiesOfSolids, propertiesOfFluids, thermalProperties, lawsOfMotion, workEnergy, momentumCollisions, rotationalMotion, motionInAStraightLine, projectileMotion, vernierCalliper, secantToTangent, sinusoidalFunctions, unitCircleSineCosine, vectorComponents };
 
 export { buildFormulaBank, symbolicText, type FormulaCard } from "./formulas/bank";
 export type { FormulaSymbol, StandaloneFormula } from "./formulas/schema";

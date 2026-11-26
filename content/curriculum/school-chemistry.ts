@@ -66,6 +66,38 @@ export const materialsAndChange = branch(
         s("corrosion-school", "Corrosion", { status: "ready", built: { lab: "metals-acids-salts", level: "metal-or-non-metal" }, buildsOn: ["rusting", "metal-properties"] }),
       ],
     ),
+    chapter(
+      "combustion-fuels",
+      "Combustion, fuels and flames",
+      { grade: 8, kit: "reactions", wave: 42, blurb: "What burning needs, the parts of a flame, putting out fires, and the fuels we dig up." },
+      [
+        s("combustion-conditions", "What burning needs", { status: "ready", built: { lab: "combustion-and-fuels", level: "what-burning-needs" } }),
+        s("flame-zones", "The zones of a flame", { status: "ready", built: { lab: "combustion-and-fuels", level: "flames-and-fires" } }),
+        s("fire-control", "Putting out fires", { status: "ready", built: { lab: "combustion-and-fuels", level: "flames-and-fires" } }),
+        s("fuels-calorific", "Fuels and calorific value", { status: "ready", built: { lab: "combustion-and-fuels", level: "fuels-coal-and-petroleum" } }),
+        s("coal-petroleum", "Coal and petroleum", { status: "ready", built: { lab: "combustion-and-fuels", level: "fuels-coal-and-petroleum" } }),
+      ],
+    ),
+    chapter(
+      "fibres-plastics",
+      "Synthetic fibres and plastics",
+      { grade: 8, kit: "molecules", wave: 42, blurb: "Long chains of small units, plastics that soften and plastics that set, and what rots away." },
+      [
+        s("synthetic-fibres", "Synthetic fibres", { status: "ready", built: { lab: "fibres-and-plastics", level: "chains-and-threads" } }),
+        s("plastics-types", "Thermoplastics and thermosetting plastics", { status: "ready", built: { lab: "fibres-and-plastics", level: "soften-or-set" } }),
+        s("biodegradable", "Biodegradable or not", { status: "ready", built: { lab: "fibres-and-plastics", level: "rot-or-remain" } }),
+      ],
+    ),
+    chapter(
+      "pure-substances",
+      "Is matter around us pure?",
+      { grade: 9, kit: "solutions", wave: 42, blurb: "Pure substances and mixtures, how strong a solution is, and colloids that scatter light." },
+      [
+        s("pure-mixture", "Pure substances and mixtures", { status: "ready", built: { lab: "pure-and-mixed", level: "one-kind-or-many" }, buildsOn: ["separation-methods"] }),
+        s("solution-concentration", "Solutions and their concentration", { status: "ready", built: { lab: "pure-and-mixed", level: "making-solutions" }, buildsOn: ["soluble-insoluble"] }),
+        s("suspensions-colloids", "Suspensions, colloids and the Tyndall effect", { status: "ready", built: { lab: "pure-and-mixed", level: "light-through-liquids" } }),
+      ],
+    ),
   ],
   "chemistry",
 );
@@ -136,6 +168,16 @@ export const atomsAndReactions = branch(
         s("early-periodic", "Döbereiner, Newlands and Mendeleev", { status: "ready", built: { lab: "atoms-and-the-table", level: "ordering-the-elements" }, buildsOn: ["atoms-molecules"] }),
         s("modern-periodic-school", "The modern periodic table", { status: "ready", built: { lab: "structure-of-the-atom", level: "the-modern-table" }, buildsOn: ["early-periodic", "bohr-shells"] }),
         s("trends-school", "Trends in size and metallic character", { status: "ready", built: { lab: "atoms-and-the-table", level: "ordering-the-elements" }, buildsOn: ["modern-periodic-school"] }),
+      ],
+    ),
+    chapter(
+      "metals-class-10",
+      "Ionic compounds and extracting metals",
+      { grade: 10, kit: "reactions", wave: 42, blurb: "Metals give electrons to non-metals, and how reactive a metal is decides how we get it out of its ore." },
+      [
+        s("ionic-compounds", "Ionic compounds: giving and taking electrons", { status: "ready", built: { lab: "ions-and-ores", level: "giving-electrons" } }),
+        s("extraction-metals", "Extracting metals from their ores", { status: "ready", built: { lab: "ions-and-ores", level: "out-of-the-ore" }, buildsOn: ["reactivity-series"] }),
+        s("alloys", "Alloys", { status: "ready", built: { lab: "ions-and-ores", level: "mixing-metals" } }),
       ],
     ),
   ],

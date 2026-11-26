@@ -24,11 +24,7 @@ export const algebra = branch(
         jee("functions-graphs", "Functions, domain, range and their graphs", { status: "ready", built: { lab: "sets-relations-functions", level: "arrows-and-graphs" } }),
         jee("function-types", "One-one, onto and invertible functions", { status: "ready", built: { lab: "sets-relations-functions", level: "arrows-and-graphs" } }),
         jee("composition-inverse", "Composition and inverse of functions", { status: "ready", built: { lab: "sets-relations-functions", level: "chains-and-inverses" } }),
-        jee("graph-transformations", "Shifting, stretching and reflecting graphs", {
-          status: "ready",
-          built: { lab: "sinusoidal-functions" },
-          note: "The sinusoid lab shifts and stretches one graph with sliders; other families follow.",
-        }),
+        jee("graph-transformations", "Shifting, stretching and reflecting graphs", { status: "ready", built: { lab: "sinusoidal-functions", level: "shift-and-stretch" }, note: "The sinusoid lab shifts and stretches one graph with sliders; other families follow." }),
       ],
     ),
     chapter(
@@ -93,6 +89,26 @@ export const algebra = branch(
         advanced("special-matrices", "Symmetric, skew-symmetric and orthogonal matrices", { status: "ready", built: { lab: "matrices-and-determinants", level: "undoing-a-matrix" } }),
       ],
     ),
+    chapter(
+      "linear-inequalities",
+      "Linear inequalities",
+      { grade: 11, kit: "graphing", wave: 41, blurb: "Inequalities on a line and as half-planes, and systems of them." },
+      [
+        jee("inequalities-one-variable", "Linear inequalities in one variable", { status: "ready", built: { lab: "inequalities-and-optimisation", level: "signs-and-number-lines" } }),
+        jee("inequalities-two-variables", "Inequalities in two variables: half-planes", { status: "ready", built: { lab: "inequalities-and-optimisation", level: "half-planes-and-regions" } }),
+        jee("inequality-systems", "Systems of linear inequalities", { status: "ready", built: { lab: "inequalities-and-optimisation", level: "half-planes-and-regions" } }),
+      ],
+    ),
+    chapter(
+      "linear-programming",
+      "Linear programming",
+      { grade: 12, kit: "graphing", wave: 41, blurb: "The best value of a linear objective over a region of constraints." },
+      [
+        jee("lp-formulation", "Setting up a linear programming problem", { status: "ready", built: { lab: "inequalities-and-optimisation", level: "the-best-corner" }, buildsOn: ["inequality-systems"] }),
+        jee("feasible-region", "The feasible region", { status: "ready", built: { lab: "inequalities-and-optimisation", level: "half-planes-and-regions" }, buildsOn: ["inequality-systems"] }),
+        jee("corner-point", "The corner point method", { status: "ready", built: { lab: "inequalities-and-optimisation", level: "the-best-corner" }, buildsOn: ["feasible-region"] }),
+      ],
+    ),
   ],
   "maths",
 );
@@ -107,12 +123,12 @@ export const trigonometry = branch(
       "Trigonometric functions",
       { grade: 11, kit: "graphing", wave: 18, blurb: "Sine and cosine for any angle, and the formulas that combine angles." },
       [
-        jee("radian-measure", "Radian measure", { status: "ready", built: { lab: "unit-circle-sine-cosine" } }),
+        jee("radian-measure", "Radian measure", { status: "ready", built: { lab: "unit-circle-sine-cosine", level: "radians-and-waves" } }),
         jee("trig-any-angle", "Trigonometric functions of any angle", {
           status: "ready",
           built: { lab: "unit-circle-sine-cosine", level: "shadow-of-a-dot" },
         }),
-        jee("trig-graphs", "Graphs of the trigonometric functions", { status: "ready", built: { lab: "sinusoidal-functions" } }),
+        jee("trig-graphs", "Graphs of the trigonometric functions", { status: "ready", built: { lab: "sinusoidal-functions", level: "dials-of-a-wave" } }),
         jee("compound-angles", "Compound, multiple and sub-multiple angles", { status: "ready", built: { lab: "angles-and-inverses", level: "adding-angles" } }),
         jee("trig-equations", "Trigonometric equations and their general solutions", { status: "ready", built: { lab: "angles-and-inverses", level: "every-solution" } }),
       ],

@@ -224,6 +224,16 @@ export const unitCircleSineCosine = defineConcept({
       highlight: "angleArc",
     },
     {
+      id: "arc",
+      symbol: "s",
+      name: "Arc length",
+      meaning: "How far the point has travelled along the circle from the positive x-axis, in units of the radius.",
+      result: "arcLength",
+      format: { kind: "number", digits: 3 },
+      color: "angle",
+      highlight: "arc",
+    },
+    {
       id: "identity",
       symbol: "sin²θ + cos²θ",
       name: "Sum of squares",
@@ -301,6 +311,21 @@ export const unitCircleSineCosine = defineConcept({
       reading: "Tangent is rise over run: the slope of the radius.",
       assumptions: ["Undefined when cos θ = 0 (θ = 90°, 270°)"],
     },
+    {
+      id: "radian-definition",
+      topic: "radian-measure",
+      title: "An angle in radians",
+      tokens: [
+        { kind: "ref", id: "theta" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "arc" },
+        { kind: "op", value: "/" },
+        { kind: "ref", id: "radius" },
+      ],
+      reading: "An angle in radians is the arc it cuts off divided by the radius. A full turn is 2πr ÷ r = 2π rad, so 360° = 2π rad and 180° = π rad.",
+      words: "angle in radians = arc length ÷ radius",
+      assumptions: ["θ is measured counter-clockwise from the positive x-axis", "On the unit circle r = 1, so the arc length is the angle in radians"],
+    },
   ],
 
   simulation: { model: "unit-circle", params: {} },
@@ -319,6 +344,7 @@ export const unitCircleSineCosine = defineConcept({
       { id: "labels", label: "Labels", optional: true },
       { id: "specialAngles", label: "Special angles", optional: true },
       { id: "tangent", label: "Tangent line", optional: true },
+      { id: "arc", label: "Arc length", optional: true },
     ],
   },
 
@@ -363,6 +389,15 @@ export const unitCircleSineCosine = defineConcept({
         { color: "cosine", dash: "dashed" },
       ],
       equations: ["sine-definition", "cosine-definition", "pythagorean-identity", "tangent-definition"],
+    },
+    {
+      id: "radians",
+      label: "Radians",
+      description: "An angle measured by its arc: θ = s ÷ r",
+      layers: ["axes", "circle", "radius", "angleArc", "arc", "point", "labels", "specialAngles"],
+      graphs: [],
+      swatches: [{ color: "angle", dash: "solid" }],
+      equations: ["radian-definition"],
     },
   ],
   defaultMode: "sine",
@@ -542,6 +577,13 @@ export const unitCircleSineCosine = defineConcept({
         body:
           "Compare the two curves: the cosine peak arrives 90° before the sine peak. In symbols, cos θ = sin(θ + 90°). They are the same wave, shifted in phase.",
         when: { type: "mode", is: "both" },
+      },
+      {
+        id: "radians",
+        title: "Measuring an angle by its arc",
+        body:
+          "The point has travelled s = {{arc}} along a circle of radius 1, so θ = {{arc}} rad. One radian is the angle whose arc is as long as the radius, about 57.3°. A full turn is 2π ≈ 6.283 rad = 360°.",
+        when: { type: "mode", is: "radians" },
       },
       {
         id: "quadrant-1",

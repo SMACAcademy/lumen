@@ -5,6 +5,12 @@
     "world": "Circles & Waves",
     "lab": "Unit Circle → Sine & Cosine"
   },
+  "radians-and-waves": {
+    "title": "Radians and waves",
+    "summary": "Measure an angle by the arc it cuts off, then unroll the circle into the sine and cosine waves.",
+    "world": "Circles & Waves",
+    "lab": "Unit Circle → Sine & Cosine"
+  },
   "read-the-calliper": {
     "title": "Read the calliper",
     "summary": "Main scale, then the division that lines up. The whole skill in two numbers.",
@@ -772,6 +778,12 @@
     "summary": "Magnify a smooth curve enough and it becomes a straight line. A corner stays a corner for ever.",
     "world": "Limits and Continuity",
     "lab": "Limits and Continuity"
+  },
+  "rise-over-run": {
+    "title": "Rise over run",
+    "summary": "A slope is a rate: how much y changes for each unit of x. Measure average speeds off a distance–time graph.",
+    "world": "The Derivative",
+    "lab": "Slope: secant → tangent"
   },
   "closing-the-gap": {
     "title": "Closing the gap",
@@ -2068,5 +2080,251 @@
     "summary": "Alcoholic KOH makes alkenes, and chlorine on a benzene ring refuses to be replaced.",
     "world": "Haloalkanes and Haloarenes",
     "lab": "Haloalkanes and Haloarenes"
+  },
+  "dials-of-a-wave": {
+    "title": "Dials of a wave",
+    "summary": "Amplitude, period, phase and midline: turn one dial at a time and see what it does to y = sin x.",
+    "world": "Waves on a Graph",
+    "lab": "y = A sin(ωx + φ) + d"
+  },
+  "shift-and-stretch": {
+    "title": "Shift and stretch",
+    "summary": "Move a graph up, down, left and right, stretch it and flip it, and learn which way each change goes.",
+    "world": "Waves on a Graph",
+    "lab": "y = A sin(ωx + φ) + d"
+  },
+  "rub-and-attract": {
+    "title": "Rub and attract",
+    "summary": "Rub a balloon with wool and it picks up paper. Find out why, and which charged things pull or push.",
+    "world": "Charges and Lightning",
+    "lab": "Charges and Lightning"
+  },
+  "foil-electroscope": {
+    "title": "The foil electroscope",
+    "summary": "Two foil strips in a jar open when charged and close at a touch of your hand.",
+    "world": "Charges and Lightning",
+    "lab": "Charges and Lightning"
+  },
+  "thunder-and-lightning": {
+    "title": "Thunder and lightning",
+    "summary": "Lightning is a giant spark. See why it strikes, how a conductor tames it, and where to be when it comes.",
+    "world": "Charges and Lightning",
+    "lab": "Charges and Lightning"
+  },
+  "liquids-that-conduct": {
+    "title": "Liquids that conduct",
+    "summary": "Dip a tester into lemon juice, vinegar, tap water and oil. A bulb, an LED or a compass tells you if a current flows.",
+    "world": "Current and Chemistry",
+    "lab": "Current and Chemistry"
+  },
+  "bubbles-and-deposits": {
+    "title": "Bubbles and a copper coat",
+    "summary": "Pass a current through copper sulphate and through water. Watch bubbles, a copper coat and a fading blue.",
+    "world": "Current and Chemistry",
+    "lab": "Current and Chemistry"
+  },
+  "a-copper-coat": {
+    "title": "A copper coat",
+    "summary": "Plate an iron key with copper: which terminal it goes on, and what makes the coat thicker.",
+    "world": "Current and Chemistry",
+    "lab": "Current and Chemistry"
+  },
+  "smooth-and-rough": {
+    "title": "Smooth and rough",
+    "summary": "Why a mirror shows your face and a wall does not — though both obey the same law.",
+    "world": "Reflections and Images",
+    "lab": "Reflections and Images"
+  },
+  "mirrors-at-an-angle": {
+    "title": "Mirrors at an angle",
+    "summary": "Close two mirrors like a book and count the images — then look into a kaleidoscope.",
+    "world": "Reflections and Images",
+    "lab": "Reflections and Images"
+  },
+  "up-periscope": {
+    "title": "Up periscope",
+    "summary": "Two mirrors at 45° in a tube let you see over a wall.",
+    "world": "Reflections and Images",
+    "lab": "Reflections and Images"
+  },
+  "touching-a-circle": {
+    "title": "Touching a circle",
+    "summary": "A line can miss a circle, cut it twice, or just touch it once. The one that touches is special: it meets the radius at a right angle.",
+    "world": "Tangents, Sectors and Coordinates",
+    "lab": "Tangents, Sectors and Coordinates"
+  },
+  "slices-of-a-circle": {
+    "title": "Slices of a circle",
+    "summary": "A slice of a circle is a sector. Its angle says what fraction of the circle it is — and so how long its arc is and how big its area.",
+    "world": "Tangents, Sectors and Coordinates",
+    "lab": "Tangents, Sectors and Coordinates"
+  },
+  "section-and-heron": {
+    "title": "Splitting a line, measuring a field",
+    "summary": "Find the point that cuts a line in a given ratio, then find a triangle's area from nothing but its three sides.",
+    "world": "Tangents, Sectors and Coordinates",
+    "lab": "Tangents, Sectors and Coordinates"
+  },
+  "lakhs-and-millions": {
+    "title": "Lakhs and millions",
+    "summary": "Build one lakh and ten lakh, see the same digits with Indian and international commas, and put big numbers in order.",
+    "world": "Big Numbers and Proportion",
+    "lab": "Big Numbers and Proportion"
+  },
+  "round-and-roman": {
+    "title": "Round it, and write it the Roman way",
+    "summary": "Round to the nearest lakh, estimate a sum and a product, and read and write Roman numerals.",
+    "world": "Big Numbers and Proportion",
+    "lab": "Big Numbers and Proportion"
+  },
+  "double-or-halve": {
+    "title": "Double or halve?",
+    "summary": "More pens cost more; more workers need fewer days. Solve both kinds of problem and see their graphs.",
+    "world": "Big Numbers and Proportion",
+    "lab": "Big Numbers and Proportion"
+  },
+  "squares-of-tiles": {
+    "title": "Squares of tiles",
+    "summary": "Cut a square of side a + b into pieces, take strips away, slide pieces into a rectangle, and multiply brackets on a grid.",
+    "world": "Identities, Factors and Polynomials",
+    "lab": "Identities, Factors and Polynomials"
+  },
+  "tiles-into-rectangles": {
+    "title": "Tiles into rectangles",
+    "summary": "Split the x tiles so that x² + bx + c closes into a rectangle, and read off its factors.",
+    "world": "Identities, Factors and Polynomials",
+    "lab": "Identities, Factors and Polynomials"
+  },
+  "zeroes-and-remainders": {
+    "title": "Zeroes and remainders",
+    "summary": "Name a polynomial by its degree, find p(a) and its zeroes, and see why dividing by (x − a) leaves p(a).",
+    "world": "Identities, Factors and Polynomials",
+    "lab": "Identities, Factors and Polynomials"
+  },
+  "signs-and-number-lines": {
+    "title": "Signs and number lines",
+    "summary": "An inequality has a whole ray of answers. Solve it like an equation — except when you divide by a negative number.",
+    "world": "Inequalities and Optimisation",
+    "lab": "Inequalities and Linear Programming"
+  },
+  "half-planes-and-regions": {
+    "title": "Half-planes and regions",
+    "summary": "A line cuts the plane in two, and an inequality picks one half. Several at once leave a region — or nothing at all.",
+    "world": "Inequalities and Optimisation",
+    "lab": "Inequalities and Linear Programming"
+  },
+  "the-best-corner": {
+    "title": "The best corner",
+    "summary": "A furniture dealer with Rs 50,000 and room for 60 pieces. How many tables and how many chairs make the most profit?",
+    "world": "Inequalities and Optimisation",
+    "lab": "Inequalities and Linear Programming"
+  },
+  "fold-and-turn": {
+    "title": "Fold it, turn it",
+    "summary": "Fold a shape along a mirror line, then turn it on its own tracing. Some shapes match both ways, some one way, some not at all.",
+    "world": "Symmetry and Solids",
+    "lab": "Symmetry, Polygons and Solids"
+  },
+  "polygon-corners": {
+    "title": "Corners of a polygon",
+    "summary": "Cut any polygon into triangles from one corner, and its angle sum falls out. Walk round it, and the turns make one full turn.",
+    "world": "Symmetry and Solids",
+    "lab": "Symmetry, Polygons and Solids"
+  },
+  "faces-nets-and-views": {
+    "title": "Faces, nets and views",
+    "summary": "Count a solid's faces, edges and corners, fold six squares into a cube, and see a solid from the top, front and side.",
+    "world": "Symmetry and Solids",
+    "lab": "Symmetry, Polygons and Solids"
+  },
+  "air-presses-all-round": {
+    "title": "Air presses all round",
+    "summary": "Pump the air out of a can and the air outside crushes it. Air presses hard on everything, and warm air rises.",
+    "world": "Air Pressure, Winds and Storms",
+    "lab": "Air Pressure, Winds and Storms"
+  },
+  "fast-air-low-pressure": {
+    "title": "Fast air, low pressure",
+    "summary": "Blow between two balloons and they come together. Fast-moving air has lower pressure — enough, in a storm, to lift a roof.",
+    "world": "Air Pressure, Winds and Storms",
+    "lab": "Air Pressure, Winds and Storms"
+  },
+  "winds-and-cyclones": {
+    "title": "Winds, storms and cyclones",
+    "summary": "Wind blows from high pressure to low. Uneven heating brings the monsoon, and a warm sea can feed a cyclone with a calm eye.",
+    "world": "Air Pressure, Winds and Storms",
+    "lab": "Air Pressure, Winds and Storms"
+  },
+  "chains-and-threads": {
+    "title": "Chains and threads",
+    "summary": "Join small units into a long chain, count its carbons, then test threads to see which fibre is strongest.",
+    "world": "Fibres and Plastics",
+    "lab": "Synthetic Fibres and Plastics"
+  },
+  "soften-or-set": {
+    "title": "Soften or set",
+    "summary": "Heat plastics on a hotplate: some go soft and can be reshaped, some stay hard for good. Then see why plastics are used everywhere.",
+    "world": "Fibres and Plastics",
+    "lab": "Synthetic Fibres and Plastics"
+  },
+  "rot-or-remain": {
+    "title": "Rot or remain",
+    "summary": "Bury waste in the soil and watch what rots away and what stays, then learn the 4 R's for plastic.",
+    "world": "Fibres and Plastics",
+    "lab": "Synthetic Fibres and Plastics"
+  },
+  "one-kind-or-many": {
+    "title": "One kind or many?",
+    "summary": "Sort pure substances from mixtures — then mix iron with sulphur, heat them, and see a compound appear.",
+    "world": "Is Matter Around Us Pure?",
+    "lab": "Is Matter Around Us Pure?"
+  },
+  "making-solutions": {
+    "title": "How strong is your solution?",
+    "summary": "Make a 10% salt solution, work NCERT's example, find the strongest salt solution there is — and mix up a saline drip.",
+    "world": "Is Matter Around Us Pure?",
+    "lab": "Is Matter Around Us Pure?"
+  },
+  "light-through-liquids": {
+    "title": "Catch the beam",
+    "summary": "Shine a torch through salt water, milky water and chalky water — then filter them, let them stand, and sort the colloids of everyday life.",
+    "world": "Is Matter Around Us Pure?",
+    "lab": "Is Matter Around Us Pure?"
+  },
+  "what-burning-needs": {
+    "title": "What burning needs",
+    "summary": "A fuel, air, and enough heat. Take one away and the fire stops — even a paper cup can sit on a flame without burning.",
+    "world": "Combustion, Fuels and Flames",
+    "lab": "Combustion, Fuels and Flames"
+  },
+  "flames-and-fires": {
+    "title": "Flames and fires",
+    "summary": "Look inside a candle flame for its hottest part. Then learn which fires water puts out — and which it makes worse.",
+    "world": "Combustion, Fuels and Flames",
+    "lab": "Combustion, Fuels and Flames"
+  },
+  "fuels-coal-and-petroleum": {
+    "title": "Fuels, coal and petroleum",
+    "summary": "Which fuel gives the most heat for each kilogram, which ones dirty the air, and what we make from coal and petroleum.",
+    "world": "Combustion, Fuels and Flames",
+    "lab": "Combustion, Fuels and Flames"
+  },
+  "giving-electrons": {
+    "title": "Giving electrons",
+    "summary": "A metal atom hands its outer electrons to a non-metal. The ions that form cling together — so ionic compounds are hard, melt high, and conduct only when the ions can move.",
+    "world": "Ionic Compounds and Extracting Metals",
+    "lab": "Ionic Compounds and Extracting Metals"
+  },
+  "out-of-the-ore": {
+    "title": "Out of the ore",
+    "summary": "Remove the gangue, turn the ore into an oxide, then free the metal: with electricity, with carbon, or with heat alone — the reactivity series decides which.",
+    "world": "Ionic Compounds and Extracting Metals",
+    "lab": "Ionic Compounds and Extracting Metals"
+  },
+  "mixing-metals": {
+    "title": "Mixing metals",
+    "summary": "Refine copper by electrolysis, then mix metals on purpose: brass, bronze, solder, steel — and gold measured in carats.",
+    "world": "Ionic Compounds and Extracting Metals",
+    "lab": "Ionic Compounds and Extracting Metals"
   }
 }

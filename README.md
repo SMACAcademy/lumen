@@ -13,7 +13,7 @@
 **[Open Lumen →](https://smacacademy.github.io/lumen/)**
 
 - **No account, no server, no tracking.** Your progress, name and settings stay in your own browser. Export them from your profile to keep a copy.
-- **Every concept of the syllabus is playable:** 662 concepts across maths, physics and chemistry, in 124 labs, 345 levels and 125 worlds.
+- **Every concept of the syllabus is playable:** 716 concepts across maths, physics and chemistry, in 137 labs, 388 levels and 139 worlds.
 - **Learn by doing:** drag on the canvas or move the sliders; predict what will happen, then let the simulation measure it; estimate, sort, match and order; collect the law at the end of each level.
 - **Built for phones first,** with light, dark and high-contrast themes, keyboard shortcuts and screen-reader announcements.
 

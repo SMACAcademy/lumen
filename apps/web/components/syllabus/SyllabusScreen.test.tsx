@@ -34,8 +34,9 @@ describe("SyllabusScreen", () => {
     // A built concept links to its level; an unbuilt one does not.
     expect(screen.getByRole("link", { name: /Sine and cosine from a circle/ }).getAttribute("href")).toBe("/play/shadow-of-a-dot");
     // Any concept still without a level shows as plain text (none may be left once the catalogue is complete).
+    const linked = screen.queryAllByRole("link").map((a) => a.textContent ?? "");
     for (const { concept } of allConcepts().filter((e) => !e.concept.built)) {
-      expect(screen.queryAllByRole("link").filter((a) => a.textContent?.includes(concept.title))).toHaveLength(0);
+      expect(linked.filter((text) => text.includes(concept.title))).toHaveLength(0);
     }
   });
 

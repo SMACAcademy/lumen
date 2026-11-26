@@ -3,7 +3,7 @@ import { defineLevel } from "@ise/game-engine";
 const point = (id: string, label: string, x0: number) => ({ id, label, given: { x0 } });
 const card = (id: string, label: string) => ({ id, label });
 
-/** The Derivative, level 1: the slope at a point as the limit of secant slopes. */
+/** The Derivative, level 2: the slope at a point as the limit of secant slopes. */
 export const closingTheGap = defineLevel({
   schemaVersion: 1,
   id: "closing-the-gap",

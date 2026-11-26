@@ -50,6 +50,8 @@ export type UnitCircleResults = {
   quadrant: Quadrant;
   /** Acute angle to the x-axis, rad. */
   referenceAngle: number;
+  /** Arc length s = r·θ swept from the positive x-axis to the point (θ wrapped into one turn). */
+  arcLength: number;
   /** sin²θ + cos²θ, computed from the rounded-to-noise values. */
   identity: number;
   time: number;
@@ -111,6 +113,7 @@ const OUTPUTS = [
   "radius",
   "quadrant",
   "referenceAngle",
+  "arcLength",
   "identity",
   "time",
 ] as const satisfies readonly (keyof UnitCircleResults)[];
@@ -162,6 +165,7 @@ export const unitCircleModel: SimulationModel<UnitCircleState, UnitCircleParams,
       radius: r,
       quadrant: quadrantOf(theta),
       referenceAngle: referenceAngleOf(theta),
+      arcLength: r * thetaNorm,
       identity: sin * sin + cos * cos,
       time,
     };

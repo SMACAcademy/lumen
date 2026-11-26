@@ -85,6 +85,19 @@ describe("geometry", () => {
     expect(neg.thetaDeg).toBeCloseTo(330, 10);
     expect(neg.revolutions).toBe(-1);
   });
+
+  it("measures the arc swept as s = r·θ, so θ in radians is s ÷ r", () => {
+    expect(at(180).arcLength).toBeCloseTo(Math.PI, 12);
+    expect(at(90).arcLength).toBeCloseTo(Math.PI / 2, 12);
+    expect(at(0).arcLength).toBe(0);
+    // One radian: the arc is as long as the radius (about 57.3°).
+    expect(model.derive({ theta: 1, time: 0 }, P).arcLength).toBeCloseTo(1, 12);
+    const r2 = model.derive({ theta: Math.PI / 3, time: 0 }, { ...P, radius: 2 });
+    expect(r2.arcLength).toBeCloseTo((2 * Math.PI) / 3, 12);
+    expect(r2.arcLength / r2.radius).toBeCloseTo(r2.thetaNorm, 12);
+    // Wrapped into one turn, like θ.
+    expect(at(400).arcLength).toBeCloseTo(degToRad(40), 12);
+  });
 });
 
 describe("motion", () => {

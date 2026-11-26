@@ -19,6 +19,8 @@ interface CircleView {
   tan: number;
   x: number;
   y: number;
+  /** r·θ from the model, in units of the radius. */
+  arcLength: number;
 }
 
 function num(results: Results, key: string): number {
@@ -35,6 +37,7 @@ function readView(results: Results): CircleView {
     // Normalise to the unit circle; the drawing is scaled by the layout radius.
     x: num(results, "cos"),
     y: num(results, "sin"),
+    arcLength: num(results, "arcLength"),
   };
 }
 
@@ -122,6 +125,30 @@ export const unitCircleRenderer: SimulationRenderer<ConstructionLayout> = {
       ctx.stroke();
       ctx.restore();
     }
+    // ── Arc length: the stretch of circle the point has travelled (θ in radians = s ÷ r) ──
+    if (has("arc") && view.thetaNorm > 0) {
+      ctx.save();
+      ctx.globalAlpha = 0.9 * emphasis("arc");
+      glow("arc", theme.angle);
+      ctx.strokeStyle = theme.angle;
+      ctx.lineWidth = highlight === "arc" ? 7 : 5;
+      ctx.lineCap = "round";
+      ctx.beginPath();
+      // Canvas angles run clockwise, so negate.
+      ctx.arc(ox, oy, circle.r, 0, -view.thetaNorm, true);
+      ctx.stroke();
+      ctx.restore();
+      const mid = view.thetaNorm / 2;
+      const labelR = circle.r + 12;
+      ctx.save();
+      ctx.fillStyle = theme.angle;
+      ctx.font = theme.fontStrong;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText("s", ox + cosOf(mid) * labelR, oy - sinOf(mid) * labelR);
+      ctx.restore();
+    }
+
     if (has("specialAngles")) {
       ctx.save();
       ctx.strokeStyle = theme.muted;
@@ -308,6 +335,11 @@ function drawProjectionLabels(
   ctx.textBaseline = "top";
   ctx.font = theme.fontStrong;
   ctx.fillText(`θ = ${formatAngle(view.thetaNorm, angleUnit)}`, ox - circle.r - (compact ? 22 : 28), oy - circle.r - 30);
+  // Arc length, on the same line at the right: on the unit circle it is θ in radians.
+  if (layers.has("arc")) {
+    ctx.textAlign = "right";
+    ctx.fillText(`s = ${formatNumber(view.arcLength, 3)}`, ox + circle.r + (compact ? 22 : 28), oy - circle.r - 30);
+  }
   ctx.restore();
 }
 

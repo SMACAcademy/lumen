@@ -5,5 +5,5 @@ export const circlesAndWaves = defineWorld({
   title: "Circles & Waves",
   tagline: "Where sine and cosine come from, and why waves look the way they do.",
   color: "curve",
-  levels: ["shadow-of-a-dot"],
+  levels: ["shadow-of-a-dot", "radians-and-waves"],
 });

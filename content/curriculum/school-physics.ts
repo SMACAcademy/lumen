@@ -108,6 +108,16 @@ export const motionAndForce = branch(
         s("power-school", "Power: how fast work is done", { status: "ready", built: { lab: "work-and-power", level: "watts-and-units" }, buildsOn: ["work-school"] }),
       ],
     ),
+    chapter(
+      "air-and-wind",
+      "Air pressure, winds and storms",
+      { grade: 7, kit: "fluids", wave: 40, blurb: "Air pushes on everything, moving air pushes less, and uneven heating makes the wind." },
+      [
+        s("air-pressure-school", "Air exerts pressure", { status: "ready", built: { lab: "air-and-wind", level: "air-presses-all-round" } }),
+        s("moving-air-pressure", "Moving air has lower pressure", { status: "ready", built: { lab: "air-and-wind", level: "fast-air-low-pressure" } }),
+        s("winds-storms", "Winds, storms and cyclones", { status: "ready", built: { lab: "air-and-wind", level: "winds-and-cyclones" }, buildsOn: ["sea-land-breeze"] }),
+      ],
+    ),
   ],
   "physics",
 );
@@ -150,6 +160,16 @@ export const lightAndSound = branch(
         s("lenses-school", "Convex and concave lenses", { status: "ready", built: { lab: "bending-light", level: "through-a-lens" }, buildsOn: ["refraction-school"] }),
         s("human-eye", "The human eye and its defects", { status: "ready", built: { lab: "mirrors-eye-colours", level: "seeing-clearly" }, buildsOn: ["lenses-school"] }),
         s("dispersion-school", "Prisms, rainbows and the blue sky", { status: "ready", built: { lab: "mirrors-eye-colours", level: "rainbow-and-sky" }, buildsOn: ["refraction-school"] }),
+      ],
+    ),
+    chapter(
+      "light-class-8",
+      "Light: reflections and images",
+      { grade: 8, kit: "rays", wave: 40, blurb: "Smooth and rough surfaces, mirrors at an angle, and the kaleidoscope." },
+      [
+        s("diffuse-reflection", "Regular and diffuse reflection", { status: "ready", built: { lab: "mirrors-and-images", level: "smooth-and-rough" } }),
+        s("multiple-images", "Mirrors at an angle and the kaleidoscope", { status: "ready", built: { lab: "mirrors-and-images", level: "mirrors-at-an-angle" } }),
+        s("periscope", "The periscope: two mirrors at 45°", { status: "ready", built: { lab: "mirrors-and-images", level: "up-periscope" } }),
       ],
     ),
   ],
@@ -211,6 +231,26 @@ export const electricityAndMagnets = branch(
         s("field-lines-school", "Magnetic field lines around a magnet", { status: "ready", built: { lab: "currents-at-work", level: "magnets-from-current" }, buildsOn: ["magnet-poles"] }),
         s("field-of-current-school", "The field around a current-carrying wire", { status: "ready", built: { lab: "currents-at-work", level: "magnets-from-current" }, buildsOn: ["field-lines-school", "electromagnet"] }),
         s("motor-generator", "The motor and the generator", { status: "ready", built: { lab: "currents-at-work", level: "motors-and-generators" }, buildsOn: ["field-of-current-school"] }),
+      ],
+    ),
+    chapter(
+      "chemical-effects-school",
+      "Chemical effects of electric current",
+      { grade: 8, kit: "electrochem", wave: 40, blurb: "Some liquids conduct, and the current changes them: electrolysis and electroplating." },
+      [
+        s("conducting-liquids", "Liquids that conduct electricity", { status: "ready", built: { lab: "current-and-chemistry", level: "liquids-that-conduct" }, buildsOn: ["conductors-insulators"] }),
+        s("electrolysis-school", "Electrolysis: current makes a chemical change", { status: "ready", built: { lab: "current-and-chemistry", level: "bubbles-and-deposits" } }),
+        s("electroplating", "Electroplating", { status: "ready", built: { lab: "current-and-chemistry", level: "a-copper-coat" } }),
+      ],
+    ),
+    chapter(
+      "natural-phenomena-school",
+      "Charges and lightning",
+      { grade: 8, kit: "efield", wave: 40, blurb: "Rubbing moves charges, like charges repel, and lightning is a giant spark." },
+      [
+        s("charging-by-rubbing", "Charging by rubbing: like charges repel", { status: "ready", built: { lab: "charges-and-lightning", level: "rub-and-attract" } }),
+        s("electroscope", "The electroscope and earthing", { status: "ready", built: { lab: "charges-and-lightning", level: "foil-electroscope" } }),
+        s("lightning-safety", "Lightning, and how to stay safe", { status: "ready", built: { lab: "charges-and-lightning", level: "thunder-and-lightning" } }),
       ],
     ),
   ],
