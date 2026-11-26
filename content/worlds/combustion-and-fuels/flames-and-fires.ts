@@ -49,10 +49,10 @@ export const flamesAndFires = defineLevel({
         { id: "gas-stove", label: "Gas lit on a stove", icon: "flame" as const, bin: "rapid" },
         { id: "camphor", label: "Camphor lit with a match", bin: "rapid" },
         { id: "phosphorus", label: "White phosphorus left in air", bin: "spontaneous" },
-        { id: "coal-dust", label: "Coal dust in a mine", bin: "spontaneous" },
+        { id: "oily-rags", label: "A heap of oily rags", bin: "spontaneous" },
         { id: "cracker", label: "A cracker going off", bin: "explosion" },
       ],
-      explanation: "Gas and camphor burn rapidly once lit, giving heat and light. White phosphorus and coal dust can catch fire with no flame at all. A cracker burns so suddenly that it makes a lot of gas, heat, light and sound.",
+      explanation: "Gas and camphor burn rapidly once lit, giving heat and light. White phosphorus and a heap of oily rags can catch fire with no flame at all. A cracker burns so suddenly that it makes a lot of gas, heat, light and sound.",
       hints: ["Which ones need no match at all?"],
     },
     {

@@ -623,7 +623,7 @@ export const chargesAndLightning = defineConcept({
       {
         id: "rubbed",
         title: "Charging by rubbing",
-        body: "Rubbing moved {{chargeMoved}} units of charge. The item now has {{itemCharge}} and the cloth {{clothCharge}}: the same amount, of opposite kinds. It picks up {{paperBits}} bits of paper.",
+        body: "Rubbing moved {{chargeMoved}} units of charge. The item now has {{itemCharge}} and the cloth {{clothCharge}}: the same amount, of opposite kinds. Which kind each gets depends on both materials: the same plastic rubbed with a different cloth can end up with the other kind. It picks up {{paperBits}} bits of paper.",
         when: { type: "compare", quantity: "leaks", op: "eq", value: 0 },
       },
       {
@@ -694,7 +694,7 @@ export const chargesAndLightning = defineConcept({
   realWorld: [
     { title: "Crackling clothes", description: "Pull off a woollen sweater in dry weather and you may hear crackles and see tiny sparks: small lightning." },
     { title: "A balloon on the wall", description: "Rub a balloon on your hair and it sticks to a wall, pulled by its charge." },
-    { title: "Benjamin Franklin", description: "About 250 years ago he showed that lightning and the spark from your clothes are the same thing." },
+    { title: "Benjamin Franklin", description: "In 1752 he showed that lightning and the spark from your clothes are the same thing." },
     { title: "Lightning conductors", description: "Tall buildings carry a metal rod from above the roof down to a plate buried deep in the ground." },
     { title: "Storm warnings", description: "Weather services warn when thunderstorms are coming. When one is near, stay indoors until it has passed." },
   ],

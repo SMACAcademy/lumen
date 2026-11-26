@@ -94,7 +94,7 @@ export const aCopperCoat = defineLevel({
         { left: card("gold", "Gold or silver"), right: card("jewellery", "Jewellery of a cheaper metal") },
       ],
       explanation:
-        "Chromium is shiny and hard to scratch; tin is less reactive than iron, so food never touches the iron; zinc stops iron rusting (galvanising). Used plating solution is harmful, so it must be treated, never poured down a drain.",
+        "Chromium is shiny and hard to scratch; tin is less reactive than iron and keeps food from touching the iron; zinc stops iron rusting (galvanising). Used plating solution is harmful, so it must be treated, never poured down a drain.",
       hints: ["Which one keeps food away from iron?"],
     },
     {
@@ -103,7 +103,7 @@ export const aCopperCoat = defineLevel({
       prompt: "How to electroplate.",
       mode: "plating",
       equation: "coat-thickness",
-      law: "Join the object to the negative terminal and a plate of the coating metal to the positive, in a solution of that metal. More current or more time gives a thicker coat.",
+      law: "Join the object to the negative terminal and a plate of the coating metal to the positive, in a solution of a salt of that metal (copper sulphate for copper). More current or more time gives a thicker coat.",
     },
   ],
 });

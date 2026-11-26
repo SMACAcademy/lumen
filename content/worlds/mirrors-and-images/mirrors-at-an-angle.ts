@@ -102,7 +102,7 @@ export const mirrorsAtAnAngle = defineLevel({
       mode: "bench",
       given: { scene: "angle", mirrorAngle: 60 },
       equation: "image-count",
-      law: "Two mirrors at an angle θ make 360°/θ − 1 images when 360°/θ is a whole number: 3 at 90°, 5 at 60°, 7 at 45°. Images from an odd number of reflections are laterally inverted.",
+      law: "Two mirrors at an angle θ make 360°/θ − 1 images when 360°/θ is a whole number and the object stands halfway between them: 3 at 90°, 5 at 60°, 7 at 45°. Images from an odd number of reflections are laterally inverted.",
     },
   ],
 });

@@ -81,7 +81,7 @@ export const airPressesAllRound = defineLevel({
       quantity: "bagDensity",
       options: ["increase", "decrease", "same"],
       given: { scene: "bag" },
-      explanation: "It falls from 1.18 to 1.06 kg/m³. Warm air expands, so it is lighter than the air around it, and the bag over the candle goes up by 2.5 g.",
+      explanation: "It falls from 1.18 to 1.06 kg/m³. Warm air expands, so it is lighter than the air around it, and the bag over the candle is pushed up as hard as the weight of 2.5 g.",
     },
     {
       id: "outside-wins",

@@ -353,7 +353,7 @@ export const airAndWindLab = defineConcept({
         { kind: "ref", id: "windSpeedMs", power: 2 },
       ],
       reading: "The faster the air moves, the lower its pressure. Twice as fast drops the pressure four times as much.",
-      assumptions: ["Air density 1.2 kg/m³", "Bernoulli's rule, met properly in class 11"],
+      assumptions: ["Air density 1.2 kg/m³", "Bernoulli's rule, met properly in class 11", "Fits a wind blowing over a roof best; for a puff of breath it gives only a rough size"],
       discoverable: true,
     },
     {
@@ -588,7 +588,7 @@ export const airAndWindLab = defineConcept({
       {
         id: "warm-air",
         title: "Warm air expands and rises",
-        body: "Air expands when it is heated, so a cubic metre of warm air weighs less. Warm air rises and cooler air sinks. The bag's air is {{bagDensity}} kg/m³ and the room's is {{roomDensity}} kg/m³, so the bag is pushed up by {{bagLift}} g.",
+        body: "Air expands when it is heated, so a cubic metre of warm air weighs less. Warm air rises and cooler air sinks. The bag's air is {{bagDensity}} kg/m³ and the room's is {{roomDensity}} kg/m³, so the bag is pushed up as hard as the weight of {{bagLift}} g.",
       },
       {
         id: "fast-air",
@@ -628,7 +628,7 @@ export const airAndWindLab = defineConcept({
       {
         id: "simplified",
         title: "What is simplified here",
-        body: "The thin can is made to give way at 20 kPa. The whole pressure drop is taken to push on the roof. A warmer place's pressure is taken as 0.1 kPa lower for each °C, a simple rule. The cyclone's wind follows a simple smooth pattern, the Earth's spin is left out, and the cyclone moves at a steady speed.",
+        body: "The thin can is made to give way at 20 kPa. The whole pressure drop is taken to push on the roof. A warmer place's pressure is taken as 0.1 kPa lower for each °C, a simple rule. The ½ρv² rule is used for every kind of moving air: it fits a wind blowing over a roof best, but for a puff of breath between balloons or over a paper strip it gives only a rough size, because what goes on around them is more complicated (class 11 and beyond). The cyclone's wind follows a simple smooth pattern, the Earth's spin is left out, and the cyclone moves at a steady speed.",
       },
     ],
 

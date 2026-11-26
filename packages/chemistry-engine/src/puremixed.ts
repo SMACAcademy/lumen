@@ -11,7 +11,8 @@ import { schoolSolubility } from "./schoolmatter";
  * at fixed temperatures. A mixture has more than one kind of particle, can
  * be made in any proportion, and can be pulled apart by physical means. A
  * homogeneous mixture is the same all through (salt water, air, brass); a
- * heterogeneous one is not (soil, muddy water).
+ * heterogeneous one is not (soil, muddy water). An alloy such as brass is the
+ * one mixture here that NCERT says cannot be separated by physical methods.
  *
  * Iron and sulphur. NCERT's activity: mix iron filings with sulphur powder,
  * or heat them to make iron sulphide, Fe + S → FeS. Iron and sulphur join
@@ -59,6 +60,12 @@ export interface PureSample {
   parts: string;
   /** Formula, for pure substances. */
   formula?: string;
+  /**
+   * An alloy. NCERT: an alloy cannot be separated into its parts by physical
+   * methods, yet it is a mixture, because it shows the properties of its
+   * parts and its make-up can vary.
+   */
+  alloy?: true;
 }
 
 export type PureSampleId =
@@ -97,7 +104,7 @@ export const PURE_SAMPLES: Record<PureSampleId, PureSample> = {
   air: { label: "Air", kind: 2, parts: "Nitrogen, oxygen, argon, CO₂, water vapour" },
   "salt-water": { label: "Salt water", kind: 2, parts: "Water with salt spread evenly through it" },
   "soda-water": { label: "Soda water", kind: 2, parts: "Water with carbon dioxide dissolved in it" },
-  brass: { label: "Brass", kind: 2, parts: "Copper and zinc, mixed when molten" },
+  brass: { label: "Brass", kind: 2, parts: "Copper and zinc, mixed when molten", alloy: true },
   soil: { label: "Soil", kind: 3, parts: "Sand, clay, humus, water and air" },
   "muddy-water": { label: "Muddy water", kind: 3, parts: "Water with bits of mud floating in it" },
   "iron-sulphur": { label: "Iron filings and sulphur", kind: 3, parts: "Grey iron and yellow sulphur, side by side" },
@@ -436,7 +443,7 @@ export const mixtureModel: SimulationModel<PureMixedState, PureMixedParams, Pure
       sampleKind: sample.kind,
       pure: pure ? 1 : 0,
       homogeneous: sample.kind === 3 ? 0 : 1,
-      separable: pure ? 0 : 1,
+      separable: pure || sample.alloy ? 0 : 1,
       fixedPoint: pure ? 1 : 0,
 
       heated: heated ? 1 : 0,

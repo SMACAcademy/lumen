@@ -22,8 +22,10 @@ describe("pure substances and mixtures", () => {
   it("calls elements and compounds pure, and everything else a mixture", () => {
     expect(derive({ sample: "gold" })).toMatchObject({ sampleKind: 0, pure: 1, fixedPoint: 1, separable: 0 });
     expect(derive({ sample: "water" })).toMatchObject({ sampleKind: 1, pure: 1, homogeneous: 1 });
-    expect(derive({ sample: "brass" })).toMatchObject({ sampleKind: 2, pure: 0, homogeneous: 1, separable: 1, fixedPoint: 0 });
-    expect(derive({ sample: "soil" })).toMatchObject({ sampleKind: 3, pure: 0, homogeneous: 0 });
+    // NCERT: an alloy is a mixture, yet cannot be separated by physical methods.
+    expect(derive({ sample: "brass" })).toMatchObject({ sampleKind: 2, pure: 0, homogeneous: 1, separable: 0, fixedPoint: 0 });
+    expect(derive({ sample: "air" })).toMatchObject({ sampleKind: 2, pure: 0, separable: 1 });
+    expect(derive({ sample: "soil" })).toMatchObject({ sampleKind: 3, pure: 0, homogeneous: 0, separable: 1 });
   });
 
   it("files iron and sulphur mixed as a heterogeneous mixture, but iron sulphide as a compound", () => {

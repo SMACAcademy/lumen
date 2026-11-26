@@ -81,7 +81,7 @@ export const rubAndAttract = defineLevel({
         { id: "balloon-paper", label: "A rubbed balloon and a bit of paper", given: { item: "balloon", partner: "paper" } },
       ],
       explanation:
-        "The balloon and the comb are negative; the refill and the glass rod are positive. Like charges repel, unlike charges attract — and a charged balloon pulls an uncharged bit of paper.",
+        "A balloon rubbed with wool and a comb run through hair get negative charge; a glass rod rubbed with silk gets positive. The rubbed refill attracts the rubbed balloon, so it has the other kind: positive here. Like charges repel, unlike charges attract — and a charged balloon pulls an uncharged bit of paper.",
       hints: ["Two things rubbed the same way have the same kind of charge."],
     },
     {

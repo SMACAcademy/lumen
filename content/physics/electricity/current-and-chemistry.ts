@@ -557,7 +557,7 @@ export const currentAndChemistry = defineConcept({
       {
         id: "why",
         title: "Why some liquids conduct",
-        body: "Pure, distilled water hardly conducts. Salts, acids and bases dissolved in water break up into charged particles, called ions, and these carry the current. That is why tap water, lemon juice and vinegar conduct, and why sugar — which does not break up — does not help.",
+        body: "Pure, distilled water hardly conducts. Salts, acids and bases dissolved in water break up into charged particles, called ions, and these carry the current. That is why tap water, lemon juice and vinegar conduct, and why sugar — which dissolves but does not break up into ions — does not help.",
       },
       {
         id: "safety",
@@ -630,7 +630,7 @@ export const currentAndChemistry = defineConcept({
 
   realWorld: [
     { title: "Chromium on taps and bicycles", description: "Chromium is shiny, hard to scratch and does not rust, but it is costly, so a thin coat goes on taps, bicycle handlebars, wheel rims, gas burners and car parts." },
-    { title: "Tin cans", description: "Cans for food are iron coated with tin. Tin is less reactive than iron, so the food never touches the iron." },
+    { title: "Tin cans", description: "Cans for food are iron coated with tin. Tin is less reactive than iron and does not react with the food, and the coat keeps the food from touching the iron." },
     { title: "Galvanised iron", description: "A coat of zinc keeps iron in bridges, buckets and roofs from rusting." },
     { title: "Jewellery", description: "A thin coat of silver or gold on a cheaper metal makes jewellery that looks like the real thing." },
     { title: "Testing with an LED", description: "An LED glows with a tiny current, so it makes a far better tester than a bulb for weakly conducting liquids." },

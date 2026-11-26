@@ -62,7 +62,7 @@ export const windsAndCyclones = defineLevel({
       quantity: "windHere",
       range: { min: 0, max: 300, step: 5 },
       tolerance: 15,
-      explanation: "About 219 km/h. The strongest winds of a cyclone blow at 150 to 250 km/h, in the clouds around the eye — fast enough to flatten houses.",
+      explanation: "About 219 km/h. In a strong cyclone the strongest winds blow at 150 to 250 km/h, in the clouds around the eye — fast enough to flatten houses.",
       hints: ["The roof in the last level lifted at 80 km/h. A cyclone's wind is much faster."],
     },
     {

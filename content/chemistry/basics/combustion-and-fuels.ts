@@ -270,7 +270,7 @@ export const combustionAndFuels = defineConcept({
     { id: "burning", symbol: "fire?", name: "Burning", meaning: "Whether it is on fire.", result: "burning", format: { kind: "label", labels: { "0": "not burning", "1": "burning" } }, color: "secant", highlight: "burn", headline: true },
     { id: "missing", symbol: "missing", name: "What is missing", meaning: "The side of the fire triangle that is not there.", result: "missing", format: { kind: "label", labels: { "0": "nothing: it burns", "1": "a fuel: it is not combustible", "2": "enough air (oxygen)", "3": "heat up to its ignition temperature" } }, color: "secant", highlight: "burn", headline: true },
     { id: "combustible", symbol: "fuel?", name: "Combustible", meaning: "Whether it can burn at all.", result: "combustible", format: { kind: "label", labels: { "0": "non-combustible", "1": "combustible" } }, color: "neutral", highlight: "burn" },
-    { id: "ignitionTemp", symbol: "T(ignite)", name: "Ignition temperature", meaning: "The lowest temperature at which it catches fire (typical, rounded).", result: "ignitionTemp", format: { kind: "number", digits: 0 }, unit: "degC", color: "angle", highlight: "burn" },
+    { id: "ignitionTemp", symbol: "T(ignite)", name: "Ignition temperature", meaning: "The lowest temperature at which it catches fire (typical, rounded). For the liquids and LPG: the temperature at which their vapour catches fire from a small flame.", result: "ignitionTemp", format: { kind: "number", digits: 0 }, unit: "degC", color: "angle", highlight: "burn" },
     { id: "inflammable", symbol: "inflammable?", name: "Inflammable", meaning: "Catches fire from a flame even at room temperature.", result: "inflammable", format: yesNo, color: "secant", highlight: "burn" },
 
     { id: "jarOxygen", symbol: "O₂", name: "Oxygen in the jar", meaning: "The share of the jar's air that is still oxygen.", result: "jarOxygen", format: { kind: "number", digits: 1 }, unit: "%", color: "sine", highlight: "jar", headline: true },
@@ -312,7 +312,11 @@ export const combustionAndFuels = defineConcept({
         { kind: "text", value: "fire" },
       ],
       reading: "Take away any one of the three and burning stops.",
-      assumptions: ["Ignition temperatures here are typical values; they vary from sample to sample"],
+      assumptions: [
+        "Ignition temperatures here are typical values; they vary from sample to sample",
+        "For petrol, alcohol, kerosene and LPG the value is the lowest temperature at which their vapour catches fire from a small flame (the flash point); heated with no flame at all, they need far more",
+        "Nothing here burns below 16 % oxygen; the real limit is about that for a candle and differs a little from fuel to fuel",
+      ],
       discoverable: true,
     },
     {
@@ -576,7 +580,7 @@ export const combustionAndFuels = defineConcept({
     { title: "The goldsmith's blow-pipe", description: "Goldsmiths blow the outermost zone of a flame onto gold and silver to melt them, because it is the hottest part." },
     { title: "CNG buses", description: "Many Indian cities run buses and autos on CNG. It gives much less smoke than diesel or petrol." },
     { title: "Acid rain and global warming", description: "Sulphur dioxide and nitrogen oxides from burning fuels dissolve in rain to make acid rain. The carbon dioxide adds to global warming." },
-    { title: "Fires in coal mines", description: "Coal dust can catch fire by itself — spontaneous combustion — which is one of the dangers of mining." },
+    { title: "Fires in coal heaps", description: "A big heap of coal can slowly warm itself until it catches fire with no flame — spontaneous combustion — which is why coal stores are watched. In mines, fine coal dust in the air is a danger of a different kind: a spark can make it explode." },
     { title: "Saving fuel (PCRA)", description: "Drive at a steady, moderate speed, switch off the engine at traffic lights, keep the tyres at the right pressure, and service the vehicle regularly." },
   ],
 });

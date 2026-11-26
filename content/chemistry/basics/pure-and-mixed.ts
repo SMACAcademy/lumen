@@ -280,7 +280,7 @@ export const pureAndMixed = defineConcept({
     { id: "kind", symbol: "kind", name: "What it is", meaning: "Element, compound, or a mixture that is or is not the same all through.", result: "sampleKind", format: { kind: "label", labels: { "0": "an element", "1": "a compound", "2": "a homogeneous mixture", "3": "a heterogeneous mixture" } }, color: "tangent", highlight: "sample", headline: true },
     { id: "isPure", symbol: "pure?", name: "Pure substance", meaning: "One kind of particle only.", result: "pure", format: { kind: "label", labels: { "0": "a mixture", "1": "pure" } }, color: "sine", highlight: "sample", headline: true },
     { id: "sameThrough", symbol: "uniform?", name: "Same all through", meaning: "Does every part look and behave the same?", result: "homogeneous", format: { kind: "label", labels: { "0": "not the same all through", "1": "the same all through" } }, color: "neutral", highlight: "sample" },
-    { id: "separable", symbol: "separable?", name: "Separable by physical means", meaning: "Can it be pulled apart by filtering, a magnet, evaporating and so on?", result: "separable", format: { kind: "label", labels: { "0": "no", "1": "yes" } }, color: "neutral", highlight: "sample" },
+    { id: "separable", symbol: "separable?", name: "Separable by physical means", meaning: "Can it be pulled apart by filtering, a magnet, evaporating and so on? Mixtures can — except alloys, which NCERT says cannot.", result: "separable", format: { kind: "label", labels: { "0": "no", "1": "yes" } }, color: "neutral", highlight: "sample" },
     { id: "fixedPoint", symbol: "melts", name: "Melting and boiling", meaning: "A pure substance melts and boils at fixed temperatures.", result: "fixedPoint", format: { kind: "label", labels: { "0": "no fixed temperatures", "1": "at fixed temperatures" } }, color: "secant", highlight: "sample" },
 
     { id: "heated", symbol: "heated?", name: "Heated", meaning: "Have the iron and sulphur been heated together?", result: "heated", format: { kind: "label", labels: { "0": "just mixed", "1": "heated" } }, color: "secant", highlight: "iron" },
@@ -328,7 +328,7 @@ export const pureAndMixed = defineConcept({
         { kind: "op", value: "=" },
         { kind: "text", value: "one kind of particle" },
       ],
-      reading: "An element has one kind of atom; a compound has one kind of molecule, made of elements joined in a fixed ratio. A mixture's parts keep their own properties and can be in any proportion.",
+      reading: "An element has one kind of atom; a compound is two or more elements joined in a fixed ratio, so all its particles are alike. A mixture's parts keep their own properties and can be in any proportion.",
       assumptions: ["Pure in the chemist's sense: milk from the shop is 'pure' milk, but it is still a mixture"],
     },
     {
@@ -473,7 +473,10 @@ export const pureAndMixed = defineConcept({
         { kind: "ref", id: "medium" },
       ],
       reading: "Liquid or solid in a gas: aerosol. Gas in a liquid or solid: foam. Liquid in liquid: emulsion. Solid in liquid: sol (milk of magnesia). Liquid in solid: gel. Solid in solid: solid sol.",
-      assumptions: ["NCERT's table of common colloids"],
+      assumptions: [
+        "NCERT's table of common colloids",
+        "NCERT also lists mud as a sol: its finest clay bits are colloid-sized. Most of the mud in muddy water is bigger and settles, so the light-beam bench treats muddy water as a suspension",
+      ],
     },
   ],
 
@@ -592,6 +595,12 @@ export const pureAndMixed = defineConcept({
         body: "This is {{kind}}: {{isPure}}, {{sameThrough}}. Melting and boiling: {{fixedPoint}}. Separable by physical means: {{separable}}.",
       },
       {
+        id: "alloy",
+        title: "An alloy",
+        body: "Brass cannot be separated into copper and zinc by physical methods, yet it is a mixture: it shows the properties of both metals, and its make-up can vary.",
+        when: { type: "compare", quantity: "sample", op: "eq", value: 12 },
+      },
+      {
         id: "dish",
         title: "In the dish",
         body: "The dish is {{heated}} and looks {{looks}}. A magnet pulls out {{magnetPulls}} g of iron; carbon disulphide dissolves {{cs2Dissolves}} g of sulphur; dilute acid gives {{acidGas}}.",
@@ -674,7 +683,7 @@ export const pureAndMixed = defineConcept({
     { title: "Sunbeams in a forest", description: "Sunlight slanting through the canopy shows as bright beams, because mist and tiny smoke and dust particles scatter it: the Tyndall effect." },
     { title: "Saline drips", description: "A hospital drip of normal saline is 0.9% salt (mass by volume): 0.9 g of salt in every 100 mL, about as salty as blood." },
     { title: "Shake the bottle", description: "Medicines labelled 'shake well before use' are suspensions: the solid settles at the bottom while the bottle stands." },
-    { title: "Brass and steel", description: "Alloys are homogeneous mixtures of metals. Brass is copper and zinc; it has no fixed make-up, so brasses of different colours exist." },
+    { title: "Brass and steel", description: "Alloys are homogeneous mixtures of two or more metals, or of a metal and a non-metal: brass is copper and zinc, steel is iron with a little carbon. They cannot be separated by physical methods, but they are still mixtures: they show the properties of their parts and have no fixed make-up, so brasses of different colours exist." },
     { title: "Pure ghee?", description: "'Pure' in the market means nothing has been added. To a chemist, ghee, milk and air are all mixtures." },
   ],
 });

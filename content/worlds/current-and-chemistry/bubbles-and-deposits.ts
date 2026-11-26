@@ -67,7 +67,7 @@ export const bubblesAndDeposits = defineLevel({
       quantity: "oxygen",
       range: { min: 0, max: 60, step: 0.5 },
       tolerance: 2,
-      explanation: "18.7 mL — half as much. A current splits water into twice as much hydrogen as oxygen. Count the bubbles: there are twice as many at −.",
+      explanation: "18.7 mL — half as much. A current splits water into twice as much hydrogen as oxygen. You can see the gas collect faster at −.",
       hints: ["Look at the bubbles on each rod."],
     },
     {
