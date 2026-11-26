@@ -160,7 +160,6 @@ packages/
   ui/                   NEW: design system (tokens, buttons, cards, sheets, celebration FX)
   audio/                NEW (small): sound effects and haptics, respecting user settings
 apps/web/               app shell (Learn / Practice / Sandbox / Journal / Profile), level player
-apps/api/               LATER (Phase 5): accounts, sync, leagues, classes
 ```
 
 Key technical decisions (my recommendations):
@@ -168,15 +167,13 @@ Key technical decisions (my recommendations):
 1. **Level = a sequence of steps** over an existing concept. Step kinds include `intro`, `play`,
    `predict`, `sketch`, `target`, `match`, `discover`, `boss` and `reward`. Levels are data
    (Zod-validated), and the existing integrity checker is extended to cover them.
-2. **Local-first progress.** Everything works offline with no account. Sign-in later adds sync;
-   the student never has to create an account to start playing.
+2. **Local-first progress.** Everything works offline with no account, and there is no sign-in:
+   progress stays on the device.
 3. **PWA early (Phase 2).** Installable on phones, offline, and cheap to do. A Capacitor wrap for
    the app stores comes later.
-4. **Backend when it is needed (Phase 5):** Supabase (Postgres, auth, row-level security) gets us
-   there fastest. FastAPI from the PRD is still possible if we need custom server logic. I
-   recommend Supabase plus serverless functions.
-5. **Privacy-respecting analytics** (self-hosted or PostHog) from Phase 3, to tune difficulty
-   and find where students get stuck.
+4. **No backend.** Lumen is a static site on GitHub Pages, with no server and no database.
+5. **No analytics or tracking.** Difficulty is tuned from feedback in GitHub issues and
+   Discussions, not from watching learners.
 6. **AI tutor (Phase 7):** Claude answers "why?" grounded in the *live model state* (the current
    results), so explanations are always true for what's on screen. The same integrity checker
    guards AI-assisted content authoring.
@@ -217,7 +214,7 @@ mid-range phone.
 - **Journal:** Law Cards, records and achievements (about 30 badges).
 - **Content:** World 2 "Arrows" and World 3 "Change", built mostly from the existing labs plus
   vector addition and area under a curve.
-- Privacy-respecting analytics and a first difficulty tuning pass.
+- A first difficulty tuning pass, from learners' feedback.
 
 ### Phase 4 — Physics worlds
 
@@ -228,13 +225,11 @@ mid-range phone.
   and a boss.
 - Cross-world bridges, e.g. "velocity *is* the slope you discovered in World 3".
 
-### Phase 5 — Accounts, sync and launch readiness
+### Phase 5 — Launch readiness
 
-The app already has a front door: a placeholder demo sign-in behind an `AuthAdapter` interface
-(see app-design §7.2). This phase replaces the adapter with a real provider, and moves progress
-from "per device" to "per learner".
+Lumen has no accounts: it is a static site and progress stays in the browser (export and import
+move it between devices). This phase is about polish for a public launch.
 
-- Optional sign-in (Supabase), cloud sync of local progress and multi-device play.
 - Profile, goals, notification reminders (opt-in) and streak-freeze economy.
 - Settings: accessibility (reduced motion, high contrast, dyslexia-friendly font), sound, language
   groundwork.
@@ -285,7 +280,7 @@ Each item has my recommendation; I'll proceed with it unless you say otherwise.
 1. **Audience:** ages 13–18 (high school), with World 1 also suitable for motivated 11–12 year olds.
 2. **Name and brand:** keep a working name for now. Candidate names: *Lumen*, *Discovr*,
    *Axiom Play*.
-3. **Backend:** Supabase in Phase 5, not before.
+3. **Backend:** none. Lumen is a static site.
 4. **Platform:** web plus an installable PWA first; app stores in Phase 8.
 5. **Visual style:** a playful but clean, dark-first look with vivid neon accents for the
    simulations, matching what exists today but with more polish and motion.

@@ -86,7 +86,7 @@ Observe steps, challenges and explanations use the `Condition` language (`compar
 | Future need | Where it attaches |
 |---|---|
 | Physics concepts | `packages/physics-engine` implementing `SimulationModel`; new renderer; concept files |
-| Backend (FastAPI + PostgreSQL) | Persists progress and experiments; concept JSON validated by the same Zod schema. It never runs frames |
+| Backend | None, by design. Lumen is a static site on GitHub Pages; progress stays in the learner's browser. A server is not planned |
 | AI tutor | Reads `LabSnapshot` + concept as context; the engine stays the numerical source of truth |
 | PWA / offline | Static-export-compatible routes; concepts are plain data, easy to cache |
 | Teacher / classroom mode | Another UI consuming the same `LabSession` |

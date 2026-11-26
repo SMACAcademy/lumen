@@ -2,7 +2,7 @@
 
 Status: proposal, 2026-09-23. Companion to [app-roadmap.md](app-roadmap.md), which says *what* we
 are building and in what order. This says *how the application is put together*: the look, the
-personal experience, where data lives today and after sign-in, and how it works as an installable
+personal experience, where data lives (in the learner's browser), and how it works as an installable
 app.
 
 Working name: **Lumen**. Everything below survives a rename.
@@ -21,8 +21,8 @@ be cached and played offline, and later hosted on a CDN with no server.
 ## 2. Three principles
 
 1. **The simulation is the hero.** Chrome is quiet; colour and motion belong to the physics.
-2. **Local-first.** The app is fully usable with no account and no network. Sign-in later *adds*
-   sync; it is never a gate.
+2. **Local-first.** The app is fully usable with no account and no network. There is no sign-in
+   and no server: progress lives on the device, and export/import moves it between devices.
 3. **One source of truth, extended.** Models already drive the labs. Progress, mastery and the
    profile become a second such source: a single event log that every screen reads from.
 
@@ -150,18 +150,11 @@ The web app talks only to the interface, so the later server changes one file.
 - A random `deviceId` is generated locally. No personal data, no network, no analytics until the
   learner opts in.
 
-### 5.4 Accounts and sync — designed now, built in Phase 5
+### 5.4 No accounts, no server
 
-- **Auth:** Supabase (email magic link, Google, Apple). No password handling of our own.
-- **Anonymous first:** play, then "Save my progress" offers sign-in. On first sign-in, the local
-  log is pushed as-is, so nothing is lost and nothing needed migrating.
-- **Sync protocol:** `POST /sync {deviceId, since, events[]}` → `{events[], cursor}`. Because
-  events are additive and identified, merging is a union; the snapshot is recomputed on each side.
-  Settings use last-write-wins per key.
-- **Server tables:** `users`, `devices`, `events` (append-only, row-level security by user),
-  `snapshots` (cache), plus later `classes`, `assignments`, `league_weeks`.
-- **Privacy:** an account stores progress, not behaviour profiles; export and delete are one click;
-  under-13 accounts need a guardian email (Phase 5 policy work, not code).
+Lumen is a static site with no backend and no database. There is no sign-in, no cloud sync
+and no analytics. Progress stays in the learner's browser; the profile's export and import are
+how it moves between devices.
 
 ## 6. Installable app (PWA)
 
@@ -174,7 +167,7 @@ The whole app is static, so offline is mostly a matter of caching it.
 | **Offline** | Everything already built works offline: simulations compute locally, progress writes to IndexedDB, XP and streak accrue |
 | **Updates** | The worker reports a new version; a toast offers "Refresh to update" rather than reloading under the learner |
 | **Install** | A quiet "Add to home screen" card after the second session, using `beforeinstallprompt`; iOS gets a short instruction sheet instead, plus `apple-touch-icon` and status-bar meta |
-| **Later** | Web Push reminders (needs the backend, Phase 5), Badging API for the review count, Capacitor wrappers for the stores (Phase 8) |
+| **Later** | Badging API for the review count, Capacitor wrappers for the stores (Phase 8) |
 
 Budgets: first load under 200KB of JavaScript over the wire, interactive in under 2s on a mid-range
 phone over 4G, 60fps during simulation.
@@ -249,7 +242,7 @@ Each slice ends runnable, tested, verified in a browser and committed.
 | **2.2** ✅ | `progress-store` (events, reducer, IndexedDB), profile and preferences, streak and XP, saved level results, **Today** screen | Shipped as `d834cc2` |
 | **2.3** ✅ | Design system, Outfit, world colours, sound and haptics, appearance preferences, the visual pass | Shipped as slice 2.3 |
 | **2.4a** ✅ | Subjects in the catalogue: maths (7 branches) and chemistry (3 branches) join physics | Syllabus, Home and coverage count all three |
-| **2.4b** ✅ | Front door: landing with the 3D science world, demo sign-in, public/app route split | A visitor lands, flies through, signs in and is returned where they were going |
+| **2.4b** ✅ | Front door: landing with the 3D science world, public/app route split (the demo sign-in was later removed) | A visitor lands, flies through, signs in and is returned where they were going |
 | **2.4c** ✅ | Home hub, subject pages, Practice and Revise, glass shell | Content is reachable by subject, and by practise and revise |
 | **2.4d** ✅ | Learning map and unlock rules (fixes the locked-worlds bug) | Every world's first level is open; trails show the way |
 | **2.5** | PWA (manifest, service worker, install, update toast), Playwright end-to-end tests, ESLint, performance budget | Installs on a phone, plays offline, CI-checkable |
@@ -265,6 +258,6 @@ Stated rather than asked; say the word and any of them changes.
 1. Audience 13–18, phone-first, English first with translation later.
 2. No account, no server and no analytics: Lumen is a static site, and progress stays in the
    learner's browser.
-3. Supabase over a self-run backend when the time comes.
+3. No backend: Lumen stays a static site.
 4. Dark-first visual identity with a light theme of equal quality.
 5. One web font, no UI framework, no state library: the dependency list stays short.
