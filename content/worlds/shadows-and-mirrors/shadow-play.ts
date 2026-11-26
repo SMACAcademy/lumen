@@ -1,0 +1,87 @@
+import { defineLevel } from "@ise/game-engine";
+
+const through = (value: number) => ({ type: "compare", quantity: "darkness", op: "eq", value, tolerance: 0.01 }) as const;
+
+/** Shadows and Mirrors, level 1: light goes in straight lines, and shadows follow from it. */
+export const shadowPlay = defineLevel({
+  schemaVersion: 1,
+  id: "shadow-play",
+  concept: "light-and-shadows",
+  title: "Shadow play",
+  summary: "A lamp, a card and a screen. Make shadows grow and shrink, and find out what makes them dark.",
+  xp: 25,
+  steps: [
+    {
+      id: "grow-it",
+      kind: "explore",
+      prompt: "Move the card **closer to the lamp** and watch its shadow on the screen.",
+      mode: "bench",
+      given: { scene: "shadow", material: "opaque", objectHeight: 10, screenDistance: 80, objectDistance: 60 },
+      controls: ["objectDistance"],
+      goal: { type: "compare", quantity: "imageHeight", op: "gte", value: 40 },
+      success: "The shadow grew. Near the lamp, the card blocks a much wider fan of rays.",
+      hints: ["Slide the distance down towards the lamp."],
+    },
+    {
+      id: "further-away",
+      kind: "predict",
+      prompt: "The card moves from **20 cm** to **50 cm** from the lamp. What happens to its shadow?",
+      variable: "objectDistance",
+      from: 20,
+      to: 50,
+      quantity: "imageHeight",
+      options: ["increase", "decrease", "same"],
+      given: { scene: "shadow", material: "opaque", objectHeight: 10, screenDistance: 80 },
+      explanation: "It shrinks, from 40 cm to 16 cm. Further from the lamp, the card blocks a narrower fan of rays.",
+    },
+    {
+      id: "how-much-light",
+      kind: "sort",
+      prompt: "**Sort** these by how much light they let through.",
+      mode: "no-rays",
+      given: { scene: "shadow", objectDistance: 30 },
+      canvas: false,
+      bins: [
+        { id: "opaque", label: "None (opaque)", when: through(1) },
+        { id: "translucent", label: "Some (translucent)", when: through(0.4) },
+        { id: "transparent", label: "All (transparent)", when: through(0) },
+      ],
+      cards: [
+        { id: "cardboard", label: "Cardboard", given: { material: "opaque" } },
+        { id: "wood", label: "Wooden board", icon: "wood", given: { material: "opaque" } },
+        { id: "tracing", label: "Tracing paper", given: { material: "translucent" } },
+        { id: "frosted", label: "Frosted glass", given: { material: "translucent" } },
+        { id: "glass", label: "Clear glass", icon: "glass", given: { material: "transparent" } },
+        { id: "water", label: "Clean water", icon: "water", given: { material: "transparent" } },
+      ],
+      explanation: "Opaque things make dark shadows, translucent things make faint ones, and transparent things hardly make one at all.",
+      hints: ["Could you read a book through it?"],
+    },
+    {
+      id: "biggest-last",
+      kind: "order",
+      prompt: "Put these in order of **shadow size**, smallest first.",
+      mode: "bench",
+      given: { scene: "shadow", material: "opaque", objectHeight: 10, screenDistance: 80 },
+      canvas: false,
+      ends: ["smallest shadow", "biggest shadow"],
+      by: "imageHeight",
+      cards: [
+        { id: "far", label: "Card near the screen", given: { objectDistance: 70 } },
+        { id: "middle", label: "Card in the middle", given: { objectDistance: 45 } },
+        { id: "near", label: "Card near the lamp", given: { objectDistance: 25 } },
+        { id: "touching", label: "Card right by the lamp", given: { objectDistance: 12 } },
+      ],
+      explanation: "The nearer the card is to the lamp, the bigger its shadow — close to the screen, the shadow is only a little bigger than the card.",
+      hints: ["Near the lamp means a bigger shadow."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "What makes a shadow.",
+      mode: "bench",
+      equation: "straight-lines",
+      law: "Light travels in straight lines. An object blocks some of them, and the screen behind it stays dark in the object's shape — its shadow.",
+    },
+  ],
+});

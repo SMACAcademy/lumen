@@ -1,0 +1,76 @@
+import { defineLevel } from "@ise/game-engine";
+import { degToRad as deg } from "@ise/units";
+
+/** World 2, level 4: the vertical motion decides the time, whatever the horizontal is doing. */
+export const firedFromACliff = defineLevel({
+  schemaVersion: 1,
+  id: "fired-from-a-cliff",
+  concept: "projectile-motion",
+  title: "Fired from a cliff",
+  summary: "Fire it flat and fast, or just drop it. Which one lands first?",
+  xp: 30,
+  steps: [
+    {
+      id: "flat-launch",
+      kind: "explore",
+      prompt: "This launcher sits **20 m up** and fires **horizontally**. Launch it and watch the fall.",
+      mode: "split",
+      given: { u: 12, angle: 0, h0: 20, g: 9.8, t: 0 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "progress", op: "gte", value: 0.999 },
+      success: "It leaves with no upward velocity at all, so it starts falling immediately — while still travelling across at a steady 12 m/s.",
+      hints: ["Press Launch."],
+    },
+    {
+      id: "faster-same-fall",
+      kind: "predict",
+      prompt: "The launch speed is doubled, from **8 to 16 m/s**, still fired flat from the same cliff. What happens to the **time of flight**?",
+      variable: "u",
+      from: 8,
+      to: 16,
+      quantity: "timeOfFlight",
+      options: ["increase", "decrease", "same"],
+      given: { angle: 0, h0: 20, g: 9.8 },
+      explanation: "Firing faster changes nothing about the fall: with no vertical velocity to start with, the drop takes √(2h/g) whatever the horizontal speed is. This is the classic 'fired and dropped land together' result.",
+    },
+    {
+      id: "faster-goes-further",
+      kind: "predict",
+      prompt: "Over that same change, what happens to the **range**?",
+      variable: "u",
+      from: 8,
+      to: 16,
+      quantity: "range",
+      options: ["increase", "decrease", "same"],
+      given: { angle: 0, h0: 20, g: 9.8 },
+      explanation: "Same time in the air, twice the horizontal speed — so exactly twice as far. Horizontal speed changes where it lands, never when.",
+    },
+    {
+      id: "two-second-fall",
+      kind: "target",
+      prompt: "Set the cliff height so that a **flat** launch stays in the air for **2.0 seconds**. Gravity is 10 m/s².",
+      mode: "bare",
+      given: { angle: 0, u: 12, g: 10, h0: 5 },
+      controls: ["h0"],
+      goal: {
+        type: "all",
+        conditions: [
+          { type: "compare", quantity: "timeOfFlight", op: "eq", value: 2, tolerance: 0.05 },
+          { type: "compare", quantity: "angle", op: "eq", value: 0, tolerance: 0.02 },
+        ],
+      },
+      success: "20 m: because h = ½gt² = ½ × 10 × 4. The fall time depends on the height and gravity, and nothing else.",
+      retry: "Not 2 seconds yet. The fall time comes from the height alone.",
+      hints: ["With no vertical velocity at launch, h = ½gt².", "For t = 2 s and g = 10, that is ½ × 10 × 4 = 20 m."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The vertical motion keeps its own clock. Whatever happens sideways, the fall takes the time it takes.",
+      mode: "split",
+      equation: "height",
+      law: "Height follows y = h₀ + u sin θ · t − ½gt², and the horizontal motion has no say in it.",
+    },
+  ],
+});

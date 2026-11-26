@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+.env*
+!.env.example
+.DS_Store
+next-env.d.ts
+
+# Written by `next dev`; not part of the project
+apps/web/AGENTS.md
+apps/web/CLAUDE.md
+.claude/

@@ -1,0 +1,122 @@
+import { defineLevel } from "@ise/game-engine";
+
+const wire = (id: string, label: string, currentDirection: string, poles: string) => ({
+  id,
+  label,
+  given: { currentDirection, poles, motorCurrent: 2 },
+});
+const motor = (id: string, label: string, motorRings: string, motorCurrent: number, poles = "nLeft") => ({
+  id,
+  label,
+  given: { motorRings, motorCurrent, poles },
+});
+
+/** Currents at Work, level 3: the motor, electromagnetic induction and the generator. */
+export const motorsAndGenerators = defineLevel({
+  schemaVersion: 1,
+  id: "motors-and-generators",
+  concept: "currents-at-work",
+  title: "Motors and generators",
+  summary: "A current in a magnetic field is pushed: that turns a motor. A magnet moving in a coil makes a current: that is a generator.",
+  xp: 30,
+  steps: [
+    {
+      id: "spin-up",
+      kind: "explore",
+      prompt: "A coil sits between two poles. Give it a **current**, then press Play.",
+      mode: "motor",
+      given: { motorCurrent: 0, motorRings: "split", poles: "nLeft", currentDirection: "forward" },
+      controls: ["motorCurrent"],
+      playback: true,
+      goal: { type: "compare", quantity: "keepsTurning", op: "eq", value: 1 },
+      success: "One side is pushed up and the other down, so the coil turns. The split ring reverses the current every half turn, so it keeps turning the same way.",
+      hints: ["Slide the current above zero."],
+    },
+    {
+      id: "fleming",
+      kind: "sort",
+      prompt: "The field runs from **N to S**. **Sort** these: which way is the wire pushed?",
+      mode: "motor",
+      canvas: false,
+      bins: [
+        { id: "up", label: "Pushed up", when: { type: "compare", quantity: "rodForce", op: "eq", value: 1 } },
+        { id: "down", label: "Pushed down", when: { type: "compare", quantity: "rodForce", op: "eq", value: -1 } },
+      ],
+      cards: [
+        wire("towards-left", "Current towards you, N on the left", "forward", "nLeft"),
+        wire("away-left", "Current away from you, N on the left", "reverse", "nLeft"),
+        wire("towards-right", "Current towards you, N on the right", "forward", "nRight"),
+        wire("away-right", "Current away from you, N on the right", "reverse", "nRight"),
+      ],
+      explanation:
+        "Fleming's left-hand rule: first finger along the field, second finger along the current, and the thumb gives the push. Reverse the current or the field and the push reverses.",
+      hints: ["Field to the right, current towards you: the push is up."],
+    },
+    {
+      id: "keeps-turning",
+      kind: "tap",
+      prompt: "**Catch** every motor that keeps turning round and round.",
+      mode: "motor",
+      canvas: false,
+      rule: "keeps turning",
+      when: { type: "compare", quantity: "keepsTurning", op: "eq", value: 1 },
+      cards: [
+        motor("split-two", "Split ring, 2 A", "split", 2),
+        motor("slip-two", "Slip rings, 2 A", "slip", 2),
+        motor("split-none", "Split ring, no current", "split", 0),
+        motor("split-five-flipped", "Split ring, 5 A, N on the right", "split", 5, "nRight"),
+        motor("slip-five", "Slip rings, 5 A", "slip", 5),
+      ],
+      explanation:
+        "With a split ring the current in the coil reverses every half turn, so the push always turns it the same way. With slip rings on a steady current the coil swings upright and stops.",
+      hints: ["What reverses the current every half turn?"],
+    },
+    {
+      id: "push-magnet",
+      kind: "explore",
+      prompt: "A magnet and a **50-turn** coil joined to a galvanometer. Move the magnet until the needle kicks **5 divisions**.",
+      mode: "induction",
+      given: { coilTurns: 50, magnetVelocity: 0, magnetPole: "N" },
+      controls: ["magnetVelocity"],
+      canvas: false,
+      goal: { type: "compare", quantity: "kickSize", op: "gte", value: 5 },
+      success: "2 m/s gives a kick of 5 divisions. A still magnet makes no current; a faster one makes more. Pull it out and the needle kicks the other way.",
+      hints: ["Move it faster, in or out."],
+    },
+    {
+      id: "more-turns",
+      kind: "predict",
+      prompt: "The magnet moves in at **1 m/s**. The coil goes from **20 to 80 turns**. What happens to the **kick**?",
+      mode: "induction",
+      variable: "coilTurns",
+      from: 20,
+      to: 80,
+      quantity: "kick",
+      options: ["increase", "decrease", "same"],
+      given: { magnetVelocity: 1, magnetPole: "N" },
+      explanation: "It grows four times, from 1 division to 4. More turns, more current: that is why generators have coils of many turns.",
+    },
+    {
+      id: "india-mains",
+      kind: "estimate",
+      prompt: "A generator with slip rings turns **50 times a second**, like the ones that make India's mains. How many times **each second** does its current change direction?",
+      mode: "generator",
+      given: { genSpeed: 50, genRings: "slip" },
+      canvas: false,
+      hideLabels: true,
+      quantity: "reversals",
+      range: { min: 0, max: 200, step: 5 },
+      tolerance: 2,
+      explanation: "It reverses twice each turn: 2 × 50 = 100 times a second, once every 1/100 s. That is 50 Hz AC.",
+      hints: ["Watch the graph: how many times does it cross the line in one turn?"],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Alternating current.",
+      mode: "generator",
+      equation: "ac-reversals",
+      law: "With slip rings a generator makes AC: the current reverses twice every turn. India's 50 Hz mains reverses 100 times a second.",
+    },
+  ],
+});

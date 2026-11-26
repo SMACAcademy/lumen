@@ -1,0 +1,72 @@
+import { defineLevel } from "@ise/game-engine";
+
+const cart = (m1: number, u1: number) => ({ id: `c${m1}-${String(u1).replace(".", "p")}`, label: `${m1} kg at ${u1} m/s`, given: { m1, u1 } });
+
+/** Force and Momentum, level 2: momentum, and action and reaction in a collision. */
+export const bumpsAndBounces = defineLevel({
+  schemaVersion: 1,
+  id: "bumps-and-bounces",
+  concept: "momentum-collisions",
+  title: "Bumps and bounces",
+  summary: "A heavy, fast cart is hard to stop. Momentum measures it — and a collision never loses any.",
+  xp: 30,
+  steps: [
+    {
+      id: "crash",
+      kind: "explore",
+      prompt: "A **4 kg** cart at **3 m/s** runs into a **1 kg** cart at rest. Press play.",
+      mode: "collide",
+      given: { m1: 4, m2: 1, u1: 3, u2: 0, restitution: 1, t: 0 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "t", op: "gte", value: 3 },
+      success: "The small cart shoots off fast and the big one slows down. Each pushed the other equally hard, in opposite directions — action and reaction.",
+      hints: ["Press play."],
+    },
+    {
+      id: "momentum-order",
+      kind: "order",
+      prompt: "Momentum = mass × velocity. Put these carts in order of **momentum**, smallest first.",
+      mode: "collide",
+      given: { m2: 1, u2: 0, restitution: 1, t: 0 },
+      canvas: false,
+      ends: ["least momentum", "most momentum"],
+      by: "momentum",
+      cards: [cart(1, 2), cart(2, 2), cart(2, 3), cart(4, 3)],
+      explanation: "2, 4, 6 and 12 kg m/s: momentum grows with both mass and speed.",
+      hints: ["Multiply the mass by the speed."],
+    },
+    {
+      id: "faster",
+      kind: "predict",
+      prompt: "A 2 kg cart speeds up from **2 m/s** to **4 m/s**. What happens to its momentum?",
+      variable: "u1",
+      from: 2,
+      to: 4,
+      quantity: "momentum",
+      options: ["increase", "decrease", "same"],
+      given: { m1: 2, m2: 1, u2: 0 },
+      explanation: "It doubles, from 4 to 8 kg m/s.",
+    },
+    {
+      id: "catch-six",
+      kind: "tap",
+      prompt: "**Catch** every cart with a momentum of exactly **6 kg m/s**.",
+      given: { m2: 1, u2: 0, restitution: 1, t: 0 },
+      canvas: false,
+      rule: "momentum = 6 kg m/s",
+      when: { type: "compare", quantity: "momentum", op: "eq", value: 6, tolerance: 0.01 },
+      cards: [cart(2, 3), cart(2, 2), cart(3, 2), cart(3, 3), cart(1, 6), cart(4, 2), cart(4, 1.5), cart(6, 1)],
+      explanation: "2 × 3, 3 × 2, 1 × 6, 4 × 1.5 and 6 × 1 all make 6. A light fast cart can carry as much momentum as a heavy slow one.",
+      hints: ["Mass × speed = 6."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "What a collision keeps.",
+      mode: "collide",
+      equation: "conservation",
+      law: "In a collision the carts push each other equally and oppositely (the third law), so the total momentum before equals the total after.",
+    },
+  ],
+});

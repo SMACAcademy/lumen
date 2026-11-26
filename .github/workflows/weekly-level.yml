@@ -1,0 +1,71 @@
+# Every Monday, posts a "level of the week" to Discussions (Q&A): one level
+# from the site, in turn, for everyone to play and talk about.
+name: Level of the week
+
+on:
+  schedule:
+    - cron: "30 3 * * 1" # Mondays 03:30 UTC (09:00 in India)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  discussions: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          sparse-checkout: community/weekly-levels.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const levels = JSON.parse(fs.readFileSync("community/weekly-levels.json", "utf8"));
+            const ids = Object.keys(levels);
+            const EPOCH = Date.UTC(2026, 10, 30); // Monday 30 November 2026
+            const WEEK = 7 * 24 * 60 * 60 * 1000;
+            const week = Math.max(0, Math.floor((Date.now() - EPOCH) / WEEK));
+            // A fixed stride walks the list in a spread-out order, so the weeks move between subjects.
+            const id = ids[(week * 37) % ids.length];
+            const level = levels[id];
+            const number = week + 1;
+            const title = `Level of the week #${number}: ${level.title}`;
+
+            const { owner, repo } = context.repo;
+            const site = `https://${owner.toLowerCase()}.github.io/${repo}`;
+            const { repository } = await github.graphql(
+              `query($owner: String!, $repo: String!) {
+                repository(owner: $owner, name: $repo) {
+                  id
+                  discussionCategories(first: 25) { nodes { id slug } }
+                  discussions(first: 20, orderBy: { field: CREATED_AT, direction: DESC }) { nodes { title } }
+                }
+              }`,
+              { owner, repo },
+            );
+            if (repository.discussions.nodes.some((d) => d.title.startsWith(`Level of the week #${number}:`))) {
+              core.info(`Level #${number} is already posted.`);
+              return;
+            }
+            const category = repository.discussionCategories.nodes.find((c) => c.slug === "q-a");
+            if (!category) throw new Error("No Q&A discussion category: turn on Discussions in the repository settings.");
+
+            const body = [
+              `**This week's level:** [${level.title}](${site}/play/${id}/) from *${level.lab}*, in the world *${level.world}*.`,
+              "",
+              `> ${level.summary}`,
+              "",
+              "Play it, then tell us below: what did you predict before you tried, and were you right? What surprised you?",
+              "",
+              "_No account needed: your progress stays in your own browser._",
+            ].join("\n");
+
+            await github.graphql(
+              `mutation($repo: ID!, $category: ID!, $title: String!, $body: String!) {
+                createDiscussion(input: { repositoryId: $repo, categoryId: $category, title: $title, body: $body }) { discussion { url } }
+              }`,
+              { repo: repository.id, category: category.id, title, body },
+            );

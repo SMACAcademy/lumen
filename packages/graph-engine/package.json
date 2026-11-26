@@ -1,0 +1,20 @@
+{
+  "name": "@ise/graph-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@ise/science-engine": "workspace:*",
+    "@ise/units": "workspace:*",
+    "d3-scale": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/d3-scale": "^4.0.9"
+  }
+}

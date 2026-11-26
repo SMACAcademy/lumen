@@ -1,0 +1,90 @@
+import { defineLevel } from "@ise/game-engine";
+
+const magnetic = { type: "compare", quantity: "magnetic", op: "eq", value: 1 } as const;
+const notMagnetic = { type: "compare", quantity: "magnetic", op: "eq", value: 0 } as const;
+
+/** Magnets, level 1: which materials a magnet attracts, and how close they must be. */
+export const whatSticks = defineLevel({
+  schemaVersion: 1,
+  id: "what-sticks",
+  concept: "fun-with-magnets",
+  title: "What sticks?",
+  summary: "A magnet picks up a nail but not a coin. Find out which things are magnetic.",
+  xp: 25,
+  steps: [
+    {
+      id: "sort-them",
+      kind: "sort",
+      prompt: "Guess first, then **sort**: which of these would a magnet pull?",
+      mode: "pair",
+      given: { partner: "object", gap: 10 },
+      canvas: false,
+      bins: [
+        { id: "magnetic", label: "Magnetic", when: magnetic },
+        { id: "not", label: "Not magnetic", when: notMagnetic },
+      ],
+      cards: [
+        { id: "nail", label: "Iron nail", icon: "nail", given: { material: "iron" } },
+        { id: "clip", label: "Steel paper clip", icon: "paper-clip", given: { material: "steel" } },
+        { id: "coin", label: "Copper coin", icon: "coin", given: { material: "copper" } },
+        { id: "eraser", label: "Eraser", icon: "eraser", given: { material: "rubber" } },
+        { id: "block", label: "Wooden block", icon: "wood", given: { material: "wood" } },
+        { id: "marble", label: "Glass marble", icon: "glass", given: { material: "glass" } },
+      ],
+      explanation: "The nail and the paper clip are iron and steel, so they are magnetic. Copper, rubber, wood and glass are not — not even the metal coin.",
+      hints: ["Not every metal is magnetic."],
+    },
+    {
+      id: "make-it-jump",
+      kind: "explore",
+      prompt: "Bring the **paper clip** closer to the magnet, bit by bit, until it **jumps** across.",
+      mode: "pair",
+      given: { partner: "object", material: "steel", gap: 15 },
+      controls: ["gap"],
+      goal: { type: "compare", quantity: "pulled", op: "eq", value: 1 },
+      success: "Snap! Close up, the magnet's pull is strong enough to drag the clip across.",
+      hints: ["Make the gap smaller."],
+    },
+    {
+      id: "catch-magnetic",
+      kind: "tap",
+      prompt: "**Catch** everything a magnet would pick up.",
+      given: { partner: "object", gap: 2 },
+      canvas: false,
+      rule: "picked up by a magnet",
+      when: magnetic,
+      cards: [
+        { id: "key", label: "Steel key", icon: "key", given: { material: "steel" } },
+        { id: "foil", label: "Aluminium foil", given: { material: "aluminium" } },
+        { id: "nickel", label: "Nickel wire", given: { material: "nickel" } },
+        { id: "ruler", label: "Plastic ruler", given: { material: "plastic" } },
+        { id: "nail", label: "Iron nail", icon: "nail", given: { material: "iron" } },
+        { id: "coin", label: "Copper coin", icon: "coin", given: { material: "copper" } },
+        { id: "cobalt", label: "Cobalt bead", given: { material: "cobalt" } },
+        { id: "pencil", label: "Wooden pencil", icon: "wood", given: { material: "wood" } },
+      ],
+      explanation: "Steel, nickel, iron and cobalt are magnetic. Aluminium and copper are metals too, but a magnet does not pull them.",
+      hints: ["Iron, steel, nickel and cobalt."],
+    },
+    {
+      id: "further-away",
+      kind: "predict",
+      prompt: "Two magnets pull on each other from **3 cm** away. They move to **10 cm** apart. What happens to the pull?",
+      variable: "gap",
+      from: 3,
+      to: 10,
+      quantity: "strength",
+      options: ["increase", "decrease", "same"],
+      given: { partner: "magnet", facing: "N-S" },
+      explanation: "It gets much weaker — about a tenth as strong. A magnet's pull fades quickly as you move away.",
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "What a magnet pulls on.",
+      mode: "pair",
+      equation: "magnetic-rule",
+      law: "Magnets pull on iron, steel, nickel and cobalt — and only when they are close enough. Most other things, even some metals, are not magnetic.",
+    },
+  ],
+});

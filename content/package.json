@@ -1,0 +1,23 @@
+{
+  "name": "@ise/content",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@ise/concept-schema": "workspace:*",
+    "@ise/game-engine": "workspace:*",
+    "@ise/units": "workspace:*"
+  },
+  "devDependencies": {
+    "@ise/chemistry-engine": "workspace:*",
+    "@ise/mathematics-engine": "workspace:*",
+    "@ise/physics-engine": "workspace:*",
+    "@ise/science-engine": "workspace:*"
+  }
+}

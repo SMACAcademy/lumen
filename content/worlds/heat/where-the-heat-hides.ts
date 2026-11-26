@@ -1,0 +1,92 @@
+import { defineLevel } from "@ise/game-engine";
+
+/** World 8, level 2: latent heat, and why the boiling plateau dwarfs everything else. */
+export const whereTheHeatHides = defineLevel({
+  schemaVersion: 1,
+  id: "where-the-heat-hides",
+  concept: "thermal-properties",
+  title: "Where the heat hides",
+  summary: "Three quarters of the journey from ice to steam is spent standing still at 100 °C.",
+  xp: 35,
+  steps: [
+    {
+      id: "reach-the-boil",
+      kind: "explore",
+      prompt: "Run the heater until the water **boils**. Watch how long the thermometer sits at 100 °C compared with everything before it.",
+      mode: "heating",
+      given: { substance: "water", mass: 0.1, power: 30000, heat: 0 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "phase", op: "eq", value: 3 },
+      success: "Everything up to here took 80 kJ. This plateau alone will take 226 kJ — nearly three times as much again.",
+      hints: ["Press play and wait for the second flat stretch."],
+    },
+    {
+      id: "halfway-through-boiling",
+      kind: "target",
+      prompt: "Stop exactly **halfway through boiling**: half the water gone as steam, half still in the vessel.",
+      mode: "heating",
+      given: { substance: "water", mass: 0.1, power: 30000 },
+      controls: ["heat"],
+      canvas: false,
+      goal: {
+        type: "all",
+        conditions: [
+          { type: "compare", quantity: "phase", op: "eq", value: 3 },
+          { type: "compare", quantity: "boiledFraction", op: "eq", value: 0.5, tolerance: 0.03 },
+        ],
+      },
+      success: "About 193 kJ: 80 to arrive at the boil, and 113 more to turn half of it into steam at the very same temperature.",
+      retry: "Not halfway yet. The fraction boiled is the one to watch — the temperature will not change at all.",
+      hints: ["Find the heat that first reaches 100 °C.", "Then add half of mL_v, with L_v = 2260 kJ/kg."],
+    },
+    {
+      id: "latent-heat-is-per-kilogram",
+      kind: "predict",
+      prompt: "**Twice as much water** is boiled away. What happens to the **latent heat of vaporisation**?",
+      variable: "mass",
+      from: 0.1,
+      to: 0.2,
+      quantity: "latentVaporisation",
+      options: ["increase", "decrease", "same"],
+      given: { substance: "water", power: 30000 },
+      explanation:
+        "Unchanged — it is a property of water, quoted per kilogram. What doubles is mL_v, the energy the job actually takes.",
+    },
+    {
+      id: "the-job-doubles",
+      kind: "predict",
+      prompt: "That same doubling again: 0.1 kg becomes 0.2 kg. What happens to the **energy needed to boil it all away**?",
+      variable: "mass",
+      from: 0.1,
+      to: 0.2,
+      quantity: "boilingEnergyKJ",
+      options: ["increase", "decrease", "same"],
+      given: { substance: "water", power: 30000 },
+      explanation: "Q = mL_v. The latent heat stays put; the mass doubles, so the energy doubles with it.",
+    },
+    {
+      id: "guess-the-plateau",
+      kind: "estimate",
+      prompt:
+        "**0.1 kg of water** already sits at 100 °C. Its latent heat of vaporisation is **2260 kJ/kg**. How much more energy, in kilojoules, to boil it all away?",
+      mode: "vessel-only",
+      given: { substance: "water", mass: 0.1, power: 30000 },
+      canvas: false,
+      quantity: "boilingEnergy",
+      range: { min: 0, max: 500, step: 5 },
+      tolerance: 15,
+      explanation:
+        "Q = mL_v = 0.1 × 2260 = 226 kJ. Heating that same water all the way from ice to boiling took only 80 kJ, so the plateau is by far the larger bill.",
+      hints: ["Q = mL.", "Mind that the latent heat is quoted per kilogram."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "On the flat parts, the energy is not making anything hotter. It is pulling the particles apart.",
+      mode: "heating",
+      equation: "latent-heat",
+      law: "Q = mL. It is why steam at 100 °C scalds far worse than water at 100 °C: condensing gives all of it back.",
+    },
+  ],
+});

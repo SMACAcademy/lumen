@@ -1,0 +1,76 @@
+import { defineLevel } from "@ise/game-engine";
+import { degToRad as deg } from "@ise/units";
+
+/** World 4, level 2: tilting a surface shares the weight between two directions. */
+export const theTiltedTable = defineLevel({
+  schemaVersion: 1,
+  id: "the-tilted-table",
+  concept: "laws-of-motion",
+  title: "The tilted table",
+  summary: "Tilt the surface and the weight splits in two. One part presses, the other pulls.",
+  xp: 30,
+  steps: [
+    {
+      id: "tilt-it",
+      kind: "explore",
+      prompt: "**Tilt the surface.** The weight arrow never changes — but watch the two dashed parts it splits into.",
+      mode: "slope",
+      given: { applied: 0, incline: 0, mass: 2, muStatic: 0.6, muKinetic: 0.5 },
+      controls: ["incline"],
+      canvas: false,
+      goal: { type: "compare", quantity: "incline", op: "gt", value: 0.25 },
+      success: "One part presses into the surface and is cancelled by the normal force. The other pulls along the slope, and has to be held by friction.",
+      hints: ["Use the slope slider."],
+    },
+    {
+      id: "normal-falls",
+      kind: "predict",
+      prompt: "The slope is raised from **0° to 30°**, with the same block. What happens to the **normal force**?",
+      variable: "incline",
+      from: 0,
+      to: deg(30),
+      quantity: "normal",
+      options: ["increase", "decrease", "same"],
+      given: { mass: 2, applied: 0 },
+      explanation: "N = mg cos θ. Tilting shares the weight out: less of it presses into the surface.",
+    },
+    {
+      id: "grip-falls-too",
+      kind: "predict",
+      prompt: "Over that same tilt, what happens to the **limiting friction** the surface can offer?",
+      variable: "incline",
+      from: 0,
+      to: deg(30),
+      quantity: "maxStatic",
+      options: ["increase", "decrease", "same"],
+      given: { mass: 2, applied: 0, muStatic: 0.6 },
+      explanation: "Grip is μs × N, and N has fallen — so the surface holds less firmly just as the pull along it grows. That is why slopes win in the end.",
+    },
+    {
+      id: "let-it-slip",
+      kind: "target",
+      prompt: "With **no push at all**, tilt until the block finally slides on its own.",
+      mode: "slope",
+      given: { applied: 0, mass: 2, muStatic: 0.6, muKinetic: 0.5, incline: 0 },
+      controls: ["incline"],
+      goal: {
+        type: "all",
+        conditions: [
+          { type: "compare", quantity: "applied", op: "eq", value: 0, tolerance: 0.01 },
+          { type: "compare", quantity: "a", op: "lt", value: -0.05 },
+        ],
+      },
+      success: "It slips when tan θ passes μs — about 31° for μs = 0.6. Nothing about the mass comes into it.",
+      retry: "Not yet. The pull along the slope is still smaller than the grip.",
+      hints: ["The block slips when mg sin θ beats μs mg cos θ.", "Cancel the mg: it slips when tan θ > μs, which is about 31° here."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The mass cancels out of both sides, which is why every block of every weight slips at the same angle.",
+      mode: "slope",
+      equation: "normal-on-slope",
+      law: "On a slope the surface carries only mg cos θ, and the block slips once tan θ passes μs.",
+    },
+  ],
+});

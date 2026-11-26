@@ -1,0 +1,91 @@
+import { defineLevel } from "@ise/game-engine";
+
+const floats = { type: "compare", quantity: "floats", op: "eq", value: 1 } as const;
+const sinks = { type: "compare", quantity: "floats", op: "eq", value: 0 } as const;
+
+/** Float or Sink, level 1: density, not weight or size, decides whether something floats. */
+export const heavyIsNotTheQuestion = defineLevel({
+  schemaVersion: 1,
+  id: "heavy-is-not-the-question",
+  concept: "properties-of-fluids",
+  title: "Heavy is not the question",
+  summary: "A ship floats and a pin sinks. It is not about how heavy something is — it is about how much stuff is packed into it.",
+  xp: 25,
+  steps: [
+    {
+      id: "float-or-sink",
+      kind: "sort",
+      prompt: "Guess first, then **sort**: which of these float in water, and which sink?",
+      mode: "floating",
+      given: { fluid: "water", blockVolume: 20 },
+      canvas: false,
+      bins: [
+        { id: "floats", label: "Floats", when: floats },
+        { id: "sinks", label: "Sinks", when: sinks },
+      ],
+      cards: [
+        { id: "cork", label: "Cork", icon: "cork", given: { blockDensity: 240 } },
+        { id: "oak", label: "Oak wood", icon: "wood", given: { blockDensity: 700 } },
+        { id: "ice", label: "Ice", icon: "ice", given: { blockDensity: 917 } },
+        { id: "eraser", label: "Eraser", icon: "eraser", given: { blockDensity: 1200 } },
+        { id: "glass", label: "Glass marble", icon: "glass", given: { blockDensity: 2500 } },
+        { id: "stone", label: "Stone", icon: "rock", given: { blockDensity: 2600 } },
+      ],
+      explanation: "Cork, oak and ice pack less stuff into each cubic centimetre than water does, so they float. Eraser, glass and stone pack in more, so they sink.",
+      hints: ["Is it lighter than the same amount of water?"],
+    },
+    {
+      id: "bigger",
+      kind: "explore",
+      prompt: "This block **sinks**. Make it **much bigger**. Does it float now?",
+      mode: "floating",
+      given: { fluid: "water", blockDensity: 1500, blockVolume: 5 },
+      controls: ["blockVolume"],
+      canvas: false,
+      goal: { type: "compare", quantity: "blockVolume", op: "gte", value: 40 },
+      success: "Still sinks. A bigger block of the same stuff is heavier, but it also pushes aside more water — size makes no difference.",
+      hints: ["Slide its size up."],
+    },
+    {
+      id: "make-it-float",
+      kind: "target",
+      prompt: "Now make that block **float** — by changing what it is made of, not how big it is.",
+      mode: "floating",
+      given: { fluid: "water", blockDensity: 1500, blockVolume: 20 },
+      controls: ["blockDensity"],
+      canvas: false,
+      goal: floats,
+      success: "Lighter stuff: once each litre of the block is lighter than a litre of water, it floats. That comparison is called density.",
+      retry: "Still sinking. Make it out of lighter stuff.",
+      hints: ["Water is 1000 kg in every cubic metre.", "Go below 1000."],
+    },
+    {
+      id: "in-oil",
+      kind: "tap",
+      prompt: "Oil is **lighter** than water. **Catch** everything that still floats in **oil**.",
+      mode: "floating",
+      given: { fluid: "oil", blockVolume: 20 },
+      canvas: false,
+      rule: "floats in oil",
+      when: floats,
+      cards: [
+        { id: "cork", label: "Cork", icon: "cork", given: { blockDensity: 240 } },
+        { id: "oak", label: "Oak wood", icon: "wood", given: { blockDensity: 700 } },
+        { id: "ice", label: "Ice", icon: "ice", given: { blockDensity: 917 } },
+        { id: "wax", label: "Candle wax", given: { blockDensity: 900 } },
+        { id: "glass", label: "Glass", icon: "glass", given: { blockDensity: 2500 } },
+        { id: "balsa", label: "Balsa wood", icon: "wood", given: { blockDensity: 150 } },
+      ],
+      explanation: "Oil is 800 kg/m³. Cork, balsa and oak are lighter, so they float — but ice and wax are heavier than oil, so they sink in it even though they float in water.",
+      hints: ["Oil packs in less stuff than water: 800 instead of 1000."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The one comparison that decides floating.",
+      mode: "floating",
+      equation: "floating-condition",
+      law: "Something floats when it is less dense than the liquid — when each litre of it is lighter than a litre of the liquid. Its weight and size do not decide it.",
+    },
+  ],
+});

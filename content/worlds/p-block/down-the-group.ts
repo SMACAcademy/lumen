@@ -1,0 +1,92 @@
+import { defineLevel } from "@ise/game-engine";
+
+const at = (id: string, label: string, group: number, period: number) => ({ id, label, given: { group, period } });
+const card = (id: string, label: string) => ({ id, label });
+
+/** The p-block, level 1: metallic character, electronegativity, oxides and the inert pair. */
+export const downTheGroup = defineLevel({
+  schemaVersion: 1,
+  id: "down-the-group",
+  concept: "p-block",
+  title: "Down the group",
+  summary: "From carbon to lead, nitrogen to bismuth: non-metals become metals, and the heaviest keep an inert pair.",
+  xp: 35,
+  steps: [
+    {
+      id: "carbon-to-lead",
+      kind: "explore",
+      prompt: "Group 14. Press play to walk **down** from carbon to lead, and watch the colours.",
+      mode: "table",
+      given: { group: 14, period: 2, property: "character" },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "period", op: "eq", value: 6 },
+      success: "Carbon and silicon are non-metals, germanium a metalloid, tin and lead metals: metallic character grows down a group.",
+      hints: ["Press play."],
+    },
+    {
+      id: "sort-them",
+      kind: "sort",
+      prompt: "**Sort** these elements as NCERT classes them.",
+      mode: "table",
+      given: { property: "character" },
+      canvas: false,
+      bins: [
+        { id: "metal", label: "Metal", when: { type: "compare", quantity: "character", op: "eq", value: 0 } },
+        { id: "metalloid", label: "Metalloid", when: { type: "compare", quantity: "character", op: "eq", value: 1 } },
+        { id: "nonmetal", label: "Non-metal", when: { type: "compare", quantity: "character", op: "eq", value: 2 } },
+      ],
+      cards: [at("boron", "Boron", 13, 2), at("aluminium", "Aluminium", 13, 3), at("germanium", "Germanium", 14, 4), at("arsenic", "Arsenic", 15, 4), at("bismuth", "Bismuth", 15, 6), at("sulphur", "Sulphur", 16, 3), at("tellurium", "Tellurium", 16, 5), at("lead", "Lead", 14, 6)],
+      explanation: "Metalloids sit on the diagonal between the two: germanium, arsenic, antimony, selenium and tellurium. Above it non-metals like boron and sulphur; below it metals like aluminium, lead and bismuth.",
+      hints: ["The metalloids form a staircase across the middle."],
+    },
+    {
+      id: "halogens",
+      kind: "predict",
+      prompt: "Down the halogens, from **fluorine** to **iodine**. What happens to **electronegativity**?",
+      mode: "table",
+      variable: "period",
+      from: 2,
+      to: 5,
+      quantity: "en",
+      options: ["increase", "decrease", "same"],
+      given: { group: 17, property: "electronegativity" },
+      explanation: "It falls from 4.0 to 2.7: bigger atoms, more shielding, a weaker grip on bonding electrons.",
+    },
+    {
+      id: "inert-pair",
+      kind: "tap",
+      prompt: "**Catch** the elements whose lower oxidation state (group − 2) is the more stable one.",
+      mode: "table",
+      given: { property: "inert" },
+      canvas: false,
+      rule: "prefers the lower state",
+      when: { type: "compare", quantity: "inertPair", op: "eq", value: 1 },
+      cards: [at("thallium", "Thallium", 13, 6), at("lead", "Lead", 14, 6), at("bismuth", "Bismuth", 15, 6), at("aluminium", "Aluminium", 13, 3), at("tin", "Tin", 14, 5), at("phosphorus", "Phosphorus", 15, 3), at("gallium", "Gallium", 13, 4), at("carbon", "Carbon", 14, 2)],
+      explanation: "Tl(+1), Pb(+2) and Bi(+3): at the foot of their groups the ns² pair holds back. Tin still prefers +4, so Sn²⁺ is a reducing agent.",
+      hints: ["The very bottom row."],
+    },
+    {
+      id: "oxides",
+      kind: "match",
+      prompt: "**Match** each oxide to its character.",
+      canvas: false,
+      pairs: [
+        { left: card("b2o3", "B₂O₃"), right: card("acidic", "acidic") },
+        { left: card("al2o3", "Al₂O₃"), right: card("amphoteric", "amphoteric") },
+        { left: card("bi2o3", "Bi₂O₃"), right: card("basic", "basic") },
+        { left: card("co", "CO"), right: card("neutral", "neutral") },
+      ],
+      explanation: "Down a group oxides turn from acidic to amphoteric to basic, following the change from non-metal to metal. CO and N₂O are neutral.",
+      hints: ["Non-metal oxides are acidic; metal oxides basic."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Why lead prefers +2.",
+      mode: "table",
+      equation: "inert-pair",
+      law: "Down groups 13 to 15 the ns² electrons hold back from bonding, so Tl⁺, Pb²⁺ and Bi³⁺ are more stable than the group states.",
+    },
+  ],
+});

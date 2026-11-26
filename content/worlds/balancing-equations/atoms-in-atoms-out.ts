@@ -1,0 +1,90 @@
+import { defineLevel } from "@ise/game-engine";
+
+const equation = (id: string, label: string, reaction: string, c: [number, number, number, number?]) => ({
+  id,
+  label,
+  given: { reaction, c1: c[0], c2: c[1], c3: c[2], c4: c[3] ?? 1 },
+});
+
+/** Balancing Equations, level 1: atoms are only rearranged, so they — and the mass — add up. */
+export const atomsInAtomsOut = defineLevel({
+  schemaVersion: 1,
+  id: "atoms-in-atoms-out",
+  concept: "chemical-equations",
+  title: "Atoms in, atoms out",
+  summary: "A reaction never makes or loses an atom. Count them, balance them, and weigh both sides.",
+  xp: 30,
+  steps: [
+    {
+      id: "watch",
+      kind: "explore",
+      prompt: "H₂ + O₂ → H₂O does not add up: count the **oxygen** atoms. Press play and watch the numbers in front change until **every row is ticked**.",
+      mode: "balance",
+      given: { reaction: "water", c1: 1, c2: 1, c3: 1 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "balanced", op: "eq", value: 1 },
+      success: "2 H₂ + O₂ → 2 H₂O: four hydrogen and two oxygen atoms on each side. Only the numbers in front changed — never the formulas.",
+      hints: ["Press play."],
+    },
+    {
+      id: "magnesium",
+      kind: "build",
+      prompt: "Magnesium burns: **Mg + O₂ → MgO**. Add molecules until it balances.",
+      mode: "balance",
+      given: { reaction: "magnesium-oxide", c1: 1, c2: 1, c3: 1 },
+      parts: [
+        { variable: "c1", label: "Mg" },
+        { variable: "c2", label: "O₂" },
+        { variable: "c3", label: "MgO" },
+      ],
+      goal: { type: "compare", quantity: "simplest", op: "eq", value: 1 },
+      success: "2 Mg + O₂ → 2 MgO. Two oxygen atoms need two MgO — and then two magnesium atoms to make them.",
+      retry: "Check the tally: which element is still out?",
+      hints: ["Oxygen comes in pairs, so make two MgO.", "Now count the magnesium."],
+    },
+    {
+      id: "balanced-or-not",
+      kind: "sort",
+      prompt: "**Sort** these equations: balanced or not?",
+      mode: "numbers",
+      canvas: false,
+      bins: [
+        { id: "yes", label: "Balanced", when: { type: "compare", quantity: "balanced", op: "eq", value: 1 } },
+        { id: "no", label: "Not balanced", when: { type: "compare", quantity: "balanced", op: "eq", value: 0 } },
+      ],
+      cards: [
+        equation("ammonia-ok", "N₂ + 3 H₂ → 2 NH₃", "ammonia", [1, 3, 2]),
+        equation("ammonia-no", "N₂ + H₂ → 2 NH₃", "ammonia", [1, 1, 2]),
+        equation("methane-ok", "CH₄ + 2 O₂ → CO₂ + 2 H₂O", "methane", [1, 2, 1, 2]),
+        equation("methane-no", "CH₄ + O₂ → CO₂ + 2 H₂O", "methane", [1, 1, 1, 2]),
+        equation("limestone-ok", "CaCO₃ → CaO + CO₂", "limestone", [1, 1, 1]),
+        equation("zinc-no", "Zn + HCl → ZnCl₂ + H₂", "zinc-acid", [1, 1, 1, 1]),
+      ],
+      explanation: "Count element by element. N₂ + H₂ → 2 NH₃ has 2 H in but 6 out; CH₄ + O₂ has 2 O in but 4 out; Zn + HCl has 1 Cl in but 2 out.",
+      hints: ["Check every element, not just one."],
+    },
+    {
+      id: "weigh-the-rust",
+      kind: "estimate",
+      prompt: "4 Fe + 3 O₂ → 2 Fe₂O₃. **224 g** of iron reacts with **96 g** of oxygen. What mass of rust is made?",
+      mode: "balance",
+      given: { reaction: "rust", c1: 4, c2: 3, c3: 2 },
+      canvas: false,
+      hideLabels: true,
+      quantity: "massRight",
+      range: { min: 0, max: 500, step: 5 },
+      tolerance: 10,
+      explanation: "224 + 96 = 320 g. Every atom of iron and oxygen ends up in the rust, so nothing is lost or gained.",
+      hints: ["Where do the iron and oxygen atoms go?"],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "What a balanced equation tells you.",
+      mode: "balance",
+      equation: "conservation-of-mass",
+      law: "Atoms are only rearranged in a reaction, so a balanced equation has the same atoms — and the same mass — on both sides.",
+    },
+  ],
+});

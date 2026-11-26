@@ -1,0 +1,351 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Canvas renderers read the --lab-* variables directly, so
+ * every colour is defined exactly once and follows the theme.
+ */
+:root {
+  --lab-bg: #070b17;
+  --lab-surface: #0e1528;
+  --lab-surface-2: #141d35;
+  --lab-border: rgba(148, 163, 184, 0.14);
+  --lab-canvas: #0b1122;
+  --lab-grid: rgba(148, 163, 184, 0.1);
+  --lab-axis: rgba(203, 213, 225, 0.5);
+  --lab-text: #e2e8f0;
+  --lab-muted: #8b98ad;
+  --lab-sine: #38bdf8;
+  --lab-cosine: #f472b6;
+  --lab-tangent: #a3e635;
+  --lab-angle: #fbbf24;
+  --lab-point: #f8fafc;
+  --lab-neutral: #cbd5e1;
+  --lab-curve: #a78bfa;
+  --lab-secant: #fb923c;
+  --lab-reference: #64748b;
+  --lab-vector: #e879f9;
+  --lab-accent: #818cf8;
+  /* One colour per curriculum branch, so each part of physics has a place. */
+  --branch-toolkit: #a78bfa;
+  --branch-motion: #38bdf8;
+  --branch-forces: #fbbf24;
+  --branch-rotation: #a3e635;
+  --branch-matter: #fb923c;
+  --branch-waves: #f472b6;
+  --branch-electromagnetism: #e879f9;
+  --branch-optics: #2dd4bf;
+  --branch-modern: #818cf8;
+  --branch-measurement: #cbd5e1;
+  --branch-algebra: #c084fc;
+  --branch-trigonometry: #f0abfc;
+  --branch-coordinate-geometry: #a5b4fc;
+  --branch-calculus: #e879f9;
+  --branch-vectors-3d: #93c5fd;
+  --branch-statistics-probability: #f9a8d4;
+  --branch-physical-chemistry: #34d399;
+  --branch-inorganic-chemistry: #2dd4bf;
+  --branch-organic-chemistry: #86efac;
+  --branch-materials-and-change: #bef264;
+  --branch-atoms-and-reactions: #5eead4;
+  --branch-motion-and-force: #67e8f9;
+  --branch-light-and-sound: #fde047;
+  --branch-electricity-and-magnets: #c4b5fd;
+  --branch-number-sense: #fcd34d;
+  --branch-school-algebra: #f0abfc;
+  --branch-shapes-and-space: #7dd3fc;
+  --branch-data-and-chance: #fda4af;
+  /* The three subjects: violet for the language, sky for the rules, green for the stuff. */
+  --subject-maths: #a78bfa;
+  --subject-physics: #38bdf8;
+  --subject-chemistry: #34d399;
+  /* Glass: translucent panels that let the science world show through. */
+  --glass-bg: rgba(17, 24, 48, 0.42);
+  --glass-bg-strong: rgba(14, 21, 40, 0.68);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.55);
+  --glass-fallback: rgba(14, 21, 40, 0.92);
+  --lab-success: #34d399;
+  --lab-warning: #fbbf24;
+  --lab-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --lab-display: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+  --lab-math-font: "Cambria Math", "STIX Two Math", "Latin Modern Math", "Times New Roman", serif;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --lab-bg: #f4f6fb;
+  --lab-surface: #ffffff;
+  --lab-surface-2: #eef2f8;
+  --lab-border: rgba(15, 23, 42, 0.1);
+  --lab-canvas: #ffffff;
+  --lab-grid: rgba(15, 23, 42, 0.07);
+  --lab-axis: rgba(15, 23, 42, 0.45);
+  --lab-text: #0f172a;
+  --lab-muted: #5b6678;
+  --lab-sine: #0284c7;
+  --lab-cosine: #db2777;
+  --lab-tangent: #4d7c0f;
+  --lab-angle: #b45309;
+  --lab-point: #1e293b;
+  --lab-neutral: #475569;
+  --lab-curve: #7c3aed;
+  --lab-secant: #ea580c;
+  --lab-reference: #94a3b8;
+  --lab-vector: #c026d3;
+  --lab-accent: #4f46e5;
+  --branch-toolkit: #7c3aed;
+  --branch-motion: #0284c7;
+  --branch-forces: #b45309;
+  --branch-rotation: #4d7c0f;
+  --branch-matter: #ea580c;
+  --branch-waves: #db2777;
+  --branch-electromagnetism: #c026d3;
+  --branch-optics: #0d9488;
+  --branch-modern: #4f46e5;
+  --branch-measurement: #475569;
+  --branch-algebra: #9333ea;
+  --branch-trigonometry: #a21caf;
+  --branch-coordinate-geometry: #4338ca;
+  --branch-calculus: #c026d3;
+  --branch-vectors-3d: #1d4ed8;
+  --branch-statistics-probability: #be185d;
+  --branch-physical-chemistry: #047857;
+  --branch-inorganic-chemistry: #0f766e;
+  --branch-organic-chemistry: #15803d;
+  --branch-materials-and-change: #4d7c0f;
+  --branch-atoms-and-reactions: #0f766e;
+  --branch-motion-and-force: #0e7490;
+  --branch-light-and-sound: #a16207;
+  --branch-electricity-and-magnets: #6d28d9;
+  --branch-number-sense: #b45309;
+  --branch-school-algebra: #a21caf;
+  --branch-shapes-and-space: #0369a1;
+  --branch-data-and-chance: #be123c;
+  --subject-maths: #7c3aed;
+  --subject-physics: #0284c7;
+  --subject-chemistry: #059669;
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.7);
+  --glass-shadow: 0 20px 50px -24px rgba(15, 23, 42, 0.35);
+  --glass-fallback: rgba(255, 255, 255, 0.95);
+  --lab-success: #059669;
+  --lab-warning: #b45309;
+  color-scheme: light;
+}
+
+:root[data-contrast="high"] {
+  /* High contrast trades translucency for legibility. */
+  --glass-bg: var(--glass-fallback);
+  --glass-bg-strong: var(--glass-fallback);
+  --lab-border: rgba(226, 232, 240, 0.5);
+  --lab-axis: rgba(241, 245, 249, 0.9);
+  --lab-muted: #cbd5e1;
+  --lab-grid: rgba(148, 163, 184, 0.25);
+}
+:root[data-theme="light"][data-contrast="high"] {
+  --lab-border: rgba(15, 23, 42, 0.5);
+  --lab-axis: #0f172a;
+  --lab-muted: #1e293b;
+}
+
+@theme inline {
+  --color-bg: var(--lab-bg);
+  --color-surface: var(--lab-surface);
+  --color-surface-2: var(--lab-surface-2);
+  --color-line: var(--lab-border);
+  --color-ink: var(--lab-text);
+  --color-muted: var(--lab-muted);
+  --color-sine: var(--lab-sine);
+  --color-cosine: var(--lab-cosine);
+  --color-tangent: var(--lab-tangent);
+  --color-angle: var(--lab-angle);
+  --color-point: var(--lab-point);
+  --color-neutral: var(--lab-neutral);
+  --color-curve: var(--lab-curve);
+  --color-secant: var(--lab-secant);
+  --color-reference: var(--lab-reference);
+  --color-vector: var(--lab-vector);
+  --color-accent: var(--lab-accent);
+  --color-success: var(--lab-success);
+  --color-warning: var(--lab-warning);
+  --color-maths: var(--subject-maths);
+  --color-physics: var(--subject-physics);
+  --color-chemistry: var(--subject-chemistry);
+  --font-sans: var(--lab-font);
+  --font-display: var(--lab-display);
+  --font-math: var(--lab-math-font);
+}
+
+html,
+body {
+  background: var(--lab-bg);
+  color: var(--lab-text);
+  font-family: var(--lab-font);
+}
+
+body {
+  background-image:
+    radial-gradient(1200px 600px at 10% -10%, color-mix(in srgb, var(--lab-accent) 12%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 110% 10%, color-mix(in srgb, var(--lab-sine) 8%, transparent), transparent 60%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 2px;
+}
+
+/* Range inputs styled consistently across browsers. */
+input[type="range"].lab-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+  --fill: 0%;
+  --thumb: var(--lab-accent);
+}
+input[type="range"].lab-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--thumb) var(--fill), var(--lab-surface-2) var(--fill));
+}
+input[type="range"].lab-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--lab-surface-2);
+}
+input[type="range"].lab-range::-moz-range-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--thumb);
+}
+input[type="range"].lab-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -7px;
+  border-radius: 999px;
+  background: var(--lab-point);
+  border: 3px solid var(--thumb);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--thumb) 20%, transparent);
+}
+input[type="range"].lab-range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--lab-point);
+  border: 3px solid var(--thumb);
+}
+
+/*
+ * Glass: a translucent panel with a frosted backdrop. Where backdrop blur is
+ * unsupported the panel simply turns solid, so text is never left over a
+ * busy background.
+ */
+.glass,
+.glass-strong {
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 var(--glass-highlight), var(--glass-shadow);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+.glass { background: var(--glass-bg); }
+.glass-strong { background: var(--glass-bg-strong); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass,
+  .glass-strong { background: var(--glass-fallback); }
+}
+
+.math {
+  font-family: var(--lab-math-font);
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+/* Game feel: short, springy entrances. Reduced motion collapses them below. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0.85); }
+  60% { opacity: 1; transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%, 100% { transform: none; }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(3px); }
+}
+@keyframes star {
+  0% { opacity: 0; transform: scale(0.2) rotate(-40deg); }
+  65% { opacity: 1; transform: scale(1.25) rotate(8deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+.animate-rise { animation: rise 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+.animate-pop { animation: pop 380ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
+.animate-shake { animation: shake 420ms ease-in-out both; }
+.animate-star { animation: star 520ms cubic-bezier(0.2, 0.9, 0.3, 1.3) both; }
+
+/* The tap step's conveyor: two copies of the cards, sliding by half their width, forever. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 30s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* The learner can also ask for stillness, whatever the operating system says. */
+:root[data-motion="reduced"] *,
+:root[data-motion="reduced"] *::before,
+:root[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+/*
+ * Printing: a clean formula sheet. Always light, whatever the screen theme;
+ * app navigation hidden; cards never split across a page.
+ */
+@media print {
+  :root,
+  :root[data-theme="light"],
+  :root[data-theme="dark"] {
+    --lab-bg: #ffffff;
+    --lab-surface: #ffffff;
+    --lab-surface-2: #f4f4f5;
+    --lab-border: rgba(0, 0, 0, 0.25);
+    --lab-text: #0b0b0b;
+    --lab-muted: #3f3f46;
+    color-scheme: light;
+  }
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  body {
+    background: #ffffff !important;
+  }
+  nav {
+    display: none !important;
+  }
+  .formula-card {
+    break-inside: avoid;
+  }
+}

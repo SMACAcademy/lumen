@@ -1,0 +1,120 @@
+import { defineLevel } from "@ise/game-engine";
+import { degToRad as deg } from "@ise/units";
+
+const wire = (id: string, label: string, degrees: number) => ({ id, label, given: { angle: deg(degrees) } });
+
+/** Moving Charges, level 2: force on a current, parallel currents, torque on a coil and the galvanometer. */
+export const pushesOnCurrents = defineLevel({
+  schemaVersion: 1,
+  id: "pushes-on-currents",
+  concept: "moving-charges-and-magnetism",
+  title: "Pushes on currents",
+  summary: "A current is moving charge, so a field pushes on it too: on a wire, between two wires, and as a turning couple on a coil.",
+  xp: 40,
+  steps: [
+    {
+      id: "wire-push",
+      kind: "sort",
+      prompt: "The field **B** points to the **right**, across the page. Which way is the force on the wire for each direction of its current?",
+      mode: "wire",
+      given: { current: 4, fieldT: 0.5, length: 50 },
+      canvas: false,
+      bins: [
+        { id: "into", label: "Into the page ⊗", when: { type: "compare", quantity: "wireForceDir", op: "eq", value: 2 } },
+        { id: "out", label: "Out of the page ⊙", when: { type: "compare", quantity: "wireForceDir", op: "eq", value: 1 } },
+        { id: "none", label: "No force", when: { type: "compare", quantity: "wireForceDir", op: "eq", value: 0 } },
+      ],
+      cards: [
+        wire("up", "Current up the page", 90),
+        wire("down", "Current down the page", 270),
+        wire("right", "Current to the right, along B", 0),
+        wire("left", "Current to the left, against B", 180),
+        wire("up-right", "Current up and to the right (45°)", 45),
+        wire("down-left", "Current down and to the left (225°)", 225),
+      ],
+      explanation:
+        "F = I L × B. Fingers along the current, curl them towards B: with the current up the page and B to the right, the thumb points into the page. Reverse the current and the force reverses; run it along B, either way, and there is no force at all.",
+      hints: ["Only the part of the current across B is pushed."],
+    },
+    {
+      id: "wire-force",
+      kind: "estimate",
+      prompt: "In a field of **0.5 T**, a **50 cm** length of wire carries **4 A** at **30°** to B. What is the force on it, in **newtons**?",
+      mode: "wire",
+      given: { current: 4, fieldT: 0.5, length: 50, angle: deg(30) },
+      canvas: false,
+      hideLabels: true,
+      quantity: "wireForce",
+      range: { min: 0, max: 3, step: 0.05 },
+      tolerance: 0.05,
+      explanation: "F = BIL sin θ = 0.5 × 4 × 0.5 × sin 30° = 0.5 N, into the page. At 90° it would be twice as much, 1 N.",
+      hints: ["Length in metres: 50 cm = 0.5 m."],
+    },
+    {
+      id: "farther-apart",
+      kind: "predict",
+      prompt: "Two long wires each carry **10 A** the same way. They move from **10 cm** to **20 cm** apart. What happens to the **force on each metre**?",
+      mode: "parallel",
+      variable: "separation",
+      from: 10,
+      to: 20,
+      quantity: "forcePerLength",
+      options: ["increase", "decrease", "same"],
+      given: { sense: "same", current: 10, current2: 10 },
+      explanation:
+        "It halves, from 2.0 × 10⁻⁴ to 1.0 × 10⁻⁴ N/m. The field of one wire at the other, μ₀I/2πd, halves when d doubles, and so does its push on the other current. They still attract: parallel currents pull together.",
+    },
+    {
+      id: "the-ampere",
+      kind: "estimate",
+      prompt: "Two long parallel wires **1 m** apart each carry **1 A**. What is the force on each metre of wire, in units of **10⁻⁷ N**?",
+      mode: "parallel",
+      given: { sense: "same", current: 1, current2: 1, separation: 100 },
+      canvas: false,
+      hideLabels: true,
+      quantity: "forceE7",
+      range: { min: 0, max: 10, step: 0.1 },
+      tolerance: 0.1,
+      explanation:
+        "μ₀I₁I₂ / 2πd = (4π × 10⁻⁷ × 1 × 1) / (2π × 1) = 2 × 10⁻⁷ N per metre. This is the definition of the ampere NCERT gives: the current that makes two such wires pull on each other with 2 × 10⁻⁷ N per metre. (Since 2019 the SI defines the ampere by fixing the value of e instead; the force between the wires is unchanged.)",
+      hints: ["μ₀ / 2π = 2 × 10⁻⁷."],
+    },
+    {
+      id: "coil-torque",
+      kind: "estimate",
+      prompt: "A coil of **100 turns**, each of area **50 cm²**, carries **2 A** in a field of **0.5 T**, with its magnetic moment at **30°** to B. What is the torque on it, in **N m**?",
+      mode: "torque",
+      given: { turns: 100, coilArea: 50, current: 2, fieldT: 0.5, angle: deg(30) },
+      canvas: false,
+      hideLabels: true,
+      quantity: "torque",
+      range: { min: 0, max: 2, step: 0.01 },
+      tolerance: 0.02,
+      explanation:
+        "m = NIA = 100 × 2 × 0.005 = 1 A m², and τ = mB sin θ = 1 × 0.5 × 0.5 = 0.25 N m. The torque turns m round towards B, and vanishes when the two line up.",
+      hints: ["Area in m²: 50 cm² = 0.005 m²."],
+    },
+    {
+      id: "more-turns",
+      kind: "predict",
+      prompt: "A galvanometer's coil has **50 turns**, and **100 µA** flows. It is rewound with **100 turns**. What happens to the **deflection** for the same current?",
+      mode: "galvanometer",
+      variable: "turns",
+      from: 50,
+      to: 100,
+      quantity: "deflection",
+      options: ["increase", "decrease", "same"],
+      given: { coilArea: 4, fieldT: 0.5, meterCurrent: 100 },
+      explanation:
+        "It doubles, from about 11° to 23°. In the radial field the torque is NIAB at every angle, and the spring balances it with kφ, so φ = (NAB/k) I: twice the turns, twice the current sensitivity.",
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Currents side by side.",
+      mode: "parallel",
+      equation: "parallel-force",
+      law: "Parallel currents attract and antiparallel currents repel, with a force on each metre of μ₀I₁I₂ / 2πd.",
+    },
+  ],
+});

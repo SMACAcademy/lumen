@@ -1,0 +1,138 @@
+import { defineLevel } from "@ise/game-engine";
+
+const card = (id: string, label: string) => ({ id, label });
+const pair = (id: string, label: string, enzyme: number, sugar: number) => ({ id, label, given: { enzyme, sugar } });
+const vitamin = (id: string, label: string, index: number) => ({ id, label, given: { vitamin: index } });
+const base = (id: string, label: string, index: number) => ({ id, label, given: { base: index } });
+
+/** Amines and Biomolecules, level 4: amino acids and proteins, enzymes and vitamins, nucleic acids. */
+export const proteinsVitaminsAndDna = defineLevel({
+  schemaVersion: 1,
+  id: "proteins-vitamins-and-dna",
+  concept: "amines-and-biomolecules",
+  title: "Proteins, vitamins and DNA",
+  summary: "An amino acid with no net charge, how a protein folds, enzymes that fit like keys, vitamins, and the pairing of DNA's bases.",
+  xp: 50,
+  steps: [
+    {
+      id: "isoelectric",
+      kind: "target",
+      prompt: "Glycine: pKa₁ = 2.34 (–COOH), pKa₂ = 9.60 (–NH₃⁺). Set the pH to its **isoelectric point**, where it carries no net charge.",
+      mode: "proteins",
+      given: { aminoAcid: 0, pH: 1 },
+      controls: ["pH"],
+      canvas: false,
+      hideLabels: true,
+      goal: { type: "compareQuantities", left: "pH", op: "eq", right: "pI", tolerance: 0.06 },
+      success: "pH 6.0 (pI = 5.97): the zwitterion H₃N⁺–CH₂–COO⁻ dominates, and just as much cation as anion is left.",
+      retry: "The isoelectric point lies halfway between the two pKa values.",
+      hints: ["The isoelectric point lies halfway between the two pKa values.", "(2.34 + 9.60) ÷ 2 = 5.97."],
+    },
+    {
+      id: "structure",
+      kind: "match",
+      prompt: "**Match** each level of protein structure with what it is.",
+      canvas: false,
+      pairs: [
+        { left: card("primary", "Primary"), right: card("sequence", "the sequence of amino acids") },
+        { left: card("secondary", "Secondary"), right: card("helix", "α-helix or β-pleated sheet, held by H-bonds") },
+        { left: card("tertiary", "Tertiary"), right: card("fold", "the whole chain folded: fibrous or globular") },
+        { left: card("quaternary", "Quaternary"), right: card("subunits", "two or more chains packed together") },
+        { left: card("denatured", "Denaturation"), right: card("unfold", "2° and 3° lost, sequence kept: boiled egg") },
+      ],
+      explanation: "The secondary structure's hydrogen bonds join C=O and N–H of peptide bonds. Heat or a change of pH breaks the weaker forces and the protein unfolds — but no peptide bond breaks.",
+      hints: ["Which level survives boiling an egg?"],
+    },
+    {
+      id: "enzymes",
+      kind: "tap",
+      prompt: "**Lock and key**: catch every enzyme–substrate pair that fits.",
+      mode: "enzymes",
+      canvas: false,
+      hideLabels: true,
+      rule: "the enzyme acts on it",
+      when: { type: "compare", quantity: "fits", op: "eq", value: 1 },
+      cards: [
+        pair("invertase-sucrose", "Invertase + sucrose", 0, 3),
+        pair("maltase-maltose", "Maltase + maltose", 1, 4),
+        pair("maltase-sucrose", "Maltase + sucrose", 1, 3),
+        pair("diastase-starch", "Diastase + starch", 3, 6),
+        pair("diastase-cellulose", "Diastase + cellulose", 3, 7),
+        pair("lactase-maltose", "Lactase + maltose", 2, 4),
+        pair("zymase-glucose", "Zymase + glucose", 4, 0),
+      ],
+      explanation: "Each enzyme's active site fits its own substrate: invertase splits sucrose, maltase maltose, diastase starch, zymase ferments glucose. Diastase cannot touch cellulose's β links — nor can we digest it.",
+      hints: ["The enzyme is usually named after what it acts on."],
+    },
+    {
+      id: "solubility",
+      kind: "sort",
+      prompt: "**Sort** the vitamins: fat-soluble or water-soluble?",
+      mode: "enzymes",
+      canvas: false,
+      hideLabels: true,
+      bins: [
+        { id: "fat", label: "Fat-soluble", when: { type: "compare", quantity: "fatSoluble", op: "eq", value: 1 } },
+        { id: "water", label: "Water-soluble", when: { type: "compare", quantity: "fatSoluble", op: "eq", value: 0 } },
+      ],
+      cards: [vitamin("a", "A", 0), vitamin("b1", "B₁", 1), vitamin("b12", "B₁₂", 4), vitamin("c", "C", 5), vitamin("d", "D", 6), vitamin("e", "E", 7), vitamin("k", "K", 8)],
+      explanation: "A, D, E and K dissolve in fat and are stored in the liver and fat tissue. The B group and C dissolve in water and are excreted, so they are needed regularly — except B₁₂, which the liver stores.",
+      hints: ["Four letters: A, D, E, K."],
+    },
+    {
+      id: "deficiency",
+      kind: "match",
+      prompt: "**Match** each vitamin with the disease its lack causes.",
+      canvas: false,
+      pairs: [
+        { left: card("a", "Vitamin A"), right: card("night", "night blindness") },
+        { left: card("b1", "Vitamin B₁"), right: card("beriberi", "beri beri") },
+        { left: card("b12", "Vitamin B₁₂"), right: card("anaemia", "pernicious anaemia") },
+        { left: card("c", "Vitamin C"), right: card("scurvy", "scurvy (bleeding gums)") },
+        { left: card("d", "Vitamin D"), right: card("rickets", "rickets") },
+        { left: card("k", "Vitamin K"), right: card("clotting", "blood slow to clot") },
+      ],
+      explanation: "NCERT's table: A — xerophthalmia and night blindness; B₁ — beri beri; B₁₂ — pernicious anaemia; C — scurvy; D — rickets (osteomalacia in adults); K — longer clotting time.",
+      hints: ["Sailors on long voyages without fruit got scurvy."],
+    },
+    {
+      id: "chargaff",
+      kind: "estimate",
+      prompt: "A DNA sample is **20 % guanine**. What percentage of its bases is **adenine**?",
+      mode: "nucleic",
+      given: { guanine: 20 },
+      hideLabels: true,
+      quantity: "adenine",
+      range: { min: 0, max: 50, step: 1 },
+      tolerance: 1.5,
+      explanation: "30 %. G pairs with C, so C is 20 % too; the remaining 60 % is A and T, which pair with each other: 30 % each.",
+      hints: ["G≡C and A=T: %G = %C and %A = %T, and all four add to 100 %."],
+    },
+    {
+      id: "dna-rna",
+      kind: "sort",
+      prompt: "**Sort** the bases: found in DNA, in RNA, or in both?",
+      mode: "nucleic",
+      canvas: false,
+      hideLabels: true,
+      bins: [
+        { id: "dna", label: "DNA only", when: { type: "compare", quantity: "inRNA", op: "eq", value: 0 } },
+        { id: "rna", label: "RNA only", when: { type: "compare", quantity: "inDNA", op: "eq", value: 0 } },
+        {
+          id: "both",
+          label: "Both",
+          when: {
+            type: "all",
+            conditions: [
+              { type: "compare", quantity: "inDNA", op: "eq", value: 1 },
+              { type: "compare", quantity: "inRNA", op: "eq", value: 1 },
+            ],
+          },
+        },
+      ],
+      cards: [base("a", "Adenine", 0), base("g", "Guanine", 1), base("c", "Cytosine", 2), base("t", "Thymine", 3), base("u", "Uracil", 4)],
+      explanation: "DNA has A, G, C and T; RNA has uracil in place of thymine. The sugars differ too: 2-deoxyribose in DNA, ribose in RNA.",
+      hints: ["Only one base swaps between DNA and RNA."],
+    },
+  ],
+});

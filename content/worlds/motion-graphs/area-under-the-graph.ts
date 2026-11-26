@@ -1,0 +1,80 @@
+import { defineLevel } from "@ise/game-engine";
+
+const card = (id: string, label: string) => ({ id, label });
+
+/** Motion Graphs, level 2: the area under a velocity–time graph is the distance. */
+export const areaUnderTheGraph = defineLevel({
+  schemaVersion: 1,
+  id: "area-under-the-graph",
+  concept: "motion-in-a-straight-line",
+  title: "The area under the graph",
+  summary: "A velocity–time graph hides the distance travelled in its area. Find it, and use it.",
+  xp: 30,
+  steps: [
+    {
+      id: "fill-it",
+      kind: "explore",
+      prompt: "Press play and watch the **area under the velocity–time graph** fill in as the cart speeds up.",
+      mode: "velocity",
+      given: { u: 2, a: 1, t: 0 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "t", op: "gte", value: 4 },
+      success: "The shaded area is the distance travelled: 16 m in 4 s. Every extra second adds another strip.",
+      hints: ["Press play."],
+    },
+    {
+      id: "twenty-in-four",
+      kind: "target",
+      prompt: "Starting from **rest**, choose the acceleration that covers **20 m in 4 s**.",
+      mode: "velocity",
+      given: { u: 0, t: 4 },
+      controls: ["a"],
+      canvas: false,
+      goal: { type: "compare", quantity: "displacement", op: "eq", value: 20, tolerance: 0.3 },
+      success: "2.5 m/s²: s = ½at² = ½ × 2.5 × 16 = 20 m. The triangle under the graph has area 20.",
+      retry: "Not 20 m yet. The area is a triangle: half the base times the height.",
+      hints: ["s = ½ × a × t², and t = 4.", "½ × a × 16 = 20."],
+    },
+    {
+      id: "shortest-first",
+      kind: "order",
+      prompt: "Put these journeys in order of **distance covered in 4 s**, shortest first.",
+      mode: "velocity",
+      given: { t: 4 },
+      canvas: false,
+      ends: ["shortest", "longest"],
+      by: "distance",
+      cards: [
+        { id: "steady-slow", label: "Steady at 1 m/s", given: { u: 1, a: 0 } },
+        { id: "gentle", label: "2 m/s, speeding up gently", given: { u: 2, a: 0.5 } },
+        { id: "faster", label: "3 m/s, speeding up", given: { u: 3, a: 1 } },
+        { id: "from-rest", label: "From rest, speeding up fast", given: { u: 0, a: 3 } },
+      ],
+      explanation: "4 m, 12 m, 20 m and 24 m: the bigger the area under each velocity–time graph, the further it went.",
+      hints: ["Distance = starting speed × time + ½ × acceleration × time²."],
+    },
+    {
+      id: "shapes",
+      kind: "match",
+      prompt: "**Match** each velocity–time graph to the motion it shows.",
+      canvas: false,
+      pairs: [
+        { left: card("flat", "A flat line above the time axis"), right: card("steady", "Moving at a steady speed") },
+        { left: card("up", "A line sloping upwards"), right: card("speeding", "Speeding up") },
+        { left: card("down", "A line sloping down to zero"), right: card("stopping", "Slowing down to a stop") },
+        { left: card("axis", "A line along the time axis"), right: card("still", "Standing still") },
+      ],
+      explanation: "On a velocity–time graph the height is the speed and the slope is the acceleration.",
+      hints: ["Height is speed; slope is acceleration."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The second equation of motion.",
+      mode: "velocity",
+      equation: "displacement-time",
+      law: "s = ut + ½at²: the distance is the area under the velocity–time graph — a rectangle for the starting speed, and a triangle for the speeding up.",
+    },
+  ],
+});

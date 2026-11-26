@@ -1,0 +1,70 @@
+import { defineLevel } from "@ise/game-engine";
+
+const spot = (u: number, f: number) => ({ id: `u${u}-f${f}`, label: `Object ${u} cm away, f = ${f} cm`, given: { objectDistance: u, focal: f } });
+
+/** Bending Light, level 2: a convex lens, and real and virtual images. */
+export const throughALens = defineLevel({
+  schemaVersion: 1,
+  id: "through-a-lens",
+  concept: "bending-light",
+  title: "Through a lens",
+  summary: "A convex lens can throw a picture on a screen or act as a magnifying glass. Where the object sits decides which.",
+  xp: 30,
+  steps: [
+    {
+      id: "move-the-candle",
+      kind: "explore",
+      prompt: "A candle stands **60 cm** in front of a convex lens (f = 10 cm). Move it **closer** and watch the image.",
+      mode: "bench",
+      given: { scene: "lens", focal: 10, objectHeight: 10, objectDistance: 60 },
+      controls: ["objectDistance"],
+      goal: { type: "compare", quantity: "objectDistance", op: "lte", value: 20 },
+      success: "The image moved away from the lens and grew. It is real and upside down — you could catch it on a screen.",
+      hints: ["Slide the object distance down."],
+    },
+    {
+      id: "same-size",
+      kind: "target",
+      prompt: "Make the image **exactly the same size** as the candle.",
+      mode: "bench",
+      given: { scene: "lens", focal: 10, objectHeight: 10, objectDistance: 60 },
+      controls: ["objectDistance"],
+      goal: { type: "compare", quantity: "lensMagnification", op: "eq", value: 1, tolerance: 0.02 },
+      success: "20 cm — twice the focal length. The image forms 20 cm behind the lens, upside down and the same size.",
+      retry: "Not the same size yet.",
+      hints: ["Try twice the focal length."],
+    },
+    {
+      id: "closer-image",
+      kind: "predict",
+      prompt: "The candle moves from **40 cm** to **15 cm** from the lens (f = 10 cm). What happens to the **image distance**?",
+      variable: "objectDistance",
+      from: 40,
+      to: 15,
+      quantity: "lensImage",
+      options: ["increase", "decrease", "same"],
+      given: { scene: "lens", focal: 10 },
+      explanation: "It grows, from about 13 cm to 30 cm. Bring the object towards F and the image rushes away — and gets bigger.",
+    },
+    {
+      id: "catch-real",
+      kind: "tap",
+      prompt: "**Catch** every set-up that gives a **real** image, one you could catch on a screen.",
+      given: { scene: "lens" },
+      canvas: false,
+      rule: "a real image",
+      when: { type: "compare", quantity: "real", op: "eq", value: 1 },
+      cards: [spot(30, 10), spot(10, 20), spot(15, 10), spot(12, 15), spot(50, 20), spot(25, 30)],
+      explanation: "A convex lens makes a real image when the object is further away than the focal length. Inside F you get a virtual image instead — a magnifying glass.",
+      hints: ["Is the object further away than f?"],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Where a lens puts the image.",
+      mode: "bench",
+      equation: "lens-formula-school",
+      law: "1/v − 1/u = 1/f. Beyond F, a convex lens makes a real, upside-down image; inside F, a virtual, upright, magnified one.",
+    },
+  ],
+});

@@ -1,0 +1,551 @@
+import { defineConcept } from "@ise/concept-schema";
+
+type Colour = "sine" | "cosine" | "tangent" | "angle" | "secant" | "curve" | "neutral";
+
+const whole = (id: string, symbol: string, name: string, meaning: string, min: number, max: number, color: Colour) => ({
+  id,
+  symbol,
+  name,
+  meaning,
+  binding: { kind: "state" as const, key: id },
+  control: { type: "range" as const, unit: "1" as const, min, max, step: 1 },
+  group: "primary" as const,
+  color,
+});
+
+const yesNo = { kind: "label" as const, labels: { "0": "no", "1": "yes" } };
+
+/**
+ * Sets, relations and functions for class 11 (NCERT chapters 1 and 2) and
+ * class 12 (chapter 1): Venn diagrams and the counting formula for a union,
+ * the power set, reflexive, symmetric and transitive relations and
+ * equivalence classes, functions as arrow diagrams and as graphs, one-one
+ * and onto functions, composition, and inverses.
+ */
+export const setsRelationsFunctions = defineConcept({
+  schemaVersion: 1,
+  meta: {
+    id: "sets-relations-functions",
+    title: "Sets, Relations and Functions",
+    tagline: "Shade unions and complements on a Venn diagram, close a relation up into an equivalence, draw functions as arrows and graphs, and undo them by reflecting in y = x.",
+    domain: "mathematics",
+    category: "algebra",
+    grade: { min: 11, max: 12 },
+    difficulty: "core",
+    estimatedMinutes: 35,
+    objective:
+      "Find unions, intersections, differences and complements and count them with n(A ∪ B) = n(A) + n(B) − n(A ∩ B); count subsets as 2ⁿ; test a relation for reflexive, symmetric and transitive and find the classes of an equivalence relation; tell a function from a relation and read its domain, codomain and range; decide whether a function is one-one, onto or bijective, with the horizontal-line test; compose functions; and invert a bijection.",
+    tags: ["sets", "Venn diagram", "union", "intersection", "complement", "power set", "relation", "equivalence relation", "function", "domain", "range", "one-one", "onto", "bijection", "composition", "inverse", "class 11", "class 12", "JEE"],
+  },
+
+  connections: [
+    {
+      id: "probability",
+      title: "Probability",
+      domain: "mathematics",
+      relation: "leads-to",
+      note: "Events are sets of outcomes: P(A ∪ B) = P(A) + P(B) − P(A ∩ B) is the same count, divided by the size of the sample space.",
+      available: true,
+    },
+    {
+      id: "counting-and-binomial",
+      title: "Counting and the Binomial Theorem",
+      domain: "mathematics",
+      relation: "related",
+      note: "Counting functions, one-one functions and subsets is the multiplication principle at work.",
+      available: true,
+    },
+    {
+      id: "angles-and-inverses",
+      title: "Angles and Inverses",
+      domain: "mathematics",
+      relation: "leads-to",
+      note: "sin x is not one-one on ℝ; restricted to [−π/2, π/2] it is, and that restriction defines sin⁻¹.",
+      available: true,
+    },
+    {
+      id: "sinusoidal-functions",
+      title: "Sinusoidal Functions",
+      domain: "mathematics",
+      relation: "related",
+      note: "Shifting and stretching a graph is composing it with simple functions.",
+      available: true,
+    },
+  ],
+
+  variables: [
+    {
+      id: "sets",
+      symbol: "sets",
+      name: "Two sets or three",
+      meaning: "Two sets you size yourself, or a fixed picture of three: the even numbers, the multiples of 3, and {1, …, 6}.",
+      binding: { kind: "param", key: "sets" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "two", label: "A and B" },
+          { value: "three", label: "A, B and C" },
+        ],
+      },
+      group: "primary",
+      color: "neutral",
+    },
+    {
+      id: "op",
+      symbol: "shade",
+      name: "Set to shade",
+      meaning: "Union and intersection take in every set shown; the differences and the complement use A and B.",
+      binding: { kind: "param", key: "op" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "union", label: "Union ∪" },
+          { value: "intersection", label: "Intersection ∩" },
+          { value: "aMinusB", label: "A − B" },
+          { value: "bMinusA", label: "B − A" },
+          { value: "complementA", label: "Complement A′" },
+        ],
+      },
+      group: "primary",
+      color: "sine",
+    },
+    whole("a", "n(A)", "Elements in A", "A = {1, …, n(A)}.", 0, 6, "cosine"),
+    whole("b", "n(B)", "Elements in B", "B is a run of consecutive numbers.", 0, 6, "angle"),
+    whole("common", "n(A ∩ B)", "Elements A and B share", "How far B overlaps A. It cannot exceed the smaller set, and A ∪ B must fit inside U = {1, …, 10}.", 0, 6, "sine"),
+    {
+      id: "relation",
+      symbol: "R",
+      name: "Relation on {1, …, 5}",
+      meaning: "a R b when the rule holds for the ordered pair (a, b).",
+      binding: { kind: "param", key: "relation" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "identity", label: "a = b" },
+          { value: "le", label: "a ≤ b" },
+          { value: "lt", label: "a < b" },
+          { value: "divides", label: "a divides b" },
+          { value: "near", label: "|a − b| ≤ 1" },
+          { value: "succ", label: "b = a + 1" },
+          { value: "sum6", label: "a + b = 6" },
+          { value: "parity", label: "a − b even" },
+          { value: "mod3", label: "a − b divisible by 3" },
+          { value: "chain", label: "{(1,2), (2,3), (4,5)}" },
+          { value: "empty", label: "Empty relation" },
+        ],
+      },
+      group: "primary",
+      color: "sine",
+    },
+    whole("addR", "+ reflexive", "Make it reflexive", "1 adds every missing pair (a, a).", 0, 1, "angle"),
+    whole("addS", "+ symmetric", "Make it symmetric", "1 adds (b, a) for every (a, b) — after the reflexive pairs.", 0, 1, "angle"),
+    whole("addT", "+ transitive", "Make it transitive", "1 adds (a, c) whenever (a, b) and (b, c) are in — after the other two.", 0, 1, "angle"),
+    whole("f1", "f(1)", "Arrow from 1", "Where 1 goes in B; 0 for no arrow.", 0, 5, "tangent"),
+    whole("f2", "f(2)", "Arrow from 2", "Where 2 goes in B; 0 for no arrow.", 0, 5, "tangent"),
+    whole("f3", "f(3)", "Arrow from 3", "Where 3 goes in B; 0 for no arrow.", 0, 5, "tangent"),
+    whole("f4", "f(4)", "Arrow from 4", "Where 4 goes in B; 0 for no arrow.", 0, 5, "tangent"),
+    whole("extra", "second arrow", "A second arrow from 1", "0 for none. Any other value gives 1 two images, and the relation is no longer a function.", 0, 5, "secant"),
+    whole("nCod", "n(B)", "Elements in B", "B = {1, …, n(B)}, the codomain. Arrows beyond it are pulled back to its last element.", 2, 5, "sine"),
+    {
+      id: "curve",
+      symbol: "f(x)",
+      name: "Function",
+      meaning: "A standard function, drawn on the chosen domain.",
+      binding: { kind: "param", key: "curve" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "square", label: "x²" },
+          { value: "cube", label: "x³" },
+          { value: "abs", label: "|x|" },
+          { value: "exp", label: "eˣ" },
+          { value: "sine", label: "sin x" },
+        ],
+      },
+      group: "primary",
+      color: "curve",
+    },
+    {
+      id: "domain",
+      symbol: "domain",
+      name: "Domain",
+      meaning: "The inputs allowed.",
+      binding: { kind: "param", key: "domain" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "all", label: "ℝ" },
+          { value: "nonneg", label: "[0, ∞)" },
+          { value: "principal", label: "[−π/2, π/2]" },
+        ],
+      },
+      group: "primary",
+      color: "curve",
+    },
+    {
+      id: "codomain",
+      symbol: "codomain",
+      name: "Codomain",
+      meaning: "The set the outputs are declared to lie in. It must contain the range; it equals the range exactly when f is onto.",
+      binding: { kind: "param", key: "codomain" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "all", label: "ℝ" },
+          { value: "nonneg", label: "[0, ∞)" },
+          { value: "positive", label: "(0, ∞)" },
+          { value: "unit", label: "[−1, 1]" },
+        ],
+      },
+      group: "primary",
+      color: "tangent",
+    },
+    {
+      id: "k",
+      symbol: "k",
+      name: "Height of the horizontal line",
+      meaning: "The line y = k. Where it meets the graph are the x with f(x) = k.",
+      binding: { kind: "state", key: "k" },
+      control: { type: "range", unit: "1", min: -2.5, max: 3.5, step: 0.1 },
+      group: "primary",
+      color: "angle",
+    },
+    {
+      id: "fRule",
+      symbol: "f",
+      name: "First function, f",
+      meaning: "Applied first in g∘f.",
+      binding: { kind: "param", key: "fRule" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "plus1", label: "x + 1" },
+          { value: "double", label: "2x" },
+          { value: "square", label: "x²" },
+          { value: "negate", label: "−x" },
+        ],
+      },
+      group: "primary",
+      color: "sine",
+    },
+    {
+      id: "gRule",
+      symbol: "g",
+      name: "Second function, g",
+      meaning: "Applied to f's output in g∘f.",
+      binding: { kind: "param", key: "gRule" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "plus1", label: "x + 1" },
+          { value: "double", label: "2x" },
+          { value: "square", label: "x²" },
+          { value: "negate", label: "−x" },
+        ],
+      },
+      group: "primary",
+      color: "tangent",
+    },
+    whole("x", "x", "Input", "An element of A = {−2, −1, 0, 1, 2}.", -2, 2, "angle"),
+  ],
+
+  quantities: [
+    { id: "nA", symbol: "n(A)", name: "Elements in A", meaning: "The number of elements of A.", result: "nA", format: { kind: "integer" }, color: "cosine" },
+    { id: "nB", symbol: "n(B)", name: "Elements in B", meaning: "The number of elements of B.", result: "nB", format: { kind: "integer" }, color: "angle" },
+    { id: "nAB", symbol: "n(A ∩ B)", name: "Elements in both", meaning: "Counted once in n(A) and again in n(B).", result: "nAB", format: { kind: "integer" }, color: "sine" },
+    { id: "nAuB", symbol: "n(A ∪ B)", name: "Elements in either", meaning: "In A, in B, or in both.", result: "nAuB", format: { kind: "integer" }, color: "sine", highlight: "venn", headline: true },
+    { id: "nAminusB", symbol: "n(A − B)", name: "In A but not B", meaning: "A − B = A ∩ B′.", result: "nAminusB", format: { kind: "integer" }, color: "cosine" },
+    { id: "nCompA", symbol: "n(A′)", name: "Outside A", meaning: "The complement of A in U = {1, …, 10}: n(A′) = n(U) − n(A).", result: "nCompA", format: { kind: "integer" }, color: "neutral" },
+    { id: "nShaded", symbol: "shaded", name: "Elements shaded", meaning: "The size of the chosen set.", result: "nShaded", format: { kind: "integer" }, color: "sine", headline: true },
+    { id: "nAll", symbol: "n(A ∪ B ∪ C)", name: "Elements in any set", meaning: "The union of every set shown.", result: "nAll", format: { kind: "integer" }, color: "sine" },
+    { id: "powerA", symbol: "n(P(A))", name: "Subsets of A", meaning: "Every subset, ∅ and A itself included.", result: "powerA", format: { kind: "integer" }, color: "cosine" },
+    { id: "pairs", symbol: "n(R)", name: "Ordered pairs in R", meaning: "R is a subset of X × X, which has 25 pairs.", result: "pairs", format: { kind: "integer" }, color: "sine", highlight: "relation", headline: true },
+    { id: "added", symbol: "added", name: "Pairs added", meaning: "By the switched-on closures.", result: "added", format: { kind: "integer" }, color: "angle" },
+    { id: "reflexive", symbol: "reflexive?", name: "Reflexive", meaning: "(a, a) ∈ R for every a.", result: "reflexive", format: yesNo, color: "sine" },
+    { id: "symmetric", symbol: "symmetric?", name: "Symmetric", meaning: "(a, b) ∈ R always brings (b, a) ∈ R.", result: "symmetric", format: yesNo, color: "sine" },
+    { id: "transitive", symbol: "transitive?", name: "Transitive", meaning: "(a, b) and (b, c) in R always bring (a, c) ∈ R.", result: "transitive", format: yesNo, color: "sine" },
+    { id: "equivalence", symbol: "equivalence?", name: "Equivalence relation", meaning: "Reflexive, symmetric and transitive.", result: "equivalence", format: yesNo, color: "angle", headline: true },
+    { id: "classes", symbol: "classes", name: "Equivalence classes", meaning: "How many disjoint classes X splits into (0 when R is not an equivalence relation).", result: "classes", format: { kind: "integer" }, color: "angle" },
+    { id: "isFunction", symbol: "function?", name: "Is it a function", meaning: "Every element of A has exactly one arrow.", result: "isFunction", format: yesNo, color: "tangent", highlight: "arrows", headline: true },
+    { id: "rangeSize", symbol: "n(range)", name: "Elements in the range", meaning: "The elements of B that arrows reach.", result: "rangeSize", format: { kind: "integer" }, color: "sine" },
+    { id: "oneOne", symbol: "one-one?", name: "One-one (injective)", meaning: "No two elements of A share an image.", result: "oneOne", format: yesNo, color: "tangent" },
+    { id: "onto", symbol: "onto?", name: "Onto (surjective)", meaning: "Every element of B is an image: the range is all of B.", result: "onto", format: yesNo, color: "tangent" },
+    { id: "bijective", symbol: "bijective?", name: "One-one and onto", meaning: "A bijection: exactly the functions that have an inverse.", result: "bijective", format: yesNo, color: "angle" },
+    { id: "functionsCount", symbol: "functions", name: "Functions from A to B", meaning: "n(B)⁴: each of the 4 elements of A picks its image.", result: "functionsCount", format: { kind: "integer" }, color: "neutral" },
+    { id: "oneOneCount", symbol: "one-one", name: "One-one functions from A to B", meaning: "n(n − 1)(n − 2)(n − 3) for n = n(B): none when B has fewer than 4 elements.", result: "oneOneCount", format: { kind: "integer" }, color: "neutral" },
+    { id: "ontoCount", symbol: "onto", name: "Onto functions from A to B", meaning: "Counted by leaving out the functions that miss an element of B (inclusion–exclusion).", result: "ontoCount", format: { kind: "integer" }, color: "neutral" },
+    { id: "crossings", symbol: "meets", name: "Where y = k meets the graph", meaning: "How many x in the domain have f(x) = k.", result: "crossings", format: { kind: "label", labels: { "0": "never", "1": "once", "2": "twice", "3": "infinitely often" } }, color: "angle", highlight: "graph", headline: true },
+    { id: "kInRange", symbol: "k in range?", name: "Is k in the range", meaning: "Whether some x in the domain has f(x) = k.", result: "kInRange", format: yesNo, color: "curve" },
+    { id: "grValid", symbol: "function?", name: "Range inside the codomain", meaning: "f : D → C needs every f(x) to lie in C.", result: "grValid", format: yesNo, color: "curve" },
+    { id: "grOneOne", symbol: "one-one?", name: "One-one on this domain", meaning: "Every horizontal line meets the graph at most once.", result: "grOneOne", format: yesNo, color: "curve" },
+    { id: "grOnto", symbol: "onto?", name: "Onto this codomain", meaning: "The range is the whole codomain.", result: "grOnto", format: yesNo, color: "curve" },
+    { id: "grBijective", symbol: "invertible?", name: "A bijection, so invertible", meaning: "One-one and onto; then f⁻¹ exists and its graph is the reflection in y = x.", result: "grBijective", format: yesNo, color: "tangent", highlight: "mirror" },
+    { id: "fx", symbol: "f(x)", name: "f of the input", meaning: "The first step of g∘f.", result: "fx", format: { kind: "integer" }, color: "sine" },
+    { id: "gfx", symbol: "(g∘f)(x)", name: "g of f of the input", meaning: "g(f(x)): f first, then g.", result: "gfx", format: { kind: "integer" }, color: "tangent", highlight: "chain", headline: true },
+    { id: "fgx", symbol: "(f∘g)(x)", name: "f of g of the input", meaning: "f(g(x)): g first, then f.", result: "fgx", format: { kind: "integer" }, color: "cosine" },
+    { id: "commute", symbol: "g∘f = f∘g?", name: "Same either way round", meaning: "Whether g∘f and f∘g agree at every x in A.", result: "commute", format: yesNo, color: "angle" },
+    { id: "fOneOne", symbol: "f one-one?", name: "f is one-one on A", meaning: "Then f : A → f(A) is a bijection and can be undone.", result: "fOneOne", format: yesNo, color: "sine" },
+  ],
+
+  equations: [
+    {
+      id: "union-count",
+      topic: "sets-venn",
+      title: "Counting a union",
+      tokens: [
+        { kind: "ref", id: "nAuB" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "nA" },
+        { kind: "op", value: "+" },
+        { kind: "ref", id: "nB" },
+        { kind: "op", value: "−" },
+        { kind: "ref", id: "nAB" },
+      ],
+      reading: "Adding n(A) and n(B) counts the elements in both sets twice, so take them away once. For three sets: n(A ∪ B ∪ C) = n(A) + n(B) + n(C) − n(A ∩ B) − n(B ∩ C) − n(A ∩ C) + n(A ∩ B ∩ C).",
+      words: "in either = in A + in B − in both",
+      assumptions: ["Finite sets"],
+      discoverable: true,
+    },
+    {
+      id: "power-set",
+      topic: "sets-venn",
+      title: "How many subsets",
+      tokens: [
+        { kind: "ref", id: "powerA" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "2 to the power n(A)" },
+      ],
+      reading: "Building a subset, each element is either in or out: two choices, n(A) times. The count includes ∅ and A itself.",
+      assumptions: ["A finite"],
+    },
+    {
+      id: "equivalence",
+      topic: "relations",
+      title: "An equivalence relation",
+      tokens: [
+        { kind: "text", value: "reflexive" },
+        { kind: "op", value: "+" },
+        { kind: "text", value: "symmetric" },
+        { kind: "op", value: "+" },
+        { kind: "text", value: "transitive" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "equivalence" },
+      ],
+      reading: "Reflexive: every a is related to itself. Symmetric: a R b gives b R a. Transitive: a R b and b R c give a R c. All three together split the set into disjoint equivalence classes.",
+      assumptions: ["R a relation on one set X, a subset of X × X"],
+    },
+    {
+      id: "function-def",
+      topic: "functions-graphs",
+      title: "What makes a function",
+      tokens: [
+        { kind: "text", value: "f : A → B" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "exactly one image in B for each x in A" },
+      ],
+      reading: "A is the domain, B the codomain, and the images actually reached form the range, a subset of B. An element of A with no image, or with two, makes the relation not a function.",
+      assumptions: [],
+    },
+    {
+      id: "count-functions",
+      topic: "function-types",
+      title: "Counting functions",
+      tokens: [
+        { kind: "ref", id: "functionsCount" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "n(B) to the power n(A)" },
+      ],
+      reading: "Each element of A chooses its image independently. One-one functions need n(B) ≥ n(A): n(B)(n(B) − 1)… with n(A) factors. Onto functions need n(B) ≤ n(A).",
+      assumptions: ["A and B finite; here n(A) = 4"],
+    },
+    {
+      id: "horizontal-line",
+      topic: "function-types",
+      title: "The horizontal-line test",
+      tokens: [
+        { kind: "text", value: "one-one" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "no horizontal line meets the graph twice" },
+      ],
+      reading: "Two crossings of y = k are two inputs with the same output. Onto is a question about the codomain: every k in it must be met at least once. A function is bijective when both hold.",
+      assumptions: ["A real function drawn over its whole domain"],
+      discoverable: true,
+    },
+    {
+      id: "composition",
+      topic: "composition-inverse",
+      title: "Composition",
+      tokens: [
+        { kind: "ref", id: "gfx" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "g(f(x))" },
+      ],
+      reading: "g∘f means f first, then g. The order matters: usually g∘f ≠ f∘g. For f(x) = x² and g(x) = x + 1, (g∘f)(2) = 5 but (f∘g)(2) = 9.",
+      assumptions: ["The range of f lies in the domain of g"],
+      discoverable: true,
+    },
+    {
+      id: "inverse",
+      topic: "composition-inverse",
+      title: "The inverse",
+      tokens: [
+        { kind: "text", value: "f invertible" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "f one-one and onto" },
+      ],
+      reading: "f⁻¹ turns every arrow round. That gives each element of B exactly one arrow back only when f is a bijection. Then f⁻¹(f(x)) = x and f(f⁻¹(y)) = y, and the graph of f⁻¹ is the graph of f reflected in y = x.",
+      assumptions: [],
+      discoverable: true,
+    },
+  ],
+
+  simulation: {
+    model: "setsfn",
+    params: { sets: "two", op: "union", relation: "near", curve: "square", domain: "all", codomain: "all", fRule: "square", gRule: "plus1" },
+  },
+
+  visualization: {
+    renderer: "setsfn",
+    hint: "Sets: size A and B and slide their overlap. Relations: switch on the closures. Functions: aim each arrow. Graphs: move the horizontal line.",
+    layers: [
+      { id: "venn", label: "Venn diagram" },
+      { id: "relation", label: "Relation" },
+      { id: "arrows", label: "Arrow diagram" },
+      { id: "reverse", label: "Arrows turned round" },
+      { id: "graph", label: "Graph" },
+      { id: "mirror", label: "Mirror in y = x" },
+      { id: "chain", label: "g∘f" },
+      { id: "labels", label: "Words", optional: true },
+    ],
+  },
+
+  modes: [
+    { id: "sets", label: "Sets", description: "Venn diagrams, operations and counting", layers: ["venn", "labels"], graphs: [], equations: ["union-count", "power-set"] },
+    { id: "relations", label: "Relations", description: "Reflexive, symmetric, transitive", layers: ["relation", "labels"], graphs: [], equations: ["equivalence"] },
+    { id: "functions", label: "Functions", description: "Arrows from A to B", layers: ["arrows", "labels"], graphs: [], equations: ["function-def", "count-functions"] },
+    { id: "graphs", label: "Graphs", description: "One-one and onto from the graph", layers: ["graph", "labels"], graphs: [], equations: ["horizontal-line"] },
+    { id: "compose", label: "g∘f", description: "One function after another", layers: ["chain", "labels"], graphs: [], equations: ["composition"] },
+    { id: "undo", label: "Undo", description: "Turning the arrows round", layers: ["arrows", "reverse", "labels"], graphs: [], equations: ["inverse"] },
+    { id: "mirror", label: "Mirror", description: "The inverse as a reflection in y = x", layers: ["graph", "mirror", "labels"], graphs: [], equations: ["inverse"] },
+  ],
+  defaultMode: "sets",
+  graphs: [],
+
+  activities: {
+    observe: [
+      {
+        id: "disjoint",
+        prompt: "In Sets, make A and B disjoint: no element in both.",
+        condition: { type: "compare", quantity: "nAB", op: "eq", value: 0 },
+      },
+      {
+        id: "an-equivalence",
+        prompt: "In Relations, turn a relation into an equivalence relation.",
+        condition: { type: "compare", quantity: "equivalence", op: "eq", value: 1 },
+      },
+      {
+        id: "a-bijection",
+        prompt: "In Functions, make the arrows a bijection.",
+        condition: { type: "compare", quantity: "bijective", op: "eq", value: 1 },
+      },
+    ],
+
+    predict: [
+      {
+        id: "more-overlap",
+        question: "A has 5 elements and B has 4. Their overlap grows from 0 to 3 elements. What happens to n(A ∪ B)?",
+        variable: "common",
+        from: 0,
+        to: 3,
+        quantity: "nAuB",
+        options: ["increase", "decrease", "same"],
+        mode: "sets",
+        given: { sets: "two", a: 5, b: 4 },
+        explanation: "It falls from 9 to 6. Every shared element is one fewer distinct element: n(A ∪ B) = 5 + 4 − n(A ∩ B).",
+      },
+    ],
+
+    experiment: {
+      title: "Counting a union",
+      instructions: "With n(A) = 5 and n(B) = 4, record n(A ∩ B) and n(A ∪ B) for overlaps of 0, 1, 2, 3 and 4.",
+      columns: ["common", "nAB", "nAuB"],
+      minRows: 4,
+      discovery: {
+        question: "How does n(A ∪ B) follow from n(A), n(B) and n(A ∩ B)?",
+        choices: [
+          { id: "subtract", label: "n(A) + n(B) − n(A ∩ B)", correct: true },
+          { id: "add", label: "n(A) + n(B)", correct: false },
+          { id: "add-both", label: "n(A) + n(B) + n(A ∩ B)", correct: false },
+          { id: "larger", label: "The larger of n(A) and n(B)", correct: false },
+        ],
+        reveals: "union-count",
+        insight: "Each shared element was counted in n(A) and again in n(B); taking n(A ∩ B) away once counts it once.",
+      },
+    },
+
+    explain: [
+      {
+        id: "sets",
+        title: "The sets",
+        body: "n(A) = {{nA}}, n(B) = {{nB}} and they share {{nAB}}, so n(A ∪ B) = {{nAuB}}. The shaded set has {{nShaded}} elements, and A has {{powerA}} subsets.",
+      },
+      {
+        id: "relation",
+        title: "The relation",
+        body: "It has {{pairs}} ordered pairs ({{added}} added). Reflexive: {{reflexive}}. Symmetric: {{symmetric}}. Transitive: {{transitive}}. An equivalence relation: {{equivalence}}.",
+      },
+      {
+        id: "arrows",
+        title: "The arrows",
+        body: "A function: {{isFunction}}. Range: {{rangeSize}} elements. One-one: {{oneOne}}; onto: {{onto}}. Of the {{functionsCount}} functions from A to B, {{oneOneCount}} are one-one and {{ontoCount}} onto.",
+      },
+      {
+        id: "graph",
+        title: "The graph",
+        body: "The line y = k meets it {{crossings}}. Range inside the codomain: {{grValid}}. One-one: {{grOneOne}}; onto: {{grOnto}}; invertible: {{grBijective}}.",
+      },
+      {
+        id: "chain",
+        title: "Composition",
+        body: "f(x) = {{fx}}, so (g∘f)(x) = {{gfx}}; the other way round, (f∘g)(x) = {{fgx}}. The same for every x: {{commute}}.",
+      },
+    ],
+
+    challenges: [
+      {
+        id: "three-classes",
+        title: "Three classes",
+        prompt: "Find a relation on {1, …, 5} that is an equivalence relation with exactly three classes.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "equivalence", op: "eq", value: 1 },
+            { type: "compare", quantity: "classes", op: "eq", value: 3 },
+          ],
+        },
+        hint: "Remainders on division by 3 come in three kinds.",
+        success: "a − b divisible by 3: the classes {1, 4}, {2, 5} and {3}.",
+      },
+      {
+        id: "exactly-onto",
+        title: "Onto but not one-one",
+        prompt: "Make a function from A = {1, 2, 3, 4} onto B that is not one-one.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "onto", op: "eq", value: 1 },
+            { type: "compare", quantity: "oneOne", op: "eq", value: 0 },
+          ],
+        },
+        hint: "B needs fewer elements than A.",
+        success: "With 3 elements in B, every one can be hit while two elements of A share an image — 36 such functions in all.",
+      },
+    ],
+  },
+
+  realWorld: [
+    { title: "Database searches", description: "A search for records matching this or that is a union; this and that is an intersection — Venn diagrams in every query." },
+    { title: "Roll numbers", description: "Each student gets exactly one roll number and no two share one: a one-one function, which is why it can be looked up backwards." },
+    { title: "Codes and ciphers", description: "Encryption must be a bijection, or two messages would scramble to the same text and could not be told apart when decoded." },
+  ],
+});

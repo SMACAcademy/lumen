@@ -1,0 +1,108 @@
+import { defineLevel } from "@ise/game-engine";
+
+const minus = (n: number) => (n < 0 ? `(−${-n})` : String(n));
+const product = (times: number, jump: number) => ({
+  id: `t${times < 0 ? "m" : ""}${Math.abs(times)}-${jump < 0 ? "m" : ""}${Math.abs(jump)}`,
+  label: `${minus(times)} × ${minus(jump)}`,
+  given: { times, jump },
+});
+const card = (id: string, label: string) => ({ id, label });
+
+/** Integers and Rationals, level 2: multiplying and dividing integers, and why minus times minus is plus. */
+export const turningRoundTwice = defineLevel({
+  schemaVersion: 1,
+  id: "turning-round-twice",
+  concept: "integers-and-rationals",
+  title: "Turning round twice",
+  summary: "Multiplying is hopping from 0 again and again. A minus sign turns the frog round — so what do two minus signs do?",
+  xp: 30,
+  steps: [
+    {
+      id: "three-hops",
+      kind: "explore",
+      prompt: "**3 × (−2)** means 3 hops of −2, starting from 0. Press play and watch.",
+      mode: "times",
+      given: { times: 3, jump: -2, hop: 0 },
+      playback: true,
+      goal: { type: "compare", quantity: "timesLanded", op: "eq", value: 1 },
+      success: "3 × (−2) = −6: three hops of −2, all to the left. It is −2 + (−2) + (−2).",
+      hints: ["Press play."],
+    },
+    {
+      id: "turn-round",
+      kind: "predict",
+      prompt: "3 hops of **2** make **6**. Now the count is **−3** instead of 3. What happens to the product?",
+      mode: "times",
+      variable: "times",
+      from: 3,
+      to: -3,
+      quantity: "product",
+      options: ["increase", "decrease", "same"],
+      given: { jump: 2 },
+      explanation: "It drops from 6 to −6. A minus sign on the count turns the frog round, so the same hops go left.",
+    },
+    {
+      id: "make-plus-six",
+      kind: "target",
+      prompt: "The hops are **−2** each. Choose the count so the frog lands on **+6**.",
+      mode: "times",
+      given: { jump: -2, times: 1 },
+      controls: ["times"],
+      canvas: false,
+      goal: { type: "compare", quantity: "product", op: "eq", value: 6 },
+      success: "(−3) × (−2) = +6. The hops point left, and the minus on the 3 turns the frog round. Turned round twice, it faces right again.",
+      retry: "Not +6 yet. Three hops of −2 land on −6. How do you turn the frog round?",
+      hints: ["Hops of −2 go left. You need to end up on the right.", "Try a negative count."],
+    },
+    {
+      id: "plus-or-minus",
+      kind: "sort",
+      prompt: "**Sort** these products: positive or negative?",
+      mode: "times",
+      canvas: false,
+      bins: [
+        { id: "pos", label: "Positive", when: { type: "compare", quantity: "product", op: "gt", value: 0 } },
+        { id: "neg", label: "Negative", when: { type: "compare", quantity: "product", op: "lt", value: 0 } },
+      ],
+      cards: [product(-4, 3), product(-2, -5), product(5, -1), product(-3, -3), product(2, 4), { id: "three-minuses", label: "(−1) × (−1) × (−1)", bin: "neg" }],
+      explanation: "Count the minus signs. None or two: positive. One or three: negative — the frog has turned round an odd number of times.",
+      hints: ["Count the minus signs."],
+    },
+    {
+      id: "divide-back",
+      kind: "match",
+      prompt: "Dividing undoes multiplying. **Match** each division to its answer.",
+      canvas: false,
+      pairs: [
+        { left: card("d-m12-3", "(−12) ÷ 3"), right: card("a-m4", "−4") },
+        { left: card("d-m12-m3", "(−12) ÷ (−3)"), right: card("a-4", "4") },
+        { left: card("d-12-m4", "12 ÷ (−4)"), right: card("a-m3", "−3") },
+        { left: card("d-m15-m5", "(−15) ÷ (−5)"), right: card("a-3", "3") },
+      ],
+      explanation: "(−12) ÷ 3 = −4 because 3 × (−4) = −12. Dividing has the same sign rules: two minus signs make a plus.",
+      hints: ["Which number times the divisor gives the number being divided?"],
+    },
+    {
+      id: "four-hops-of-minus-five",
+      kind: "estimate",
+      prompt: "Work out **(−4) × (−5)**.",
+      mode: "times",
+      given: { times: -4, jump: -5, hop: 0 },
+      canvas: false,
+      hideLabels: true,
+      quantity: "product",
+      range: { min: -25, max: 25, step: 1 },
+      tolerance: 0.5,
+      explanation: "+20. Four hops of −5 would land on −20; the minus on the 4 turns the frog round, to +20.",
+      hints: ["First ignore the signs: 4 × 5.", "Two minus signs: is the answer positive or negative?"],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The sign rules for multiplying.",
+      mode: "times",
+      equation: "integer-product",
+      law: "Multiply the sizes. One minus sign makes the product negative; two minus signs turn the frog round twice, so the product is positive.",
+    },
+  ],
+});

@@ -1,0 +1,21 @@
+{
+  "name": "@ise/game-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "devDependencies": {
+    "@ise/content": "workspace:*",
+    "@ise/physics-engine": "workspace:*"
+  },
+  "dependencies": {
+    "@ise/concept-schema": "workspace:*",
+    "@ise/science-engine": "workspace:*",
+    "zod": "^4.6.5"
+  }
+}

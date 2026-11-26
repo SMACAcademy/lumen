@@ -1,0 +1,644 @@
+import { defineConcept } from "@ise/concept-schema";
+import { degToRad as deg } from "@ise/units";
+
+/**
+ * Flagship concept: a point rotating around the unit circle generates the
+ * sine and cosine functions. Everything the lab shows is declared here;
+ * values are in internal units (rad, rad/s).
+ */
+export const unitCircleSineCosine = defineConcept({
+  schemaVersion: 1,
+  meta: {
+    id: "unit-circle-sine-cosine",
+    title: "Unit Circle → Sine & Cosine",
+    tagline: "Watch a rotating point draw the sine and cosine waves.",
+    domain: "mathematics",
+    category: "trigonometry",
+    grade: { min: 9, max: 12 },
+    difficulty: "introductory",
+    estimatedMinutes: 20,
+    objective:
+      "Understand sin θ and cos θ as the vertical and horizontal projections of a point on the unit circle, and see how uniform rotation generates the sine and cosine waves.",
+    tags: ["trigonometry", "unit circle", "sine", "cosine", "waves", "projection"],
+  },
+
+  connections: [
+    {
+      id: "angles-and-coordinates",
+      title: "Angles & coordinates",
+      domain: "mathematics",
+      relation: "prerequisite",
+      note: "Measuring angles and locating points (x, y) on a plane.",
+      available: false,
+    },
+    {
+      id: "sinusoidal-functions",
+      title: "y = A sin(ωx + φ)",
+      domain: "mathematics",
+      relation: "leads-to",
+      note: "Stretch, speed up and shift the wave you just generated.",
+      available: true,
+    },
+    {
+      id: "vector-components",
+      title: "Vector components",
+      domain: "mathematics",
+      relation: "leads-to",
+      note: "The projections are exactly a vector's x and y components.",
+      available: true,
+    },
+    {
+      id: "simple-harmonic-motion",
+      title: "Simple harmonic motion",
+      domain: "physics",
+      relation: "leads-to",
+      note: "Circular motion seen edge-on is an oscillation.",
+      available: false,
+    },
+    {
+      id: "projectile-motion",
+      title: "Projectile motion",
+      domain: "physics",
+      relation: "leads-to",
+      note: "Launch velocity splits into v cos θ and v sin θ.",
+      available: false,
+    },
+  ],
+
+  variables: [
+    {
+      id: "theta",
+      symbol: "θ",
+      name: "Angle",
+      meaning: "How far the radius has turned from the positive x-axis, measured counter-clockwise.",
+      binding: { kind: "state", key: "theta" },
+      control: {
+        type: "range",
+        unit: "rad",
+        min: 0,
+        max: deg(360),
+        step: deg(1),
+        presets: [0, 30, 45, 60, 90, 120, 180, 210, 270, 330].map(deg),
+        dial: true,
+      },
+      group: "primary",
+      color: "angle",
+    },
+    {
+      id: "omega",
+      symbol: "ω",
+      name: "Rotation speed",
+      meaning: "Angular speed: how many degrees (or radians) the point turns each second.",
+      binding: { kind: "param", key: "omega" },
+      control: { type: "range", unit: "rad/s", min: deg(5), max: deg(180), step: deg(5) },
+      group: "motion",
+    },
+    {
+      id: "direction",
+      symbol: "↻",
+      name: "Direction",
+      meaning: "Counter-clockwise is the mathematical positive direction; clockwise makes θ decrease.",
+      binding: { kind: "param", key: "direction" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "ccw", label: "Counter-clockwise", glyph: "↺" },
+          { value: "cw", label: "Clockwise", glyph: "↻" },
+        ],
+      },
+      group: "motion",
+    },
+    {
+      id: "stepSize",
+      symbol: "Δθ",
+      name: "Step size",
+      meaning: "How far one press of Step turns the point. Steps snap to multiples of this angle.",
+      binding: { kind: "param", key: "stepSize" },
+      control: {
+        type: "choice",
+        options: [
+          { value: deg(1), label: "1°" },
+          { value: deg(5), label: "5°" },
+          { value: deg(15), label: "15°" },
+          { value: deg(30), label: "30°" },
+          { value: deg(45), label: "45°" },
+        ],
+      },
+      group: "motion",
+    },
+  ],
+
+  quantities: [
+    {
+      id: "theta",
+      symbol: "θ",
+      name: "Angle",
+      meaning: "The current angle, wrapped into one turn.",
+      result: "thetaNorm",
+      format: { kind: "angle" },
+      unit: "rad",
+      color: "angle",
+      highlight: "angleArc",
+      headline: true,
+    },
+    {
+      id: "sin",
+      symbol: "sin θ",
+      name: "Sine",
+      meaning: "The point's height above the x-axis — its vertical projection.",
+      result: "sin",
+      format: { kind: "number", digits: 4 },
+      color: "sine",
+      highlight: "sineProjection",
+      headline: true,
+    },
+    {
+      id: "cos",
+      symbol: "cos θ",
+      name: "Cosine",
+      meaning: "The point's horizontal distance from the y-axis — its horizontal projection.",
+      result: "cos",
+      format: { kind: "number", digits: 4 },
+      color: "cosine",
+      highlight: "cosineProjection",
+      headline: true,
+    },
+    {
+      id: "tan",
+      symbol: "tan θ",
+      name: "Tangent",
+      meaning: "The slope of the radius: sin θ ÷ cos θ. Undefined when cos θ = 0.",
+      result: "tan",
+      format: { kind: "number", digits: 4 },
+      color: "tangent",
+      highlight: "tangent",
+    },
+    {
+      id: "x",
+      symbol: "x",
+      name: "x-coordinate",
+      meaning: "Horizontal coordinate of the point.",
+      result: "x",
+      format: { kind: "number", digits: 4 },
+      color: "cosine",
+      highlight: "cosineProjection",
+    },
+    {
+      id: "y",
+      symbol: "y",
+      name: "y-coordinate",
+      meaning: "Vertical coordinate of the point.",
+      result: "y",
+      format: { kind: "number", digits: 4 },
+      color: "sine",
+      highlight: "sineProjection",
+    },
+    {
+      id: "radius",
+      symbol: "r",
+      name: "Radius",
+      meaning: "Distance from the centre to the point. On the unit circle r = 1.",
+      result: "radius",
+      format: { kind: "number", digits: 0 },
+      color: "point",
+      highlight: "radius",
+    },
+    {
+      id: "quadrant",
+      symbol: "Q",
+      name: "Quadrant",
+      meaning: "Which quarter of the plane the point is in. The quadrant sets the signs of sin and cos.",
+      result: "quadrant",
+      format: { kind: "label", labels: { "0": "on an axis", "1": "I", "2": "II", "3": "III", "4": "IV" } },
+      color: "neutral",
+    },
+    {
+      id: "referenceAngle",
+      symbol: "θ′",
+      name: "Reference angle",
+      meaning: "The acute angle between the radius and the x-axis.",
+      result: "referenceAngle",
+      format: { kind: "angle" },
+      unit: "rad",
+      color: "angle",
+      highlight: "angleArc",
+    },
+    {
+      id: "identity",
+      symbol: "sin²θ + cos²θ",
+      name: "Sum of squares",
+      meaning: "The squares of the two projections added together.",
+      result: "identity",
+      format: { kind: "number", digits: 4 },
+      color: "neutral",
+    },
+    {
+      id: "revolutions",
+      symbol: "n",
+      name: "Full turns",
+      meaning: "Completed revolutions since the start (negative when turning clockwise).",
+      result: "revolutions",
+      format: { kind: "integer" },
+      color: "neutral",
+    },
+  ],
+
+  equations: [
+    {
+      id: "sine-definition",
+      topic: "unit-circle",
+      title: "Sine as a projection",
+      tokens: [
+        { kind: "ref", id: "sin" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "y" },
+        { kind: "op", value: "/" },
+        { kind: "ref", id: "radius" },
+      ],
+      reading: "The sine of θ is the point's height divided by the radius.",
+      assumptions: ["Angle measured counter-clockwise from the positive x-axis", "Circle centred at the origin"],
+    },
+    {
+      id: "cosine-definition",
+      topic: "unit-circle",
+      title: "Cosine as a projection",
+      tokens: [
+        { kind: "ref", id: "cos" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "x" },
+        { kind: "op", value: "/" },
+        { kind: "ref", id: "radius" },
+      ],
+      reading: "The cosine of θ is the point's horizontal position divided by the radius.",
+      assumptions: ["Angle measured counter-clockwise from the positive x-axis", "Circle centred at the origin"],
+    },
+    {
+      id: "pythagorean-identity",
+      topic: "trig-identities",
+      title: "Pythagorean identity",
+      tokens: [
+        { kind: "ref", id: "sin", power: 2 },
+        { kind: "op", value: "+" },
+        { kind: "ref", id: "cos", power: 2 },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "identity", symbolic: "1" },
+      ],
+      reading: "For every angle, the squares of sine and cosine add up to exactly one.",
+      assumptions: ["Follows from Pythagoras: x² + y² = r² with r = 1"],
+      discoverable: true,
+    },
+    {
+      id: "tangent-definition",
+      topic: "trig-any-angle",
+      title: "Tangent as a ratio",
+      tokens: [
+        { kind: "ref", id: "tan" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "sin" },
+        { kind: "op", value: "/" },
+        { kind: "ref", id: "cos" },
+      ],
+      reading: "Tangent is rise over run: the slope of the radius.",
+      assumptions: ["Undefined when cos θ = 0 (θ = 90°, 270°)"],
+    },
+  ],
+
+  simulation: { model: "unit-circle", params: {} },
+
+  visualization: {
+    renderer: "unit-circle",
+    hint: "Drag the point · scrub a graph · Space to play",
+    layers: [
+      { id: "axes", label: "Axes" },
+      { id: "circle", label: "Unit circle" },
+      { id: "radius", label: "Radius" },
+      { id: "angleArc", label: "Angle" },
+      { id: "point", label: "Point" },
+      { id: "sineProjection", label: "Vertical projection (sin)" },
+      { id: "cosineProjection", label: "Horizontal projection (cos)" },
+      { id: "labels", label: "Labels", optional: true },
+      { id: "specialAngles", label: "Special angles", optional: true },
+      { id: "tangent", label: "Tangent line", optional: true },
+    ],
+  },
+
+  modes: [
+    {
+      id: "sine",
+      label: "Sine",
+      description: "Vertical projection → sine wave",
+      layers: ["axes", "circle", "radius", "angleArc", "point", "sineProjection", "labels", "specialAngles"],
+      graphs: ["sine-generated"],
+      swatches: [{ color: "sine", dash: "solid" }],
+      equations: ["sine-definition"],
+    },
+    {
+      id: "cosine",
+      label: "Cosine",
+      description: "Horizontal projection → cosine wave",
+      layers: ["axes", "circle", "radius", "angleArc", "point", "cosineProjection", "labels", "specialAngles"],
+      graphs: ["cosine-generated"],
+      swatches: [{ color: "cosine", dash: "dashed" }],
+      equations: ["cosine-definition"],
+    },
+    {
+      id: "both",
+      label: "Both",
+      description: "Both projections and the phase relationship",
+      layers: [
+        "axes",
+        "circle",
+        "radius",
+        "angleArc",
+        "point",
+        "sineProjection",
+        "cosineProjection",
+        "labels",
+        "specialAngles",
+        "tangent",
+      ],
+      graphs: ["sine-generated", "cosine-generated", "compare"],
+      swatches: [
+        { color: "sine", dash: "solid" },
+        { color: "cosine", dash: "dashed" },
+      ],
+      equations: ["sine-definition", "cosine-definition", "pythagorean-identity", "tangent-definition"],
+    },
+  ],
+  defaultMode: "sine",
+
+  graphs: [
+    {
+      id: "sine-generated",
+      title: "Sine wave, generated by the vertical projection",
+      role: "generated",
+      orientation: "right",
+      xLabel: "θ",
+      yLabel: "sin θ",
+      xDomain: [0, deg(360)],
+      xAxis: "angle",
+      yDomain: [-1, 1],
+      series: [{ channel: "sin", label: "sin θ", color: "sine", dash: "solid" }],
+      connector: true,
+    },
+    {
+      id: "cosine-generated",
+      title: "Cosine wave, generated by the horizontal projection",
+      role: "generated",
+      orientation: "down",
+      xLabel: "θ",
+      yLabel: "cos θ",
+      xDomain: [0, deg(360)],
+      xAxis: "angle",
+      yDomain: [-1, 1],
+      series: [{ channel: "cos", label: "cos θ", color: "cosine", dash: "dashed" }],
+      connector: true,
+    },
+    {
+      id: "compare",
+      title: "Sine and cosine on one axis",
+      role: "compare",
+      orientation: "right",
+      xLabel: "θ",
+      yLabel: "value",
+      xDomain: [0, deg(360)],
+      xAxis: "angle",
+      yDomain: [-1, 1],
+      series: [
+        { channel: "sin", label: "sin θ", color: "sine", dash: "solid" },
+        { channel: "cos", label: "cos θ", color: "cosine", dash: "dashed" },
+      ],
+      connector: false,
+    },
+  ],
+
+  activities: {
+    observe: [
+      {
+        id: "press-play",
+        prompt: "Press Play and watch the point travel around the circle.",
+        hint: "The ▶ button is below the circle, or press the Space bar.",
+        condition: { type: "event", name: "play" },
+      },
+      {
+        id: "top-of-circle",
+        prompt: "Stop the point at the very top of the circle. What is sin θ there?",
+        hint: "Use the 90° preset or drag the point. At the top, the height equals the radius.",
+        condition: { type: "compare", quantity: "sin", op: "eq", value: 1, tolerance: 0.0005 },
+      },
+      {
+        id: "all-quadrants",
+        prompt: "Let the point visit all four quadrants. Where does sin θ become negative?",
+        condition: { type: "visitedAll", quantity: "quadrant", values: [1, 2, 3, 4] },
+      },
+      {
+        id: "full-wave",
+        prompt: "Complete a full revolution. You have just generated one full wave!",
+        condition: { type: "traceCoverage", min: 0.98 },
+      },
+      {
+        id: "try-cosine",
+        prompt: "Switch to Cosine mode. Which projection draws the cosine curve?",
+        condition: { type: "mode", is: "cosine" },
+      },
+    ],
+
+    predict: [
+      {
+        id: "sin-30-60",
+        question: "The angle increases from 30° to 60°. What happens to sin θ?",
+        variable: "theta",
+        from: deg(30),
+        to: deg(60),
+        quantity: "sin",
+        options: ["increase", "decrease", "same"],
+        mode: "sine",
+        explanation:
+          "Between 0° and 90° the point is climbing, so its height (sin θ) grows — from 0.5 to about 0.866.",
+      },
+      {
+        id: "sin-120-150",
+        question: "Now the angle increases from 120° to 150°. What happens to sin θ?",
+        variable: "theta",
+        from: deg(120),
+        to: deg(150),
+        quantity: "sin",
+        options: ["increase", "decrease", "same"],
+        mode: "sine",
+        explanation:
+          "Surprise! θ keeps increasing, but past 90° the point is coming back down, so its height falls — from 0.866 to 0.5. A bigger angle does not always mean a bigger sine.",
+      },
+      {
+        id: "cos-0-90",
+        question: "The angle increases from 0° to 90°. What happens to cos θ?",
+        variable: "theta",
+        from: 0,
+        to: deg(90),
+        quantity: "cos",
+        options: ["increase", "decrease", "same"],
+        mode: "cosine",
+        explanation:
+          "As the point swings up towards the y-axis, its horizontal distance shrinks from 1 to 0. Cosine decreases while sine increases.",
+      },
+      {
+        id: "sin-30-150",
+        question: "Compare θ = 30° with θ = 150°. How does sin θ change?",
+        variable: "theta",
+        from: deg(30),
+        to: deg(150),
+        quantity: "sin",
+        options: ["increase", "decrease", "same"],
+        tolerance: 1e-9,
+        mode: "sine",
+        explanation:
+          "Both points are at exactly the same height — they are mirror images across the y-axis. So sin 150° = sin 30° = 0.5. This symmetry is why 30° and 60° launch angles give the same projectile range!",
+      },
+    ],
+
+    experiment: {
+      title: "Measure the projections",
+      instructions:
+        "Set any angle and press Record. Record at least three very different angles — try different quadrants.",
+      columns: ["theta", "sin", "cos", "identity"],
+      minRows: 3,
+      discovery: {
+        question: "Look at the last column. What do you notice about sin²θ + cos²θ?",
+        choices: [
+          { id: "always-one", label: "It is always 1", correct: true },
+          { id: "grows", label: "It grows as θ grows", correct: false },
+          { id: "quadrant", label: "It depends on the quadrant", correct: false },
+          { id: "equals-theta", label: "It equals θ", correct: false },
+        ],
+        reveals: "pythagorean-identity",
+        insight:
+          "The point is always exactly 1 unit from the centre. Pythagoras says x² + y² = r² = 1, and x = cos θ, y = sin θ. So sin²θ + cos²θ = 1 for every angle — you discovered the Pythagorean identity.",
+      },
+    },
+
+    explain: [
+      {
+        id: "projection",
+        title: "Sine and cosine are shadows",
+        body:
+          "The point sits at (cos θ, sin θ). Its **height** above the x-axis is sin θ = {{sin}}. Its **horizontal position** is cos θ = {{cos}}.",
+      },
+      {
+        id: "sine-wave",
+        title: "How the sine wave is drawn",
+        body:
+          "As θ grows, the height rises to 1 at 90°, returns to 0 at 180°, sinks to −1 at 270° and is back at 0 at 360°. Plotting height against angle unrolls the circle into the sine wave.",
+        when: { type: "mode", is: "sine" },
+      },
+      {
+        id: "cosine-wave",
+        title: "How the cosine wave is drawn",
+        body:
+          "The horizontal position starts at 1, reaches 0 at 90°, −1 at 180°, 0 at 270° and 1 again at 360°. Plotting it against the angle draws the cosine wave.",
+        when: { type: "mode", is: "cosine" },
+      },
+      {
+        id: "phase",
+        title: "Cosine is sine, a quarter-turn earlier",
+        body:
+          "Compare the two curves: the cosine peak arrives 90° before the sine peak. In symbols, cos θ = sin(θ + 90°). They are the same wave, shifted in phase.",
+        when: { type: "mode", is: "both" },
+      },
+      {
+        id: "quadrant-1",
+        title: "Quadrant I",
+        body: "Both projections point in the positive direction, so sin θ > 0 and cos θ > 0.",
+        when: { type: "compare", quantity: "quadrant", op: "eq", value: 1 },
+      },
+      {
+        id: "quadrant-2",
+        title: "Quadrant II",
+        body:
+          "The point is left of the y-axis but above the x-axis: sin θ > 0, cos θ < 0. Reference angle θ′ = {{referenceAngle}}.",
+        when: { type: "compare", quantity: "quadrant", op: "eq", value: 2 },
+      },
+      {
+        id: "quadrant-3",
+        title: "Quadrant III",
+        body: "Left and below: both sin θ and cos θ are negative. Reference angle θ′ = {{referenceAngle}}.",
+        when: { type: "compare", quantity: "quadrant", op: "eq", value: 3 },
+      },
+      {
+        id: "quadrant-4",
+        title: "Quadrant IV",
+        body:
+          "Right of the y-axis and below the x-axis: sin θ < 0, cos θ > 0. Reference angle θ′ = {{referenceAngle}}.",
+        when: { type: "compare", quantity: "quadrant", op: "eq", value: 4 },
+      },
+      {
+        id: "on-axis",
+        title: "On an axis",
+        body: "At a quadrantal angle one projection is zero and the other is ±1.",
+        when: { type: "compare", quantity: "quadrant", op: "eq", value: 0 },
+      },
+      {
+        id: "physics",
+        title: "Where this goes next",
+        body:
+          "Seen edge-on, a point circling at constant speed moves up and down in **simple harmonic motion**. The same curve describes pendulums, springs, sound and alternating current.",
+      },
+    ],
+
+    challenges: [
+      {
+        id: "sine-minus-half",
+        title: "Below the line",
+        prompt: "Make sin θ = −0.5.",
+        goal: { type: "compare", quantity: "sin", op: "eq", value: -0.5, tolerance: 0.005 },
+        hint: "sin θ is negative when the point is below the x-axis — Quadrant III or IV.",
+        success: "Both 210° and 330° work: each has a reference angle of 30°.",
+      },
+      {
+        id: "equal-projections",
+        title: "Equal shadows",
+        prompt: "Find an angle, other than 45°, where sin θ = cos θ.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compareQuantities", left: "sin", op: "eq", right: "cos", tolerance: 0.005 },
+            { type: "not", condition: { type: "compare", quantity: "thetaDeg", op: "eq", value: 45, tolerance: 1 } },
+          ],
+        },
+        hint: "Both projections must have the same size and the same sign.",
+        success: "θ = 225°: both projections equal −0.7071.",
+      },
+      {
+        id: "straight-down",
+        title: "Straight down",
+        prompt: "Make cos θ = 0 while sin θ is negative.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "cos", op: "eq", value: 0, tolerance: 0.005 },
+            { type: "compare", quantity: "sin", op: "lt", value: 0 },
+          ],
+        },
+        hint: "Where is the horizontal projection zero? There are two places — pick the lower one.",
+        success: "θ = 270°, the bottom of the circle: sin θ = −1, cos θ = 0.",
+      },
+    ],
+  },
+
+  realWorld: [
+    {
+      title: "Ferris wheel",
+      description: "A rider's height above the axle is r·sin θ — it rises and falls as a sine wave.",
+    },
+    {
+      title: "Alternating current",
+      description: "A generator coil rotating in a magnetic field produces a voltage that follows sin(ωt).",
+    },
+    {
+      title: "Sound",
+      description: "A pure musical tone is a pressure wave with the same shape as the curve you generated.",
+    },
+    {
+      title: "Engine pistons",
+      description: "A crankshaft turns circular motion into the back-and-forth motion of a piston.",
+    },
+  ],
+});

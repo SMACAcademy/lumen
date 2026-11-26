@@ -1,0 +1,98 @@
+import { defineLevel } from "@ise/game-engine";
+
+const complex = (id: string, label: string, metal: string, ligand: number) => ({ id, label, given: { metal, ligand } });
+const card = (id: string, label: string) => ({ id, label });
+
+/** Complexes, level 2: Δo against the pairing energy, magnetism, and CFSE. */
+export const highSpinLowSpin = defineLevel({
+  schemaVersion: 1,
+  id: "high-spin-low-spin",
+  concept: "coordination-compounds",
+  title: "High spin, low spin",
+  summary: "Pair up or climb the gap? Compare Δo with the pairing energy — and read the answer off a magnet.",
+  xp: 40,
+  steps: [
+    {
+      id: "pair-up",
+      kind: "explore",
+      prompt: "**Fe²⁺**, d⁶, in water: four unpaired electrons. Move up the series until the electrons **pair up**.",
+      mode: "field",
+      given: { metal: "fe2", ligand: 5 },
+      controls: ["ligand"],
+      canvas: false,
+      goal: { type: "compare", quantity: "lowSpin", op: "eq", value: 1 },
+      success: "With CN⁻ the gap beats the pairing energy: all six electrons pair in t₂g. [Fe(CN)₆]⁴⁻ is diamagnetic.",
+      hints: ["Try cyanide (8)."],
+    },
+    {
+      id: "high-spin-cobalt",
+      kind: "target",
+      prompt: "[Co(CN)₆]³⁻ is low spin. Change the ligand to make a **high-spin** cobalt(III) complex.",
+      mode: "field",
+      given: { metal: "co3", ligand: 8 },
+      controls: ["ligand"],
+      canvas: false,
+      goal: { type: "compare", quantity: "lowSpin", op: "eq", value: 0 },
+      success: "A weak-field ligand — F⁻ gives [CoF₆]³⁻, high spin with four unpaired electrons. NH₃ is already strong enough for low spin.",
+      retry: "Still low spin.",
+      hints: ["Go down the series, past water.", "Fluoride."],
+    },
+    {
+      id: "magnets",
+      kind: "sort",
+      prompt: "**Sort** the complexes: paramagnetic or diamagnetic?",
+      mode: "field",
+      canvas: false,
+      bins: [
+        { id: "para", label: "Paramagnetic", when: { type: "compare", quantity: "paramagnetic", op: "eq", value: 1 } },
+        { id: "dia", label: "Diamagnetic", when: { type: "compare", quantity: "paramagnetic", op: "eq", value: 0 } },
+      ],
+      cards: [
+        complex("ferro", "[Fe(CN)₆]⁴⁻", "fe2", 8),
+        complex("iron-aqua", "[Fe(H₂O)₆]²⁺", "fe2", 5),
+        complex("cobalt-ammine", "[Co(NH₃)₆]³⁺", "co3", 6),
+        complex("cobalt-fluoride", "[CoF₆]³⁻", "co3", 3),
+        complex("nickel-ammine", "[Ni(NH₃)₆]²⁺", "ni2", 6),
+        complex("zinc-ammine", "[Zn(NH₃)₆]²⁺", "zn2", 6),
+      ],
+      explanation: "Low-spin d⁶ ([Fe(CN)₆]⁴⁻, [Co(NH₃)₆]³⁺) and d¹⁰ zinc have every electron paired. High-spin d⁶ keeps four unpaired, and octahedral Ni²⁺ always has two.",
+      hints: ["Strong-field d⁶ pairs everything."],
+    },
+    {
+      id: "cfse",
+      kind: "estimate",
+      prompt: "[Co(NH₃)₆]³⁺ is low-spin d⁶: t₂g⁶ eg⁰. What is its CFSE, in units of Δo?",
+      mode: "field",
+      given: { metal: "co3", ligand: 6 },
+      canvas: false,
+      hideLabels: true,
+      quantity: "cfse",
+      range: { min: -3, max: 1, step: 0.1 },
+      tolerance: 0.05,
+      explanation: "6 × (−0.4) + 0 × 0.6 = −2.4Δo: the most stabilised arrangement there is.",
+      hints: ["−0.4 for each t₂g electron."],
+    },
+    {
+      id: "theories",
+      kind: "match",
+      prompt: "**Match** each description to its meaning.",
+      canvas: false,
+      pairs: [
+        { left: card("low", "Low spin"), right: card("strong", "strong-field ligand: Δo > P") },
+        { left: card("high", "High spin"), right: card("weak", "weak-field ligand: Δo < P") },
+        { left: card("inner", "Inner-orbital complex, d²sp³"), right: card("vb-low", "valence bond's name for low spin") },
+        { left: card("outer", "Outer-orbital complex, sp³d²"), right: card("vb-high", "valence bond's name for high spin") },
+      ],
+      explanation: "Crystal field theory and valence bond theory describe the same complexes: pairing up leaves inner 3d orbitals free to bond (d²sp³).",
+      hints: ["Inner orbitals are free only when the d electrons pair up."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Pair up or spread out.",
+      mode: "field",
+      equation: "spin-rule",
+      law: "For d⁴ to d⁷, electrons pair in t₂g when Δo is bigger than the pairing energy (low spin), and spread into eg when it is smaller (high spin).",
+    },
+  ],
+});

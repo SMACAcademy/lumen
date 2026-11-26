@@ -1,0 +1,103 @@
+import { defineLevel } from "@ise/game-engine";
+
+const card = (id: string, label: string) => ({ id, label });
+const reaction = (id: string, label: string) => ({ id, label, given: { reaction: id } });
+
+/** Balancing Equations, level 2: balance harder equations, and name the kinds of reaction. */
+export const balanceIt = defineLevel({
+  schemaVersion: 1,
+  id: "balance-it",
+  concept: "chemical-equations",
+  title: "Balance it",
+  summary: "Ammonia, cooking gas and rust — then sort reactions into combination, decomposition and displacement.",
+  xp: 35,
+  steps: [
+    {
+      id: "ammonia",
+      kind: "build",
+      prompt: "Make ammonia: **N₂ + H₂ → NH₃**. Balance it.",
+      mode: "balance",
+      given: { reaction: "ammonia", c1: 1, c2: 1, c3: 1 },
+      parts: [
+        { variable: "c1", label: "N₂" },
+        { variable: "c2", label: "H₂" },
+        { variable: "c3", label: "NH₃" },
+      ],
+      goal: { type: "compare", quantity: "simplest", op: "eq", value: 1 },
+      success: "N₂ + 3 H₂ → 2 NH₃: two nitrogen and six hydrogen atoms each side.",
+      retry: "Not balanced yet — check the tally.",
+      hints: ["Start with nitrogen: two in, so two NH₃ out.", "Two NH₃ hold six hydrogen atoms."],
+    },
+    {
+      id: "gas-flame",
+      kind: "build",
+      prompt: "Cooking gas burns: **CH₄ + O₂ → CO₂ + H₂O**. Balance it.",
+      mode: "balance",
+      given: { reaction: "methane", c1: 1, c2: 1, c3: 1, c4: 1 },
+      parts: [
+        { variable: "c1", label: "CH₄" },
+        { variable: "c2", label: "O₂" },
+        { variable: "c3", label: "CO₂" },
+        { variable: "c4", label: "H₂O" },
+      ],
+      goal: { type: "compare", quantity: "simplest", op: "eq", value: 1 },
+      success: "CH₄ + 2 O₂ → CO₂ + 2 H₂O. Balance C, then H, and leave oxygen — which is on its own — till last.",
+      retry: "Not balanced yet — check the tally.",
+      hints: ["Four hydrogen atoms need two H₂O.", "Now count the oxygen on the right: 2 + 2."],
+    },
+    {
+      id: "rust",
+      kind: "target",
+      prompt: "The hard one: iron rusts, **Fe + O₂ → Fe₂O₃**. Balance it in the smallest whole numbers.",
+      mode: "numbers",
+      given: { reaction: "rust", c1: 1, c2: 1, c3: 1 },
+      controls: ["c1", "c2", "c3"],
+      canvas: false,
+      goal: { type: "compare", quantity: "simplest", op: "eq", value: 1 },
+      success: "4 Fe + 3 O₂ → 2 Fe₂O₃. Oxygen comes in twos and leaves in threes, so you need six: 3 O₂ and 2 Fe₂O₃ — then 4 Fe.",
+      retry: "Not yet. Look at the tally.",
+      hints: ["Oxygen: 2 in each O₂, 3 in each Fe₂O₃. What is the smallest number both go into?", "6 oxygen atoms: 3 O₂ and 2 Fe₂O₃."],
+    },
+    {
+      id: "name-the-type",
+      kind: "match",
+      prompt: "**Match** each reaction to its type.",
+      canvas: false,
+      pairs: [
+        { left: card("join", "2 Mg + O₂ → 2 MgO"), right: card("combination", "combination") },
+        { left: card("split", "CaCO₃ → CaO + CO₂"), right: card("decomposition", "decomposition") },
+        { left: card("push-out", "Fe + CuSO₄ → FeSO₄ + Cu"), right: card("displacement", "displacement") },
+        { left: card("swap", "BaCl₂ + Na₂SO₄ → BaSO₄ + 2 NaCl"), right: card("double", "double displacement") },
+      ],
+      explanation: "Two things join; one thing splits apart; iron pushes copper out of its compound; two compounds swap partners.",
+      hints: ["How many substances on each side?"],
+    },
+    {
+      id: "catch-combination",
+      kind: "tap",
+      prompt: "**Catch** every combination reaction — two or more substances joining into one.",
+      canvas: false,
+      rule: "combination",
+      when: { type: "compare", quantity: "type", op: "eq", value: 0 },
+      cards: [
+        reaction("water", "2 H₂ + O₂ → 2 H₂O"),
+        reaction("ammonia", "N₂ + 3 H₂ → 2 NH₃"),
+        reaction("rust", "4 Fe + 3 O₂ → 2 Fe₂O₃"),
+        reaction("electrolysis", "2 H₂O → 2 H₂ + O₂"),
+        reaction("zinc-acid", "Zn + 2 HCl → ZnCl₂ + H₂"),
+        reaction("methane", "CH₄ + 2 O₂ → CO₂ + 2 H₂O"),
+        reaction("limestone", "CaCO₃ → CaO + CO₂"),
+      ],
+      explanation: "Water, ammonia and rust each end as a single product. Splitting water is the reverse — decomposition; zinc pushes hydrogen out — displacement; methane burning makes two products.",
+      hints: ["Look for one product on the right."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The rule for balancing.",
+      mode: "numbers",
+      equation: "atoms-balance",
+      law: "Balance an equation by changing only the numbers in front, until each element has as many atoms on the right as on the left.",
+    },
+  ],
+});

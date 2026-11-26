@@ -1,0 +1,78 @@
+import { defineLevel } from "@ise/game-engine";
+
+const circuit = (cells: number, bulbs: number) => ({
+  id: `c${cells}-b${bulbs}`,
+  label: `${cells} cell${cells > 1 ? "s" : ""}, ${bulbs} bulb${bulbs > 1 ? "s" : ""} in series`,
+  given: { cells, bulbs },
+});
+
+/** Current and Resistance, level 1: V = IR. */
+export const ohmsLaw = defineLevel({
+  schemaVersion: 1,
+  id: "ohms-law",
+  concept: "current-and-resistance",
+  title: "Ohm's law",
+  summary: "More push, more current; more resistance, less. One rule ties them together.",
+  xp: 30,
+  steps: [
+    {
+      id: "more-push",
+      kind: "explore",
+      prompt: "One bulb. Add cells and watch the **current**, until it reaches **0.75 A**.",
+      mode: "numbers",
+      given: { cells: 1, bulbs: 1, arrangement: "series", switchClosed: "closed" },
+      controls: ["cells"],
+      canvas: false,
+      goal: { type: "compare", quantity: "current", op: "gte", value: 0.74 },
+      success: "Three cells: 4.5 V drives 0.75 A through the 6 Ω bulb. Three times the push, three times the current.",
+      hints: ["Add cells."],
+    },
+    {
+      id: "work-it-out",
+      kind: "estimate",
+      prompt: "Two cells give **3 V** across one **6 Ω** bulb. What current flows, in amperes?",
+      mode: "numbers",
+      given: { cells: 2, bulbs: 1, arrangement: "series", switchClosed: "closed" },
+      canvas: false,
+      hideLabels: true,
+      quantity: "current",
+      range: { min: 0, max: 2, step: 0.05 },
+      tolerance: 0.03,
+      explanation: "I = V ÷ R = 3 ÷ 6 = 0.5 A.",
+      hints: ["Current = potential difference ÷ resistance."],
+    },
+    {
+      id: "current-order",
+      kind: "order",
+      prompt: "Put these circuits in order of **current**, smallest first.",
+      mode: "numbers",
+      given: { arrangement: "series", switchClosed: "closed" },
+      canvas: false,
+      ends: ["least current", "most current"],
+      by: "current",
+      cards: [circuit(1, 3), circuit(1, 2), circuit(1, 1), circuit(2, 1), circuit(4, 1)],
+      explanation: "I = V ÷ R: fewer cells or more bulbs in series means less current.",
+      hints: ["More bulbs in series means more resistance."],
+    },
+    {
+      id: "more-bulbs",
+      kind: "predict",
+      prompt: "One cell. The bulbs **in series** go from **1 to 3**. What happens to the circuit's **total resistance**?",
+      variable: "bulbs",
+      from: 1,
+      to: 3,
+      quantity: "resistance",
+      options: ["increase", "decrease", "same"],
+      given: { cells: 1, arrangement: "series" },
+      explanation: "It triples, from 6 Ω to 18 Ω: in series, resistances add up.",
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The rule that ties them together.",
+      mode: "numbers",
+      equation: "ohm",
+      law: "V = IR: the current through a resistor is its potential difference divided by its resistance. In series, resistances add.",
+    },
+  ],
+});

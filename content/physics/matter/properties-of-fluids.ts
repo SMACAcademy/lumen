@@ -1,0 +1,535 @@
+import { defineConcept } from "@ise/concept-schema";
+
+/**
+ * Mechanical properties of fluids, from one tank.
+ *
+ * Pressure rising with depth and a block floating are not two topics: the
+ * second is caused by the first. The probe measures ρgh; the block floats
+ * because that same pressure pushes harder on its bottom face than on its
+ * top, and the difference is the weight of fluid it displaced.
+ */
+export const propertiesOfFluids = defineConcept({
+  schemaVersion: 1,
+  meta: {
+    id: "properties-of-fluids",
+    title: "Mechanical Properties of Fluids",
+    tagline: "Pressure grows with depth — and that is the whole reason things float.",
+    domain: "physics",
+    category: "properties of matter",
+    grade: { min: 11, max: 12 },
+    difficulty: "core",
+    estimatedMinutes: 25,
+    objective:
+      "Use p = ρgh with gauge and absolute pressure, apply Archimedes' principle, and predict whether something floats and how much of it sits below the surface.",
+    tags: ["fluids", "pressure", "archimedes", "buoyancy", "floating", "jee", "neet", "class 11"],
+  },
+
+  connections: [
+    {
+      id: "laws-of-motion",
+      title: "Laws of Motion",
+      domain: "physics",
+      relation: "prerequisite",
+      note: "A floating block is in equilibrium: the upward push exactly balances its weight.",
+      available: true,
+    },
+    {
+      id: "properties-of-solids",
+      title: "Mechanical Properties of Solids",
+      domain: "physics",
+      relation: "related",
+      note: "Pressure is stress by another name — force per unit area, in a fluid that cannot resist shear.",
+      available: true,
+    },
+    {
+      id: "work-energy",
+      title: "Work, Energy and Power",
+      domain: "physics",
+      relation: "related",
+      note: "Pushing a float under water stores energy, which is why it leaps back out.",
+      available: true,
+    },
+  ],
+
+  variables: [
+    {
+      id: "depth",
+      symbol: "h",
+      name: "Probe depth",
+      meaning: "How far the pressure probe sits below the surface. Drag it through the tank, or press play to lower it.",
+      binding: { kind: "state", key: "depth" },
+      control: { type: "range", unit: "m", min: 0, max: 1.5, step: 0.01, presets: [0, 0.5, 1.5] },
+      group: "primary",
+      color: "angle",
+    },
+    {
+      id: "fluid",
+      symbol: "fluid",
+      name: "Fluid",
+      meaning: "Only its density matters. Mercury is 13.6 times as dense as water, and presses 13.6 times as hard.",
+      binding: { kind: "param", key: "fluid" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "water", label: "Water" },
+          { value: "seawater", label: "Sea water" },
+          { value: "oil", label: "Oil" },
+          { value: "mercury", label: "Mercury" },
+        ],
+      },
+      group: "primary",
+      color: "sine",
+    },
+    {
+      id: "blockDensity",
+      symbol: "ρ_b",
+      name: "Block density",
+      meaning: "Below the fluid's density it floats; above it, it sinks. Nothing else about the block decides.",
+      binding: { kind: "param", key: "blockDensity" },
+      control: { type: "range", unit: "kg/m3", min: 100, max: 3000, step: 50, presets: [600, 917, 2700] },
+      group: "primary",
+      color: "curve",
+    },
+    {
+      id: "blockVolume",
+      symbol: "V",
+      name: "Block volume",
+      meaning: "A bigger block of the same stuff floats exactly as high — it just displaces more.",
+      binding: { kind: "param", key: "blockVolume" },
+      control: { type: "range", unit: "L", min: 5, max: 50, step: 5, presets: [10, 20, 40] },
+      group: "primary",
+      color: "point",
+    },
+  ],
+
+  quantities: [
+    {
+      id: "gaugePressure",
+      symbol: "p",
+      name: "Gauge pressure",
+      meaning: "The pressure due to the fluid alone: ρgh, and nothing to do with the shape of the tank.",
+      result: "gaugePressureKPa",
+      format: { kind: "number", digits: 2 },
+      unit: "kPa",
+      color: "angle",
+      highlight: "probe",
+      headline: true,
+    },
+    {
+      id: "absolutePressure",
+      symbol: "p_abs",
+      name: "Absolute pressure",
+      meaning: "Gauge pressure plus the 101 kPa of atmosphere pressing down on the surface.",
+      result: "absolutePressureKPa",
+      format: { kind: "number", digits: 2 },
+      unit: "kPa",
+      color: "reference",
+    },
+    {
+      id: "bottomPressure",
+      symbol: "p_floor",
+      name: "Pressure at the floor",
+      meaning: "The deepest the tank goes. A dam is built thick at the bottom for this reason.",
+      result: "bottomPressureKPa",
+      format: { kind: "number", digits: 2 },
+      unit: "kPa",
+      color: "cosine",
+    },
+    {
+      id: "buoyantForce",
+      symbol: "F_b",
+      name: "Upthrust",
+      meaning: "The upward push on the block: the weight of the fluid it has pushed aside.",
+      result: "buoyantForce",
+      format: { kind: "number", digits: 2 },
+      unit: "N",
+      color: "tangent",
+      highlight: "forces",
+      headline: true,
+    },
+    {
+      id: "weight",
+      symbol: "W",
+      name: "Weight",
+      meaning: "What the block weighs in air: mg.",
+      result: "weight",
+      format: { kind: "number", digits: 2 },
+      unit: "N",
+      color: "cosine",
+      highlight: "forces",
+      headline: true,
+    },
+    {
+      id: "apparentWeight",
+      symbol: "W'",
+      name: "Apparent weight",
+      meaning: "What a spring balance reads with the block in the fluid: W − F_b, and zero for anything that floats.",
+      result: "apparentWeight",
+      format: { kind: "number", digits: 2 },
+      unit: "N",
+      color: "vector",
+      headline: true,
+    },
+    {
+      id: "submergedFraction",
+      symbol: "f",
+      name: "Fraction submerged",
+      meaning: "For a floater, exactly the ratio of the two densities. An iceberg's nine-tenths is this number.",
+      result: "submergedFraction",
+      format: { kind: "number", digits: 3 },
+      unit: "1",
+      color: "sine",
+      highlight: "block",
+      headline: true,
+    },
+    {
+      id: "displacedMass",
+      symbol: "m_f",
+      name: "Fluid displaced",
+      meaning: "The mass of fluid pushed out of the way. For a floating block it equals the block's own mass.",
+      result: "displacedMass",
+      format: { kind: "number", digits: 2 },
+      unit: "kg",
+      color: "tangent",
+    },
+    {
+      id: "blockMass",
+      symbol: "m",
+      name: "Block mass",
+      meaning: "Density times volume.",
+      result: "blockMass",
+      format: { kind: "number", digits: 2 },
+      unit: "kg",
+      color: "point",
+    },
+    {
+      id: "fluidDensity",
+      symbol: "ρ",
+      name: "Fluid density",
+      meaning: "The only property of the fluid that this chapter needs.",
+      result: "fluidDensity",
+      format: { kind: "number", digits: 0 },
+      unit: "kg/m3",
+      color: "sine",
+    },
+    {
+      id: "floats",
+      symbol: "floats",
+      name: "Floats",
+      meaning: "1 when the block settles at the surface, 0 when it rests on the floor.",
+      result: "floats",
+      format: { kind: "number", digits: 0 },
+      color: "tangent",
+    },
+  ],
+
+  equations: [
+    {
+      id: "pressure-depth",
+      topic: "pressure-depth",
+      words: "pressure = density × g × depth",
+      title: "Pressure with depth",
+      tokens: [
+        { kind: "ref", id: "gaugePressure" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "fluidDensity" },
+        { kind: "op", value: "·" },
+        { kind: "text", value: "g" },
+        { kind: "op", value: "·" },
+        { kind: "ref", id: "depth" },
+      ],
+      reading: "The weight of the column of fluid above you, spread over its area.",
+      assumptions: ["Fluid at rest", "Constant density"],
+      discoverable: true,
+    },
+    {
+      id: "archimedes",
+      topic: "archimedes",
+      title: "Archimedes' principle",
+      tokens: [
+        { kind: "ref", id: "buoyantForce" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "displacedMass" },
+        { kind: "op", value: "·" },
+        { kind: "text", value: "g" },
+      ],
+      reading: "The upthrust equals the weight of the fluid displaced — whatever the object is made of.",
+      assumptions: ["Fully or partly submerged", "Fluid at rest"],
+    },
+    {
+      id: "floating-condition",
+      topic: "archimedes",
+      title: "How much sits under",
+      tokens: [
+        { kind: "ref", id: "submergedFraction" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "blockDensity" },
+        { kind: "op", value: "/" },
+        { kind: "ref", id: "fluidDensity" },
+      ],
+      reading: "A floating body sinks until the fluid it displaces weighs exactly what it does.",
+      assumptions: ["Density less than the fluid's"],
+    },
+    {
+      id: "apparent-weight",
+      topic: "archimedes",
+      title: "Apparent weight",
+      tokens: [
+        { kind: "ref", id: "apparentWeight" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "weight" },
+        { kind: "op", value: "−" },
+        { kind: "ref", id: "buoyantForce" },
+      ],
+      reading: "Everything weighs less in a fluid, by exactly the weight of the fluid it displaces.",
+      assumptions: [],
+    },
+  ],
+
+  simulation: {
+    model: "fluids",
+    params: { fluid: "water", blockDensity: 600, blockVolume: 20 },
+    playLabel: "Lower the probe",
+  },
+
+  visualization: {
+    renderer: "fluids",
+    hint: "Drag anywhere in the tank to move the pressure probe, or press play to lower it to the floor.",
+    layers: [
+      { id: "fluid", label: "The tank" },
+      { id: "block", label: "The block" },
+      { id: "forces", label: "Weight and upthrust", optional: true },
+      { id: "probe", label: "Pressure probe", optional: true },
+      { id: "push", label: "Pressure acts every way", optional: true },
+      { id: "chart", label: "Pressure against depth", optional: true },
+      { id: "labels", label: "Labels", optional: true },
+    ],
+  },
+
+  modes: [
+    {
+      id: "pressure",
+      label: "Pressure",
+      description: "Take the probe down and watch p = ρgh",
+      layers: ["fluid", "probe", "push", "chart", "labels"],
+      graphs: [],
+      equations: ["pressure-depth"],
+      swatches: [{ color: "angle", dash: "solid" }],
+    },
+    {
+      id: "floating",
+      label: "Floating",
+      description: "Weight down, upthrust up, and where it settles",
+      layers: ["fluid", "block", "forces", "labels"],
+      graphs: [],
+      equations: ["archimedes", "floating-condition", "apparent-weight"],
+      swatches: [{ color: "tangent", dash: "solid" }],
+    },
+    {
+      id: "bare",
+      label: "Just the tank",
+      description: "Fluid, block and probe, with nothing written on them",
+      layers: ["fluid", "block", "probe"],
+      graphs: [],
+      equations: ["pressure-depth"],
+    },
+  ],
+  defaultMode: "pressure",
+  graphs: [],
+
+  activities: {
+    observe: [
+      {
+        id: "take-it-down",
+        prompt: "Lower the probe to the floor of the tank. The pressure climbs in a straight line all the way.",
+        condition: { type: "compare", quantity: "depth", op: "gte", value: 1.4 },
+      },
+      {
+        id: "heavier-fluid",
+        prompt: "Switch to mercury. At the same depth the pressure is more than thirteen times as great.",
+        condition: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "depth", op: "gte", value: 0.5 },
+            { type: "compare", quantity: "gaugePressureKPa", op: "gt", value: 60 },
+          ],
+        },
+      },
+      {
+        id: "make-it-sink",
+        prompt: "Make the block denser than the water and watch it go to the bottom.",
+        condition: { type: "compare", quantity: "floats", op: "eq", value: 0 },
+      },
+      {
+        id: "iceberg",
+        prompt: "Set the block to 917 kg/m³ — the density of ice — in sea water, and look at how little of it shows.",
+        condition: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "floats", op: "eq", value: 1 },
+            { type: "compare", quantity: "submergedFraction", op: "gte", value: 0.85 },
+          ],
+        },
+      },
+      {
+        id: "float-steel",
+        prompt: "Float something denser than steel. There is one fluid in the tank that will do it.",
+        condition: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "floats", op: "eq", value: 1 },
+            { type: "compare", quantity: "blockDensity", op: "gte", value: 2500 },
+          ],
+        },
+      },
+    ],
+
+    predict: [
+      {
+        id: "twice-as-deep",
+        question: "The probe is taken from 0.5 m down to 1.0 m down. What happens to the gauge pressure?",
+        variable: "depth",
+        from: 0.5,
+        to: 1,
+        quantity: "gaugePressureKPa",
+        options: ["increase", "decrease", "same"],
+        given: { fluid: "water", blockDensity: 600, blockVolume: 20 },
+        explanation: "p = ρgh is a straight line through the origin: twice the depth, twice the gauge pressure.",
+      },
+      {
+        id: "bigger-block-same-pressure",
+        question: "The block is made twice as big, from 20 L to 40 L. What happens to the pressure the probe reads?",
+        variable: "blockVolume",
+        from: 20,
+        to: 40,
+        quantity: "gaugePressureKPa",
+        options: ["increase", "decrease", "same"],
+        given: { fluid: "water", blockDensity: 600 },
+        explanation:
+          "Nothing at all. Pressure at a point depends on the depth and the fluid, not on what else happens to be floating in the tank.",
+      },
+      {
+        id: "denser-block-sits-lower",
+        question: "A floating block is made denser, from 500 to 900 kg/m³. What happens to the fraction of it under water?",
+        variable: "blockDensity",
+        from: 500,
+        to: 900,
+        quantity: "submergedFraction",
+        options: ["increase", "decrease", "same"],
+        given: { fluid: "water", blockVolume: 20 },
+        explanation: "The fraction under is ρ_block/ρ_fluid, so a denser block settles lower — until it matches the fluid and goes under.",
+      },
+      {
+        id: "bigger-float-same-fraction",
+        question: "A floating block is made twice as big, at the same density. What happens to the fraction of it under water?",
+        variable: "blockVolume",
+        from: 20,
+        to: 40,
+        quantity: "submergedFraction",
+        options: ["increase", "decrease", "same"],
+        given: { fluid: "water", blockDensity: 600 },
+        explanation:
+          "Unchanged: the fraction depends only on the two densities. A log and a raft of the same wood float at exactly the same level.",
+      },
+      {
+        id: "bigger-float-more-upthrust",
+        question: "That same block is twice as big. What happens to the upthrust on it?",
+        variable: "blockVolume",
+        from: 20,
+        to: 40,
+        quantity: "buoyantForce",
+        options: ["increase", "decrease", "same"],
+        given: { fluid: "water", blockDensity: 600 },
+        explanation: "It displaces twice as much fluid, so the upthrust doubles — and so does its weight, which is why it floats the same.",
+      },
+    ],
+
+    experiment: {
+      title: "What does the pressure depend on?",
+      instructions:
+        "Record the pressure at several depths. Then change the fluid and take the same readings, and finally change the block and take them again.",
+      columns: ["depth", "gaugePressure", "fluidDensity", "absolutePressure"],
+      minRows: 4,
+      discovery: {
+        question: "What decides the pressure at a point in a fluid?",
+        choices: [
+          { id: "depth-density", label: "How deep it is, and how dense the fluid is", correct: true },
+          { id: "shape", label: "The shape and width of the tank", correct: false },
+          { id: "block", label: "What is floating in the tank", correct: false },
+          { id: "amount", label: "The total amount of fluid", correct: false },
+        ],
+        reveals: "pressure-depth",
+        insight:
+          "p = ρgh. A narrow pipe and a wide lake at the same depth press exactly as hard, which is why a dam's thickness depends on its height and not on the size of the reservoir.",
+      },
+    },
+
+    explain: [
+      {
+        id: "why-depth",
+        title: "Why depth and not volume",
+        body: "The pressure at a point is the weight of the column of fluid above it, divided by its area — and both grow together, so only the height survives. Here it is {{gaugePressure}}.",
+      },
+      {
+        id: "why-things-float",
+        title: "Where the upthrust comes from",
+        body: "The bottom of the block is deeper than the top, so it is pushed up harder than it is pushed down. That difference is {{buoyantForce}}, and it is exactly the weight of the fluid that used to be there.",
+      },
+      {
+        id: "the-ratio",
+        title: "Nine-tenths of an iceberg",
+        body: "A floating body settles at the density ratio: ice at 917 kg/m³ in sea water at 1030 sits 89% under. The famous fraction is a division, not a fact to be memorised.",
+      },
+      {
+        id: "exam-note",
+        title: "In the exam",
+        body: "Expect p = p₀ + ρgh, upthrust = ρ_f V_sub g, apparent weight = W − upthrust, and the density-ratio question dressed as ice, wood or a hydrometer.",
+      },
+    ],
+
+    challenges: [
+      {
+        id: "half-under",
+        title: "Exactly half under",
+        prompt: "Set up a block that floats in water with exactly half of it below the surface.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "floats", op: "eq", value: 1 },
+            { type: "compare", quantity: "submergedFraction", op: "eq", value: 0.5, tolerance: 0.01 },
+          ],
+        },
+        hint: "The fraction under is the ratio of the densities.",
+        success: "Half the density of water: 500 kg/m³. The size of the block never came into it.",
+      },
+      {
+        id: "float-the-brick",
+        title: "Float a brick",
+        prompt: "Get a block of 2500 kg/m³ — about the density of stone — to float.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "blockDensity", op: "gte", value: 2500 },
+            { type: "compare", quantity: "floats", op: "eq", value: 1 },
+          ],
+        },
+        hint: "You cannot make the stone lighter, so make the fluid heavier.",
+        success: "Mercury is 13.6 times as dense as water. Floating is never about heavy or light — only about which is denser.",
+      },
+      {
+        id: "half-a-bar",
+        title: "Half an atmosphere down",
+        prompt: "Find a fluid and a depth where the gauge pressure is at least 50 kPa — half an atmosphere.",
+        goal: { type: "compare", quantity: "gaugePressureKPa", op: "gte", value: 50 },
+        hint: "Water would need five metres. What else is in the cupboard?",
+        success: "Mercury reaches half an atmosphere in less than 40 cm, which is why barometers are built with it and not with water.",
+      },
+    ],
+  },
+
+  realWorld: [
+    { title: "Dams", description: "Built thick at the base because pressure depends on depth, and not at all on how big the lake is." },
+    { title: "Ships", description: "Steel floats because a hull is mostly air: what matters is the average density of the whole vessel." },
+    { title: "Hydrometers", description: "A weighted float that sinks to the density ratio, reading the density of the liquid straight off its stem." },
+  ],
+});

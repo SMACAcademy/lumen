@@ -1,0 +1,2072 @@
+{
+  "shadow-of-a-dot": {
+    "title": "The shadow of a dot",
+    "summary": "Drag a dot around a circle and discover what sine really is.",
+    "world": "Circles & Waves",
+    "lab": "Unit Circle → Sine & Cosine"
+  },
+  "read-the-calliper": {
+    "title": "Read the calliper",
+    "summary": "Main scale, then the division that lines up. The whole skill in two numbers.",
+    "world": "Measure",
+    "lab": "Measuring with a Vernier Calliper"
+  },
+  "the-bent-calliper": {
+    "title": "The bent calliper",
+    "summary": "This instrument lies by the same amount every time. Catch it, and correct it.",
+    "world": "Measure",
+    "lab": "Measuring with a Vernier Calliper"
+  },
+  "distance-and-displacement": {
+    "title": "There and back",
+    "summary": "Send a body out and watch it return. How far did it travel, and where did it end up?",
+    "world": "Motion",
+    "lab": "Motion in a Straight Line"
+  },
+  "reading-motion-graphs": {
+    "title": "Slope and area",
+    "summary": "A velocity graph hides two answers: its slope and the space under it.",
+    "world": "Motion",
+    "lab": "Motion in a Straight Line"
+  },
+  "two-motions-at-once": {
+    "title": "Two motions at once",
+    "summary": "Steady across, accelerating down. Watch the ghosts and you can see both.",
+    "world": "Motion",
+    "lab": "Projectile Motion"
+  },
+  "fired-from-a-cliff": {
+    "title": "Fired from a cliff",
+    "summary": "Fire it flat and fast, or just drop it. Which one lands first?",
+    "world": "Motion",
+    "lab": "Projectile Motion"
+  },
+  "when-friction-gives-way": {
+    "title": "When friction gives way",
+    "summary": "Push a block gently and nothing happens. Push harder and everything changes at once.",
+    "world": "Forces",
+    "lab": "Laws of Motion"
+  },
+  "the-tilted-table": {
+    "title": "The tilted table",
+    "summary": "Tilt the surface and the weight splits in two. One part presses, the other pulls.",
+    "world": "Forces",
+    "lab": "Laws of Motion"
+  },
+  "the-energy-ledger": {
+    "title": "The energy ledger",
+    "summary": "Send a block up a slope. Nothing is lost — it just moves between two columns.",
+    "world": "Forces",
+    "lab": "Work, Energy and Power"
+  },
+  "friction-takes-its-cut": {
+    "title": "Friction takes its cut",
+    "summary": "Gravity lends energy and gets it back. Friction charges a fee.",
+    "world": "Forces",
+    "lab": "Work, Energy and Power"
+  },
+  "what-survives-a-crash": {
+    "title": "What survives a crash",
+    "summary": "Two carts, one collision, and two bars that behave very differently.",
+    "world": "Forces",
+    "lab": "Momentum and Collisions"
+  },
+  "bounce-and-rebound": {
+    "title": "Bounce and rebound",
+    "summary": "Hit something heavy and you come straight back. Hit something equal and you stop dead.",
+    "world": "Forces",
+    "lab": "Momentum and Collisions"
+  },
+  "the-turning-effect": {
+    "title": "The turning effect",
+    "summary": "The same push, in two different places, does two very different things.",
+    "world": "Spin",
+    "lab": "Rotational Motion"
+  },
+  "where-the-mass-sits": {
+    "title": "Where the mass sits",
+    "summary": "Same mass, same radius, five arrangements — and five different answers.",
+    "world": "Spin",
+    "lab": "Rotational Motion"
+  },
+  "newtons-cannonball": {
+    "title": "Newton's cannonball",
+    "summary": "Fire it sideways. Too slow and it lands; fast enough and it never does.",
+    "world": "Sky",
+    "lab": "Gravitation"
+  },
+  "the-long-way-round": {
+    "title": "The long way round",
+    "summary": "Stretch the orbit, and see what the period does — and does not — depend on.",
+    "world": "Sky",
+    "lab": "Gravitation"
+  },
+  "the-wire-that-stretches": {
+    "title": "The wire that stretches",
+    "summary": "Hang weight on a steel wire and measure a stretch you could not see without help.",
+    "world": "Matter",
+    "lab": "Mechanical Properties of Solids"
+  },
+  "where-it-gives-way": {
+    "title": "Where it gives way",
+    "summary": "Past the elastic limit a wire stops springing back. Some materials warn you first; glass does not.",
+    "world": "Matter",
+    "lab": "Mechanical Properties of Solids"
+  },
+  "how-deep-is-deep": {
+    "title": "How deep is deep",
+    "summary": "Take a pressure probe down a tank of water and find out what the reading actually depends on.",
+    "world": "Matter",
+    "lab": "Mechanical Properties of Fluids"
+  },
+  "what-floats": {
+    "title": "What floats",
+    "summary": "Heavy things float and light things sink. Only one comparison actually matters.",
+    "world": "Matter",
+    "lab": "Mechanical Properties of Fluids"
+  },
+  "the-stubborn-thermometer": {
+    "title": "The stubborn thermometer",
+    "summary": "Heat 100 g of ice and watch the temperature climb — until it simply stops.",
+    "world": "Heat",
+    "lab": "Thermal Properties of Matter"
+  },
+  "where-the-heat-hides": {
+    "title": "Where the heat hides",
+    "summary": "Three quarters of the journey from ice to steam is spent standing still at 100 °C.",
+    "world": "Heat",
+    "lab": "Thermal Properties of Matter"
+  },
+  "the-red-line": {
+    "title": "The red line of hydrogen",
+    "summary": "Let an electron fall two rungs and catch the one colour of light it gives out.",
+    "world": "Atoms & Light",
+    "lab": "The Hydrogen Spectrum"
+  },
+  "series-and-limits": {
+    "title": "Series and limits",
+    "summary": "Where the electron lands decides the whole family of lines — and He⁺ can mimic hydrogen exactly.",
+    "world": "Atoms & Light",
+    "lab": "The Hydrogen Spectrum"
+  },
+  "half-and-half-again": {
+    "title": "Half, and half again",
+    "summary": "Watch a reaction use up half its reactant, then half of what is left — always in the same time.",
+    "world": "Reaction Rates",
+    "lab": "Reaction Rates"
+  },
+  "ten-degrees-hotter": {
+    "title": "Ten degrees hotter",
+    "summary": "A small rise in temperature, a big rise in speed — and why a high energy barrier makes it bigger still.",
+    "world": "Reaction Rates",
+    "lab": "Reaction Rates"
+  },
+  "push-and-it-pushes-back": {
+    "title": "Push, and it pushes back",
+    "summary": "Squeeze a cylinder of brown gas and watch the reaction shift to undo what you did.",
+    "world": "Balance",
+    "lab": "Chemical Equilibrium"
+  },
+  "the-haber-compromise": {
+    "title": "The Haber compromise",
+    "summary": "Make ammonia from the air: squeeze for yield, and find out why heating it is a trade-off.",
+    "world": "Balance",
+    "lab": "Chemical Equilibrium"
+  },
+  "one-drop": {
+    "title": "One drop",
+    "summary": "Run alkali into acid and find the single drop where the pH leaps from 4 to 10.",
+    "world": "Acids & Bases",
+    "lab": "Acids, Bases and Titration"
+  },
+  "weak-acids-and-buffers": {
+    "title": "Weak acids and buffers",
+    "summary": "Vinegar's acid fights back: a buffer, a pH equal to its pKa half-way, and an indicator to choose.",
+    "world": "Acids & Bases",
+    "lab": "Acids, Bases and Titration"
+  },
+  "the-daniell-cell": {
+    "title": "The Daniell cell",
+    "summary": "Zinc, copper and a wire: read the voltage, find the anode, and work out E°cell from the series.",
+    "world": "Batteries",
+    "lab": "Galvanic Cells"
+  },
+  "why-batteries-go-flat": {
+    "title": "Why batteries go flat",
+    "summary": "Concentration moves the voltage by the Nernst equation — and a flat battery is simply a reaction at equilibrium.",
+    "world": "Batteries",
+    "lab": "Galvanic Cells"
+  },
+  "salt-on-the-road": {
+    "title": "Salt on the road",
+    "summary": "Why salted roads stay clear of ice: dissolved particles push the freezing point down.",
+    "world": "Solutions",
+    "lab": "Colligative Properties"
+  },
+  "pasta-water-and-pairs": {
+    "title": "Pasta water and pairs",
+    "summary": "Solutions boil later, molecules that pair up count half, and osmosis pushes with atmospheres.",
+    "world": "Solutions",
+    "lab": "Colligative Properties"
+  },
+  "counting-by-weighing": {
+    "title": "Counting by weighing",
+    "summary": "Molecules are too small to count, so chemists weigh them: grams into moles, and a mass that never changes.",
+    "world": "Moles",
+    "lab": "Moles and Reactions"
+  },
+  "the-limiting-reagent": {
+    "title": "The limiting reagent",
+    "summary": "Whichever reactant runs out first decides everything — and it is not always the one with less mass.",
+    "world": "Moles",
+    "lab": "Moles and Reactions"
+  },
+  "why-ice-melts": {
+    "title": "Why ice melts",
+    "summary": "Melting takes in heat, yet ice melts by itself above 0 °C. The reason is one straight line.",
+    "world": "Will It Go?",
+    "lab": "Gibbs Energy"
+  },
+  "four-kinds-of-reaction": {
+    "title": "Four kinds of reaction",
+    "summary": "Always, never, only when hot, only when cold: the signs of ΔH and ΔS sort every reaction.",
+    "world": "Will It Go?",
+    "lab": "Gibbs Energy"
+  },
+  "pairs-push-apart": {
+    "title": "Pairs push apart",
+    "summary": "Electron pairs spread as far apart as they can — and lone pairs push hardest of all.",
+    "world": "Shapes",
+    "lab": "Molecular Shapes"
+  },
+  "beyond-eight": {
+    "title": "Beyond eight",
+    "summary": "Five and six electron pairs: see-saws, T-shapes, and a square with a lone pair above and below.",
+    "world": "Shapes",
+    "lab": "Molecular Shapes"
+  },
+  "across-and-down": {
+    "title": "Across and down",
+    "summary": "Atoms shrink across a row and grow down a column — the two ideas behind almost every trend.",
+    "world": "The Periodic Table",
+    "lab": "Periodic Trends"
+  },
+  "the-exceptions": {
+    "title": "The exceptions",
+    "summary": "Ionisation enthalpy rises across a period — except where it does not, and those dips are the exam questions.",
+    "world": "The Periodic Table",
+    "lab": "Periodic Trends"
+  },
+  "groups-and-valency": {
+    "title": "Groups and valency",
+    "summary": "An element's place in the table gives its outer electrons — and with them its valency and how it reacts.",
+    "world": "The Periodic Table",
+    "lab": "Periodic Trends"
+  },
+  "close-the-loop": {
+    "title": "Close the loop",
+    "summary": "A bulb, a cell and a switch. Make it light — then make it brighter.",
+    "world": "Light the Bulb",
+    "lab": "Simple Circuits"
+  },
+  "conductor-or-insulator": {
+    "title": "Conductor or insulator?",
+    "summary": "Put things in the gap and see which ones let electricity through.",
+    "world": "Light the Bulb",
+    "lab": "Simple Circuits"
+  },
+  "where-fractions-live": {
+    "title": "Where fractions live",
+    "summary": "Every fraction is a point on the number line. Find three quarters, and put fractions in order.",
+    "world": "Fractions on a Line",
+    "lab": "Fractions on a Line"
+  },
+  "same-point-different-names": {
+    "title": "Same point, different names",
+    "summary": "3/4 and 6/8 land in exactly the same place. Find out why, and spot fractions that are secretly equal.",
+    "world": "Fractions on a Line",
+    "lab": "Fractions on a Line"
+  },
+  "whole-numbers-and-decimals": {
+    "title": "Whole numbers and decimals",
+    "summary": "Whole numbers sit one step apart on the line. Cut each step into tenths and hundredths, and the decimals appear in between.",
+    "world": "Fractions on a Line",
+    "lab": "Fractions on a Line"
+  },
+  "sour-bitter-or-neither": {
+    "title": "Sour, bitter or neither",
+    "summary": "Lemons are sour, soap is bitter, water is neither. Sort the kitchen, and meet the colours that tell you which is which.",
+    "world": "Sour, Bitter or Neither",
+    "lab": "Acids, Bases and Titration"
+  },
+  "neutralise-it": {
+    "title": "Neutralise it",
+    "summary": "Add a base to an acid, drop by drop, until it cancels out — and watch the indicator say when.",
+    "world": "Sour, Bitter or Neither",
+    "lab": "Acids, Bases and Titration"
+  },
+  "how-fast": {
+    "title": "How fast?",
+    "summary": "A runner, a stopwatch and a measuring tape: speed is how far you go in each second.",
+    "world": "Fast and Slow",
+    "lab": "Motion in a Straight Line"
+  },
+  "the-journey-graph": {
+    "title": "The journey graph",
+    "summary": "A distance–time graph is a journey drawn as a line. Flat means stopped; steep means fast.",
+    "world": "Fast and Slow",
+    "lab": "Motion in a Straight Line"
+  },
+  "heavy-is-not-the-question": {
+    "title": "Heavy is not the question",
+    "summary": "A ship floats and a pin sinks. It is not about how heavy something is — it is about how much stuff is packed into it.",
+    "world": "Float or Sink",
+    "lab": "Mechanical Properties of Fluids"
+  },
+  "the-push-of-water": {
+    "title": "The push of water",
+    "summary": "Dive deeper and the water presses harder. That same push holds up everything that floats.",
+    "world": "Float or Sink",
+    "lab": "Mechanical Properties of Fluids"
+  },
+  "melt-boil-change-back": {
+    "title": "Melt, boil, change back",
+    "summary": "Heat ice until it melts, then boils. Watch the thermometer do something surprising in between.",
+    "world": "Changes Around Us",
+    "lab": "Thermal Properties of Matter"
+  },
+  "can-you-undo-it": {
+    "title": "Can you undo it?",
+    "summary": "Melted ice freezes again, but burnt paper never comes back. Two kinds of change, and how to tell them apart.",
+    "world": "Changes Around Us",
+    "lab": "Thermal Properties of Matter"
+  },
+  "shadow-play": {
+    "title": "Shadow play",
+    "summary": "A lamp, a card and a screen. Make shadows grow and shrink, and find out what makes them dark.",
+    "world": "Shadows and Mirrors",
+    "lab": "Light and Shadows"
+  },
+  "mirror-mirror": {
+    "title": "Mirror, mirror",
+    "summary": "Why a pinhole camera turns the world upside down, and the rule every mirror follows.",
+    "world": "Shadows and Mirrors",
+    "lab": "Light and Shadows"
+  },
+  "find-the-mystery-weight": {
+    "title": "Find the mystery weight",
+    "summary": "A box of unknown weight on a scale. Level it, and you have solved an equation.",
+    "world": "Balance the Scale",
+    "lab": "Balance the Scale"
+  },
+  "same-to-both-sides": {
+    "title": "Same to both sides",
+    "summary": "No more guessing: take the same off both pans and the scale stays level — until the box is alone.",
+    "world": "Balance the Scale",
+    "lab": "Balance the Scale"
+  },
+  "what-sticks": {
+    "title": "What sticks?",
+    "summary": "A magnet picks up a nail but not a coin. Find out which things are magnetic.",
+    "world": "Magnets",
+    "lab": "Fun with Magnets"
+  },
+  "poles-apart": {
+    "title": "Poles apart",
+    "summary": "Two magnets can pull together or push apart. Find the rule, then follow a compass round a magnet.",
+    "world": "Magnets",
+    "lab": "Fun with Magnets"
+  },
+  "counting-squares": {
+    "title": "Counting squares",
+    "summary": "Area is how many squares a shape covers; perimeter is the walk round its edge. They are not the same thing.",
+    "world": "Area and Volume",
+    "lab": "Area and Volume"
+  },
+  "filling-boxes": {
+    "title": "Filling boxes",
+    "summary": "How many cubes fit in a box? Build it layer by layer and the volume formula writes itself.",
+    "world": "Area and Volume",
+    "lab": "Area and Volume"
+  },
+  "nets-and-surface-area": {
+    "title": "Nets and surface area",
+    "summary": "Unfold a box and it lies flat as six rectangles. Count their squares and you have its surface area.",
+    "world": "Area and Volume",
+    "lab": "Area and Volume"
+  },
+  "steady-or-speeding-up": {
+    "title": "Steady or speeding up?",
+    "summary": "Some things move at a steady speed; others speed up or slow down. Acceleration tells them apart.",
+    "world": "Motion Graphs",
+    "lab": "Motion in a Straight Line"
+  },
+  "area-under-the-graph": {
+    "title": "The area under the graph",
+    "summary": "A velocity–time graph hides the distance travelled in its area. Find it, and use it.",
+    "world": "Motion Graphs",
+    "lab": "Motion in a Straight Line"
+  },
+  "balanced-and-unbalanced": {
+    "title": "Balanced and unbalanced",
+    "summary": "A push does not always make something move. What matters is the force left over.",
+    "world": "Force and Momentum",
+    "lab": "Laws of Motion"
+  },
+  "bumps-and-bounces": {
+    "title": "Bumps and bounces",
+    "summary": "A heavy, fast cart is hard to stop. Momentum measures it — and a collision never loses any.",
+    "world": "Force and Momentum",
+    "lab": "Momentum and Collisions"
+  },
+  "lift-and-drop": {
+    "title": "Lift and drop",
+    "summary": "Moving things have kinetic energy; raised things have potential energy. Watch one turn into the other.",
+    "world": "Work and Energy",
+    "lab": "Work, Energy and Power"
+  },
+  "energy-changes-form": {
+    "title": "Energy changes form",
+    "summary": "Energy moves from kinetic to potential to heat — and not a joule of it disappears.",
+    "world": "Work and Energy",
+    "lab": "Work, Energy and Power"
+  },
+  "into-the-water": {
+    "title": "Into the water",
+    "summary": "A mirror bounces light at equal angles; water and glass bend it. Find out how much.",
+    "world": "Bending Light",
+    "lab": "Bending Light"
+  },
+  "through-a-lens": {
+    "title": "Through a lens",
+    "summary": "A convex lens can throw a picture on a screen or act as a magnifying glass. Where the object sits decides which.",
+    "world": "Bending Light",
+    "lab": "Bending Light"
+  },
+  "ohms-law": {
+    "title": "Ohm's law",
+    "summary": "More push, more current; more resistance, less. One rule ties them together.",
+    "world": "Current and Resistance",
+    "lab": "Current and Resistance"
+  },
+  "series-or-parallel": {
+    "title": "Series or parallel?",
+    "summary": "Join bulbs one after another and they dim; side by side, each shines fully. That is why houses are wired in parallel.",
+    "world": "Current and Resistance",
+    "lab": "Current and Resistance"
+  },
+  "electron-shells": {
+    "title": "Electron shells",
+    "summary": "Electrons fill shells 2, 8, 8 — and the outer shell decides how an atom reacts.",
+    "world": "Inside the Atom",
+    "lab": "Structure of the Atom"
+  },
+  "the-modern-table": {
+    "title": "The modern table",
+    "summary": "Rows are shells, columns are outer electrons. Read the periodic table straight from the atom.",
+    "world": "Inside the Atom",
+    "lab": "Structure of the Atom"
+  },
+  "isotopes-and-isobars": {
+    "title": "Isotopes and isobars",
+    "summary": "Same protons, different neutrons: isotopes. Same mass number, different elements: isobars.",
+    "world": "Inside the Atom",
+    "lab": "Structure of the Atom"
+  },
+  "making-waves": {
+    "title": "Making waves",
+    "summary": "A speaker shakes the air. Change the note and the loudness, and find where sound cannot go.",
+    "world": "Sound",
+    "lab": "Sound and Echoes"
+  },
+  "echoes": {
+    "title": "Echoes",
+    "summary": "Clap at a wall and time the echo. There and back: t = 2d / v.",
+    "world": "Sound",
+    "lab": "Sound and Echoes"
+  },
+  "atoms-in-atoms-out": {
+    "title": "Atoms in, atoms out",
+    "summary": "A reaction never makes or loses an atom. Count them, balance them, and weigh both sides.",
+    "world": "Balancing Equations",
+    "lab": "Balancing Equations"
+  },
+  "balance-it": {
+    "title": "Balance it",
+    "summary": "Ammonia, cooking gas and rust — then sort reactions into combination, decomposition and displacement.",
+    "world": "Balancing Equations",
+    "lab": "Balancing Equations"
+  },
+  "squares-on-the-sides": {
+    "title": "Squares on the sides",
+    "summary": "Draw a square on every side of a right triangle, and the two small ones fill the big one.",
+    "world": "Right Triangles",
+    "lab": "Right Triangles"
+  },
+  "sine-cosine-tangent": {
+    "title": "Sine, cosine, tangent",
+    "summary": "Name the sides from the angle, and their ratios measure a tower from the ground.",
+    "world": "Right Triangles",
+    "lab": "Right Triangles"
+  },
+  "points-and-lines": {
+    "title": "Points and lines",
+    "summary": "Plot points in all four quadrants, then find the ones that sit on y = 2x + 1.",
+    "world": "Lines and Graphs",
+    "lab": "Lines and Graphs"
+  },
+  "where-lines-meet": {
+    "title": "Where lines meet",
+    "summary": "Two equations, two lines: the answer is where they cross — if they cross at all.",
+    "world": "Lines and Graphs",
+    "lab": "Lines and Graphs"
+  },
+  "filling-the-boxes": {
+    "title": "Filling the boxes",
+    "summary": "Build atoms electron by electron: lowest energy first, two to a box, spread out before pairing.",
+    "world": "Orbitals",
+    "lab": "Atomic Orbitals"
+  },
+  "shapes-and-nodes": {
+    "title": "Shapes and nodes",
+    "summary": "n sets the size, l the shape and m the direction. Count the places an electron is never found.",
+    "world": "Orbitals",
+    "lab": "Atomic Orbitals"
+  },
+  "faradays-laws": {
+    "title": "Faraday's laws",
+    "summary": "A current for a time is a charge; a charge is electrons; electrons make metal. Weigh what you plate.",
+    "world": "Electrolysis",
+    "lab": "Electrolysis and Conductance"
+  },
+  "ions-on-the-move": {
+    "title": "Ions on the move",
+    "summary": "Dilute a solution and each mole conducts better — a little for strong electrolytes, a lot for weak ones.",
+    "world": "Electrolysis",
+    "lab": "Electrolysis and Conductance"
+  },
+  "oxidation-numbers": {
+    "title": "Oxidation numbers",
+    "summary": "Numbers that track electrons: the one that rises is oxidised, the one that falls is reduced.",
+    "world": "Redox",
+    "lab": "Redox Reactions"
+  },
+  "balance-the-electrons": {
+    "title": "Balance the electrons",
+    "summary": "Make the electrons lost equal the electrons gained — then decide whether the reaction goes at all.",
+    "world": "Redox",
+    "lab": "Redox Reactions"
+  },
+  "cells-and-energy": {
+    "title": "Cells and energy",
+    "summary": "Dry, mercury, lead–acid and fuel cells: their voltages, their energy, and what happens as they run down.",
+    "world": "Batteries and Rust",
+    "lab": "Batteries and Corrosion"
+  },
+  "stopping-rust": {
+    "title": "Stopping rust",
+    "summary": "Rust needs water and oxygen. Paint, tin and zinc keep it off — but only zinc survives a scratch.",
+    "world": "Batteries and Rust",
+    "lab": "Batteries and Corrosion"
+  },
+  "colour-and-magnetism": {
+    "title": "Colour and magnetism",
+    "summary": "Count the d electrons of an ion: the unpaired ones make it magnetic, and any d–d jump makes it coloured.",
+    "world": "The d-block",
+    "lab": "Transition Metals"
+  },
+  "variable-valency": {
+    "title": "Variable valency",
+    "summary": "From scandium's single +3 to manganese's +7: why the middle of the row has the most oxidation states.",
+    "world": "The d-block",
+    "lab": "Transition Metals"
+  },
+  "splitting-the-d-orbitals": {
+    "title": "Splitting the d orbitals",
+    "summary": "Six ligands push two d orbitals up and three down. The size of the gap decides the colour.",
+    "world": "Complexes",
+    "lab": "Coordination Compounds"
+  },
+  "high-spin-low-spin": {
+    "title": "High spin, low spin",
+    "summary": "Pair up or climb the gap? Compare Δo with the pairing energy — and read the answer off a magnet.",
+    "world": "Complexes",
+    "lab": "Coordination Compounds"
+  },
+  "down-the-group": {
+    "title": "Down the group",
+    "summary": "From carbon to lead, nitrogen to bismuth: non-metals become metals, and the heaviest keep an inert pair.",
+    "world": "The p-block",
+    "lab": "The p-block"
+  },
+  "the-hydrides": {
+    "title": "The hydrides",
+    "summary": "NH₃, H₂O and HF break their groups' trends — hydrogen bonding. Bond angles close and bonds weaken down each group.",
+    "world": "The p-block",
+    "lab": "The p-block"
+  },
+  "naming-complexes": {
+    "title": "Naming complexes",
+    "summary": "Ligands in alphabetical order, the metal, its oxidation state: read a complex's name straight from its formula.",
+    "world": "Naming and Isomers",
+    "lab": "Complex Isomers and Names"
+  },
+  "cis-trans-and-mirrors": {
+    "title": "Cis, trans and mirrors",
+    "summary": "Same ligands, different places: cis and trans, fac and mer — and complexes that are left- and right-handed.",
+    "world": "Naming and Isomers",
+    "lab": "Complex Isomers and Names"
+  },
+  "filling-the-mos": {
+    "title": "Filling the MOs",
+    "summary": "Two atoms' orbitals make bonding and antibonding orbitals. Count the electrons in each to get the bond order.",
+    "world": "Molecular Orbitals",
+    "lab": "Molecular Orbitals"
+  },
+  "why-oxygen-is-magnetic": {
+    "title": "Why oxygen is magnetic",
+    "summary": "Two unpaired electrons in π* make O₂ stick to a magnet — and adding or removing electrons changes its bond.",
+    "world": "Molecular Orbitals",
+    "lab": "Molecular Orbitals"
+  },
+  "counting-electrons": {
+    "title": "Counting electrons",
+    "summary": "Every valence electron goes in a bond or a lone pair. Share enough, and every atom gets an octet.",
+    "world": "Lewis Structures",
+    "lab": "Lewis Structures"
+  },
+  "formal-charge-and-resonance": {
+    "title": "Formal charge and resonance",
+    "summary": "When several structures give octets, the smallest formal charges win — and equal winners blend into one.",
+    "world": "Lewis Structures",
+    "lab": "Lewis Structures"
+  },
+  "hot-and-cold": {
+    "title": "Hot and cold",
+    "summary": "Negative ΔH gives heat out, positive takes it in — and twice the reaction, twice the heat.",
+    "world": "Enthalpy",
+    "lab": "Enthalpy and Hess's Law"
+  },
+  "hess-cycles": {
+    "title": "Hess cycles",
+    "summary": "Down to the elements and back up: work out any ΔH from formation enthalpies, or estimate it from bonds.",
+    "world": "Enthalpy",
+    "lab": "Enthalpy and Hess's Law"
+  },
+  "vapour-over-mixtures": {
+    "title": "Vapour over mixtures",
+    "summary": "Each liquid escapes in proportion to how much of it there is — and the vapour is richer in the eager one.",
+    "world": "Liquid Mixtures",
+    "lab": "Raoult's Law and Solutions"
+  },
+  "ideal-or-not": {
+    "title": "Ideal or not",
+    "summary": "When A and B like each other more — or less — than themselves, the vapour pressure sags or bulges. And gases dissolve by pressure.",
+    "world": "Liquid Mixtures",
+    "lab": "Raoult's Law and Solutions"
+  },
+  "finding-the-order": {
+    "title": "Finding the order",
+    "summary": "Double the concentration and watch the rate: unchanged, doubled or quadrupled tells you the order.",
+    "world": "Rate Laws and Collisions",
+    "lab": "Rate Laws and Collisions"
+  },
+  "straight-line-plots": {
+    "title": "Straight-line plots",
+    "summary": "Each order has one plot that comes out straight, and its own kind of half-life.",
+    "world": "Rate Laws and Collisions",
+    "lab": "Rate Laws and Collisions"
+  },
+  "collisions-that-count": {
+    "title": "Collisions that count",
+    "summary": "Molecules collide all the time. Only the ones with enough energy, meeting the right way round, react.",
+    "world": "Rate Laws and Collisions",
+    "lab": "Rate Laws and Collisions"
+  },
+  "whats-in-a-formula": {
+    "title": "What's in a formula",
+    "summary": "Why chlorine weighs 35.45, how a molecule's mass is shared out, and the simplest ratio hiding in a formula.",
+    "world": "Formulae and Concentration",
+    "lab": "Formulae and Concentration"
+  },
+  "how-strong-is-it": {
+    "title": "How strong is it?",
+    "summary": "The same flask described four ways: per litre of solution, per kilogram of water, as a share of the moles, as a share of the mass.",
+    "world": "Formulae and Concentration",
+    "lab": "Formulae and Concentration"
+  },
+  "will-it-precipitate": {
+    "title": "Will it precipitate?",
+    "summary": "Every sparingly soluble salt has a limit, Ksp. Stay under it and the solution is clear; pass it and solid appears.",
+    "world": "Sparingly Soluble",
+    "lab": "Solubility Product"
+  },
+  "the-common-ion": {
+    "title": "The common ion",
+    "summary": "Add an ion the salt already has, and less of the salt dissolves — while Ksp stays exactly where it was.",
+    "world": "Sparingly Soluble",
+    "lab": "Solubility Product"
+  },
+  "finding-the-nucleus": {
+    "title": "Finding the nucleus",
+    "summary": "Almost every alpha particle sails through gold foil. A very few bounce back — and that is enough to redraw the atom.",
+    "world": "Toward the Quantum Atom",
+    "lab": "The Nucleus and Matter Waves"
+  },
+  "matter-waves": {
+    "title": "Matter waves",
+    "summary": "Everything that moves has a wavelength. For an electron it is the size of an atom — and that changes everything.",
+    "world": "Toward the Quantum Atom",
+    "lab": "The Nucleus and Matter Waves"
+  },
+  "the-halogens": {
+    "title": "The halogens",
+    "summary": "Four elements one electron short of a full shell: the higher one always takes that electron from the lower.",
+    "world": "Halogens and Noble Gases",
+    "lab": "Halogens and Noble Gases"
+  },
+  "the-noble-gases": {
+    "title": "The noble gases",
+    "summary": "Full shells, no reactions — until 1962, when xenon was caught bonding to fluorine.",
+    "world": "Halogens and Noble Gases",
+    "lab": "Halogens and Noble Gases"
+  },
+  "the-lanthanoid-contraction": {
+    "title": "The lanthanoid contraction",
+    "summary": "Fifteen elements, one more proton each time — and the ion gets smaller at every step.",
+    "world": "The f-block",
+    "lab": "Lanthanoids and Actinoids"
+  },
+  "the-actinoids": {
+    "title": "The actinoids",
+    "summary": "The same f-block pattern one row down — but radioactive, and with far more oxidation states.",
+    "world": "The f-block",
+    "lab": "Lanthanoids and Actinoids"
+  },
+  "overlapping-orbitals": {
+    "title": "Overlapping orbitals",
+    "summary": "Two atoms come together until their orbitals overlap just enough — and how they overlap decides the kind of bond.",
+    "world": "Valence Bond Theory",
+    "lab": "Valence Bond Theory"
+  },
+  "sigma-and-pi": {
+    "title": "Sigma and pi",
+    "summary": "One sigma bond between every pair of bonded atoms; a pi bond for each extra line in a double or triple bond.",
+    "world": "Valence Bond Theory",
+    "lab": "Valence Bond Theory"
+  },
+  "closing-in": {
+    "title": "Closing in",
+    "summary": "A limit is where a function is heading as x closes in — whether or not it ever gets there.",
+    "world": "Limits and Continuity",
+    "lab": "Limits and Continuity"
+  },
+  "breaks-and-holes": {
+    "title": "Breaks and holes",
+    "summary": "A graph you can draw without lifting the pen is continuous. There are three ways to have to lift it.",
+    "world": "Limits and Continuity",
+    "lab": "Limits and Continuity"
+  },
+  "zooming-in": {
+    "title": "Zooming in",
+    "summary": "Magnify a smooth curve enough and it becomes a straight line. A corner stays a corner for ever.",
+    "world": "Limits and Continuity",
+    "lab": "Limits and Continuity"
+  },
+  "closing-the-gap": {
+    "title": "Closing the gap",
+    "summary": "The slope between two points is an average. Slide one point into the other and it becomes the slope at a point.",
+    "world": "The Derivative",
+    "lab": "Slope: secant → tangent"
+  },
+  "the-slope-graph": {
+    "title": "The slope graph",
+    "summary": "Measure the slope at every point and plot it: the result is a new function, the derivative.",
+    "world": "The Derivative",
+    "lab": "The Slope Graph"
+  },
+  "bending-up-bending-down": {
+    "title": "Bending up, bending down",
+    "summary": "The slope has a slope of its own. Its sign says which way the curve bends — and tells a hilltop from a valley.",
+    "world": "The Derivative",
+    "lab": "The Slope Graph"
+  },
+  "the-growing-rectangle": {
+    "title": "The growing rectangle",
+    "summary": "A product is an area. Nudge x and the area grows by two strips — and a corner that does not last.",
+    "world": "Rules of Differentiation",
+    "lab": "Rules of Differentiation"
+  },
+  "links-in-a-chain": {
+    "title": "Links in a chain",
+    "summary": "A function of a function passes a small change along in two steps, stretching it each time. The stretches multiply.",
+    "world": "Rules of Differentiation",
+    "lab": "Rules of Differentiation"
+  },
+  "round-the-circle": {
+    "title": "Round the circle",
+    "summary": "Some curves are not y = something. Their slopes can still be found — from the equation as it stands, or from a parameter.",
+    "world": "Rules of Differentiation",
+    "lab": "Rules of Differentiation"
+  },
+  "the-best-box": {
+    "title": "The best box",
+    "summary": "Cut a square from each corner of a sheet and fold up the sides. Too small a cut and the box is shallow; too big and it has no base.",
+    "world": "Using Derivatives",
+    "lab": "Maxima, Minima and Rates"
+  },
+  "rising-and-falling": {
+    "title": "Rising and falling",
+    "summary": "The sign of the derivative is a map of the curve: where it climbs, where it drops, and where it turns.",
+    "world": "Using Derivatives",
+    "lab": "Maxima, Minima and Rates"
+  },
+  "tied-together": {
+    "title": "Tied together",
+    "summary": "Two quantities linked by an equation cannot change independently. Know how fast one is changing and you know the other.",
+    "world": "Using Derivatives",
+    "lab": "Maxima, Minima and Rates"
+  },
+  "sweeping-the-area": {
+    "title": "Sweeping the area",
+    "summary": "A line sweeps along a curve, collecting the area behind it. Plot that area as you go and a second curve appears — whose slope is the first.",
+    "world": "Area So Far",
+    "lab": "The Fundamental Theorem"
+  },
+  "undoing-the-slope": {
+    "title": "Undoing the slope",
+    "summary": "The area graph is a function whose slope is f — an antiderivative. Start collecting somewhere else and you get another one, the same shape moved up or down.",
+    "world": "Area So Far",
+    "lab": "The Fundamental Theorem"
+  },
+  "distance-from-speed": {
+    "title": "Distance from speed",
+    "summary": "A car's velocity against time, in three straight pieces. The area collected under it is how far the car has gone; the slope of each piece is its acceleration.",
+    "world": "Area So Far",
+    "lab": "The Fundamental Theorem"
+  },
+  "molecules-in-a-box": {
+    "title": "Molecules in a box",
+    "summary": "Pressure is molecules drumming on the walls; temperature is how hard they move.",
+    "world": "Kinetic Theory",
+    "lab": "Kinetic Theory of Gases"
+  },
+  "how-fast-molecules-move": {
+    "title": "How fast molecules move",
+    "summary": "Faster than a bullet, at every speed at once — and barely getting anywhere.",
+    "world": "Kinetic Theory",
+    "lab": "Kinetic Theory of Gases"
+  },
+  "heat-capacities-of-gases": {
+    "title": "Heat capacities of gases",
+    "summary": "Count the ways a molecule can move and turn, and you can predict how much heat a gas soaks up.",
+    "world": "Kinetic Theory",
+    "lab": "Kinetic Theory of Gases"
+  },
+  "slicing-it-thin": {
+    "title": "Slicing it thin",
+    "summary": "Cut the area under a curve into strips and add them up. The thinner the strips, the closer the total comes to the exact area — an accumulated total, like distance under a speed–time graph.",
+    "world": "Area by Strips",
+    "lab": "Area by Strips"
+  },
+  "signed-area": {
+    "title": "Signed area",
+    "summary": "Below the axis a strip has negative height, so it counts negative. An integral can be zero while plenty is shaded.",
+    "world": "Area by Strips",
+    "lab": "Area by Strips"
+  },
+  "between-the-curves": {
+    "title": "Between the curves",
+    "summary": "Stand each strip on the lower curve and stop it at the upper one. Its height is top minus bottom — and where the curves cross, top and bottom swap.",
+    "world": "Area by Strips",
+    "lab": "Area by Strips"
+  },
+  "change-of-variable": {
+    "title": "Change of variable",
+    "summary": "Put u = g(x) and every strip moves to the u-axis: its width is multiplied by g′ and its height divided by g′. The area does not change, but the limits do.",
+    "world": "Methods of Integration",
+    "lab": "Methods of Integration"
+  },
+  "two-areas-one-rectangle": {
+    "title": "Two areas, one rectangle",
+    "summary": "Plot v against u. The area to the left of the curve and the area below it fill a rectangle — so ∫u dv = uv − ∫v du.",
+    "world": "Methods of Integration",
+    "lab": "Methods of Integration"
+  },
+  "splitting-fractions": {
+    "title": "Splitting fractions",
+    "summary": "One awkward fraction is two simple ones in disguise. Each simple one integrates to a logarithm, and their areas add.",
+    "world": "Methods of Integration",
+    "lab": "Methods of Integration"
+  },
+  "first-law": {
+    "title": "Every joule accounted for",
+    "summary": "Two bodies settle to one temperature, and a gas pushing a piston shares its heat between work and internal energy.",
+    "world": "Thermodynamics",
+    "lab": "Thermodynamics"
+  },
+  "four-processes": {
+    "title": "Four ways to move a piston",
+    "summary": "Hold the temperature, the heat, the pressure or the volume fixed, and see which of Q, W and ΔU must vanish.",
+    "world": "Thermodynamics",
+    "lab": "Thermodynamics"
+  },
+  "engines-and-fridges": {
+    "title": "Engines and fridges",
+    "summary": "Run a gas round a loop to turn heat into work, find the limit no engine can beat, then run it backwards to make cold.",
+    "world": "Thermodynamics",
+    "lab": "Thermodynamics"
+  },
+  "charges-and-forces": {
+    "title": "Charges and forces",
+    "summary": "Charge comes in whole electrons. Two charges push or pull as 1/r², and a third feels the vector sum of both.",
+    "world": "Electric Fields",
+    "lab": "Electric Charges and Fields"
+  },
+  "fields-and-dipoles": {
+    "title": "Fields and dipoles",
+    "summary": "The field is the force per coulomb. A +q and a −q side by side make a dipole, which a uniform field twists but does not move.",
+    "world": "Electric Fields",
+    "lab": "Electric Charges and Fields"
+  },
+  "flux-and-gauss": {
+    "title": "Flux and Gauss's law",
+    "summary": "Count the field through a surface. Close the surface, and the count depends only on the charge inside.",
+    "world": "Electric Fields",
+    "lab": "Electric Charges and Fields"
+  },
+  "follow-the-slopes": {
+    "title": "Follow the slopes",
+    "summary": "A differential equation tells you the slope at every point. Draw them all, and the solutions draw themselves. (Slope fields go beyond NCERT; they are the picture behind its methods.)",
+    "world": "Differential Equations",
+    "lab": "Slope Fields and Differential Equations"
+  },
+  "growth-and-cooling": {
+    "title": "Growth and cooling",
+    "summary": "When the rate of change is proportional to the amount, the answer is always an exponential: bacteria, radioactivity and a cup of tea.",
+    "world": "Differential Equations",
+    "lab": "Slope Fields and Differential Equations"
+  },
+  "solving-them": {
+    "title": "Solving them",
+    "summary": "Sort equations by order and degree, pick the method that fits, and finish a linear one with an integrating factor.",
+    "world": "Differential Equations",
+    "lab": "Slope Fields and Differential Equations"
+  },
+  "hills-of-potential": {
+    "title": "Hills of potential",
+    "summary": "A charge raises a hill of potential around it. Walk a test charge over it: climbing costs work, walking round the hillside costs none.",
+    "world": "Potential and Capacitance",
+    "lab": "Potential and Capacitance"
+  },
+  "storing-charge": {
+    "title": "Storing charge",
+    "summary": "A conductor keeps the field out of its inside. Two conducting plates close together hold charge and energy — and a dielectric lets them hold more.",
+    "world": "Potential and Capacitance",
+    "lab": "Potential and Capacitance"
+  },
+  "capacitors-together": {
+    "title": "Capacitors together",
+    "summary": "In series they share one charge; in parallel, one voltage. And when a charged capacitor meets an empty one, charge is kept but energy is not.",
+    "world": "Potential and Capacitance",
+    "lab": "Potential and Capacitance"
+  },
+  "travelling-waves": {
+    "title": "Travelling waves",
+    "summary": "The wave runs along; the string only bobs up and down. What sets how fast it goes, and how long each wave is?",
+    "world": "Waves",
+    "lab": "Waves"
+  },
+  "standing-waves": {
+    "title": "Standing waves",
+    "summary": "Waves add where they meet. Trap a wave between two ends and only certain notes fit.",
+    "world": "Waves",
+    "lab": "Waves"
+  },
+  "beats-and-doppler": {
+    "title": "Beats and Doppler",
+    "summary": "Two notes almost in tune throb. A passing siren drops in pitch. And every step back from a speaker takes some decibels off.",
+    "world": "Waves",
+    "lab": "Waves"
+  },
+  "springs-and-pendulums": {
+    "title": "Springs and pendulums",
+    "summary": "A block on a spring is the shadow of a point going round a circle. Find its phase, its period — and why a pendulum's bob does not matter.",
+    "world": "Oscillations",
+    "lab": "Oscillations"
+  },
+  "energy-in-shm": {
+    "title": "Energy in SHM",
+    "summary": "Kinetic and potential energy trade places twice a swing, and the total stays ½kA². Then join two springs and see how stiff the pair is.",
+    "world": "Oscillations",
+    "lab": "Oscillations"
+  },
+  "damped-and-driven": {
+    "title": "Damped and driven",
+    "summary": "Oil makes the swings die away; a well-timed push makes them grow. Find resonance — then twist a disc on a wire.",
+    "world": "Oscillations",
+    "lab": "Oscillations"
+  },
+  "dipole-and-lines": {
+    "title": "The bar magnet",
+    "summary": "A short bar magnet is a magnetic dipole: its field falls as 1/r³, is twice as strong on its axis, and runs in closed loops.",
+    "world": "Magnetism and Matter",
+    "lab": "Magnetism and Matter"
+  },
+  "the-earths-field": {
+    "title": "The Earth's field",
+    "summary": "The Earth's field points into the ground at the dip angle. Its horizontal part turns a compass; a dip circle shows the rest.",
+    "world": "Magnetism and Matter",
+    "lab": "Magnetism and Matter"
+  },
+  "magnetic-matter": {
+    "title": "Magnetic matter",
+    "summary": "Put a material in a field and it adds a little, takes a little, or adds a great deal — and iron remembers where it has been.",
+    "world": "Magnetism and Matter",
+    "lab": "Magnetism and Matter"
+  },
+  "changing-flux": {
+    "title": "Changing flux",
+    "summary": "Flux is field times the area it meets. Change it and the coil answers with an EMF — pushing back against the change.",
+    "world": "Electromagnetic Induction",
+    "lab": "Electromagnetic Induction"
+  },
+  "rods-and-brakes": {
+    "title": "Rods and brakes",
+    "summary": "Move a conductor through a field and it becomes a cell — and the field drags on the current it makes.",
+    "world": "Electromagnetic Induction",
+    "lab": "Electromagnetic Induction"
+  },
+  "coils-and-generators": {
+    "title": "Coils and generators",
+    "summary": "A coil resists changes in its own current and stirs up EMFs in its neighbours. Spin one in a field and you have mains electricity.",
+    "world": "Electromagnetic Induction",
+    "lab": "Electromagnetic Induction"
+  },
+  "drift-and-resistance": {
+    "title": "Drift and resistance",
+    "summary": "Electrons crawl through a wire at a millimetre a second. How long, thick, hot and what metal the wire is decides how hard they are to push.",
+    "world": "Current Electricity",
+    "lab": "Current Electricity"
+  },
+  "cells-and-power": {
+    "title": "Cells and power",
+    "summary": "A real cell loses some of its EMF inside itself. Match the load to it for the most power, join cells to push harder, and watch a capacitor fill.",
+    "world": "Current Electricity",
+    "lab": "Current Electricity"
+  },
+  "loops-and-bridges": {
+    "title": "Loops and bridges",
+    "summary": "Kirchhoff's two rules solve any circuit. A balanced bridge or potentiometer measures without a current — the galvanometer reads zero.",
+    "world": "Current Electricity",
+    "lab": "Current Electricity"
+  },
+  "circling-charges": {
+    "title": "Charges that circle",
+    "summary": "A magnetic field pushes a moving charge sideways, so it goes round — and every turn takes the same time, however fast it goes.",
+    "world": "Moving Charges and Magnetism",
+    "lab": "Moving Charges and Magnetism"
+  },
+  "pushes-on-currents": {
+    "title": "Pushes on currents",
+    "summary": "A current is moving charge, so a field pushes on it too: on a wire, between two wires, and as a turning couple on a coil.",
+    "world": "Moving Charges and Magnetism",
+    "lab": "Moving Charges and Magnetism"
+  },
+  "fields-of-currents": {
+    "title": "Fields from currents",
+    "summary": "Every bit of current makes a field. Add them up — or use Ampère's law — for a wire, a loop, a solenoid and a toroid.",
+    "world": "Moving Charges and Magnetism",
+    "lab": "Moving Charges and Magnetism"
+  },
+  "ac-phase-and-rms": {
+    "title": "Peaks, rms and phase",
+    "summary": "The mains turns like an arrow. In a coil the current trails the voltage by a quarter turn; in a capacitor it runs a quarter turn ahead.",
+    "world": "Alternating Current",
+    "lab": "Alternating Current and EM Waves"
+  },
+  "ac-resonance-and-power": {
+    "title": "Resonance and power",
+    "summary": "Tune a circuit until its reactances cancel, find where the power goes, step voltages up and down, and let a capacitor and a coil pass energy back and forth.",
+    "world": "Alternating Current",
+    "lab": "Alternating Current and EM Waves"
+  },
+  "em-waves-and-spectrum": {
+    "title": "Waves of E and B",
+    "summary": "A changing electric field makes a magnetic one, and the two can travel on together at the speed of light — as radio, light or X-rays.",
+    "world": "Alternating Current",
+    "lab": "Alternating Current and EM Waves"
+  },
+  "light-on-a-metal": {
+    "title": "Light on a metal",
+    "summary": "Shine light on a metal plate and electrons fly out — but only if the light's frequency is high enough, however bright it is.",
+    "world": "Dual Nature",
+    "lab": "Dual Nature of Radiation and Matter"
+  },
+  "stopping-the-electrons": {
+    "title": "Stopping the electrons",
+    "summary": "Turn the collector negative until even the fastest electrons are turned back. That stopping potential measures K_max = hν − φ.",
+    "world": "Dual Nature",
+    "lab": "Dual Nature of Radiation and Matter"
+  },
+  "photons-and-electron-waves": {
+    "title": "Photons and electron waves",
+    "summary": "Light comes in particles with energy hν and momentum h/λ — and electrons, fired at a crystal, diffract like waves.",
+    "world": "Dual Nature",
+    "lab": "Dual Nature of Radiation and Matter"
+  },
+  "tiny-and-dense": {
+    "title": "Tiny and dense",
+    "summary": "A nucleus is a few femtometres across, packed as densely as every other nucleus — and it weighs less than the pieces it is made of.",
+    "world": "Nuclei",
+    "lab": "Nuclei"
+  },
+  "towards-iron": {
+    "title": "Towards iron",
+    "summary": "Nucleons are held most tightly near iron. Split a heavy nucleus or join light ones, and the move towards iron sets energy free.",
+    "world": "Nuclei",
+    "lab": "Nuclei"
+  },
+  "a-half-at-a-time": {
+    "title": "A half at a time",
+    "summary": "No one can say when one atom will decay, but a crowd of them halves in a fixed time, again and again.",
+    "world": "Nuclei",
+    "lab": "Nuclei"
+  },
+  "wavefronts-and-fringes": {
+    "title": "Wavefronts and fringes",
+    "summary": "Watch wavelets bend a wavefront into glass, then send light through two slits and measure the fringes.",
+    "world": "Wave Optics",
+    "lab": "Wave Optics"
+  },
+  "diffraction-and-resolution": {
+    "title": "Bright, dark and blurred",
+    "summary": "Read the brightness across the fringes, spread light through one slit, and find how close two stars can be.",
+    "world": "Wave Optics",
+    "lab": "Wave Optics"
+  },
+  "polaroids-and-films": {
+    "title": "Polarised light and soap films",
+    "summary": "Turn one polaroid against another, polarise light by reflection, and find out why a soap film is coloured.",
+    "world": "Wave Optics",
+    "lab": "Wave Optics"
+  },
+  "push-and-flow": {
+    "title": "Push and flow",
+    "summary": "A small push lifts a car, water races through a narrow pipe, and where it is fast its pressure is low.",
+    "world": "Fluids in Motion",
+    "lab": "Fluids in Motion"
+  },
+  "thick-and-thin": {
+    "title": "Thick and thin",
+    "summary": "Drag a plate over glycerine, drop a ball through it, and time its steady fall to measure how thick the liquid is.",
+    "world": "Fluids in Motion",
+    "lab": "Fluids in Motion"
+  },
+  "drops-and-tubes": {
+    "title": "Drops and tubes",
+    "summary": "A liquid's surface pulls like a stretched skin: it squeezes drops and bubbles, and drags water up a narrow glass tube.",
+    "world": "Fluids in Motion",
+    "lab": "Fluids in Motion"
+  },
+  "mirror-images": {
+    "title": "Images in mirrors",
+    "summary": "Where a mirror puts the image, how big it is, and which way up — with every distance measured from the pole and given its sign.",
+    "world": "Ray Optics",
+    "lab": "Ray Optics and Optical Instruments"
+  },
+  "lens-images": {
+    "title": "Lenses and power",
+    "summary": "Grind a lens to the focal length you need, find its images, and add a second lens to change its power.",
+    "world": "Ray Optics",
+    "lab": "Ray Optics and Optical Instruments"
+  },
+  "trapped-light": {
+    "title": "Bend, trap and split",
+    "summary": "Bend light into glass, trap it there beyond the critical angle, then send it through a prism and split it into colours.",
+    "world": "Ray Optics",
+    "lab": "Ray Optics and Optical Instruments"
+  },
+  "looking-closer": {
+    "title": "Sky, eyes and telescopes",
+    "summary": "Why the sky is blue and the sunset red, how spectacles fix an eye, and how two lenses make a microscope or a telescope.",
+    "world": "Ray Optics",
+    "lab": "Ray Optics and Optical Instruments"
+  },
+  "building-units": {
+    "title": "Building units",
+    "summary": "Seven base units make every other. Their powers — the dimensions — convert units, catch wrong formulas and even find new ones.",
+    "world": "Units and Measurement",
+    "lab": "Units and Measurement"
+  },
+  "how-many-figures": {
+    "title": "How many figures?",
+    "summary": "An instrument's least count decides how many digits a reading can have — and every calculation can only keep as many as its weakest measurement.",
+    "world": "Units and Measurement",
+    "lab": "Units and Measurement"
+  },
+  "errors-add-up": {
+    "title": "Errors add up",
+    "summary": "Every measurement carries an error, and every calculation inherits them — added for sums, added as percentages for products, and multiplied up by powers.",
+    "world": "Units and Measurement",
+    "lab": "Units and Measurement"
+  },
+  "bands-and-holes": {
+    "title": "Bands and holes",
+    "summary": "Why silicon is neither metal nor glass, how a few atoms of arsenic or boron change it, and what happens where p meets n.",
+    "world": "Semiconductors",
+    "lab": "Semiconductor Electronics"
+  },
+  "one-way-street": {
+    "title": "A one-way street",
+    "summary": "The diode lets current through one way only. Use it to turn AC into DC, then let a Zener hold the voltage steady.",
+    "world": "Semiconductors",
+    "lab": "Semiconductor Electronics"
+  },
+  "light-and-logic": {
+    "title": "Light and logic",
+    "summary": "Junctions that make light and junctions that use it — then the transistor, and the gates it builds.",
+    "world": "Semiconductors",
+    "lab": "Semiconductor Electronics"
+  },
+  "stretch-and-scale": {
+    "title": "Stretch and scale",
+    "summary": "Read one hotness on three scales, then watch rails stretch, strips curl and water break the rules.",
+    "world": "Heat on the Move",
+    "lab": "Heat Transfer and Expansion"
+  },
+  "down-the-rod": {
+    "title": "Down the rod",
+    "summary": "Push heat along a lagged rod, then through two slabs in a row, and find the temperature where they meet.",
+    "world": "Heat on the Move",
+    "lab": "Heat Transfer and Expansion"
+  },
+  "glow-and-cool": {
+    "title": "Glow and cool",
+    "summary": "Breezes that turn round at night, bodies that glow red then white, and a cup of tea cooling on the table.",
+    "world": "Heat on the Move",
+    "lab": "Heat Transfer and Expansion"
+  },
+  "pulled-by-a-string": {
+    "title": "Pulled by a string",
+    "summary": "Two blocks, one string: write F = ma for each, and let the string tie the answers together.",
+    "world": "Connected Bodies",
+    "lab": "Connected Bodies and Frames"
+  },
+  "lifts-and-moving-frames": {
+    "title": "Lifts and moving frames",
+    "summary": "A scale in a lift, a bob in a car: what you feel depends on how your frame accelerates.",
+    "world": "Connected Bodies",
+    "lab": "Connected Bodies and Frames"
+  },
+  "round-the-bend": {
+    "title": "Round the bend",
+    "summary": "Something must pull a car into its curve: friction, a tilted road, or both. And a swinging bob does the same with its string.",
+    "world": "Connected Bodies",
+    "lab": "Connected Bodies and Frames"
+  },
+  "up-and-down": {
+    "title": "Up and down",
+    "summary": "A ball thrown straight up slows, stops and falls back — and its acceleration never changes once.",
+    "world": "Relative and Circular Motion",
+    "lab": "Relative and Circular Motion"
+  },
+  "along-the-road": {
+    "title": "Along the road",
+    "summary": "How one car moves as seen from another, and how fast a cart goes when its acceleration will not keep still.",
+    "world": "Relative and Circular Motion",
+    "lab": "Relative and Circular Motion"
+  },
+  "rivers-and-rain": {
+    "title": "Rivers and rain",
+    "summary": "A boat is carried by the water it moves through; rain falls differently on someone who is walking.",
+    "world": "Relative and Circular Motion",
+    "lab": "Relative and Circular Motion"
+  },
+  "circles-and-slopes": {
+    "title": "Circles and slopes",
+    "summary": "Going round at a steady speed is still accelerating; and up a hillside, 45° is no longer the best throw.",
+    "world": "Relative and Circular Motion",
+    "lab": "Relative and Circular Motion"
+  },
+  "curved-mirrors": {
+    "title": "Concave and convex mirrors",
+    "summary": "Move an object towards a curved mirror and watch the image move, grow, shrink and flip — then find where torches, shaving mirrors and rear-view mirrors use each kind.",
+    "world": "Mirrors, the Eye and Colours",
+    "lab": "Mirrors, the Eye and Colours"
+  },
+  "seeing-clearly": {
+    "title": "Seeing clearly",
+    "summary": "The parts of the eye, why some eyes cannot see far or near, and the power of the spectacle lens that fixes each.",
+    "world": "Mirrors, the Eye and Colours",
+    "lab": "Mirrors, the Eye and Colours"
+  },
+  "rainbow-and-sky": {
+    "title": "Rainbows and the blue sky",
+    "summary": "A prism splits white light into seven colours, raindrops make a rainbow, and air turns the sky blue and the rising sun red.",
+    "world": "Mirrors, the Eye and Colours",
+    "lab": "Mirrors, the Eye and Colours"
+  },
+  "squeeze-and-shear": {
+    "title": "Squeeze and shear",
+    "summary": "Press a cube equally on every face and it shrinks; push its top sideways and it leans. Each has its own modulus.",
+    "world": "Elastic Moduli",
+    "lab": "Elastic Moduli"
+  },
+  "thinner-as-it-stretches": {
+    "title": "Thinner as it stretches",
+    "summary": "Pull a wire and it gets longer — and a little thinner. The ratio of the two strains belongs to the material.",
+    "world": "Elastic Moduli",
+    "lab": "Elastic Moduli"
+  },
+  "how-g-changes": {
+    "title": "How g changes",
+    "summary": "Climb above the Earth, dig down into it, walk to the pole: g is 9.8 m/s² only where you started.",
+    "world": "Field and Orbits",
+    "lab": "Gravitational Field and Orbits"
+  },
+  "falling-together": {
+    "title": "Falling together",
+    "summary": "Gravity as force per kilogram, the point where the Earth and the Moon pull equally, and why an astronaut 400 km up floats.",
+    "world": "Field and Orbits",
+    "lab": "Gravitational Field and Orbits"
+  },
+  "the-cost-of-climbing": {
+    "title": "The cost of climbing",
+    "summary": "A satellite's kinetic, potential and total energy, how tightly it is bound, and what it costs to move it higher.",
+    "world": "Field and Orbits",
+    "lab": "Gravitational Field and Orbits"
+  },
+  "shifting-the-axis": {
+    "title": "Shifting the axis",
+    "summary": "Move the axis away from the centre and the body gets harder to turn — by exactly Md². And for a flat body, two axes in its plane add up to the third.",
+    "world": "Rolling and Equilibrium",
+    "lab": "Rolling and Equilibrium"
+  },
+  "the-rolling-race": {
+    "title": "The rolling race",
+    "summary": "A rolling wheel is moving and turning at once, and its bottom point stands still. Let four shapes go down one slope and the one with its mass nearest the middle wins.",
+    "world": "Rolling and Equilibrium",
+    "lab": "Rolling and Equilibrium"
+  },
+  "balancing-act": {
+    "title": "Balancing act",
+    "summary": "A body at rest needs no net force and no net torque. Balance a see-saw, spot a couple, and find what keeps a ladder from sliding.",
+    "world": "Rolling and Equilibrium",
+    "lab": "Rolling and Equilibrium"
+  },
+  "balance-and-break-up": {
+    "title": "Balance and break-up",
+    "summary": "Find the point a rod of masses balances on, then burst a shell in mid-air and watch its centre of mass carry on regardless.",
+    "world": "Centre of Mass and Energy",
+    "lab": "Centre of Mass, Collisions and Energy"
+  },
+  "glancing-blows-and-rockets": {
+    "title": "Glancing blows and rockets",
+    "summary": "Momentum is a vector: it is kept along x and along y when pucks glance off each other — and a rocket gains it by throwing mass away.",
+    "world": "Centre of Mass and Energy",
+    "lab": "Centre of Mass, Collisions and Energy"
+  },
+  "the-area-and-the-rate": {
+    "title": "The area and the rate",
+    "summary": "When a force changes as it moves, its work is the area under its graph. How fast that work is done is the power.",
+    "world": "Centre of Mass and Energy",
+    "lab": "Centre of Mass, Collisions and Energy"
+  },
+  "loops-and-hollows": {
+    "title": "Loops and hollows",
+    "summary": "Whirl a ball in a vertical circle fast enough that the string never goes slack, then read a ball's whole motion off its potential-energy curve.",
+    "world": "Centre of Mass and Energy",
+    "lab": "Centre of Mass, Collisions and Energy"
+  },
+  "push-and-rub": {
+    "title": "Pushes, pulls and rubs",
+    "summary": "Push a box with a friend. Forces add, take away, or balance, and friction always pushes back.",
+    "world": "Forces, Pressure and Gravity",
+    "lab": "Forces, Pressure and Gravity"
+  },
+  "sharp-and-wide": {
+    "title": "Sharp points, wide straps",
+    "summary": "The same push on a smaller area makes a bigger pressure. Pressure = force ÷ area.",
+    "world": "Forces, Pressure and Gravity",
+    "lab": "Forces, Pressure and Gravity"
+  },
+  "the-pull-of-gravity": {
+    "title": "The pull of gravity",
+    "summary": "Every mass pulls on every other. The Earth's pull makes things fall, and gives them weight.",
+    "world": "Forces, Pressure and Gravity",
+    "lab": "Forces, Pressure and Gravity"
+  },
+  "spans-and-scales": {
+    "title": "Spans and scales",
+    "summary": "Measure a desk with your hand. Then let the teacher try — and see why we need a standard unit.",
+    "world": "Measuring and Moving",
+    "lab": "Measuring and Moving"
+  },
+  "reading-a-ruler": {
+    "title": "Reading a ruler",
+    "summary": "Start at any mark, look straight down, and measure a curved line with a thread.",
+    "world": "Measuring and Moving",
+    "lab": "Measuring and Moving"
+  },
+  "swings-and-spins": {
+    "title": "Swings and spins",
+    "summary": "Straight, round, to and fro or spinning — then time a pendulum and make it tick once a second.",
+    "world": "Measuring and Moving",
+    "lab": "Measuring and Moving"
+  },
+  "adding-in-pairs": {
+    "title": "Adding in pairs",
+    "summary": "A staircase that climbs by the same step each time. Turn a copy upside down on top of it and the sum falls out.",
+    "world": "Sequences and Series",
+    "lab": "Sequences and Series"
+  },
+  "halves-for-ever": {
+    "title": "Halves for ever",
+    "summary": "Multiply by the same ratio each time. Some sums run away; others close in on a number they never quite reach.",
+    "world": "Sequences and Series",
+    "lab": "Sequences and Series"
+  },
+  "means-and-blocks": {
+    "title": "Means and blocks",
+    "summary": "The geometric mean stands inside a semicircle whose radius is the average. Then stack blocks to add squares and cubes.",
+    "world": "Sequences and Series",
+    "lab": "Sequences and Series"
+  },
+  "the-argand-plane": {
+    "title": "The Argand plane",
+    "summary": "a + ib is a point: so far along, so far up. That gives every complex number a length and a direction.",
+    "world": "Complex Numbers",
+    "lab": "Complex Numbers and Quadratics"
+  },
+  "turn-and-stretch": {
+    "title": "Turn and stretch",
+    "summary": "Multiplying complex numbers multiplies their lengths and adds their angles — so some multiplications are pure turns.",
+    "world": "Complex Numbers",
+    "lab": "Complex Numbers and Quadratics"
+  },
+  "the-discriminant": {
+    "title": "The discriminant",
+    "summary": "b² − 4ac says whether a parabola cuts the x-axis, touches it, or misses it — and when it misses, the roots are a complex pair.",
+    "world": "Complex Numbers",
+    "lab": "Complex Numbers and Quadratics"
+  },
+  "where-the-roots-lie": {
+    "title": "Where the roots lie",
+    "summary": "Without solving: the sign of a·f(k), the discriminant and the vertex say which side of k the roots are on.",
+    "world": "Complex Numbers",
+    "lab": "Complex Numbers and Quadratics"
+  },
+  "multiply-the-choices": {
+    "title": "Multiply the choices",
+    "summary": "One choice after another multiplies. Fill slots from a set of letters and the count is a product you never have to list.",
+    "world": "Counting and the Binomial Theorem",
+    "lab": "Counting and the Binomial Theorem"
+  },
+  "choose-a-team": {
+    "title": "Choose a team",
+    "summary": "A team does not care about order, so every team is counted r! times among the arrangements. Then share out sweets that cannot be told apart.",
+    "world": "Counting and the Binomial Theorem",
+    "lab": "Counting and the Binomial Theorem"
+  },
+  "seats-and-necklaces": {
+    "title": "Seats and necklaces",
+    "summary": "Glue two friends together, keep two rivals apart, turn the table, flip the necklace, and swap letters that look the same.",
+    "world": "Counting and the Binomial Theorem",
+    "lab": "Counting and the Binomial Theorem"
+  },
+  "pascals-triangle": {
+    "title": "Pascal's triangle",
+    "summary": "Each number is the sum of the two above it, and row n holds the coefficients of (a + b)ⁿ. Then pick any term out of an expansion without writing the rest.",
+    "world": "Counting and the Binomial Theorem",
+    "lab": "Counting and the Binomial Theorem"
+  },
+  "two-dice": {
+    "title": "Two dice",
+    "summary": "Throw two dice and there are 36 equally likely outcomes. Count the ones you want and you have the probability.",
+    "world": "Probability",
+    "lab": "Probability"
+  },
+  "given-that": {
+    "title": "Given that",
+    "summary": "Once you know something has happened, the outcomes that did not fit are gone. Probability is counted again in what is left.",
+    "world": "Probability",
+    "lab": "Probability"
+  },
+  "testing-positive": {
+    "title": "Testing positive",
+    "summary": "A test that catches 90% of the ill, with only 5% false alarms. You test positive. How worried should you be?",
+    "world": "Probability",
+    "lab": "Probability"
+  },
+  "counting-successes": {
+    "title": "Counting successes",
+    "summary": "A number decided by chance has a probability for each value. Draw them as bars, find the balance point, and toss coins until the bars appear.",
+    "world": "Probability",
+    "lab": "Probability"
+  },
+  "feel-it-read-it": {
+    "title": "Feel it, read it",
+    "summary": "Why your hands can disagree about the same water, and how to read a thermometer instead.",
+    "world": "Hot and Cold",
+    "lab": "Hot and Cold"
+  },
+  "heat-on-the-move": {
+    "title": "Heat on the move",
+    "summary": "Pins dropping off a rod, a purple streak in a beaker, and two cans in the sun: three ways heat travels.",
+    "world": "Hot and Cold",
+    "lab": "Hot and Cold"
+  },
+  "breeze-by-the-sea": {
+    "title": "Breeze by the sea",
+    "summary": "Land heats up and cools down faster than water, so the seaside breeze turns round between day and night.",
+    "world": "Hot and Cold",
+    "lab": "Hot and Cold"
+  },
+  "heat-and-fuses": {
+    "title": "Hot wires and fuses",
+    "summary": "A current heats a wire: H = I²Rt. A fuse uses that heat to keep a house safe.",
+    "world": "Currents at Work",
+    "lab": "Currents at Work"
+  },
+  "magnets-from-current": {
+    "title": "Magnets from a current",
+    "summary": "A coil round a nail becomes a magnet. Field lines circle a wire and run through a solenoid like a bar magnet.",
+    "world": "Currents at Work",
+    "lab": "Currents at Work"
+  },
+  "motors-and-generators": {
+    "title": "Motors and generators",
+    "summary": "A current in a magnetic field is pushed: that turns a motor. A magnet moving in a coil makes a current: that is a generator.",
+    "world": "Currents at Work",
+    "lab": "Currents at Work"
+  },
+  "points-in-space": {
+    "title": "Points in space",
+    "summary": "Every point has a position vector from the origin. Mix two of them and you land between the points; divide by the length and you get a direction.",
+    "world": "Vectors in Space",
+    "lab": "Vectors in Space"
+  },
+  "shadows-and-areas": {
+    "title": "Shadows and areas",
+    "summary": "Two ways to multiply arrows. The dot product gives a number — how much one points along the other. The cross product gives a new arrow, standing up from the parallelogram they make.",
+    "world": "Vectors in Space",
+    "lab": "Vectors in Space"
+  },
+  "boxes-and-planes": {
+    "title": "Boxes and planes",
+    "summary": "Three vectors make a box, and its volume is one number: [a b c]. A normal vector and one number make a plane — and tell you how far any point is from it.",
+    "world": "Vectors in Space",
+    "lab": "Vectors in Space"
+  },
+  "lines-that-miss": {
+    "title": "Lines that miss",
+    "summary": "In a plane, two lines that are not parallel must cross. In space they can pass each other by — and there is exactly one shortest way across the gap.",
+    "world": "Vectors in Space",
+    "lab": "Vectors in Space"
+  },
+  "middle-of-the-marks": {
+    "title": "The middle of the marks",
+    "summary": "Three ways to say where the middle of a class's marks is — and the one a single far-out mark can drag about.",
+    "world": "Statistics",
+    "lab": "Centre, Spread and Grouped Data"
+  },
+  "how-spread-out": {
+    "title": "How spread out?",
+    "summary": "Two classes can share a mean and still be nothing alike. Measure how far the marks stray from the middle — then stretch and slide them.",
+    "world": "Statistics",
+    "lab": "Centre, Spread and Grouped Data"
+  },
+  "grouped-into-classes": {
+    "title": "Grouped into classes",
+    "summary": "Thirty or fifty values are too many to list. Count them into classes, draw the bars, and find the middle and the spread from the table alone.",
+    "world": "Statistics",
+    "lab": "Centre, Spread and Grouped Data"
+  },
+  "where-i-and-j-land": {
+    "title": "Where î and ĵ land",
+    "summary": "A 2 × 2 matrix moves the whole plane. Its two columns say where î and ĵ go — and everything else follows.",
+    "world": "Matrices and Determinants",
+    "lab": "Matrices and Determinants"
+  },
+  "the-area-scale": {
+    "title": "The area scale",
+    "summary": "ad − bc is how many times bigger every area gets — negative if the picture flips, zero if it is squashed flat.",
+    "world": "Matrices and Determinants",
+    "lab": "Matrices and Determinants"
+  },
+  "undoing-a-matrix": {
+    "title": "Undoing a matrix",
+    "summary": "A⁻¹ = adj A / |A| puts the plane back — unless |A| = 0. And the transpose sorts matrices into symmetric, skew-symmetric and orthogonal.",
+    "world": "Matrices and Determinants",
+    "lab": "Matrices and Determinants"
+  },
+  "two-lines-one-point": {
+    "title": "Two lines, one point",
+    "summary": "Two equations are two lines and AX = B. If |A| ≠ 0 they cross at one point; if |A| = 0 they are parallel or the same line.",
+    "world": "Matrices and Determinants",
+    "lab": "Matrices and Determinants"
+  },
+  "sines-and-cosines": {
+    "title": "Sines and cosines",
+    "summary": "Two sides and the angle between them fix a triangle. The cosine rule finds the third side; the sine rule finds the angles.",
+    "world": "Solving Triangles",
+    "lab": "Solving Triangles"
+  },
+  "out-of-reach": {
+    "title": "Out of reach",
+    "summary": "Nobody climbs a tower to measure it. An angle and a distance on the ground are enough.",
+    "world": "Solving Triangles",
+    "lab": "Solving Triangles"
+  },
+  "centres-of-a-triangle": {
+    "title": "Centres of a triangle",
+    "summary": "A circle through the corners, a circle inside touching the sides, and a line that three centres always share.",
+    "world": "Solving Triangles",
+    "lab": "Solving Triangles"
+  },
+  "push-and-lift": {
+    "title": "Push and lift",
+    "summary": "A force does work only when something moves. Work = force × distance, measured in joules.",
+    "world": "Work and Power",
+    "lab": "Work and Power"
+  },
+  "watts-and-units": {
+    "title": "Watts and units",
+    "summary": "Power is how fast work is done. The electricity bill counts energy in kilowatt hours.",
+    "world": "Work and Power",
+    "lab": "Work and Power"
+  },
+  "adding-angles": {
+    "title": "Adding angles",
+    "summary": "Turn by A, then by B. Where you land is A + B — and its coordinates are built from the sines and cosines of A and B.",
+    "world": "Angles and Inverses",
+    "lab": "Compound Angles and Inverse Functions"
+  },
+  "every-solution": {
+    "title": "Every solution",
+    "summary": "A line y = k cuts a sine wave again and again. One formula with a whole number n finds every crossing.",
+    "world": "Angles and Inverses",
+    "lab": "Compound Angles and Inverse Functions"
+  },
+  "running-backwards": {
+    "title": "Running backwards",
+    "summary": "Many angles share a sine, so sin⁻¹ has to choose one. It always chooses from the same half-wave: the principal value.",
+    "world": "Angles and Inverses",
+    "lab": "Compound Angles and Inverse Functions"
+  },
+  "small-angles": {
+    "title": "Small angles",
+    "summary": "For a small angle in radians, sin θ and tan θ are almost θ itself, and cos θ is almost 1 − θ²/2. Physics uses this all the time — but how small is small?",
+    "world": "Angles and Inverses",
+    "lab": "Compound Angles and Inverse Functions"
+  },
+  "slicing-the-cone": {
+    "title": "Slicing the cone",
+    "summary": "Cut a double cone with a plane and four curves come out. One number, the eccentricity, tells them apart.",
+    "world": "Conic Sections",
+    "lab": "Conic Sections"
+  },
+  "pins-and-string": {
+    "title": "Two pins and a string",
+    "summary": "Loop a string round two pins and pull it tight: the pencil draws an ellipse. Keep a difference fixed instead, and you get a hyperbola.",
+    "world": "Conic Sections",
+    "lab": "Conic Sections"
+  },
+  "touching-the-curve": {
+    "title": "Touching the curve",
+    "summary": "Each conic has a one-line formula for its tangent. The tangent also explains why a dish aerial works.",
+    "world": "Conic Sections",
+    "lab": "Conic Sections"
+  },
+  "forms-of-a-line": {
+    "title": "The forms of a line",
+    "summary": "Two points fix a line. Its slope, its intercepts and its distance from the origin are all in its equation, whichever form you write it in.",
+    "world": "Lines and Circles",
+    "lab": "Lines and Circles"
+  },
+  "lines-at-an-angle": {
+    "title": "Lines at an angle",
+    "summary": "Two lines cross at an angle you can work out from their slopes alone; a point sits a distance from a line you can work out from its equation.",
+    "world": "Lines and Circles",
+    "lab": "Lines and Circles"
+  },
+  "line-meets-circle": {
+    "title": "Where a line meets a circle",
+    "summary": "A circle is every point one radius from a centre. Whether a line cuts it, touches it or misses it comes down to one distance.",
+    "world": "Lines and Circles",
+    "lab": "Lines and Circles"
+  },
+  "tangents-and-radical-axis": {
+    "title": "Tangents and the radical axis",
+    "summary": "A tangent meets the radius at right angles. From that one fact come the tangent's equation, its length from a point, and the line where two circles' tangents are equal.",
+    "world": "Lines and Circles",
+    "lab": "Lines and Circles"
+  },
+  "wheels-and-tins": {
+    "title": "Wheels and tins",
+    "summary": "Roll a wheel once and it lays its rim along the ground. Peel the label off a tin and it is a rectangle.",
+    "world": "Round Solids and Similar Shapes",
+    "lab": "Round Solids and Similar Shapes"
+  },
+  "area-of-a-circle": {
+    "title": "Area of a circle",
+    "summary": "Cut a circle into thin slices and lay them point up, point down: they make a rectangle πr long and r tall.",
+    "world": "Round Solids and Similar Shapes",
+    "lab": "Round Solids and Similar Shapes"
+  },
+  "cones-and-spheres": {
+    "title": "Cones and spheres",
+    "summary": "Three cones of water fill a cylinder. Balls, bowls, capsules and ice-cream cones are built from the same few shapes.",
+    "world": "Round Solids and Similar Shapes",
+    "lab": "Round Solids and Similar Shapes"
+  },
+  "same-shape-new-size": {
+    "title": "Same shape, new size",
+    "summary": "A photo enlarged, a map shrunk, a tower and its shadow: the same shape at a different size. Equal angles, sides in the same ratio.",
+    "world": "Round Solids and Similar Shapes",
+    "lab": "Round Solids and Similar Shapes"
+  },
+  "hops-below-zero": {
+    "title": "Hops below zero",
+    "summary": "A frog hops along the number line, right past zero and out the other side. Add, subtract, and read a cold night's temperature.",
+    "world": "Integers and Rationals",
+    "lab": "Integers and Rational Numbers"
+  },
+  "turning-round-twice": {
+    "title": "Turning round twice",
+    "summary": "Multiplying is hopping from 0 again and again. A minus sign turns the frog round — so what do two minus signs do?",
+    "world": "Integers and Rationals",
+    "lab": "Integers and Rational Numbers"
+  },
+  "between-any-two": {
+    "title": "Between any two",
+    "summary": "Fractions can be negative too. Place them, put them in order, and zoom into the gap between two of them — it never runs out.",
+    "world": "Integers and Rationals",
+    "lab": "Integers and Rational Numbers"
+  },
+  "share-it-fairly": {
+    "title": "Share it fairly",
+    "summary": "Share sweets in a ratio, spot ratios that are secretly the same, and scale a recipe up with the unitary method.",
+    "world": "Ratios, Percentages and Powers",
+    "lab": "Ratios, Percentages and Powers"
+  },
+  "out-of-a-hundred": {
+    "title": "Out of a hundred",
+    "summary": "Per cent means out of 100. Use it for a sale, a shopkeeper's profit, and money that grows in a bank.",
+    "world": "Ratios, Percentages and Powers",
+    "lab": "Ratios, Percentages and Powers"
+  },
+  "powers-big-and-small": {
+    "title": "Powers, big and small",
+    "summary": "Multiply 2 by itself, learn the laws of powers, write the Sun's distance in standard form, and find square roots.",
+    "world": "Ratios, Percentages and Powers",
+    "lab": "Ratios, Percentages and Powers"
+  },
+  "sets-and-relations": {
+    "title": "Sets and relations",
+    "summary": "Overlap two sets and count what they hold between them, then test a relation for the three properties that make it an equivalence.",
+    "world": "Sets, Relations and Functions",
+    "lab": "Sets, Relations and Functions"
+  },
+  "arrows-and-graphs": {
+    "title": "Arrows and graphs",
+    "summary": "A function sends every element of its domain to exactly one image. Draw it as arrows and as a graph, and see when no two inputs share an output.",
+    "world": "Sets, Relations and Functions",
+    "lab": "Sets, Relations and Functions"
+  },
+  "chains-and-inverses": {
+    "title": "Chains and inverses",
+    "summary": "Feed one function's output into another, and find out which functions can be run backwards.",
+    "world": "Sets, Relations and Functions",
+    "lab": "Sets, Relations and Functions"
+  },
+  "measuring-turns": {
+    "title": "Measuring turns",
+    "summary": "An angle is an amount of turn. Measure it, name it, and find its partners on a straight line.",
+    "world": "Angles and Shapes",
+    "lab": "Angles, Triangles and Circles"
+  },
+  "parallel-lines-and-triangles": {
+    "title": "Parallel lines and triangles",
+    "summary": "Tilt a line until it is parallel, then find out why every triangle's angles make a straight line.",
+    "world": "Angles and Shapes",
+    "lab": "Angles, Triangles and Circles"
+  },
+  "congruence-and-parallelograms": {
+    "title": "Same shape, same size",
+    "summary": "Which parts fix a triangle, and what makes a parallelogram special.",
+    "world": "Angles and Shapes",
+    "lab": "Angles, Triangles and Circles"
+  },
+  "angles-in-a-circle": {
+    "title": "Angles in a circle",
+    "summary": "A chord looks the same from everywhere on one arc — and twice as big from the centre.",
+    "world": "Angles and Shapes",
+    "lab": "Angles, Triangles and Circles"
+  },
+  "tally-marks-and-bars": {
+    "title": "Tally marks and bar graphs",
+    "summary": "Count a class's answers in fives, then draw them as pictures and bars.",
+    "world": "Data and Chance",
+    "lab": "Data and Chance"
+  },
+  "how-likely-is-it": {
+    "title": "How likely is it?",
+    "summary": "From impossible to certain. Then toss a coin a thousand times and watch chance settle down.",
+    "world": "Data and Chance",
+    "lab": "Data and Chance"
+  },
+  "favourable-over-possible": {
+    "title": "Favourable over possible",
+    "summary": "No tossing needed: count the outcomes. A bag of balls, a deck of 52 cards and a die.",
+    "world": "Data and Chance",
+    "lab": "Data and Chance"
+  },
+  "sort-and-dissolve": {
+    "title": "Sort it, dissolve it",
+    "summary": "Shiny or dull, see-through or not, floats or sinks — then stir salt into water until no more will go.",
+    "world": "Materials and Particles",
+    "lab": "Materials, Mixtures and Particles"
+  },
+  "separate-and-protect": {
+    "title": "Pull it apart, keep it bright",
+    "summary": "Pick the right way to pull each mixture apart — then find out what a nail needs to rust.",
+    "world": "Materials and Particles",
+    "lab": "Materials, Mixtures and Particles"
+  },
+  "particles-on-the-move": {
+    "title": "Particles on the move",
+    "summary": "Everything is made of tiny moving particles. Heat them and they speed up — and the fastest escape as vapour, cooling what is left.",
+    "world": "Materials and Particles",
+    "lab": "Materials, Mixtures and Particles"
+  },
+  "primes-and-roots": {
+    "title": "Primes and roots",
+    "summary": "Break numbers down to their primes, find HCF and LCM, and put √2, √3 and √5 on the number line.",
+    "world": "Numbers and Patterns",
+    "lab": "Numbers and Patterns"
+  },
+  "growing-patterns": {
+    "title": "Growing patterns",
+    "summary": "Count matchsticks and dots, find the rule for any term, and add expressions with tiles that only join their own kind.",
+    "world": "Numbers and Patterns",
+    "lab": "Numbers and Patterns"
+  },
+  "parabolas-and-progressions": {
+    "title": "Parabolas and progressions",
+    "summary": "See where a quadratic's graph meets the x-axis, then build an AP and add it up the quick way.",
+    "world": "Numbers and Patterns",
+    "lab": "Numbers and Patterns"
+  },
+  "metal-or-non-metal": {
+    "title": "Metal or non-metal?",
+    "summary": "Shiny, bendy and ringing — or dull and brittle. Sort the elements, meet the rule-breakers, and watch metals corrode.",
+    "world": "Metals, Acids and Salts",
+    "lab": "Metals, Acids and Salts"
+  },
+  "which-metal-wins": {
+    "title": "Which metal wins?",
+    "summary": "Drop a metal into another metal's solution: the more reactive one pushes the other out. Then see what is oxidised and what is reduced.",
+    "world": "Metals, Acids and Salts",
+    "lab": "Metals, Acids and Salts"
+  },
+  "fizz-ph-and-salts": {
+    "title": "Fizz, pH and salts",
+    "summary": "Acids fizz with metals and carbonates — test the gas. Then read the pH scale, and meet the salts in your kitchen.",
+    "world": "Metals, Acids and Salts",
+    "lab": "Metals, Acids and Salts"
+  },
+  "atoms-to-formulae": {
+    "title": "Atoms to formulae",
+    "summary": "Atoms join into molecules, ions join into compounds — and a formula says exactly how many of each.",
+    "world": "Atoms and the Table",
+    "lab": "Atoms, Molecules and the Periodic Table"
+  },
+  "counting-in-moles": {
+    "title": "Counting in moles",
+    "summary": "Atoms are far too small to count one by one, so chemists count them by weighing — a mole at a time.",
+    "world": "Atoms and the Table",
+    "lab": "Atoms, Molecules and the Periodic Table"
+  },
+  "ordering-the-elements": {
+    "title": "Ordering the elements",
+    "summary": "Three chemists, three tries at putting the elements in order — and the patterns the final table shows.",
+    "world": "Atoms and the Table",
+    "lab": "Atoms, Molecules and the Periodic Table"
+  },
+  "burette-and-flask": {
+    "title": "Burette and flask",
+    "summary": "Read the meniscus, stop at the first permanent pink, and turn a titre into a molarity with n₁M₁V₁ = n₂M₂V₂.",
+    "world": "Practical Chemistry",
+    "lab": "Practical Chemistry: Titrations, Salt Analysis and Element Detection"
+  },
+  "mystery-salt": {
+    "title": "The mystery salt",
+    "summary": "A white powder in a tube. Its flame, its anion tests and the group reagents together give its name.",
+    "world": "Practical Chemistry",
+    "lab": "Practical Chemistry: Titrations, Salt Analysis and Element Detection"
+  },
+  "fusion-and-tube-tests": {
+    "title": "Fusion and tube tests",
+    "summary": "Melt an organic compound with sodium and its N, S and halogens become ions you can test for. Then name the functional group from a few drops of reagent.",
+    "world": "Practical Chemistry",
+    "lab": "Practical Chemistry: Titrations, Salt Analysis and Element Detection"
+  },
+  "naming-carbon-chains": {
+    "title": "Naming carbon chains",
+    "summary": "Find the longest chain, number it from the right end, and put the prefixes in alphabetical order.",
+    "world": "Organic Basics",
+    "lab": "Organic Chemistry: Basic Principles"
+  },
+  "same-formula-new-molecule": {
+    "title": "Same formula, new molecule",
+    "summary": "Chain, position, functional group, metamers, and cis and trans: the ways one formula makes different compounds.",
+    "world": "Organic Basics",
+    "lab": "Organic Chemistry: Basic Principles"
+  },
+  "pushing-electrons": {
+    "title": "Pushing electrons",
+    "summary": "Where the electrons in a molecule are pulled or pushed — and why a tertiary carbocation outlasts a methyl one.",
+    "world": "Organic Basics",
+    "lab": "Organic Chemistry: Basic Principles"
+  },
+  "breaking-and-making-bonds": {
+    "title": "Breaking and making bonds",
+    "summary": "How bonds break, who attacks whom, the four kinds of reaction — and how a chemist separates and tests what is made.",
+    "world": "Organic Basics",
+    "lab": "Organic Chemistry: Basic Principles"
+  },
+  "tip-to-tail": {
+    "title": "Tip to tail",
+    "summary": "Walk along A, then along B: the resultant goes straight from start to finish. Its size depends on the angle between them.",
+    "world": "Vectors in a Plane",
+    "lab": "Vector components"
+  },
+  "along-the-slope": {
+    "title": "Along the slope",
+    "summary": "Axes need not be horizontal and vertical. On a slope, resolve the weight along the slope and into it.",
+    "world": "Vectors in a Plane",
+    "lab": "Vector components"
+  },
+  "going-round": {
+    "title": "Going round",
+    "summary": "A position vector sweeps round a circle at a steady rate. Its length never changes, yet it has a velocity and an acceleration.",
+    "world": "Vectors in a Plane",
+    "lab": "Vector components"
+  },
+  "sharing-electrons": {
+    "title": "Sharing electrons",
+    "summary": "Atoms share electrons to fill their outer shells. Count the shared pairs, and see why carbon always makes four bonds.",
+    "world": "Carbon Compounds",
+    "lab": "Carbon and its Compounds"
+  },
+  "chains-and-families": {
+    "title": "Chains and families",
+    "summary": "Build carbon chains, tell saturated from unsaturated, and name compounds by their carbons and their group.",
+    "world": "Carbon Compounds",
+    "lab": "Carbon and its Compounds"
+  },
+  "burn-change-and-clean": {
+    "title": "Burn, change and clean",
+    "summary": "Burn fuels cleanly or sootily, follow ethanol and ethanoic acid through their reactions, then see why soap struggles in hard water.",
+    "world": "Carbon Compounds",
+    "lab": "Carbon and its Compounds"
+  },
+  "how-basic-is-an-amine": {
+    "title": "How basic is an amine?",
+    "summary": "Primary, secondary, tertiary — and why diethylamine beats triethylamine in water while aniline barely counts as a base.",
+    "world": "Amines and Biomolecules",
+    "lab": "Amines and Biomolecules"
+  },
+  "from-nitro-to-azo-dyes": {
+    "title": "From nitro to azo dyes",
+    "summary": "Make an amine with one carbon fewer, tell 1°, 2° and 3° apart, and turn aniline into a diazonium salt — and a dye.",
+    "world": "Amines and Biomolecules",
+    "lab": "Amines and Biomolecules"
+  },
+  "sugars-and-starches": {
+    "title": "Sugars and starches",
+    "summary": "Mono-, di- and polysaccharides, which sugars reduce Fehling's solution — and why fresh glucose's rotation drifts.",
+    "world": "Amines and Biomolecules",
+    "lab": "Amines and Biomolecules"
+  },
+  "proteins-vitamins-and-dna": {
+    "title": "Proteins, vitamins and DNA",
+    "summary": "An amino acid with no net charge, how a protein folds, enzymes that fit like keys, vitamins, and the pairing of DNA's bases.",
+    "world": "Amines and Biomolecules",
+    "lab": "Amines and Biomolecules"
+  },
+  "turning-ethane": {
+    "title": "Turning ethane",
+    "summary": "Spin ethane about its C–C bond, feel the 12.5 kJ/mol barrier, and follow a chlorine radical through methane.",
+    "world": "Hydrocarbons",
+    "lab": "Hydrocarbons"
+  },
+  "adding-across-double-bonds": {
+    "title": "Adding across the double bond",
+    "summary": "Which end of the C=C gets the H, why a peroxide turns HBr round, and what ozone leaves behind.",
+    "world": "Hydrocarbons",
+    "lab": "Hydrocarbons"
+  },
+  "triple-bonds-and-rings": {
+    "title": "Triple bonds and rings",
+    "summary": "Why ethyne gives up a proton, how to stop at a cis or a trans alkene, and what makes a ring aromatic.",
+    "world": "Hydrocarbons",
+    "lab": "Hydrocarbons"
+  },
+  "attacking-the-ring": {
+    "title": "Attacking the ring",
+    "summary": "Make the electrophile, form the σ-complex, lose H⁺ — and see which groups send the next one ortho, para or meta.",
+    "world": "Hydrocarbons",
+    "lab": "Hydrocarbons"
+  },
+  "alcohols-by-degree": {
+    "title": "Alcohols by degree",
+    "summary": "Count the carbons on the C–OH carbon, and predict how an alcohol boils, clouds Lucas reagent, oxidises and loses water.",
+    "world": "Oxygen Compounds",
+    "lab": "Alcohols, Phenols, Ethers and Carbonyls"
+  },
+  "phenols-and-ethers": {
+    "title": "Phenols and ethers",
+    "summary": "Why phenol is an acid and nitro groups make it stronger; where its ring is attacked; and how to make and break an ether.",
+    "world": "Oxygen Compounds",
+    "lab": "Alcohols, Phenols, Ethers and Carbonyls"
+  },
+  "the-carbonyl-attacked": {
+    "title": "The carbonyl attacked",
+    "summary": "A nucleophile hits the δ+ carbon of C=O: why aldehydes react faster than ketones, and which alcohol a Grignard reagent makes.",
+    "world": "Oxygen Compounds",
+    "lab": "Alcohols, Phenols, Ethers and Carbonyls"
+  },
+  "mirrors-and-acids": {
+    "title": "Mirrors, iodoform and acids",
+    "summary": "Tell aldehydes from ketones with Tollens' and iodoform, let the α-hydrogen choose aldol or Cannizzaro, and rank the carboxylic acids.",
+    "world": "Oxygen Compounds",
+    "lab": "Alcohols, Phenols, Ethers and Carbonyls"
+  },
+  "carbon-halogen-bond": {
+    "title": "The carbon–halogen bond",
+    "summary": "Why carbon is a target next to a halogen, and why iodides react fastest.",
+    "world": "Haloalkanes and Haloarenes",
+    "lab": "Haloalkanes and Haloarenes"
+  },
+  "sn1-and-sn2": {
+    "title": "SN2 and SN1",
+    "summary": "Attack from the back in one step, or wait for a carbocation — and how to tell which.",
+    "world": "Haloalkanes and Haloarenes",
+    "lab": "Haloalkanes and Haloarenes"
+  },
+  "mirror-image-molecules": {
+    "title": "Mirror-image molecules",
+    "summary": "Molecules that are not their own mirror image — and what SN1 and SN2 do to them.",
+    "world": "Haloalkanes and Haloarenes",
+    "lab": "Haloalkanes and Haloarenes"
+  },
+  "when-substitution-loses": {
+    "title": "When substitution loses",
+    "summary": "Alcoholic KOH makes alkenes, and chlorine on a benzene ring refuses to be replaced.",
+    "world": "Haloalkanes and Haloarenes",
+    "lab": "Haloalkanes and Haloarenes"
+  }
+}

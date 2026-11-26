@@ -1,0 +1,98 @@
+import { defineLevel } from "@ise/game-engine";
+
+const form = (id: string, label: string, type: string, isomer: number) => ({ id, label, given: { type, isomer } });
+const card = (id: string, label: string) => ({ id, label });
+
+/** Naming and Isomers, level 2: geometric isomers, and mirror images. (Isomer indices follow the model's order: trans before cis, mer before fac.) */
+export const cisTransAndMirrors = defineLevel({
+  schemaVersion: 1,
+  id: "cis-trans-and-mirrors",
+  concept: "complex-isomers",
+  title: "Cis, trans and mirrors",
+  summary: "Same ligands, different places: cis and trans, fac and mer — and complexes that are left- and right-handed.",
+  xp: 40,
+  steps: [
+    {
+      id: "two-forms",
+      kind: "explore",
+      prompt: "[MA₄B₂]: press play to see **every** way to place the two B ligands on an octahedron.",
+      mode: "isomers",
+      given: { type: "ma4b2", isomer: 0 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "isomer", op: "gte", value: 1 },
+      success: "Only two: B opposite B (trans) and B beside B (cis). Every other placement is one of these turned round.",
+      hints: ["Press play."],
+    },
+    {
+      id: "fac",
+      kind: "target",
+      prompt: "[MA₃B₃]: show the isomer with all three B on **one face** of the octahedron — **fac**.",
+      mode: "isomers",
+      given: { type: "ma3b3", isomer: 0 },
+      controls: ["isomer"],
+      canvas: false,
+      goal: { type: "compare", quantity: "arrangement", op: "eq", value: 3 },
+      success: "fac: no two B opposite each other. In mer, two of them are opposite and all three run round a meridian.",
+      retry: "That is mer — two B are opposite.",
+      hints: ["No B should be opposite another B."],
+    },
+    {
+      id: "handed",
+      kind: "sort",
+      prompt: "**Sort**: which complexes are **chiral** — different from their mirror image?",
+      mode: "isomers",
+      canvas: false,
+      bins: [
+        { id: "chiral", label: "Chiral", when: { type: "compare", quantity: "chiral", op: "eq", value: 1 } },
+        { id: "not", label: "Not chiral", when: { type: "compare", quantity: "chiral", op: "eq", value: 0 } },
+      ],
+      cards: [
+        form("tris-en", "[Co(en)₃]³⁺", "maa3", 0),
+        form("cis-en", "cis-[Co(en)₂Cl₂]⁺", "maa2b2", 1),
+        form("trans-en", "trans-[Co(en)₂Cl₂]⁺", "maa2b2", 0),
+        form("cisplatin", "cis-[Pt(NH₃)₂Cl₂]", "ma2b2-square", 1),
+        form("fac", "fac-[Co(NH₃)₃Cl₃]", "ma3b3", 1),
+        form("trans-ammine", "trans-[Co(NH₃)₄Cl₂]⁺", "ma4b2", 0),
+      ],
+      explanation: "Only the complexes with chelates wrapped round the metal — [Co(en)₃]³⁺ and cis-[Co(en)₂Cl₂]⁺ — have no mirror plane. The rest each have one, so they match their mirror images.",
+      hints: ["Look for chelates spiralling round the metal."],
+    },
+    {
+      id: "count",
+      kind: "estimate",
+      prompt: "How many **stereoisomers** does [M(AA)₂B₂] have, counting mirror images separately?",
+      mode: "isomers",
+      given: { type: "maa2b2", isomer: 0 },
+      canvas: false,
+      hideLabels: true,
+      quantity: "stereoCount",
+      range: { min: 1, max: 6, step: 1 },
+      tolerance: 0.5,
+      explanation: "Three: trans, and cis — which comes as a left- and right-handed pair.",
+      hints: ["cis and trans first; then ask which is chiral."],
+    },
+    {
+      id: "kinds",
+      kind: "match",
+      prompt: "**Match** each kind of complex to its isomers.",
+      canvas: false,
+      pairs: [
+        { left: card("ma4b2", "[MA₄B₂]"), right: card("cis-trans", "cis and trans") },
+        { left: card("ma3b3", "[MA₃B₃]"), right: card("fac-mer", "fac and mer") },
+        { left: card("maa3", "[M(AA)₃]"), right: card("mirror-pair", "one pair of mirror images") },
+        { left: card("square", "[MA₂B₂], square planar"), right: card("platin", "cisplatin and transplatin") },
+      ],
+      explanation: "Counted by symmetry: every placement of the ligands, sorted by which can be turned (or reflected) into which.",
+      hints: ["Two B: cis/trans. Three B: fac/mer."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Handed complexes.",
+      mode: "isomers",
+      equation: "chirality",
+      law: "A complex whose mirror image cannot be turned to fit it is chiral: its two forms are optical isomers, one geometric isomer but two stereoisomers.",
+    },
+  ],
+});

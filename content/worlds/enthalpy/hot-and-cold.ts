@@ -1,0 +1,98 @@
+import { defineLevel } from "@ise/game-engine";
+
+const reaction = (id: string, label: string) => ({ id, label, given: { reaction: id } });
+const card = (id: string, label: string) => ({ id, label });
+
+/** Enthalpy, level 1: the sign of ΔH, and heat as an extensive quantity. */
+export const hotAndCold = defineLevel({
+  schemaVersion: 1,
+  id: "hot-and-cold",
+  concept: "enthalpy-and-hess",
+  title: "Hot and cold",
+  summary: "Negative ΔH gives heat out, positive takes it in — and twice the reaction, twice the heat.",
+  xp: 35,
+  steps: [
+    {
+      id: "more",
+      kind: "explore",
+      prompt: "Hydrogen burns. Press play to run **more and more** of the reaction, and watch the heat released.",
+      mode: "hess",
+      given: { reaction: "water", n: 0.5 },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "n", op: "gte", value: 3 },
+      success: "ΔH stays −285.8 kJ per mole, but the heat grows with the amount: ΔH is extensive.",
+      hints: ["Press play."],
+    },
+    {
+      id: "exo-or-endo",
+      kind: "sort",
+      prompt: "**Sort** the reactions: exothermic or endothermic?",
+      mode: "hess",
+      canvas: false,
+      bins: [
+        { id: "exo", label: "Exothermic (ΔH < 0)", when: { type: "compare", quantity: "exothermic", op: "eq", value: 1 } },
+        { id: "endo", label: "Endothermic (ΔH > 0)", when: { type: "compare", quantity: "exothermic", op: "eq", value: 0 } },
+      ],
+      cards: [
+        reaction("hcl", "H₂ + Cl₂ → 2HCl"),
+        reaction("methane-liquid", "Methane burns"),
+        reaction("limestone", "CaCO₃ → CaO + CO₂"),
+        reaction("nitric-oxide", "N₂ + O₂ → 2NO"),
+        reaction("ammonia", "N₂ + 3H₂ → 2NH₃"),
+        reaction("carbon-monoxide", "C + ½O₂ → CO"),
+      ],
+      explanation: "Burning and most combining reactions give out heat. Breaking up limestone and making NO from air take heat in — NO forms only in lightning or hot engines.",
+      hints: ["Does it need heating to keep going?"],
+    },
+    {
+      id: "three-times",
+      kind: "predict",
+      prompt: "Methane burns: from **1** mole of reaction to **3**. What happens to the **heat released**?",
+      mode: "hess",
+      variable: "n",
+      from: 1,
+      to: 3,
+      quantity: "heat",
+      options: ["increase", "decrease", "same"],
+      given: { reaction: "methane-liquid" },
+      explanation: "It triples, from 890.3 to 2670.9 kJ — but ΔH, per mole of reaction, stays −890.3 kJ/mol.",
+    },
+    {
+      id: "two-moles",
+      kind: "estimate",
+      prompt: "CH₄ + 2O₂ → CO₂ + 2H₂O(l) has ΔH = **−890.3 kJ/mol**. How much heat do **2 moles** of reaction release?",
+      mode: "hess",
+      given: { reaction: "methane-liquid", n: 2 },
+      canvas: false,
+      hideLabels: true,
+      quantity: "heat",
+      range: { min: 0, max: 3000, step: 10 },
+      tolerance: 20,
+      explanation: "2 × 890.3 = 1780.6 kJ.",
+      hints: ["Heat = −ΔH × moles."],
+    },
+    {
+      id: "terms",
+      kind: "match",
+      prompt: "**Match** each term to its meaning.",
+      canvas: false,
+      pairs: [
+        { left: card("exo", "Exothermic"), right: card("warm", "ΔH negative: the surroundings warm up") },
+        { left: card("endo", "Endothermic"), right: card("cool", "ΔH positive: the surroundings cool down") },
+        { left: card("system", "The system"), right: card("chemicals", "the reacting chemicals") },
+        { left: card("state", "A state function"), right: card("route", "depends only on start and end, not the route") },
+      ],
+      explanation: "The system is what we study; the surroundings are everything else. Enthalpy is a state function — which is what makes Hess's law work.",
+      hints: ["Heat leaving the system warms the surroundings."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Reading the sign of ΔH.",
+      mode: "hess",
+      equation: "sign-convention",
+      law: "ΔH < 0: heat leaves the system (exothermic). ΔH > 0: heat enters it (endothermic). The heat grows with the amount of reaction.",
+    },
+  ],
+});

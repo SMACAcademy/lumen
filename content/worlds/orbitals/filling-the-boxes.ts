@@ -1,0 +1,85 @@
+import { defineLevel } from "@ise/game-engine";
+
+const el = (Z: number, name: string) => ({ id: name.toLowerCase(), label: name, given: { Z } });
+const card = (id: string, label: string) => ({ id, label });
+
+/** Orbitals, level 1: Aufbau, Pauli and Hund — and the two exceptions. */
+export const fillingTheBoxes = defineLevel({
+  schemaVersion: 1,
+  id: "filling-the-boxes",
+  concept: "atomic-orbitals",
+  title: "Filling the boxes",
+  summary: "Build atoms electron by electron: lowest energy first, two to a box, spread out before pairing.",
+  xp: 35,
+  steps: [
+    {
+      id: "build-up",
+      kind: "explore",
+      prompt: "Press play to add electrons one at a time, from hydrogen up. Watch **where** each one goes.",
+      mode: "filling",
+      given: { Z: 1, direction: "up" },
+      playback: true,
+      canvas: false,
+      goal: { type: "compare", quantity: "Z", op: "gte", value: 10 },
+      success: "1s fills, then 2s, then the three 2p boxes — each p box gets one electron before any gets a second.",
+      hints: ["Press play."],
+    },
+    {
+      id: "aufbau-order",
+      kind: "order",
+      prompt: "Put these subshells in the order they **fill**.",
+      canvas: false,
+      ends: ["fills first", "fills last"],
+      cards: [card("sub-3p", "3p"), card("sub-4s", "4s"), card("sub-3d", "3d"), card("sub-4p", "4p")],
+      explanation: "3p (n + l = 4), 4s (4, but a higher n than 3p), 3d (5), 4p (5, higher n). 4s comes before 3d because its n + l is lower.",
+      hints: ["Add n and l: the lower sum fills first.", "For a tie, the lower n goes first."],
+    },
+    {
+      id: "across-p",
+      kind: "predict",
+      prompt: "From **boron** (Z = 5) to **nitrogen** (Z = 7), what happens to the number of **unpaired** electrons?",
+      mode: "filling",
+      variable: "Z",
+      from: 5,
+      to: 7,
+      quantity: "unpaired",
+      options: ["increase", "decrease", "same"],
+      given: {},
+      explanation: "From 1 to 3. Hund's rule: the 2p electrons take a box each, spins parallel, before any pair up.",
+    },
+    {
+      id: "magnetic",
+      kind: "sort",
+      prompt: "**Sort** the atoms: are any of their electrons unpaired?",
+      mode: "filling",
+      canvas: false,
+      bins: [
+        { id: "para", label: "Paramagnetic (unpaired)", when: { type: "compare", quantity: "paramagnetic", op: "eq", value: 1 } },
+        { id: "dia", label: "Diamagnetic (all paired)", when: { type: "compare", quantity: "paramagnetic", op: "eq", value: 0 } },
+      ],
+      cards: [el(2, "Helium"), el(4, "Beryllium"), el(7, "Nitrogen"), el(8, "Oxygen"), el(10, "Neon"), el(12, "Magnesium"), el(26, "Iron"), el(30, "Zinc")],
+      explanation: "Full subshells pair every electron: He, Be, Ne, Mg and Zn (3d¹⁰ 4s²). Nitrogen, oxygen and iron have half-filled boxes left over.",
+      hints: ["Is every subshell full?"],
+    },
+    {
+      id: "exceptions",
+      kind: "tap",
+      prompt: "**Catch** the atoms that break the Aufbau order.",
+      mode: "filling",
+      canvas: false,
+      rule: "breaks the filling order",
+      when: { type: "compare", quantity: "exception", op: "eq", value: 1 },
+      cards: [el(19, "Potassium"), el(21, "Scandium"), el(24, "Chromium"), el(25, "Manganese"), el(26, "Iron"), el(29, "Copper"), el(30, "Zinc")],
+      explanation: "Chromium is 3d⁵ 4s¹, not 3d⁴ 4s², and copper is 3d¹⁰ 4s¹, not 3d⁹ 4s²: a half-full or full d subshell is extra stable.",
+      hints: ["Look for a d subshell one short of half-full or full."],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "The rule for a subshell.",
+      mode: "filling",
+      equation: "hunds-rule",
+      law: "Electrons fill the lowest n + l first (Aufbau), two to an orbital with opposite spins (Pauli), and singly with parallel spins before any pair up (Hund).",
+    },
+  ],
+});

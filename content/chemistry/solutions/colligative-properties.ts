@@ -1,0 +1,468 @@
+import { defineConcept } from "@ise/concept-schema";
+
+/**
+ * Solutions, taught from two beakers at the same temperature.
+ *
+ * Dissolve something and the solution freezes lower and boils higher than
+ * the pure solvent — by an amount that depends only on how many particles are
+ * dissolved, not what they are. That is what "colligative" means, and the
+ * van 't Hoff factor is where the chemistry comes back in: salt counts twice,
+ * calcium chloride three times, and ethanoic acid in benzene only half.
+ */
+export const colligativeProperties = defineConcept({
+  schemaVersion: 1,
+  meta: {
+    id: "colligative-properties",
+    title: "Colligative Properties",
+    tagline: "Salt the road, boil the pasta: dissolve particles and watch freezing and boiling points move.",
+    domain: "chemistry",
+    category: "solutions",
+    grade: { min: 12, max: 12 },
+    difficulty: "core",
+    estimatedMinutes: 25,
+    objective:
+      "Use ΔTf = iKf·m, ΔTb = iKb·m, Raoult's law and π = iCRT, and explain the van 't Hoff factor for electrolytes and for solutes that associate.",
+    tags: ["solutions", "colligative", "freezing point depression", "boiling point elevation", "raoult", "osmotic pressure", "van 't hoff factor", "jee", "neet", "class 12"],
+  },
+
+  connections: [
+    {
+      id: "thermal-properties",
+      title: "Thermal Properties of Matter",
+      domain: "physics",
+      relation: "prerequisite",
+      note: "Freezing and boiling points, and the latent heat that holds the temperature still while they happen.",
+      available: true,
+    },
+    {
+      id: "chemical-equilibrium",
+      title: "Chemical Equilibrium",
+      domain: "chemistry",
+      relation: "related",
+      note: "Boiling is liquid and vapour in balance; dissolved particles tip the balance, so it needs a higher temperature.",
+      available: true,
+    },
+  ],
+
+  variables: [
+    {
+      id: "T",
+      symbol: "T",
+      name: "Temperature",
+      meaning: "Both beakers are at this temperature. Drag along the thermometer strip, or press play to heat them.",
+      binding: { kind: "state", key: "T" },
+      control: { type: "range", unit: "degC", min: -30, max: 130, step: 0.1 },
+      group: "primary",
+      color: "cosine",
+    },
+    {
+      id: "solvent",
+      symbol: "solvent",
+      name: "Solvent",
+      meaning: "Each has its own Kf and Kb: benzene's are much bigger than water's.",
+      binding: { kind: "param", key: "solvent" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "water", label: "Water" },
+          { value: "benzene", label: "Benzene" },
+        ],
+      },
+      group: "primary",
+      color: "sine",
+    },
+    {
+      id: "solute",
+      symbol: "solute",
+      name: "Solute",
+      meaning: "What is dissolved — and so how many particles each formula unit becomes.",
+      binding: { kind: "param", key: "solute" },
+      control: {
+        type: "choice",
+        options: [
+          { value: "glucose", label: "Glucose" },
+          { value: "nacl", label: "NaCl" },
+          { value: "cacl2", label: "CaCl₂" },
+          { value: "ethanoic", label: "Ethanoic acid" },
+        ],
+      },
+      group: "primary",
+      color: "angle",
+    },
+    {
+      id: "m",
+      symbol: "m",
+      name: "Molality",
+      meaning: "Moles of solute per kilogram of solvent.",
+      binding: { kind: "param", key: "m" },
+      control: { type: "range", unit: "mol/kg", min: 0, max: 2, step: 0.05, presets: [0.5, 1, 2] },
+      group: "primary",
+      color: "angle",
+    },
+  ],
+
+  quantities: [
+    {
+      id: "TfSolution",
+      symbol: "Tf",
+      name: "Solution freezes at",
+      meaning: "Below the pure solvent's freezing point by ΔTf.",
+      result: "TfSolution",
+      format: { kind: "number", digits: 2 },
+      unit: "degC",
+      color: "sine",
+      highlight: "strip",
+      headline: true,
+    },
+    {
+      id: "TbSolution",
+      symbol: "Tb",
+      name: "Solution boils at",
+      meaning: "Above the pure solvent's boiling point by ΔTb.",
+      result: "TbSolution",
+      format: { kind: "number", digits: 2 },
+      unit: "degC",
+      color: "cosine",
+      highlight: "strip",
+      headline: true,
+    },
+    {
+      id: "deltaTf",
+      symbol: "ΔTf",
+      name: "Freezing point depression",
+      meaning: "i · Kf · m.",
+      result: "deltaTf",
+      format: { kind: "number", digits: 2 },
+      unit: "K",
+      color: "sine",
+      highlight: "strip",
+      headline: true,
+    },
+    {
+      id: "deltaTb",
+      symbol: "ΔTb",
+      name: "Boiling point elevation",
+      meaning: "i · Kb · m.",
+      result: "deltaTb",
+      format: { kind: "number", digits: 2 },
+      unit: "K",
+      color: "cosine",
+      highlight: "strip",
+    },
+    {
+      id: "i",
+      symbol: "i",
+      name: "van 't Hoff factor",
+      meaning: "Particles per formula unit: 1 for glucose, 2 for NaCl, 3 for CaCl₂, ½ for ethanoic acid dimerising in benzene.",
+      result: "i",
+      format: { kind: "number", digits: 1 },
+      color: "angle",
+      highlight: "particles",
+      headline: true,
+    },
+    {
+      id: "stateSolution",
+      symbol: "solution",
+      name: "The solution is",
+      meaning: "At the temperature now.",
+      result: "stateSolution",
+      format: { kind: "label", labels: { "0": "frozen", "1": "liquid", "2": "boiling" } },
+      color: "cosine",
+      highlight: "beakers",
+    },
+    {
+      id: "statePure",
+      symbol: "pure",
+      name: "The pure solvent is",
+      meaning: "At the same temperature.",
+      result: "statePure",
+      format: { kind: "label", labels: { "0": "frozen", "1": "liquid", "2": "boiling" } },
+      color: "sine",
+      highlight: "beakers",
+    },
+    {
+      id: "Kf",
+      symbol: "Kf",
+      name: "Cryoscopic constant",
+      meaning: "How far one molal of particles lowers this solvent's freezing point.",
+      result: "Kf",
+      format: { kind: "number", digits: 2 },
+      unit: "K kg/mol",
+      color: "sine",
+    },
+    {
+      id: "Kb",
+      symbol: "Kb",
+      name: "Ebullioscopic constant",
+      meaning: "How far one molal of particles raises its boiling point.",
+      result: "Kb",
+      format: { kind: "number", digits: 2 },
+      unit: "K kg/mol",
+      color: "cosine",
+    },
+    {
+      id: "relativeLowering",
+      symbol: "Δp/p°",
+      name: "Relative lowering of vapour pressure",
+      meaning: "Raoult: equal to the mole fraction of solute particles.",
+      result: "relativeLowering",
+      format: { kind: "sig", figures: 3 },
+      color: "curve",
+      highlight: "vapour",
+    },
+    {
+      id: "osmoticPressure",
+      symbol: "π",
+      name: "Osmotic pressure",
+      meaning: "i · C · R · T at 25 °C — the pressure needed to stop water crossing a membrane into the solution.",
+      result: "osmoticPressure",
+      format: { kind: "number", digits: 2 },
+      unit: "atm",
+      color: "vector",
+    },
+  ],
+
+  equations: [
+    {
+      id: "freezing",
+      topic: "colligative-properties",
+      title: "Freezing point depression",
+      tokens: [
+        { kind: "ref", id: "deltaTf" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "i" },
+        { kind: "op", value: "·" },
+        { kind: "ref", id: "Kf" },
+        { kind: "op", value: "·" },
+        { kind: "ref", id: "m" },
+      ],
+      reading: "The solvent's constant times the molality of dissolved particles — what they are does not matter, only how many.",
+      assumptions: ["Dilute solution", "Only the solvent freezes out"],
+      discoverable: true,
+    },
+    {
+      id: "boiling",
+      topic: "colligative-properties",
+      title: "Boiling point elevation",
+      tokens: [
+        { kind: "ref", id: "deltaTb" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "i" },
+        { kind: "op", value: "·" },
+        { kind: "ref", id: "Kb" },
+        { kind: "op", value: "·" },
+        { kind: "ref", id: "m" },
+      ],
+      reading: "Dissolved particles lower the vapour pressure, so the solution must be hotter to reach 1 atm.",
+      assumptions: ["Dilute solution", "Non-volatile solute"],
+      discoverable: true,
+    },
+    {
+      id: "raoult",
+      topic: "raoults-law",
+      title: "Raoult's law",
+      tokens: [
+        { kind: "ref", id: "relativeLowering" },
+        { kind: "op", value: "=" },
+        { kind: "text", value: "x(solute)" },
+      ],
+      reading: "The vapour pressure falls by the fraction of the particles that are solute.",
+      assumptions: ["Ideal solution", "Non-volatile solute"],
+    },
+    {
+      id: "osmotic",
+      topic: "osmotic-pressure",
+      title: "Osmotic pressure",
+      tokens: [
+        { kind: "ref", id: "osmoticPressure" },
+        { kind: "op", value: "=" },
+        { kind: "ref", id: "i" },
+        { kind: "op", value: "·" },
+        { kind: "text", value: "CRT" },
+      ],
+      reading: "Just like pV = nRT for a gas: the dissolved particles behave as though they were a gas filling the solution.",
+      assumptions: ["Dilute solution", "Molarity ≈ molality"],
+    },
+  ],
+
+  simulation: {
+    model: "colligative",
+    params: { solvent: "water", solute: "glucose", m: 1 },
+    playLabel: "Heat both",
+  },
+
+  visualization: {
+    renderer: "colligative",
+    hint: "Drag along the thermometer strip to cool or heat both beakers at once.",
+    layers: [
+      { id: "beakers", label: "The two beakers" },
+      { id: "particles", label: "Dissolved particles" },
+      { id: "strip", label: "Thermometer strip" },
+      { id: "vapour", label: "Vapour pressure", optional: true },
+      { id: "labels", label: "Labels", optional: true },
+    ],
+  },
+
+  modes: [
+    {
+      id: "beakers",
+      label: "Two beakers",
+      description: "Pure solvent and solution, side by side",
+      layers: ["beakers", "particles", "strip", "labels"],
+      graphs: [],
+      equations: ["freezing", "boiling"],
+    },
+    {
+      id: "why",
+      label: "Why it boils later",
+      description: "With the vapour-pressure curves",
+      layers: ["beakers", "particles", "strip", "vapour", "labels"],
+      graphs: [],
+      equations: ["raoult", "boiling"],
+    },
+    {
+      id: "numbers",
+      label: "Just the strip",
+      description: "The temperatures, without the beakers",
+      layers: ["strip", "labels"],
+      graphs: [],
+      equations: ["freezing", "osmotic"],
+    },
+  ],
+  defaultMode: "beakers",
+  graphs: [],
+
+  activities: {
+    observe: [
+      {
+        id: "cool-it",
+        prompt: "Cool both beakers below 0 °C. The pure water freezes; the sugar solution does not — yet.",
+        condition: { type: "all", conditions: [{ type: "compare", quantity: "statePure", op: "eq", value: 0 }, { type: "compare", quantity: "stateSolution", op: "eq", value: 1 }] },
+      },
+      {
+        id: "heat-it",
+        prompt: "Now heat them. The pure water boils at 100 °C; the solution holds out a little longer.",
+        condition: { type: "all", conditions: [{ type: "compare", quantity: "statePure", op: "eq", value: 2 }, { type: "compare", quantity: "stateSolution", op: "eq", value: 1 }] },
+      },
+      {
+        id: "salt-it",
+        prompt: "Switch to salt. The same molality, twice the effect: every NaCl becomes two ions.",
+        condition: { type: "compare", quantity: "i", op: "eq", value: 2 },
+      },
+    ],
+
+    predict: [
+      {
+        id: "more-solute",
+        question: "The glucose solution is made twice as strong, 0.5 → 1 mol/kg. What happens to its freezing point?",
+        variable: "m",
+        from: 0.5,
+        to: 1,
+        quantity: "TfSolution",
+        options: ["increase", "decrease", "same"],
+        given: { solvent: "water", solute: "glucose", T: 20 },
+        explanation: "It falls further, from −0.93 °C to −1.86 °C: twice the particles, twice the depression.",
+      },
+      {
+        id: "kf-is-solvent",
+        question: "The glucose solution is made stronger, 0.5 → 1 mol/kg. What happens to Kf?",
+        variable: "m",
+        from: 0.5,
+        to: 1,
+        quantity: "Kf",
+        options: ["increase", "decrease", "same"],
+        given: { solvent: "water", solute: "glucose", T: 20 },
+        explanation: "Nothing. Kf belongs to the solvent — 1.86 K kg/mol for water — whatever is dissolved in it.",
+      },
+      {
+        id: "osmotic-doubles",
+        question: "A salt solution goes from 0.1 to 0.2 mol/kg. What happens to its osmotic pressure?",
+        variable: "m",
+        from: 0.1,
+        to: 0.2,
+        quantity: "osmoticPressure",
+        options: ["increase", "decrease", "same"],
+        given: { solvent: "water", solute: "nacl", T: 20 },
+        explanation: "It doubles, from 4.9 to 9.8 atm. π = iCRT, and C has doubled.",
+      },
+    ],
+
+    experiment: {
+      title: "Does it matter what you dissolve?",
+      instructions: "At 1 mol/kg in water, record the freezing point for glucose, salt and calcium chloride.",
+      columns: ["deltaTf", "i", "TfSolution", "deltaTb"],
+      minRows: 3,
+      discovery: {
+        question: "What decides how far the freezing point falls?",
+        choices: [
+          { id: "particles", label: "How many particles are dissolved, not what they are", correct: true },
+          { id: "mass", label: "How heavy the solute molecules are", correct: false },
+          { id: "type", label: "Whether the solute is sweet or salty", correct: false },
+          { id: "nothing", label: "Nothing — every solute gives the same result", correct: false },
+        ],
+        reveals: "freezing",
+        insight: "ΔTf = i·Kf·m. Salt splits into two ions and calcium chloride into three, so at the same molality they lower the freezing point two and three times as far.",
+      },
+    },
+
+    explain: [
+      {
+        id: "counting",
+        title: "Only the count matters",
+        body: "A colligative property depends on the number of dissolved particles, not their identity. Here i = {{i}}, and the solution freezes at {{TfSolution}} °C.",
+      },
+      {
+        id: "why-lower",
+        title: "Why dissolved particles lower the freezing point",
+        body: "Solute particles get in the way of the solvent locking into a crystal, and they lower its vapour pressure. The liquid is made more stable, so it must be colder before it gives up and freezes.",
+      },
+      {
+        id: "abnormal",
+        title: "Abnormal molar masses",
+        body: "If you assumed i = 1 for salt you would measure half its real molar mass; for ethanoic acid in benzene, which pairs up, you would measure double. That is how the van 't Hoff factor was discovered.",
+      },
+      {
+        id: "exam-note",
+        title: "In the exam",
+        body: "Expect: ΔTf and ΔTb calculations, finding molar mass from them, the van 't Hoff factor for dissociation and association, Raoult's law, and osmotic pressure with π = iCRT.",
+      },
+    ],
+
+    challenges: [
+      {
+        id: "road-salt",
+        title: "Keep the road clear",
+        prompt: "Keep a salt solution in water liquid down to −5 °C.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "i", op: "eq", value: 2 },
+            { type: "compare", quantity: "TfSolution", op: "lte", value: -5 },
+          ],
+        },
+        hint: "ΔTf = 2 × 1.86 × m. How big must m be?",
+        success: "About 1.35 mol/kg of salt — roughly 80 g in every litre of meltwater.",
+      },
+      {
+        id: "benzene-dimers",
+        title: "The acid that pairs up",
+        prompt: "Dissolve ethanoic acid in benzene and see its freezing point fall by exactly 2.56 K.",
+        goal: {
+          type: "all",
+          conditions: [
+            { type: "compare", quantity: "i", op: "eq", value: 0.5 },
+            { type: "compare", quantity: "deltaTf", op: "eq", value: 2.56, tolerance: 0.05 },
+          ],
+        },
+        hint: "Kf for benzene is 5.12, and the acid counts as half a particle.",
+        success: "1 mol/kg, but the depression of half that: the molecules pair up into dimers held by hydrogen bonds.",
+      },
+    ],
+  },
+
+  realWorld: [
+    { title: "Road salt", description: "Salt keeps ice from forming on roads down to about −10 °C; colder than that, calcium chloride is used — three ions instead of two." },
+    { title: "Antifreeze", description: "Ethylene glycol in a car's radiator lowers the freezing point and raises the boiling point at the same time." },
+    { title: "Saline drips", description: "Hospital saline is made to the same osmotic pressure as blood, so cells neither swell nor shrink." },
+  ],
+});

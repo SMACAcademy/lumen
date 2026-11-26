@@ -1,0 +1,113 @@
+import { defineLevel } from "@ise/game-engine";
+
+const gas = (id: string, label: string, position: number) => ({ id, label, given: { position } });
+const compound = (id: string, label: string) => ({ id, label, given: { compound: id } });
+const card = (id: string, label: string) => ({ id, label });
+const fact = (id: string, label: string, correct: boolean) => ({ id, label, correct });
+
+/** Halogens and Noble Gases, level 2: group 18 and the compounds of xenon. */
+export const theNobleGases = defineLevel({
+  schemaVersion: 1,
+  id: "the-noble-gases",
+  concept: "halogens-and-noble-gases",
+  title: "The noble gases",
+  summary: "Full shells, no reactions — until 1962, when xenon was caught bonding to fluorine.",
+  xp: 40,
+  steps: [
+    {
+      id: "easier-to-ionise",
+      kind: "predict",
+      prompt: "From **helium** down to **xenon**, what happens to the ionisation enthalpy?",
+      mode: "trends",
+      variable: "position",
+      from: 1,
+      to: 5,
+      quantity: "ionisation",
+      options: ["increase", "decrease", "same"],
+      given: { family: "noble", property: "ionisation" },
+      explanation: "It halves, from 2372 to 1170 kJ/mol: xenon's outer electrons are far from the nucleus and well shielded. That is what lets xenon, alone among the common noble gases, form compounds.",
+    },
+    {
+      id: "coldest-liquids",
+      kind: "order",
+      prompt: "Order the noble gases by **boiling point**, lowest first.",
+      mode: "trends",
+      given: { family: "noble", property: "boiling" },
+      canvas: false,
+      ends: ["boils lowest", "boils highest"],
+      by: "boiling",
+      cards: [gas("helium", "Helium", 1), gas("neon", "Neon", 2), gas("argon", "Argon", 3), gas("krypton", "Krypton", 4), gas("xenon", "Xenon", 5)],
+      explanation: "4.2, 27, 87, 120 and 165 K. Only weak dispersion forces hold these atoms together, and they grow with the number of electrons. Helium has the lowest boiling point of any substance.",
+      hints: ["More electrons, stronger attraction."],
+    },
+    {
+      id: "pairs-on-xenon",
+      kind: "estimate",
+      prompt: "Xenon has **8** valence electrons. In **XeF₄** four of them are in bonds. How many **lone pairs** are left on xenon?",
+      mode: "shapes",
+      given: { compound: "xef4" },
+      canvas: false,
+      hideLabels: true,
+      quantity: "lonePairs",
+      range: { min: 0, max: 4, step: 1 },
+      tolerance: 0.5,
+      explanation: "(8 − 4) ÷ 2 = 2 lone pairs. With four bonds that makes six domains, sp³d²; the lone pairs sit opposite each other and the molecule is square planar.",
+      hints: ["Electrons left over, divided by two."],
+    },
+    {
+      id: "count-the-pairs",
+      kind: "sort",
+      prompt: "**Sort** the xenon compounds by the number of **lone pairs** on xenon.",
+      mode: "shapes",
+      canvas: false,
+      bins: [
+        { id: "one", label: "1 lone pair", when: { type: "compare", quantity: "lonePairs", op: "eq", value: 1 } },
+        { id: "two", label: "2 lone pairs", when: { type: "compare", quantity: "lonePairs", op: "eq", value: 2 } },
+        { id: "three", label: "3 lone pairs", when: { type: "compare", quantity: "lonePairs", op: "eq", value: 3 } },
+      ],
+      cards: [compound("xef2", "XeF₂"), compound("xef4", "XeF₄"), compound("xef6", "XeF₆"), compound("xeo3", "XeO₃"), compound("xeof4", "XeOF₄")],
+      explanation: "Xenon is +2, +4, +6, +6 and +6, so 3, 2, 1, 1 and 1 lone pairs remain. An oxygen takes two electrons' worth, a fluorine one.",
+      hints: ["Find xenon's oxidation state first."],
+    },
+    {
+      id: "xenon-shapes",
+      kind: "match",
+      prompt: "**Match** each xenon compound to its shape.",
+      canvas: false,
+      pairs: [
+        { left: card("xef2", "XeF₂"), right: card("linear", "linear") },
+        { left: card("xef4", "XeF₄"), right: card("planar", "square planar") },
+        { left: card("xef6", "XeF₆"), right: card("distorted", "distorted octahedral") },
+        { left: card("xeo3", "XeO₃"), right: card("pyramid", "pyramidal") },
+        { left: card("xeof4", "XeOF₄"), right: card("square-pyramid", "square pyramidal") },
+      ],
+      explanation: "Five domains with three lone pairs: linear. Six with two: square planar. Six with one: square pyramidal. Four with one: pyramidal. Seven with one: a distorted octahedron.",
+      hints: ["Lone pairs take up room but are not part of the shape."],
+    },
+    {
+      id: "why-xenon",
+      kind: "tap",
+      prompt: "**Catch** the true statements about the noble gases.",
+      canvas: false,
+      rule: "true of group 18",
+      cards: [
+        fact("close-to-oxygen", "Xenon's ionisation enthalpy is close to O₂'s", true),
+        fact("fluorine-oxygen", "Xenon bonds only to very electronegative atoms", true),
+        fact("positive-gain", "Their electron gain enthalpies are positive", true),
+        fact("helium-compounds", "Helium forms fluorides as xenon does", false),
+        fact("neon-reactive", "Neon is the most reactive of them", false),
+        fact("diatomic", "They exist as diatomic molecules", false),
+      ],
+      explanation: "Noble gases are single atoms that neither gain nor lose electrons easily. Xenon is the exception among the stable ones: big enough to be ionised by fluorine or oxygen.",
+      hints: ["Which noble gas is easiest to ionise?"],
+    },
+    {
+      id: "law",
+      kind: "discover",
+      prompt: "Counting what xenon has left.",
+      mode: "shapes",
+      equation: "lone-pairs",
+      law: "Lone pairs on the central atom = (valence electrons − oxidation state) ÷ 2. Add the bonded atoms and VSEPR gives the shape.",
+    },
+  ],
+});
