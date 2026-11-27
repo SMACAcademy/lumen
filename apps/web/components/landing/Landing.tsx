@@ -192,6 +192,19 @@ export function Landing({ stats }: { stats: LandingStats }) {
                 open source
               </a>
               .
+              <br />
+              Lumen is a learning aid, provided as is, and may contain mistakes: always check with your NCERT textbook.
+              Not affiliated with NCERT, CBSE or NTA.{" "}
+              <a href="https://github.com/SMACAcademy/lumen/blob/main/DISCLAIMER.md" className="underline hover:text-ink">
+                Disclaimer
+              </a>{" "}
+              ·{" "}
+              <a
+                href="https://github.com/SMACAcademy/lumen/issues/new?template=correction.yml"
+                className="underline hover:text-ink"
+              >
+                Report a mistake
+              </a>
             </footer>
           </section>
         </main>

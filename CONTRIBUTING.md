@@ -4,11 +4,15 @@ Thank you for helping. Lumen teaches maths, physics and chemistry to school stud
 
 ## Reporting a mistake
 
-[Open an issue](https://github.com/SMACAcademy/lumen/issues) with:
+Lumen may contain mistakes (see the [disclaimer](DISCLAIMER.md)), and we fix them on the strength of the evidence. There are two ways in:
 
-- the level or lab (the address from your browser is perfect),
-- what it says, and what it should say,
-- where the right answer comes from (the NCERT chapter, table or page if you can).
+1. **Report it:** [open a correction issue](https://github.com/SMACAcademy/lumen/issues/new?template=correction.yml). The form asks for:
+   - the level or lab (the address from your browser is perfect),
+   - what it says, and what it should say,
+   - your evidence: the NCERT book, class, chapter and page or table, or another reliable source.
+2. **Fix it yourself:** open a pull request with the change, and put the same evidence in its description (the pull request template has a place for it). If a number changes, show the working.
+
+A maintainer reviews every correction. It is merged once the evidence holds and the checks pass, and the site updates automatically.
 
 ## Working on the code
 

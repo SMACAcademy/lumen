@@ -55,3 +55,14 @@ describe("asking the class", () => {
     expect(screen.getByRole("radio", { name: "Class 9" }).getAttribute("aria-checked")).toBe("true");
   });
 });
+
+describe("the profile", () => {
+  it("says the content may contain mistakes and links to the corrections process", async () => {
+    await show(<ProfileScreen />);
+    expect(screen.getByRole("heading", { name: "About this content" })).toBeTruthy();
+    expect(screen.getByText(/may still contain mistakes/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Report a mistake" }).getAttribute("href")).toContain("template=correction.yml");
+    expect(screen.getByRole("link", { name: "Read the disclaimer" }).getAttribute("href")).toContain("DISCLAIMER.md");
+    expect(screen.queryByText(/accounts and automatic sync/)).toBeNull();
+  });
+});

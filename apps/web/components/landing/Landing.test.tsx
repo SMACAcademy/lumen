@@ -56,6 +56,14 @@ describe("Landing", () => {
     expect(screen.getByText("Aromatic compounds")).toBeTruthy();
   });
 
+  it("says the content may contain mistakes and how to report one", async () => {
+    await renderIn(<Landing stats={STATS} />);
+    expect(screen.getByText(/may contain mistakes/)).toBeTruthy();
+    expect(screen.getByText(/Not affiliated with NCERT, CBSE or NTA/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Disclaimer" }).getAttribute("href")).toContain("DISCLAIMER.md");
+    expect(screen.getByRole("link", { name: "Report a mistake" }).getAttribute("href")).toContain("template=correction.yml");
+  });
+
   it("marks where the camera should be for each part of the page", async () => {
     await renderIn(<Landing stats={STATS} />);
     const depths = Array.from(document.querySelectorAll<HTMLElement>("[data-world-z]")).map((el) => Number(el.dataset.worldZ));

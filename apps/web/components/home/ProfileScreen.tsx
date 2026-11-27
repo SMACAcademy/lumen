@@ -161,8 +161,7 @@ export function ProfileScreen() {
 
       <Section title="Your data">
         <p className="text-sm text-muted">
-          Progress is stored on this device only. Save a copy to move it to another device — accounts and automatic sync
-          come later.
+          Progress is stored on this device only. Save a copy to move it to another device.
         </p>
         <div className="flex flex-wrap gap-2">
           <Button tone="quiet" onClick={download}>
@@ -198,6 +197,29 @@ export function ProfileScreen() {
         <p className="text-sm text-muted">
           Lumen has no accounts and no tracking. Your name, progress and settings are kept only in this browser, on this
           device; nothing is sent anywhere. Export your data above to keep a copy or move it to another device.
+        </p>
+      </Section>
+
+      <Section title="About this content">
+        <p className="text-sm text-muted">
+          Lumen is a free learning aid, provided as is. Its content was prepared with the help of software tools,
+          including AI, and checked against NCERT, but it may still contain mistakes. Always check with your NCERT
+          textbook, your teacher and the official syllabus. Lumen is not affiliated with NCERT, CBSE or NTA.
+        </p>
+        <p className="text-sm">
+          <a
+            href="https://github.com/SMACAcademy/lumen/issues/new?template=correction.yml"
+            className="font-medium text-accent underline"
+          >
+            Report a mistake
+          </a>
+          <span className="text-muted"> · </span>
+          <a
+            href="https://github.com/SMACAcademy/lumen/blob/main/DISCLAIMER.md"
+            className="font-medium text-accent underline"
+          >
+            Read the disclaimer
+          </a>
         </p>
       </Section>
     </main>

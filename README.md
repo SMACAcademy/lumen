@@ -27,6 +27,8 @@
 
 Every lab was checked against NCERT by an independent review: formulas, sign conventions, constants and every number quoted in the text are what the model computes.
 
+> **Disclaimer.** Lumen is a free learning aid, provided as is. Its content was prepared with the help of software tools, including AI, and may contain mistakes: always check against your NCERT textbook and the official syllabus. Lumen is not affiliated with NCERT, CBSE or NTA. Found a mistake? [Report it with your evidence](https://github.com/SMACAcademy/lumen/issues/new?template=correction.yml) and we will fix it. Read the full [disclaimer](DISCLAIMER.md).
+
 ## Join in
 
 - **Level of the week:** every Monday a level is posted in [Discussions](https://github.com/SMACAcademy/lumen/discussions/categories/q-a). Play it and say what you predicted.

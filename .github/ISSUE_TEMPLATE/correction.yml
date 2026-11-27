@@ -1,0 +1,38 @@
+name: Report a mistake
+description: Something in a lab, level or explanation is wrong or misleading.
+title: "Correction: "
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. A wrong explanation is worse than a missing one, so these reports matter most.
+        Please give your evidence: corrections are accepted on the strength of the source.
+  - type: input
+    id: where
+    attributes:
+      label: Where is it?
+      description: The address from your browser, or the lab or level name.
+      placeholder: https://smacacademy.github.io/lumen/play/...
+    validations:
+      required: true
+  - type: textarea
+    id: says
+    attributes:
+      label: What does Lumen say?
+      description: Copy the text, or describe the number, drawing or answer.
+    validations:
+      required: true
+  - type: textarea
+    id: should
+    attributes:
+      label: What should it say?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: The NCERT book, class, chapter and page or table, or another reliable source (a link is fine). A worked calculation also helps.
+    validations:
+      required: true
